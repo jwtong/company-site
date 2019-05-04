@@ -25,15 +25,7 @@ module.exports = {
         icon: `src/assets/images/gatsby-icon.png` // This path is relative to the root of the site.
       }
     },
-    `gatsby-plugin-typescript`,
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: `${__dirname}/src/assets/devicon-master` // See below to configure properly
-        }
-      }
-    }
+    `gatsby-plugin-typescript`
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
