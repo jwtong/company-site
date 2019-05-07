@@ -17,37 +17,6 @@ const ListLink = (props: any) => (
   </li>
 );
 
-// <div
-//   style={{
-//     display: "flex",
-//     justifyContent: "space-between",
-//     paddingLeft: "10%",
-//     alignItems: "center",
-//     position: "fixed",
-//     width: "100%",
-//     height: "10%",
-//     backgroundColor: "red",
-//     zIndex: "100"
-//   }}
-// >
-//   <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-//     <h3 style={{ display: `inline` }}>{siteTitle}</h3>
-//   </Link>
-//   <nav style={{ marginRight: "1rem" }}>
-//     <Link style={{ marginRight: "1rem" }} to="/about/">
-//       About Us
-//     </Link>
-//     <Link style={{ marginRight: "1rem" }} to="/services/">
-//       Services
-//     </Link>
-//     <Link style={{ marginRight: "1rem" }} to="/sample-work/">
-//       Sample Work
-//     </Link>
-//     <Link style={{ marginRight: "1rem" }} to="/contact/">
-//       Contact
-//     </Link>
-//   </nav>
-// </div>
 const Header = ({ siteTitle }: { siteTitle: string }) => (
   <AppBar position="fixed">
     <Toolbar style={{ flexWrap: "wrap" }}>
@@ -56,11 +25,11 @@ const Header = ({ siteTitle }: { siteTitle: string }) => (
           {siteTitle}
         </Button>
       </Typography>
-      <Button color="inherit" href={"/about/"}>
-        About Us
-      </Button>
       <Button color="inherit" href={"/services/"}>
         Services
+      </Button>
+      <Button color="inherit" href={"/about/"}>
+        About Us
       </Button>
       <Button color="inherit" href={"/sample-work/"}>
         Sample Work
