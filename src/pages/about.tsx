@@ -10,6 +10,7 @@ import InsertChartOutlined from "@material-ui/icons/InsertChartOutlined";
 import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
 import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
 import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
+import Grid from "@material-ui/core/Grid";
 import {
   React as ReactIcon,
   Vuejs,
@@ -75,76 +76,79 @@ const AboutPage = () => {
         </div>
       </div>
 
-      <div
+      <Grid
+        container
+        spacing={24}
+        direction="column"
+        justify="flex-start"
+        alignItems="stretch"
+        alignContent="center"
         style={{
-          display: "flex",
-          flexDirection: "column",
+          paddingTop: "2%",
+          paddingBottom: "2%",
           backgroundColor: "blue"
         }}
       >
-        <Card
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            alignSelf: "stretch",
-            flexGrow: "1",
-            // backgroundColor: "red",
-            padding: "2% 5% 2% 5%",
-            margin: "2% 5% 2% 5%",
-            maxHeight: "30%",
-            fontSize: "8em"
-          }}
-        >
-          <Typography component="h4" variant="h4">
-            Jeremy Tong
-          </Typography>
-          <Code fontSize="inherit" className={classes.mIcon} />
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            Jeremy Tong is a recent graduate of Brown University who
-            double-majored in Computer Science and Economics with a focus on
-            UI/UX design, Data Analytics, Behaviorial Economics, and Finance.
-            Most recently, Jeremy worked as a Venture for America fellow for
-            Juggle, a startup that is best described as the Uber-for
-            Babysitting. There, he assumed the role of interim CTO, handling all
-            aspects of the business related to Juggle's technology and mobile
-            app. In his time there, he rebuilt much of the software platform
-            from scratch that then served over 5000 monthly users and generated
-            $200k in revenue in 2018, an 8x increase over 2017, with a projected
-            increase of 2x in 2019. Jeremy has had 4+ years of full-stack
-            experience developing web and mobile applications, and is most
-            passionate about intelligent data-driven design. Outside of work,
-            Jeremy loves rock-climbing, playing jazz piano, and hip-hop dance.
-          </Typography>
-          <Button href={Resume} variant="outlined" color="secondary">
-            View CV
-          </Button>
-        </Card>
-        <Card
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            alignSelf: "stretch",
-            flexGrow: "1",
-            // backgroundColor: "red",
-            padding: "2% 5% 2% 5%",
-            margin: "0% 5% 2% 5%",
-            maxHeight: "30%",
-            fontSize: "8em"
-          }}
-        >
-          <Typography component="h4" variant="h4">
-            Thomas Clark
-          </Typography>
-          <PaletteOutlined fontSize="inherit" className={classes.mIcon} />
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            Hi, I'm an asshole.
-          </Typography>
-        </Card>
-      </div>
+        <Grid item xs="11">
+          <Card
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              // backgroundColor: "red",
+              padding: "2% 5% 2% 5%",
+              fontSize: "8em"
+            }}
+          >
+            <Typography component="h4" variant="h4">
+              Jeremy Tong
+            </Typography>
+            <Code fontSize="inherit" className={classes.mIcon} />
+            <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+              Jeremy Tong is a recent graduate of Brown University who
+              double-majored in Computer Science and Economics with a focus on
+              UI/UX design, Data Analytics, Behaviorial Economics, and Finance.
+              Most recently, Jeremy worked as a Venture for America fellow for
+              Juggle, a startup that is best described as the Uber-for
+              Babysitting. There, he assumed the role of interim CTO, handling
+              all aspects of the business related to Juggle's technology and
+              mobile app. In his time there, he rebuilt much of the software
+              platform from scratch that then served over 5000 monthly users and
+              generated $200k in revenue in 2018, an 8x increase over 2017, with
+              a projected increase of 2x in 2019. Jeremy has had 4+ years of
+              full-stack experience developing web and mobile applications, and
+              is most passionate about intelligent data-driven design. Outside
+              of work, Jeremy loves rock-climbing, playing jazz piano, and
+              hip-hop dance.
+            </Typography>
+            <Button href={Resume} variant="outlined" color="secondary">
+              View CV
+            </Button>
+          </Card>
+        </Grid>
+        <Grid item xs="11">
+          <Card
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              // backgroundColor: "red",
+              padding: "2% 5% 2% 5%",
+              fontSize: "8em"
+            }}
+          >
+            <Typography component="h4" variant="h4">
+              Thomas Clark
+            </Typography>
+            <PaletteOutlined fontSize="inherit" className={classes.mIcon} />
+            <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+              Hi, I'm an asshole.
+            </Typography>
+          </Card>
+        </Grid>
+      </Grid>
     </>
   );
 };

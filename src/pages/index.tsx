@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/styles";
 import Image from "../components/image";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 import {
   React as ReactIcon,
   Vuejs,
@@ -107,139 +108,146 @@ const IndexPage = () => {
             width: "80%"
           }}
         >
-          <Card
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              flexGrow: "1",
-              // backgroundColor: "red",
-              paddingTop: "2rem",
-              paddingBottom: "2rem",
-              marginLeft: "1rem"
-            }}
-          >
-            <Typography component="h4" variant="h4">
-              Front-End
-            </Typography>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                flexWrap: "wrap"
-              }}
-            >
-              <ReactIcon fontSize="inherit" className={classes.mIcon} />
-              <Vuejs fontSize="inherit" className={classes.mIcon} />
-              <AppleIos fontSize="inherit" className={classes.mIcon} />
-              <Android fontSize="inherit" className={classes.mIcon} />
-            </div>
-            <List>
-              <ListItem>
-                <ListItemText primary="React / React Native" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Vue.js" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="IOS (Objective-C / Swift)" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Android (Java)" />
-              </ListItem>
-            </List>
-          </Card>
-          <Card
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              flexGrow: "1",
-              // backgroundColor: "red",
-              paddingTop: "2rem",
-              paddingBottom: "2rem",
-              marginLeft: "1rem",
-              marginRight: "1rem"
-            }}
-          >
-            <Typography component="h4" variant="h4">
-              Back-End
-            </Typography>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                flexWrap: "wrap"
-              }}
-            >
-              <Nodejs fontSize="inherit" className={classes.mIcon} />
-              <LanguageRubyOnRails
-                fontSize="inherit"
-                className={classes.mIcon}
-              />
-              <DotNet fontSize="inherit" className={classes.mIcon} />
-              <Firebase fontSize="inherit" className={classes.mIcon} />
-            </div>
-            <List>
-              <ListItem>
-                <ListItemText primary="NodeJs" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Ruby on Rails" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary=".NET (C#)" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Google Firebase" />
-              </ListItem>
-            </List>
-          </Card>
-          <Card
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              flexGrow: "1",
-              // backgroundColor: "red",
-              paddingTop: "2rem",
-              paddingBottom: "2rem",
-              marginRight: "1rem"
-            }}
-          >
-            <Typography component="h4" variant="h4">
-              Platform
-            </Typography>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                flexWrap: "wrap"
-              }}
-            >
-              <Database fontSize="inherit" className={classes.mIcon} />
-              <Aws fontSize="inherit" className={classes.mIcon} />
-              <Azure fontSize="inherit" className={classes.mIcon} />
-              <LanguagePython fontSize="inherit" className={classes.mIcon} />
-            </div>
-            <List>
-              <ListItem>
-                <ListItemText primary="SQL / NoSQL" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="AWS" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Azure" />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary="Python (Machine Learning / Data Analytics)" />
-              </ListItem>
-            </List>
-          </Card>
+          <Grid container spacing={24} style={{ backgroundColor: "red" }}>
+            <Grid item xs={4}>
+              <Card
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                  flexGrow: "1",
+                  // backgroundColor: "red",
+                  paddingTop: "2rem",
+                  paddingBottom: "2rem"
+                }}
+              >
+                <Typography component="h4" variant="h4">
+                  Front-End
+                </Typography>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    flexWrap: "wrap"
+                  }}
+                >
+                  <ReactIcon fontSize="inherit" className={classes.mIcon} />
+                  <Vuejs fontSize="inherit" className={classes.mIcon} />
+                  <AppleIos fontSize="inherit" className={classes.mIcon} />
+                  <Android fontSize="inherit" className={classes.mIcon} />
+                </div>
+                <List>
+                  <ListItem>
+                    <ListItemText primary="React / React Native" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Vue.js" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="IOS (Objective-C / Swift)" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Android (Java)" />
+                  </ListItem>
+                </List>
+              </Card>
+            </Grid>
+            <Grid item xs={4}>
+              <Card
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                  flexGrow: "1",
+                  // backgroundColor: "red",
+                  paddingTop: "2rem",
+                  paddingBottom: "2rem"
+                }}
+              >
+                <Typography component="h4" variant="h4">
+                  Back-End
+                </Typography>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    flexWrap: "wrap"
+                  }}
+                >
+                  <Nodejs fontSize="inherit" className={classes.mIcon} />
+                  <LanguageRubyOnRails
+                    fontSize="inherit"
+                    className={classes.mIcon}
+                  />
+                  <DotNet fontSize="inherit" className={classes.mIcon} />
+                  <Firebase fontSize="inherit" className={classes.mIcon} />
+                </div>
+                <List>
+                  <ListItem>
+                    <ListItemText primary="NodeJs" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Ruby on Rails" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary=".NET (C#)" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Google Firebase" />
+                  </ListItem>
+                </List>
+              </Card>
+            </Grid>
+            <Grid item xs={4}>
+              <Card
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                  flexGrow: "1",
+                  // backgroundColor: "red",
+                  paddingTop: "2rem",
+                  paddingBottom: "2rem"
+                }}
+              >
+                <Typography component="h4" variant="h4">
+                  Platform
+                </Typography>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    flexWrap: "wrap"
+                  }}
+                >
+                  <Database fontSize="inherit" className={classes.mIcon} />
+                  <Aws fontSize="inherit" className={classes.mIcon} />
+                  <Azure fontSize="inherit" className={classes.mIcon} />
+                  <LanguagePython
+                    fontSize="inherit"
+                    className={classes.mIcon}
+                  />
+                </div>
+                <List>
+                  <ListItem>
+                    <ListItemText primary="SQL / NoSQL" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="AWS" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Azure" />
+                  </ListItem>
+                  <ListItem>
+                    <ListItemText primary="Python (Machine Learning / Data Analytics)" />
+                  </ListItem>
+                </List>
+              </Card>
+            </Grid>
+          </Grid>
         </div>
       </div>
       <div

@@ -9,6 +9,7 @@ import InsertChartOutlined from "@material-ui/icons/InsertChartOutlined";
 import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
 import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
 import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
+import Grid from "@material-ui/core/Grid";
 import {
   React as ReactIcon,
   Vuejs,
@@ -78,153 +79,157 @@ const ServicesPage = () => {
         </div>
       </div>
 
-      <div
+      <Grid
+        container
+        spacing={24}
+        direction="column"
+        justify="flex-start"
+        alignItems="stretch"
+        alignContent="center"
         style={{
-          display: "flex",
-          flexDirection: "column",
+          paddingTop: "2%",
+          paddingBottom: "2%",
           backgroundColor: "blue"
         }}
       >
-        <Card
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            alignSelf: "stretch",
-            flexGrow: "1",
-            // backgroundColor: "red",
-            padding: "2% 5% 2% 5%",
-            margin: "2% 5% 2% 5%",
-            maxHeight: "30%",
-            fontSize: "8em"
-          }}
-        >
-          <Typography component="h4" variant="h4">
-            Software Developer
-          </Typography>
-          <Code fontSize="inherit" className={classes.mIcon} />
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            Specializing in progressive web and mobile applications, our
-            responsibility under this role is to write code in accordance to the
-            project specifications, then configure the hosting platform to serve
-            the website or application live. This role may also include a
-            discussion and recommendation of the right front-end/back-end
-            languages and hosting platform to use.
-          </Typography>
-        </Card>
-        <Card
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            alignSelf: "stretch",
-            flexGrow: "1",
-            // backgroundColor: "red",
-            padding: "2% 5% 2% 5%",
-            margin: "0% 5% 2% 5%",
-            maxHeight: "30%",
-            fontSize: "8em"
-          }}
-        >
-          <Typography component="h4" variant="h4">
-            UI/UX Designer
-          </Typography>
-          <PaletteOutlined fontSize="inherit" className={classes.mIcon} />
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            If you're not sure how you want your application to look and how you
-            want people to interact with it, we can help apply user-interface
-            best practices and sketch out a visual representation of the
-            application. Note, this does not include branding design such as
-            logos or visual content that may be served up by your application.
-          </Typography>
-        </Card>
-        <Card
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            alignSelf: "stretch",
-            flexGrow: "1",
-            // backgroundColor: "red",
-            padding: "2% 5% 2% 5%",
-            margin: "0% 5% 2% 5%",
-            maxHeight: "30%",
-            fontSize: "8em"
-          }}
-        >
-          <Typography component="h4" variant="h4">
-            Product Manager
-          </Typography>
-          <AssignmentOutlined fontSize="inherit" className={classes.mIcon} />
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            If you have limited knowledge about software, we can take a greater
-            function in making architectural and design choices as related to
-            the code. This primarily means spec'ing features, i.e. translating
-            broader business logic into implementable, scoped tasks.
-            Additionally, we are happy to provide much more feedback and advice
-            in more of a consultant role.
-          </Typography>
-        </Card>
-        <Card
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            alignSelf: "stretch",
-            flexGrow: "1",
-            // backgroundColor: "red",
-            padding: "2% 5% 2% 5%",
-            margin: "0% 5% 2% 5%",
-            maxHeight: "30%",
-            fontSize: "8em"
-          }}
-        >
-          <Typography component="h4" variant="h4">
-            Business Logic Analyst
-          </Typography>
-          <BusinessCenterOutlined
-            fontSize="inherit"
-            className={classes.mIcon}
-          />
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            If you just have an idea, we can help you all the way from the
-            bottom-up, suggesting business logic decisions that may pair well
-            with a software implementation. Our focus in this role would be to
-            think critically of the economic and social impacts of the core
-            idea.
-          </Typography>
-        </Card>
-        <Card
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "center",
-            alignSelf: "stretch",
-            flexGrow: "1",
-            // backgroundColor: "red",
-            padding: "2% 5% 2% 5%",
-            margin: "0% 5% 2% 5%",
-            maxHeight: "30%",
-            fontSize: "8em"
-          }}
-        >
-          <Typography component="h4" variant="h4">
-            Data Analyst
-          </Typography>
-          <InsertChartOutlined fontSize="inherit" className={classes.mIcon} />
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            Parallel to the software development, we can apply data analytic and
-            machine learning principles to provide valuable insights into the
-            efficacy of your application as it relates to your economic or
-            social imperatives.
-          </Typography>
-        </Card>
-      </div>
+        <Grid item xs="11">
+          <Card
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              // backgroundColor: "red",
+              padding: "2% 5% 2% 5%",
+              fontSize: "8em"
+            }}
+          >
+            <Typography component="h4" variant="h4">
+              Software Developer
+            </Typography>
+            <Code fontSize="inherit" className={classes.mIcon} />
+            <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+              Specializing in progressive web and mobile applications, our
+              responsibility under this role is to write code in accordance to
+              the project specifications, then configure the hosting platform to
+              serve the website or application live. This role may also include
+              a discussion and recommendation of the right front-end/back-end
+              languages and hosting platform to use.
+            </Typography>
+          </Card>
+        </Grid>
+        <Grid item xs="11">
+          <Card
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              alignSelf: "stretch",
+              // backgroundColor: "red",
+              padding: "2% 5% 2% 5%",
+              fontSize: "8em"
+            }}
+          >
+            <Typography component="h4" variant="h4">
+              UI/UX Designer
+            </Typography>
+            <PaletteOutlined fontSize="inherit" className={classes.mIcon} />
+            <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+              If you're not sure how you want your application to look and how
+              you want people to interact with it, we can help apply
+              user-interface best practices and sketch out a visual
+              representation of the application. Note, this does not include
+              branding design such as logos or visual content that may be served
+              up by your application.
+            </Typography>
+          </Card>
+        </Grid>
+        <Grid item xs="11">
+          <Card
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              alignSelf: "stretch",
+              flexGrow: "1",
+              // backgroundColor: "red",
+              padding: "2% 5% 2% 5%",
+              fontSize: "8em"
+            }}
+          >
+            <Typography component="h4" variant="h4">
+              Product Manager
+            </Typography>
+            <AssignmentOutlined fontSize="inherit" className={classes.mIcon} />
+            <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+              If you have limited knowledge about software, we can take a
+              greater function in making architectural and design choices as
+              related to the code. This primarily means spec'ing features, i.e.
+              translating broader business logic into implementable, scoped
+              tasks. Additionally, we are happy to provide much more feedback
+              and advice in more of a consultant role.
+            </Typography>
+          </Card>
+        </Grid>
+        <Grid item xs="11">
+          <Card
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              alignSelf: "stretch",
+              flexGrow: "1",
+              // backgroundColor: "red",
+              padding: "2% 5% 2% 5%",
+              fontSize: "8em"
+            }}
+          >
+            <Typography component="h4" variant="h4">
+              Business Logic Analyst
+            </Typography>
+            <BusinessCenterOutlined
+              fontSize="inherit"
+              className={classes.mIcon}
+            />
+            <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+              If you just have an idea, we can help you all the way from the
+              bottom-up, suggesting business logic decisions that may pair well
+              with a software implementation. Our focus in this role would be to
+              think critically of the economic and social impacts of the core
+              idea.
+            </Typography>
+          </Card>
+        </Grid>
+        <Grid item xs="11">
+          <Card
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              alignSelf: "stretch",
+              flexGrow: "1",
+              // backgroundColor: "red",
+              padding: "2% 5% 2% 5%",
+              fontSize: "8em"
+            }}
+          >
+            <Typography component="h4" variant="h4">
+              Data Analyst
+            </Typography>
+            <InsertChartOutlined fontSize="inherit" className={classes.mIcon} />
+            <Typography variant="subtitle1" style={{ textAlign: "center" }}>
+              Parallel to the software development, we can apply data analytic
+              and machine learning principles to provide valuable insights into
+              the efficacy of your application as it relates to your economic or
+              social imperatives.
+            </Typography>
+          </Card>
+        </Grid>
+      </Grid>
       <div
         className={classes.container}
         style={{
