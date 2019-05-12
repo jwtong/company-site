@@ -21,6 +21,7 @@
     "gatsby-plugin-sharp": "^2.0.35",
     "gatsby-plugin-tslint": "0.0.2",
     "gatsby-plugin-typescript": "^2.0.13",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^2.0.32",
     "gatsby-transformer-sharp": "^2.1.18",
     "mdi-material-ui": "^5.11.0",

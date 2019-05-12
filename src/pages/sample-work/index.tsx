@@ -71,7 +71,7 @@ const SampleWorkPage = ({ data }: { data: any }) => {
           justifyContent: "center"
         }}
       >
-        <GridList style={{ width: "540px" }} cellHeight={180} cols={3}>
+        <GridList style={{ width: "810px" }} cellHeight={270} cols={3}>
           <GridListTile
             cols={1}
             rows={1}
@@ -85,7 +85,7 @@ const SampleWorkPage = ({ data }: { data: any }) => {
           >
             <Img
               style={{ backgroundColor: "white", height: "100%" }}
-              objectFit="contain"
+              objectFit="cover"
               fluid={data.juggleLogo.childImageSharp.fluid}
             />
             <GridListTileBar
@@ -93,9 +93,10 @@ const SampleWorkPage = ({ data }: { data: any }) => {
               title={"Juggle Mobile App"}
             />
           </GridListTile>
-          <GridListTile cols={2} rows={1} className={classes.gridTile}>
+          <GridListTile cols={1} rows={1} className={classes.gridTile}>
             <Img
-              fluid={data.parkingMeterMain.childImageSharp.fluid}
+              fluid={data.parkingMeterLogo.childImageSharp.fluid}
+              objectFit="cover"
               style={{ height: "100%" }}
               alt={"Parking Meter Predictive Model"}
             />
@@ -104,10 +105,10 @@ const SampleWorkPage = ({ data }: { data: any }) => {
               title={"Parking Meter Predictive Model"}
             />
           </GridListTile>
-          <GridListTile cols={2} rows={1} className={classes.gridTile}>
+          <GridListTile cols={1} rows={1} className={classes.gridTile}>
             <Img
-              fluid={data.recipeBuilderMain.childImageSharp.fluid}
-              objectFit="contain"
+              fluid={data.recipeBuilderLogo.childImageSharp.fluid}
+              objectFit="cover"
               style={{ height: "100%" }}
               alt={"Computer Vision Recipe Builder"}
             />
@@ -117,24 +118,37 @@ const SampleWorkPage = ({ data }: { data: any }) => {
             />
           </GridListTile>
           <GridListTile cols={1} rows={1} className={classes.gridTile}>
-            <Img fluid={data.zicLogo.childImageSharp.fluid} alt={"Zic"} />
+            <Img
+              objectFit="cover"
+              style={{ height: "100%" }}
+              fluid={data.zicLogo.childImageSharp.fluid}
+              alt={"Zic"}
+            />
             <GridListTileBar
               className={classes.tileTitle}
               title={"Zic Web Jukebox"}
             />
           </GridListTile>
           <GridListTile cols={1} rows={1} className={classes.gridTile}>
-            <Img fluid={data.barterLogo.childImageSharp.fluid} />
+            <Img
+              objectFit="cover"
+              style={{ height: "100%" }}
+              fluid={data.barterLogo.childImageSharp.fluid}
+            />
             <GridListTileBar
               className={classes.tileTitle}
               title={"Barter App UI/UX"}
             />
           </GridListTile>
-          <GridListTile cols={2} rows={1} className={classes.gridTile}>
-            <Img fluid={data.webScrapeDcfMain.childImageSharp.fluid} />
+          <GridListTile cols={1} rows={1} className={classes.gridTile}>
+            <Img
+              objectFit="cover"
+              style={{ height: "100%" }}
+              fluid={data.webScrapeDcfLogo.childImageSharp.fluid}
+            />
             <GridListTileBar
               className={classes.tileTitle}
-              title={"Web Scraping Stock Price Analyzer"}
+              title={"Web Scrape Stock Analyzer"}
             />
           </GridListTile>
         </GridList>
@@ -166,8 +180,8 @@ export const query = graphql`
         }
       }
     }
-    recipeBuilderMain: file(
-      relativePath: { eq: "sample_work/recipe_builder/main.png" }
+    recipeBuilderLogo: file(
+      relativePath: { eq: "sample_work/recipe_builder/logo.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 809) {
@@ -175,8 +189,8 @@ export const query = graphql`
         }
       }
     }
-    parkingMeterMain: file(
-      relativePath: { eq: "sample_work/parking_meter/main.png" }
+    parkingMeterLogo: file(
+      relativePath: { eq: "sample_work/parking_meter/logo.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 809) {
@@ -184,8 +198,8 @@ export const query = graphql`
         }
       }
     }
-    webScrapeDcfMain: file(
-      relativePath: { eq: "sample_work/web_scrape_dcf/main.png" }
+    webScrapeDcfLogo: file(
+      relativePath: { eq: "sample_work/web_scrape_dcf/logo.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 809) {

@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from "gatsby";
 
 import "./layout.css";
 import Header from "./header";
+import Footer from "./footer";
 
 const Layout = ({ children }: { children: any }) => (
   <StaticQuery
@@ -23,14 +24,10 @@ const Layout = ({ children }: { children: any }) => (
         <div>
           <main>{children}</main>
         </div>
-        <footer>© {new Date().getFullYear()}, I am footer</footer>
+        <Footer />
       </>
     )}
   />
 );
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired
-};
 
 export default Layout;
