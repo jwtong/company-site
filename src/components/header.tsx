@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import OfflineBolt from "@material-ui/icons/OfflineBolt";
-import { withStyles } from "@material-ui/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
   buttonLabel: {
@@ -38,7 +38,7 @@ class Header extends React.Component {
   private handleScroll = () => {
     if (window.scrollY > 50) {
       this.setState({
-        backgroundColor: "black"
+        backgroundColor: this.props.theme.palette.primary.main
       });
     } else {
       this.setState({
@@ -122,4 +122,4 @@ class Header extends React.Component {
   }
 }
 
-export default withStyles(styles)(Header);
+export default withStyles(styles, { withTheme: true })(Header);
