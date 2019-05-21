@@ -77,8 +77,6 @@ const SampleWorkPage = ({ data }: { data: any }) => {
             rows={1}
             onClick={event => {
               event.preventDefault();
-
-              // TODO: do something with form values
               navigate("/sample-work/juggle");
             }}
             className={classes.gridTile}
@@ -93,7 +91,15 @@ const SampleWorkPage = ({ data }: { data: any }) => {
               title={"Juggle Mobile App"}
             />
           </GridListTile>
-          <GridListTile cols={1} rows={1} className={classes.gridTile}>
+          <GridListTile
+            onClick={event => {
+              event.preventDefault();
+              navigate("/sample-work/parking-meter");
+            }}
+            cols={1}
+            rows={1}
+            className={classes.gridTile}
+          >
             <Img
               fluid={data.parkingMeterLogo.childImageSharp.fluid}
               objectFit="cover"
@@ -129,7 +135,15 @@ const SampleWorkPage = ({ data }: { data: any }) => {
               title={"Zic Web Jukebox"}
             />
           </GridListTile>
-          <GridListTile cols={1} rows={1} className={classes.gridTile}>
+          <GridListTile
+            onClick={event => {
+              event.preventDefault();
+              navigate("/sample-work/barter");
+            }}
+            cols={1}
+            rows={1}
+            className={classes.gridTile}
+          >
             <Img
               objectFit="cover"
               style={{ height: "100%" }}
@@ -140,7 +154,15 @@ const SampleWorkPage = ({ data }: { data: any }) => {
               title={"Barter App UI/UX"}
             />
           </GridListTile>
-          <GridListTile cols={1} rows={1} className={classes.gridTile}>
+          <GridListTile
+            onClick={event => {
+              event.preventDefault();
+              navigate("/sample-work/web-scrape-dcf");
+            }}
+            cols={1}
+            rows={1}
+            className={classes.gridTile}
+          >
             <Img
               objectFit="cover"
               style={{ height: "100%" }}
@@ -181,7 +203,7 @@ export const query = graphql`
       }
     }
     recipeBuilderLogo: file(
-      relativePath: { eq: "sample_work/recipe_builder/logo.png" }
+      relativePath: { eq: "sample_work/recipe-builder/logo.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 809) {
@@ -190,7 +212,7 @@ export const query = graphql`
       }
     }
     parkingMeterLogo: file(
-      relativePath: { eq: "sample_work/parking_meter/logo.png" }
+      relativePath: { eq: "sample_work/parking-meter/logo.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 809) {
@@ -199,7 +221,7 @@ export const query = graphql`
       }
     }
     webScrapeDcfLogo: file(
-      relativePath: { eq: "sample_work/web_scrape_dcf/logo.png" }
+      relativePath: { eq: "sample_work/web-scrape-dcf/logo.png" }
     ) {
       childImageSharp {
         fluid(maxWidth: 809) {

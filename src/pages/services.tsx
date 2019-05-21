@@ -101,12 +101,13 @@ const ServicesPage = props => {
             alignItems: "center"
           }}
         >
-          <Typography component="h1" variant="h8" className={classes.header}>
+          <Typography variant="h2" className={classes.header} gutterBottom>
+            Services
+          </Typography>
+          <Typography variant="h4" className={classes.header}>
             Our core product is code, but we never expect you to come to us with
-            a complete blueprint of your idea. Depending on your needs, we are
-            able to provide any combination of the following roles and their
-            respective services to make sure the product we deliver matches your
-            expectations.
+            a complete blueprint of your idea. We offer any combination of the
+            following roles to ensure that we can help you along at any stage.
           </Typography>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { Link, graphql } from "gatsby";
 import { makeStyles } from "@material-ui/styles";
 import Resume from "../assets/documents/GS9_Color_Management.pdf";
 import Image from "../components/image";
@@ -25,7 +25,15 @@ import {
   Azure,
   LanguagePython
 } from "mdi-material-ui";
-import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
+import {
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  Chip
+} from "@material-ui/core";
+import Img from "gatsby-image/withIEPolyfill";
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -50,7 +58,7 @@ const useStyles = makeStyles({
   }
 });
 
-const AboutPage = () => {
+const AboutPage = ({ data }: { data: any }) => {
   const classes = useStyles();
   return (
     <>
@@ -70,87 +78,182 @@ const AboutPage = () => {
             alignItems: "center"
           }}
         >
-          <Typography component="h1" variant="h4" className={classes.header}>
+          <Typography component="h2" variant="h4" className={classes.header}>
             Meet the co-founders of _______
           </Typography>
         </div>
       </div>
 
-      <Grid
-        container
-        spacing={24}
-        direction="column"
-        justify="flex-start"
-        alignItems="stretch"
-        alignContent="center"
+      <div
         style={{
-          paddingTop: "2%",
-          paddingBottom: "2%",
-          backgroundColor: "blue"
+          marginTop: "5%",
+          marginBottom: "5%",
+          padding: "0% 15% 0% 15%",
+          alignItems: "stretch"
         }}
       >
-        <Grid item xs="11">
-          <Card
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              // backgroundColor: "red",
-              padding: "2% 5% 2% 5%",
-              fontSize: "8em"
-            }}
-          >
-            <Typography component="h4" variant="h4">
-              Jeremy Tong
-            </Typography>
-            <Code fontSize="inherit" className={classes.mIcon} />
-            <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-              Jeremy Tong is a recent graduate of Brown University who
-              double-majored in Computer Science and Economics with a focus on
-              UI/UX design, Data Analytics, Behaviorial Economics, and Finance.
-              Most recently, Jeremy worked as a Venture for America fellow for
-              Juggle, a startup that is best described as the Uber-for
-              Babysitting. There, he assumed the role of interim CTO, handling
-              all aspects of the business related to Juggle's technology and
-              mobile app. In his time there, he rebuilt much of the software
-              platform from scratch that then served over 5000 monthly users and
-              generated $200k in revenue in 2018, an 8x increase over 2017, with
-              a projected increase of 2x in 2019. Jeremy has had 4+ years of
-              full-stack experience developing web and mobile applications, and
-              is most passionate about intelligent data-driven design. Outside
-              of work, Jeremy loves rock-climbing, playing jazz piano, and
-              hip-hop dance.
-            </Typography>
-            <Button href={Resume} variant="outlined" color="secondary">
-              View CV
-            </Button>
-          </Card>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column"
+          }}
+        >
+          <Typography variant="h4">Jeremy Tong</Typography>
+          <Img
+            fixed={data.jeremyAvatar.childImageSharp.fixed}
+            alt="Jeremy Tong"
+            style={{ borderRadius: "100px", margin: "2% 0% 2% 0%" }}
+          />
+        </div>
+
+        <Divider variant="middle" style={{ marginBottom: "2%" }} />
+        <Typography variant="h6" style={{ textAlign: "center" }} gutterBottom>
+          About me
+        </Typography>
+        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+          Jeremy Tong is a recent graduate of Brown University who
+          double-majored in Computer Science and Economics with a focus on UI/UX
+          design, Data Analytics, Behaviorial Economics, and Finance.
+          <br />
+          <br /> Most recently, Jeremy worked as a Venture for America fellow
+          for Juggle, a startup that is best described as the Uber-for
+          Babysitting. There, he assumed the role of interim CTO, handling all
+          aspects of the business related to Juggle's technology and mobile app.
+          In his time there, he rebuilt much of the software platform from
+          scratch that then served over 5000 monthly users and generated $200k
+          in revenue in 2018, an 8x increase over 2017, with a projected
+          increase of 2x in 2019.
+          <br />
+          <br /> Jeremy has had 4+ years of full-stack experience developing web
+          and mobile applications, and is most passionate about intelligent
+          data-driven design. Outside of work, Jeremy loves rock-climbing,
+          playing jazz piano, and hip-hop dance.
+        </Typography>
+        <Divider
+          variant="middle"
+          style={{ marginTop: "2%", marginBottom: "2%" }}
+        />
+        <Typography variant="h6" style={{ textAlign: "center" }} gutterBottom>
+          Top Skills
+        </Typography>
+        <Grid justify="center" container spacing={8}>
+          <Grid item>
+            <Chip label="React / React Native" />
+          </Grid>
+          <Grid item>
+            <Chip label="Sketch" />
+          </Grid>
+          <Grid item>
+            <Chip label="Ruby on Rails" />
+          </Grid>
+          <Grid item>
+            <Chip label="Objective-C / Swift" />
+          </Grid>
+          <Grid item>
+            <Chip label="SQL" />
+          </Grid>
+          <Grid item>
+            <Chip label="NoSQL" />
+          </Grid>
+          <Grid item>
+            <Chip label="Python (scikit-learn)" />
+          </Grid>
+          <Grid item>
+            <Chip label="C / C++" />
+          </Grid>
+          <Grid item>
+            <Chip label="Google Firebase" />
+          </Grid>
+          <Grid item>
+            <Chip label="AWS" />
+          </Grid>
         </Grid>
-        <Grid item xs="11">
-          <Card
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              // backgroundColor: "red",
-              padding: "2% 5% 2% 5%",
-              fontSize: "8em"
-            }}
-          >
-            <Typography component="h4" variant="h4">
-              Thomas Clark
-            </Typography>
-            <PaletteOutlined fontSize="inherit" className={classes.mIcon} />
-            <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-              Hi, I'm an asshole.
-            </Typography>
-          </Card>
-        </Grid>
-      </Grid>
+        <Divider
+          variant="middle"
+          style={{ marginTop: "2%", marginBottom: "2%" }}
+        />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column"
+          }}
+        >
+          <Button href={Resume} variant="outlined" color="primary">
+            View CV
+          </Button>
+        </div>
+      </div>
+      <div
+        style={{
+          marginTop: "5%",
+          marginBottom: "5%",
+          padding: "0% 15% 0% 15%"
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column"
+          }}
+        >
+          <Typography variant="h4">Thomas Clark</Typography>
+          <Img
+            fixed={data.jeremyAvatar.childImageSharp.fixed}
+            alt="Thomas Clark"
+            style={{ borderRadius: "100px", margin: "2% 0% 2% 0%" }}
+          />
+        </div>
+
+        <Divider variant="middle" style={{ marginBottom: "2%" }} />
+        <Typography variant="h6" style={{ textAlign: "center" }} gutterBottom>
+          About me
+        </Typography>
+        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+          Thomas Clark is a grade-1 asshole.
+        </Typography>
+        <Divider
+          variant="middle"
+          style={{ marginTop: "2%", marginBottom: "2%" }}
+        />
+        <Typography variant="h6" style={{ textAlign: "center" }} gutterBottom>
+          Another Block
+        </Typography>
+        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+          Lorem Ipsum
+        </Typography>
+        <Divider
+          variant="middle"
+          style={{ marginTop: "2%", marginBottom: "2%" }}
+        />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column"
+          }}
+        >
+          <Button href={Resume} variant="outlined" color="primary">
+            View CV
+          </Button>
+        </div>
+      </div>
     </>
   );
 };
+
+export const query = graphql`
+  query {
+    jeremyAvatar: file(relativePath: { eq: "images/jeremy_profile.jpeg" }) {
+      childImageSharp {
+        fixed(width: 200) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`;
 
 export default AboutPage;

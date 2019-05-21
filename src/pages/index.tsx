@@ -291,15 +291,4 @@ const IndexPage = props => {
   );
 };
 
-// <FontAwesomeIcon
-//   className={classes.faIcon}
-//   icon={faReact}
-//   color="white"
-// />
-// <FontAwesomeIcon icon={faNode} color="white" />
-// <ReactIcon className={classes.devicon} height="90px" width="90px" />
-// <NodeIcon className={classes.devicon} height="90px" width="90px" />
-// <AwsIcon className={classes.devicon} height="90px" width="90px" />
-// <RailsIcon className={classes.devicon} height="90px" width="90px" />
-
 export default withStyles(styles, { withTheme: true })(IndexPage);
