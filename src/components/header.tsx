@@ -36,6 +36,7 @@ class Header extends React.Component {
   };
 
   private handleScroll = () => {
+    console.log(this.props.theme.palette.primary.main);
     if (window.scrollY > 50) {
       this.setState({
         backgroundColor: this.props.theme.palette.primary.main

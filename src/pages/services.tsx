@@ -113,7 +113,7 @@ const ServicesPage = props => {
       </div>
       <Grid
         container
-        spacing={24}
+        spacing={3}
         direction="column"
         justify="flex-start"
         alignItems="stretch"
@@ -149,7 +149,7 @@ const ServicesPage = props => {
                     })}
                   </Grid>
                   <Grid item xs={8}>
-                    <Grid container spacing={24} direction="column">
+                    <Grid container spacing={3} direction="column">
                       <Grid item xs={12}>
                         <Typography variant="h3" gutterBottom>
                           {role.title}

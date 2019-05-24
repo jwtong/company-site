@@ -44,7 +44,7 @@ const styles = {
   }
 };
 
-class ParkingMeterPage extends React.Component {
+class ZicPage extends React.Component {
   public constructor(props) {
     super(props);
     this.state = {
@@ -82,12 +82,10 @@ class ParkingMeterPage extends React.Component {
             }}
           >
             <Typography variant="h2" className={classes.header} gutterBottom>
-              Parking Meter Predictive Model
+              Zic Web Jukebox
             </Typography>
             <Typography variant="h5" className={classes.header} gutterBottom>
-              An analysis of parking meter transactions in San Diego and an
-              evaluation of economic applications (Brown University Senior
-              Capstone Project)
+              A collaborative playlist maker and music player
             </Typography>
           </div>
         </div>
@@ -149,7 +147,7 @@ class ParkingMeterPage extends React.Component {
               </StandardPopover>
             </Grid>
             <Grid item>
-              <StandardPopover popoverText={"Data Analyst"}>
+              <StandardPopover popoverText={"Business Logic Analyst"}>
                 <Card
                   style={{
                     display: "flex",
@@ -165,7 +163,31 @@ class ParkingMeterPage extends React.Component {
                     width: "70px"
                   }}
                 >
-                  <InsertChartOutlined
+                  <BusinessCenterOutlined
+                    fontSize="inherit"
+                    className={classes.mIcon}
+                  />
+                </Card>
+              </StandardPopover>
+            </Grid>
+            <Grid item>
+              <StandardPopover popoverText={"Project Management"}>
+                <Card
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    alignSelf: "stretch",
+                    flexGrow: "1",
+                    // backgroundColor: "red",
+                    padding: "2% 5% 2% 5%",
+                    fontSize: "4em",
+                    height: "70px",
+                    width: "70px"
+                  }}
+                >
+                  <AssignmentOutlined
                     fontSize="inherit"
                     className={classes.mIcon}
                   />
@@ -182,10 +204,13 @@ class ParkingMeterPage extends React.Component {
           </Typography>
           <Grid justify="center" container spacing={1}>
             <Grid item>
-              <Chip label="React" />
+              <Chip label="HTML / CSS" />
             </Grid>
             <Grid item>
-              <Chip label="Python (SciKit-Learn)" />
+              <Chip label="Javascript / JQuery" />
+            </Grid>
+            <Grid item>
+              <Chip label="Java (Spark)" />
             </Grid>
           </Grid>
           <Divider
@@ -195,171 +220,94 @@ class ParkingMeterPage extends React.Component {
           <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
             Overview
           </Typography>
+          <Typography
+            variant="subtitle1"
+            style={{ textAlign: "left" }}
+            gutterBottom
+          >
+            A full-stack web application that allows one user to host a playlist
+            on their computer, which other users can connect to and add songs of
+            their choice from the SoundCloud library. As songs are added, the
+            host can simultaneously sort, manage, and playback the playlist.
+          </Typography>
+          <Divider
+            variant="middle"
+            style={{ marginTop: "2%", marginBottom: "2%" }}
+          />
+          <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
+            Design
+          </Typography>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
               flexWrap: "wrap",
+              marginTop: "3%",
               marginBottom: "3%"
             }}
           >
-            <Img
-              style={{
-                border: "1px solid #DDD",
-                boxShadow: "0px 1px 3px 0px rgba(0, 0, 0, 0.1)"
-              }}
-              fixed={data.main.childImageSharp.fixed}
-            />
+            <Img fixed={data.zic1.childImageSharp.fixed} />
           </div>
           <Typography variant="subtitle1" style={{ textAlign: "left" }}>
-            Inspired by Donald Shoup's book "The High Cost of Free Parking",
-            this project was an investigation and analysis of daily parking
-            meter data from San Diego's metropolitan area. First, I created a
-            number of predictive models that predicted daily meter occupancy.
-            Next, I integrated the most accurate model with a web application
-            interface. Lastly, I examined possible economic and social
-            applications of the predictive model.
+            The first step was to diagram the business-logic features and
+            user-interactions of this multi-faceted program.
+          </Typography>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginTop: "3%",
+              marginBottom: "3%"
+            }}
+          >
+            <Img fixed={data.zic2.childImageSharp.fixed} />
+          </div>
+          <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+            Once drafted, these considerations were translated into UML diagram
+            that better defined how the features would be translated to code and
+            data.
+          </Typography>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginTop: "3%",
+              marginBottom: "3%"
+            }}
+          >
+            <Img fixed={data.zic3.childImageSharp.fixed} />
+          </div>
+          <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+            Next, UI/UX mockups were created to show the layout of the actual
+            music player. Note that the host's interface would include more
+            functionality than those of connected clients, including executive
+            controls over the music playback.
           </Typography>
           <Divider
             variant="middle"
             style={{ marginTop: "2%", marginBottom: "2%" }}
           />
           <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
-            Data Prediction and Model
-          </Typography>
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            Before building the predictive model, I needed to pick a set of
-            features or measurable factors that I felt might have notable
-            correlation with parking meter occupancy. I determined that price,
-            local meter density, and accessibility were the most useful features
-            from the original data set. However, these features do not help
-            predict variances in daily occupancy, since they don't change each
-            day.
+            Final Product
           </Typography>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
               flexWrap: "wrap",
-              marginBottom: "3%",
-              marginTop: "3%"
+              marginTop: "3%",
+              marginBottom: "3%"
             }}
           >
-            <Img
-              style={{
-                border: "1px solid #DDD",
-                boxShadow: "0px 1px 3px 0px rgba(0, 0, 0, 0.1)"
-              }}
-              fixed={data.bostonChart.childImageSharp.fixed}
-            />
+            <Img fixed={data.zic4.childImageSharp.fixed} />
           </div>
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            In order to account for differences in daily occupancy, I suspected
-            there would be a correlation with weather (e.g. rainy days meant
-            less demand). Using another data set from Boston's parking meters, I
-            confirmed that seasonality did exhibit correlation with parking
-            meter demand, likely due to weather conditions.
+          <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+            In terms of future business applications of this software, it could
+            be installed into a speaker or a speaker attachment via a
+            microcomputer (e.g. Raspberry Pi) or be hosted completely online.
           </Typography>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              marginBottom: "1%",
-              marginTop: "1%"
-            }}
-          >
-            <Img fixed={data.occupancyPrediction.childImageSharp.fixed} />
-          </div>
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            Combining a San Diego historical weather data set with the original
-            parking data set, I tested 5 different classification methods. Of
-            the numerous predictive models built, the random forest yielded the
-            highest accuracy.
-          </Typography>
-          <Divider
-            variant="middle"
-            style={{ marginTop: "2%", marginBottom: "2%" }}
-          />
-          <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
-            Web Application
-          </Typography>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              marginBottom: "3%",
-              marginTop: "3%"
-            }}
-          >
-            <Img
-              style={{
-                border: "1px solid #DDD",
-                boxShadow: "0px 1px 3px 0px rgba(0, 0, 0, 0.1)"
-              }}
-              fixed={data.map1.childImageSharp.fixed}
-            />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              marginBottom: "3%",
-              marginTop: "3%"
-            }}
-          >
-            <Img
-              style={{
-                border: "1px solid #DDD",
-                boxShadow: "0px 1px 3px 0px rgba(0, 0, 0, 0.1)"
-              }}
-              fixed={data.map2.childImageSharp.fixed}
-            />
-          </div>
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            Using the random-forest model, I created an application that queries
-            current weather data for San Diego and displays predictions of each
-            meter's occupancy for the day on a zoomable and clickable
-            interactive map. This application serves as a proof-of-concept for a
-            website or integration into Google Maps that consumers might
-            reference when attempting to find parking on a certain day.
-          </Typography>
-          <Divider
-            variant="middle"
-            style={{ marginTop: "2%", marginBottom: "2%" }}
-          />
-          <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
-            Economic Analysis
-          </Typography>
-          <Typography variant="subtitle1" style={{ textAlign: "center" }}>
-            In the end, the predictive power of the final data model was
-            limited, but could be significantly improved with better and more
-            features. Nonetheless, the project provides an optimistic outlook
-            into how data analysis could empower city planners to make better
-            decisions on behalf of consumers and to generate city revenue. For
-            one, it could guide policy makers on where to build new parking
-            meters and where to remove existing ones. It could also allow them
-            to simulate different scenarios (e.g. pricing changes) that could
-            improve the economic efficiency of the meters.
-          </Typography>
-        </div>
-        <Divider
-          variant="middle"
-          style={{ marginTop: "2%", marginBottom: "2%" }}
-        />
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            marginBottom: "2%"
-          }}
-        >
-          <Button href={"/"} variant="outlined" color="primary">
-            View Paper
-          </Button>
         </div>
       </>
     );
@@ -368,47 +316,30 @@ class ParkingMeterPage extends React.Component {
 
 export const query = graphql`
   query {
-    main: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter1.png" }
-    ) {
-      childImageSharp {
-        fixed(width: 800) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    bostonChart: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter2.png" }
-    ) {
-      childImageSharp {
-        fixed(width: 600) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    occupancyPrediction: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter3.png" }
-    ) {
-      childImageSharp {
-        fixed(width: 500) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    map1: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter4.png" }
-    ) {
+    zic1: file(relativePath: { eq: "sample_work/zic/zic1.png" }) {
       childImageSharp {
         fixed(width: 700) {
           ...GatsbyImageSharpFixed
         }
       }
     }
-    map2: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter5.png" }
-    ) {
+    zic2: file(relativePath: { eq: "sample_work/zic/zic2.png" }) {
       childImageSharp {
         fixed(width: 700) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    zic3: file(relativePath: { eq: "sample_work/zic/zic3.jpg" }) {
+      childImageSharp {
+        fixed(width: 700) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    zic4: file(relativePath: { eq: "sample_work/zic/zic4.png" }) {
+      childImageSharp {
+        fixed(width: 1000) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -416,4 +347,4 @@ export const query = graphql`
   }
 `;
 
-export default withStyles(styles, { withTheme: true })(ParkingMeterPage);
+export default withStyles(styles, { withTheme: true })(ZicPage);

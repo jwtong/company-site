@@ -27,7 +27,8 @@ import {
   ListItemText,
   CardContent,
   CardHeader,
-  CardMedia
+  CardMedia,
+  ListItemIcon
 } from "@material-ui/core";
 import { faSketch } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -73,7 +74,6 @@ const IndexPage = props => {
     { text: "Python (Data Analytics)", starred: false },
     { text: "Sketch (UI/UX)", starred: false }
   ];
-  console.log(theme.spacing.unit);
   return (
     <>
       <div
@@ -116,10 +116,12 @@ const IndexPage = props => {
       </div>
 
       <div
-        className={classes.container}
         style={{
-          backgroundColor: "#e2e2e2",
-          fontSize: "6em"
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          paddingTop: theme.spacing(5),
+          backgroundColor: "#e2e2e2"
         }}
       >
         <Typography variant="h4" gutterBottom>
@@ -129,14 +131,14 @@ const IndexPage = props => {
           style={{
             display: "flex",
             alignSelf: "stretch",
-            marginTop: theme.spacing.unit * 5,
-            marginLeft: theme.spacing.unit * 10,
-            marginRight: theme.spacing.unit * 10
+            marginTop: theme.spacing(5),
+            marginLeft: theme.spacing(10),
+            marginRight: theme.spacing(10)
           }}
         >
           <Grid
             container
-            spacing={40}
+            spacing={3}
             direction="row"
             justify="center"
             alignItems="stretch"
@@ -150,10 +152,11 @@ const IndexPage = props => {
                       justifyContent: "center",
                       flexWrap: "wrap",
                       backgroundColor: "black",
-                      paddingTop: theme.spacing.unit * 2,
-                      paddingBottom: theme.spacing.unit * 2,
-                      paddingLeft: theme.spacing.unit * 1,
-                      paddingRight: theme.spacing.unit * 1
+                      paddingTop: theme.spacing(2),
+                      paddingBottom: theme.spacing(2),
+                      paddingLeft: theme.spacing(1),
+                      paddingRight: theme.spacing(1),
+                      fontSize: "6em"
                     }}
                   >
                     <ReactIcon fontSize="inherit" className={classes.mIcon} />
@@ -168,7 +171,11 @@ const IndexPage = props => {
                     {frontEnd.map(poText => {
                       return (
                         <ListItem key={poText.text}>
-                          {poText.starred && <StarIcon />}
+                          {poText.starred && (
+                            <ListItemIcon>
+                              <StarIcon />
+                            </ListItemIcon>
+                          )}
                           <ListItemText
                             primaryTypographyProps={{ variant: "h6" }}
                             primary={poText.text}
@@ -189,10 +196,11 @@ const IndexPage = props => {
                       justifyContent: "center",
                       flexWrap: "wrap",
                       backgroundColor: "black",
-                      paddingTop: theme.spacing.unit * 2,
-                      paddingBottom: theme.spacing.unit * 2,
-                      paddingLeft: theme.spacing.unit * 1,
-                      paddingRight: theme.spacing.unit * 1
+                      paddingTop: theme.spacing(2),
+                      paddingBottom: theme.spacing(2),
+                      paddingLeft: theme.spacing(1),
+                      paddingRight: theme.spacing(1),
+                      fontSize: "6em"
                     }}
                   >
                     <Nodejs fontSize="inherit" className={classes.mIcon} />
@@ -210,7 +218,11 @@ const IndexPage = props => {
                     {backEnd.map(poText => {
                       return (
                         <ListItem key={poText.text}>
-                          {poText.starred && <StarIcon />}
+                          {poText.starred && (
+                            <ListItemIcon>
+                              <StarIcon />
+                            </ListItemIcon>
+                          )}
                           <ListItemText
                             primaryTypographyProps={{ variant: "h6" }}
                             primary={poText.text}
@@ -231,10 +243,11 @@ const IndexPage = props => {
                       justifyContent: "center",
                       flexWrap: "wrap",
                       backgroundColor: "black",
-                      paddingTop: theme.spacing.unit * 2,
-                      paddingBottom: theme.spacing.unit * 2,
-                      paddingLeft: theme.spacing.unit * 1,
-                      paddingRight: theme.spacing.unit * 1
+                      paddingTop: theme.spacing(2),
+                      paddingBottom: theme.spacing(2),
+                      paddingLeft: theme.spacing(1),
+                      paddingRight: theme.spacing(1),
+                      fontSize: "6em"
                     }}
                   >
                     <Aws fontSize="inherit" className={classes.mIcon} />
@@ -255,7 +268,11 @@ const IndexPage = props => {
                     {platformOther.map(poText => {
                       return (
                         <ListItem key={poText.text}>
-                          {poText.starred && <StarIcon />}
+                          {poText.starred && (
+                            <ListItemIcon>
+                              <StarIcon />
+                            </ListItemIcon>
+                          )}
                           <ListItemText
                             primaryTypographyProps={{ variant: "h6" }}
                             primary={poText.text}

@@ -15,7 +15,8 @@ import {
   ListItem,
   ListItemText,
   Divider,
-  withStyles
+  withStyles,
+  Chip
 } from "@material-ui/core";
 import StandardPopover from "../../components/standard_popover";
 import Img from "gatsby-image/withIEPolyfill";
@@ -101,7 +102,7 @@ class JugglePage extends React.Component {
           <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
             Services Provided
           </Typography>
-          <Grid container spacing={40} direction="row" justify="center">
+          <Grid container spacing={2} direction="row" justify="center">
             <Grid item>
               <StandardPopover popoverText={"Software Developer"}>
                 <Card
@@ -194,6 +195,36 @@ class JugglePage extends React.Component {
                   />
                 </Card>
               </StandardPopover>
+            </Grid>
+          </Grid>
+          <Divider
+            variant="middle"
+            style={{ marginTop: "2%", marginBottom: "2%" }}
+          />
+          <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
+            Technologies
+          </Typography>
+          <Grid justify="center" container spacing={1}>
+            <Grid item>
+              <Chip label="React Native" />
+            </Grid>
+            <Grid item>
+              <Chip label="Sketch" />
+            </Grid>
+            <Grid item>
+              <Chip label="Balsamiq" />
+            </Grid>
+            <Grid item>
+              <Chip label="Ruby on Rails" />
+            </Grid>
+            <Grid item>
+              <Chip label="MySQL" />
+            </Grid>
+            <Grid item>
+              <Chip label="AWS" />
+            </Grid>
+            <Grid item>
+              <Chip label="Google Firebase" />
             </Grid>
           </Grid>
           <Divider

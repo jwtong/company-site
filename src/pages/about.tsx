@@ -137,7 +137,7 @@ const AboutPage = ({ data }: { data: any }) => {
         <Typography variant="h6" style={{ textAlign: "center" }} gutterBottom>
           Top Skills
         </Typography>
-        <Grid justify="center" container spacing={8}>
+        <Grid justify="center" container spacing={1}>
           <Grid item>
             <Chip label="React / React Native" />
           </Grid>
@@ -157,7 +157,7 @@ const AboutPage = ({ data }: { data: any }) => {
             <Chip label="NoSQL" />
           </Grid>
           <Grid item>
-            <Chip label="Python (scikit-learn)" />
+            <Chip label="Python (SciKit-Learn)" />
           </Grid>
           <Grid item>
             <Chip label="C / C++" />

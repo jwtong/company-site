@@ -15,7 +15,8 @@ import {
   ListItem,
   ListItemText,
   Divider,
-  withStyles
+  withStyles,
+  Chip
 } from "@material-ui/core";
 import StandardPopover from "../../components/standard_popover";
 import Img from "gatsby-image/withIEPolyfill";
@@ -125,6 +126,42 @@ class BarterPage extends React.Component {
                   />
                 </Card>
               </StandardPopover>
+            </Grid>
+            <Grid item>
+              <StandardPopover popoverText={"Business Logic Analyst"}>
+                <Card
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    alignSelf: "stretch",
+                    flexGrow: "1",
+                    // backgroundColor: "red",
+                    padding: "2% 5% 2% 5%",
+                    fontSize: "4em",
+                    height: "70px",
+                    width: "70px"
+                  }}
+                >
+                  <BusinessCenterOutlined
+                    fontSize="inherit"
+                    className={classes.mIcon}
+                  />
+                </Card>
+              </StandardPopover>
+            </Grid>
+          </Grid>
+          <Divider
+            variant="middle"
+            style={{ marginTop: "2%", marginBottom: "2%" }}
+          />
+          <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
+            Technologies
+          </Typography>
+          <Grid justify="center" container spacing={1}>
+            <Grid item>
+              <Chip label="Sketch" />
             </Grid>
           </Grid>
           <Divider

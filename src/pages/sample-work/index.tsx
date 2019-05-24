@@ -111,7 +111,15 @@ const SampleWorkPage = ({ data }: { data: any }) => {
               title={"Parking Meter Predictive Model"}
             />
           </GridListTile>
-          <GridListTile cols={1} rows={1} className={classes.gridTile}>
+          <GridListTile
+            onClick={event => {
+              event.preventDefault();
+              navigate("/sample-work/recipe-builder");
+            }}
+            cols={1}
+            rows={1}
+            className={classes.gridTile}
+          >
             <Img
               fluid={data.recipeBuilderLogo.childImageSharp.fluid}
               objectFit="cover"
@@ -123,7 +131,15 @@ const SampleWorkPage = ({ data }: { data: any }) => {
               title={"Computer Vision Recipe Builder"}
             />
           </GridListTile>
-          <GridListTile cols={1} rows={1} className={classes.gridTile}>
+          <GridListTile
+            onClick={event => {
+              event.preventDefault();
+              navigate("/sample-work/zic");
+            }}
+            cols={1}
+            rows={1}
+            className={classes.gridTile}
+          >
             <Img
               objectFit="cover"
               style={{ height: "100%" }}
