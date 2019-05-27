@@ -1,24 +1,30 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, createStyles } from "@material-ui/core/styles";
+import { WithStyles } from "@material-ui/core/styles/withStyles";
 
-const styles = theme => ({
-  StandardPopover: {
-    pointerEvents: "none"
-  },
-  paper: {
-    padding: theme.spacing(1)
-  }
-});
+const styles = (theme: any): any =>
+  createStyles({
+    popover: {
+      pointerEvents: "none"
+    },
+    paper: {
+      padding: theme.spacing(1)
+    }
+  });
 
-class StandardPopover extends React.Component {
+interface Props extends WithStyles<typeof styles> {
+  typographyProps?: any;
+  popoverText: string;
+}
+
+class StandardPopover extends React.Component<Props> {
   state = {
     anchorEl: null
   };
 
-  handleStandardPopoverOpen = event => {
+  handleStandardPopoverOpen = (event: { currentTarget: any }) => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
@@ -27,14 +33,14 @@ class StandardPopover extends React.Component {
   };
 
   render() {
-    const { classes, children, popoverText } = this.props;
+    const { classes, children, popoverText, typographyProps } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
     return (
       <div>
         <div
-          aria-owns={open ? "mouse-over-StandardPopover" : undefined}
+          aria-owns={open ? "mouse-over-popover" : undefined}
           aria-haspopup="true"
           onMouseEnter={this.handleStandardPopoverOpen}
           onMouseLeave={this.handleStandardPopoverClose}
@@ -43,8 +49,8 @@ class StandardPopover extends React.Component {
           {children}
         </div>
         <Popover
-          id="mouse-over-StandardPopover"
-          className={classes.StandardPopover}
+          id="mouse-over-popover"
+          className={classes.popover}
           classes={{
             paper: classes.paper
           }}
@@ -61,15 +67,11 @@ class StandardPopover extends React.Component {
           onClose={this.handleStandardPopoverClose}
           disableRestoreFocus
         >
-          <Typography>{popoverText}</Typography>
+          <Typography {...typographyProps}>{popoverText}</Typography>
         </Popover>
       </div>
     );
   }
 }
-
-StandardPopover.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(StandardPopover);

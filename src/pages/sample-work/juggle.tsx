@@ -22,6 +22,7 @@ import StandardPopover from "../../components/standard_popover";
 import Img from "gatsby-image/withIEPolyfill";
 import Slide from "@material-ui/core/Slide";
 import VisibilitySensor from "react-visibility-sensor";
+import TransitionOnShow from "../../components/transition_on_show";
 
 const styles = {
   mIcon: {
@@ -56,7 +57,7 @@ class JugglePage extends React.Component {
     console.log(isVisible);
     if (isVisible) {
       this.setState({
-        [elementId]: true
+        [elementId]: isVisible
       });
     }
   };
@@ -102,7 +103,7 @@ class JugglePage extends React.Component {
           <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
             Services Provided
           </Typography>
-          <Grid container spacing={2} direction="row" justify="center">
+          <Grid container spacing={3} direction="row" justify="center">
             <Grid item>
               <StandardPopover popoverText={"Software Developer"}>
                 <Card
@@ -114,7 +115,6 @@ class JugglePage extends React.Component {
                     alignSelf: "stretch",
                     flexGrow: "1",
                     // backgroundColor: "red",
-                    padding: "2% 5% 2% 5%",
                     fontSize: "4em",
                     height: "70px",
                     width: "70px"
@@ -135,7 +135,6 @@ class JugglePage extends React.Component {
                     alignSelf: "stretch",
                     flexGrow: "1",
                     // backgroundColor: "red",
-                    padding: "2% 5% 2% 5%",
                     fontSize: "4em",
                     height: "70px",
                     width: "70px"
@@ -159,7 +158,6 @@ class JugglePage extends React.Component {
                     alignSelf: "stretch",
                     flexGrow: "1",
                     // backgroundColor: "red",
-                    padding: "2% 5% 2% 5%",
                     fontSize: "4em",
                     height: "70px",
                     width: "70px"
@@ -183,7 +181,6 @@ class JugglePage extends React.Component {
                     alignSelf: "stretch",
                     flexGrow: "1",
                     // backgroundColor: "red",
-                    padding: "2% 5% 2% 5%",
                     fontSize: "4em",
                     height: "70px",
                     width: "70px"
@@ -251,28 +248,21 @@ class JugglePage extends React.Component {
           <Typography variant="h4" style={{ textAlign: "center" }}>
             Notable Features
           </Typography>
-          <VisibilitySensor
-            partialVisibility={true}
-            onChange={this.onChange("element1")}
+          <TransitionOnShow
+            visibilitySensorProps={{ partialVisibility: true }}
+            transitionType="Slide"
+            transitionProps={{ direction: "right", timeout: { enter: 3000 } }}
           >
-            <div>
-              <Slide
-                direction="right"
-                in={this.state.element1}
-                timeout={{ enter: 3000 }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center"
-                  }}
-                >
-                  <Img fixed={data.messaging1.childImageSharp.fixed} />
-                  <Img fixed={data.messaging2.childImageSharp.fixed} />
-                </div>
-              </Slide>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center"
+              }}
+            >
+              <Img fixed={data.messaging1.childImageSharp.fixed} />
+              <Img fixed={data.messaging2.childImageSharp.fixed} />
             </div>
-          </VisibilitySensor>
+          </TransitionOnShow>
           <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
             Proprietary In-App Messaging Platform
           </Typography>
@@ -282,19 +272,25 @@ class JugglePage extends React.Component {
             real-time, making it easier to coordinate bookings and special
             requests.
           </Typography>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap"
-            }}
+          <TransitionOnShow
+            visibilitySensorProps={{ partialVisibility: true }}
+            transitionType="Slide"
+            transitionProps={{ direction: "right", timeout: { enter: 3000 } }}
           >
-            <Img fixed={data.pricing1.childImageSharp.fixed} />
-            <Img fixed={data.pricing2.childImageSharp.fixed} />
-            <Img fixed={data.pricing3.childImageSharp.fixed} />
-            <Img fixed={data.pricing4.childImageSharp.fixed} />
-            <Img fixed={data.pricing5.childImageSharp.fixed} />
-          </div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap"
+              }}
+            >
+              <Img fixed={data.pricing1.childImageSharp.fixed} />
+              <Img fixed={data.pricing2.childImageSharp.fixed} />
+              <Img fixed={data.pricing3.childImageSharp.fixed} />
+              <Img fixed={data.pricing4.childImageSharp.fixed} />
+              <Img fixed={data.pricing5.childImageSharp.fixed} />
+            </div>
+          </TransitionOnShow>
           <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
             Surge / Variable Pricing Model Support and Roll-Out
           </Typography>
