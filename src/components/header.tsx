@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import OfflineBolt from "@material-ui/icons/OfflineBolt";
 import { withStyles } from "@material-ui/core/styles";
+import hexToRgba from "../utils/hex_rgba";
 
 const styles = {
   buttonLabel: {
@@ -35,17 +36,31 @@ class Header extends React.Component {
     window.removeEventListener("scroll", this.handleScroll);
   };
 
-  private handleScroll = () => {
-    console.log(this.props.theme.palette.primary.main);
-    if (window.scrollY > 50) {
-      this.setState({
-        backgroundColor: this.props.theme.palette.primary.main
-      });
+  private calculateBackgroundColorOpacity = (
+    offsetTop: number,
+    fadeCoefficient: number,
+    currentScrollY: number
+  ) => {
+    if (currentScrollY <= offsetTop) {
+      return 0;
     } else {
-      this.setState({
-        backgroundColor: "transparent"
-      });
+      return Math.min((currentScrollY - offsetTop) * fadeCoefficient, 1);
     }
+  };
+
+  private handleScroll = () => {
+    const backgroundColorOpacity = this.calculateBackgroundColorOpacity(
+      50,
+      0.03,
+      window.scrollY
+    );
+    const rgba = hexToRgba(
+      this.props.theme.palette.primary.main,
+      100 * backgroundColorOpacity
+    );
+    this.setState({
+      backgroundColor: rgba
+    });
   };
 
   public render() {

@@ -34,6 +34,8 @@ import {
   Chip
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
+import hexToRgba from "../utils/hex_rgba";
+
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -117,13 +119,13 @@ const AboutPage = ({ data }: { data: any }) => {
           design, Data Analytics, Behaviorial Economics, and Finance.
           <br />
           <br /> Most recently, Jeremy worked as a Venture for America fellow
-          for Juggle, a startup that is best described as the Uber-for
-          Babysitting. There, he assumed the role of interim CTO, handling all
-          aspects of the business related to Juggle's technology and mobile app.
-          In his time there, he rebuilt much of the software platform from
-          scratch that then served over 5000 monthly users and generated $200k
-          in revenue in 2018, an 8x increase over 2017, with a projected
-          increase of 2x in 2019.
+          for Juggle, a startup that is best described as the
+          Uber-for-Babysitting. There, he assumed the role of interim CTO,
+          handling all aspects of the business related to Juggle's technology
+          and mobile app. In his time there, he rebuilt much of the software
+          platform from scratch that then served over 5000 monthly users and
+          generated $200k in revenue in 2018, an 8x increase over 2017, with a
+          projected increase of 2x in 2019.
           <br />
           <br /> Jeremy has had 4+ years of full-stack experience developing web
           and mobile applications, and is most passionate about intelligent
@@ -137,36 +139,88 @@ const AboutPage = ({ data }: { data: any }) => {
         <Typography variant="h6" style={{ textAlign: "center" }} gutterBottom>
           Top Skills
         </Typography>
-        <Grid justify="center" container spacing={1}>
+        <Grid
+          style={{ paddingRight: "5%", paddingLeft: "5%" }}
+          justify="center"
+          container
+          spacing={1}
+        >
           <Grid item>
-            <Chip label="React / React Native" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#05a5d1", borderColor: "#05a5d1" }}
+              label="React / React Native"
+            />
           </Grid>
           <Grid item>
-            <Chip label="Sketch" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#649CD3", borderColor: "#649CD3" }}
+              label="C / C++"
+            />
           </Grid>
           <Grid item>
-            <Chip label="Ruby on Rails" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#1F415F", borderColor: "#1F415F" }}
+              label="Python (SciKit-Learn)"
+            />
           </Grid>
           <Grid item>
-            <Chip label="Objective-C / Swift" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#FFCB2B", borderColor: "#FFCB2B" }}
+              label="Google Firebase"
+            />
           </Grid>
           <Grid item>
-            <Chip label="SQL" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#FF9A02", borderColor: "#FF9A02" }}
+              label="AWS"
+            />
           </Grid>
           <Grid item>
-            <Chip label="NoSQL" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#fa6400", borderColor: "#fa6400" }}
+              label="Sketch"
+            />
           </Grid>
           <Grid item>
-            <Chip label="Python (SciKit-Learn)" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#ED523F", borderColor: "#ED523F" }}
+              label="Objective-C / Swift"
+            />
           </Grid>
           <Grid item>
-            <Chip label="C / C++" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#EC2025", borderColor: "#EC2025" }}
+              label="Java"
+            />
           </Grid>
           <Grid item>
-            <Chip label="Google Firebase" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#cc0000", borderColor: "#cc0000" }}
+              label="Ruby on Rails"
+            />
           </Grid>
           <Grid item>
-            <Chip label="AWS" />
+            <Chip
+              variant="outlined"
+              style={{ color: "#0078D6", borderColor: "#0078D6" }}
+              label="SQL"
+            />
+          </Grid>
+          <Grid item>
+            <Chip
+              variant="outlined"
+              style={{ color: "#439B44", borderColor: "#439B44" }}
+              label="NoSQL"
+            />
           </Grid>
         </Grid>
         <Divider

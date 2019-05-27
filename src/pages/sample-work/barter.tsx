@@ -102,7 +102,7 @@ class BarterPage extends React.Component {
           <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
             Services Provided
           </Typography>
-          <Grid container spacing={40} direction="row" justify="center">
+          <Grid container spacing={2} direction="row" justify="center">
             <Grid item>
               <StandardPopover popoverText={"UI/UX Designer"}>
                 <Card
