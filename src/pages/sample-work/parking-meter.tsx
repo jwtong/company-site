@@ -203,13 +203,14 @@ class ParkingMeterPage extends React.Component {
               marginBottom: "3%"
             }}
           >
-            <Img
+            <Card
+              raised
               style={{
-                border: "1px solid #DDD",
-                boxShadow: "0px 1px 3px 0px rgba(0, 0, 0, 0.1)"
+                display: "flex"
               }}
-              fixed={data.main.childImageSharp.fixed}
-            />
+            >
+              <Img fixed={data.main.childImageSharp.fixed} />
+            </Card>
           </div>
           <Typography variant="subtitle1" style={{ textAlign: "left" }}>
             Inspired by Donald Shoup's book "The High Cost of Free Parking",

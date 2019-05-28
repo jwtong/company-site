@@ -10,28 +10,15 @@ import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
 import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
 import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
 import Grid from "@material-ui/core/Grid";
-import {
-  React as ReactIcon,
-  Vuejs,
-  AppleIos,
-  Android,
-  Nodejs,
-  LanguageRubyOnRails,
-  DotNet,
-  Firebase,
-  Database,
-  Aws,
-  Azure,
-  LanguagePython
-} from "mdi-material-ui";
 import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ServiceCard from "../components/service_card";
 
-const styles = {
-  mIcon: {
-    color: "black"
-  },
+const styles = theme => ({
+  // mIcon: {
+  //   color: "red"
+  // },
   header: {
     color: "white !important",
     textAlign: "center"
@@ -46,8 +33,16 @@ const styles = {
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center"
+  },
+  card: {
+    marginTop: "5%",
+    paddingTop: "5%",
+    paddingBottom: "5%",
+    paddingRight: "15%",
+    backgroundColor: "#f6f6f6",
+    borderTop: `6px solid ${theme.palette.primary.main}`
   }
-};
+});
 
 const ServicesPage = props => {
   const { classes } = props;
@@ -119,51 +114,13 @@ const ServicesPage = props => {
         alignItems="stretch"
         alignContent="center"
         style={{
-          backgroundColor: "blue",
           fontSize: "10em"
         }}
       >
         {roles.map(role => {
           return (
-            <Grid item xs={11}>
-              <Card
-                key={role.title}
-                style={{
-                  paddingTop: "5%",
-                  paddingBottom: "5%",
-                  paddingRight: "15%"
-                }}
-              >
-                <Grid container direction="row">
-                  <Grid
-                    item
-                    xs={4}
-                    style={{
-                      display: "flex",
-                      justifyContent: "center"
-                    }}
-                  >
-                    {React.createElement(role.icon, {
-                      fontSize: "inherit",
-                      className: classes.mIcon
-                    })}
-                  </Grid>
-                  <Grid item xs={8}>
-                    <Grid container spacing={3} direction="column">
-                      <Grid item xs={12}>
-                        <Typography variant="h3" gutterBottom>
-                          {role.title}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Typography variant="h5" gutterBottom>
-                          {role.text}
-                        </Typography>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Card>
+            <Grid item xs={11} style={{ marginTop: "5%" }}>
+              <ServiceCard role={role} />
             </Grid>
           );
         })}

@@ -1,6 +1,6 @@
 const { MuiThemeProvider, createMuiTheme } = require("@material-ui/core");
 const React = require("react");
-const Layout = require("./src/components/layout.tsx").default;
+const Layout = require("./src/components/layout").default;
 const blue = require("@material-ui/core/colors/blue");
 
 const theme = createMuiTheme({

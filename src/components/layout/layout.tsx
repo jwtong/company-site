@@ -1,11 +1,10 @@
 // site wrapper contains header, footer, and things that belong on all pages
 import React from "react";
-import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 
 import "./layout.css";
-import Header from "./header";
-import Footer from "./footer";
+import Header from "../header";
+import Footer from "../footer";
 
 const Layout = ({ children }: { children: any }) => (
   <StaticQuery
@@ -20,11 +19,22 @@ const Layout = ({ children }: { children: any }) => (
     `}
     render={data => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header
+          pages={[
+            { text: "Services", link: "/services/" },
+            { text: "About Us", link: "/about/" },
+            { text: "Sample Work", link: "/sample-work/" },
+            { text: "Contact", link: "/contact/" }
+          ]}
+        />
         <div>
           <main>{children}</main>
         </div>
-        <Footer />
+        <Footer
+          mainText={`Coded with ReactJS and GatsbyJS by ______ ©  ${new Date().getFullYear()}`}
+          email="blah"
+          linkedIn="blah"
+        />
       </>
     )}
   />

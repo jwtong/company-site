@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 import { withStyles } from "@material-ui/core/styles";
-import Image from "../components/image";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -32,6 +31,7 @@ import {
 } from "@material-ui/core";
 import { faSketch } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import TechnologiesCard from "../components/technologies_card";
 
 const styles = {
   mIcon: {
@@ -56,24 +56,52 @@ const styles = {
 
 const IndexPage = props => {
   const { classes, theme } = props;
-  const frontEnd = [
-    { text: "React / React Native", starred: true },
-    { text: "Vue.js", starred: false },
-    { text: "iOS (Objective-C / Swift)", starred: false },
-    { text: "Android (Java)", starred: false }
+
+  const technologies = [
+    {
+      icons: [
+        { component: ReactIcon },
+        { component: Vuejs },
+        { component: AppleIos },
+        { component: Android }
+      ],
+      names: [
+        { text: "React / React Native", starred: true },
+        { text: "Vue.js", starred: false },
+        { text: "iOS (Objective-C / Swift)", starred: false },
+        { text: "Android (Java)", starred: false }
+      ]
+    },
+    {
+      icons: [
+        { component: Nodejs },
+        { component: LanguageRubyOnRails },
+        { component: DotNet },
+        { component: Firebase }
+      ],
+      names: [
+        { text: "NodeJS", starred: true },
+        { text: "Ruby on Rails", starred: false },
+        { text: "Microsoft .NET (C#)", starred: false },
+        { text: "Google Firebase", starred: false }
+      ]
+    },
+    {
+      icons: [
+        { component: Aws },
+        { component: Azure },
+        { component: LanguagePython },
+        { component: FontAwesomeIcon, additionalProps: { icon: faSketch } }
+      ],
+      names: [
+        { text: "AWS", starred: false },
+        { text: "Microsoft Azure", starred: false },
+        { text: "Python (Data Analytics)", starred: false },
+        { text: "Sketch (UI/UX)", starred: false }
+      ]
+    }
   ];
-  const backEnd = [
-    { text: "NodeJS", starred: true },
-    { text: "Ruby on Rails", starred: false },
-    { text: "Microsoft .NET (C#)", starred: false },
-    { text: "Google Firebase", starred: false }
-  ];
-  const platformOther = [
-    { text: "AWS", starred: false },
-    { text: "Microsoft Azure", starred: false },
-    { text: "Python (Data Analytics)", starred: false },
-    { text: "Sketch (UI/UX)", starred: false }
-  ];
+
   return (
     <>
       <div
@@ -120,8 +148,7 @@ const IndexPage = props => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          paddingTop: theme.spacing(5),
-          backgroundColor: "#e2e2e2"
+          paddingTop: theme.spacing(5)
         }}
       >
         <Typography variant="h4" gutterBottom>
@@ -143,147 +170,15 @@ const IndexPage = props => {
             justify="center"
             alignItems="stretch"
           >
-            <Grid item xs={4}>
-              <Card>
-                <CardMedia>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      flexWrap: "wrap",
-                      backgroundColor: "black",
-                      paddingTop: theme.spacing(2),
-                      paddingBottom: theme.spacing(2),
-                      paddingLeft: theme.spacing(1),
-                      paddingRight: theme.spacing(1),
-                      fontSize: "6em"
-                    }}
-                  >
-                    <ReactIcon fontSize="inherit" className={classes.mIcon} />
-                    <Vuejs fontSize="inherit" className={classes.mIcon} />
-                    <AppleIos fontSize="inherit" className={classes.mIcon} />
-                    <Android fontSize="inherit" className={classes.mIcon} />
-                  </div>
-                </CardMedia>
-                <CardContent>
-                  <Typography variant="h4">Front-End</Typography>
-                  <List>
-                    {frontEnd.map(poText => {
-                      return (
-                        <ListItem key={poText.text}>
-                          {poText.starred && (
-                            <ListItemIcon>
-                              <StarIcon />
-                            </ListItemIcon>
-                          )}
-                          <ListItemText
-                            primaryTypographyProps={{ variant: "h6" }}
-                            primary={poText.text}
-                          />
-                        </ListItem>
-                      );
-                    })}
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={4}>
-              <Card>
-                <CardMedia>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      flexWrap: "wrap",
-                      backgroundColor: "black",
-                      paddingTop: theme.spacing(2),
-                      paddingBottom: theme.spacing(2),
-                      paddingLeft: theme.spacing(1),
-                      paddingRight: theme.spacing(1),
-                      fontSize: "6em"
-                    }}
-                  >
-                    <Nodejs fontSize="inherit" className={classes.mIcon} />
-                    <LanguageRubyOnRails
-                      fontSize="inherit"
-                      className={classes.mIcon}
-                    />
-                    <DotNet fontSize="inherit" className={classes.mIcon} />
-                    <Firebase fontSize="inherit" className={classes.mIcon} />
-                  </div>
-                </CardMedia>
-                <CardContent>
-                  <Typography variant="h4">Back-End</Typography>
-                  <List>
-                    {backEnd.map(poText => {
-                      return (
-                        <ListItem key={poText.text}>
-                          {poText.starred && (
-                            <ListItemIcon>
-                              <StarIcon />
-                            </ListItemIcon>
-                          )}
-                          <ListItemText
-                            primaryTypographyProps={{ variant: "h6" }}
-                            primary={poText.text}
-                          />
-                        </ListItem>
-                      );
-                    })}
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={4}>
-              <Card>
-                <CardMedia>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      flexWrap: "wrap",
-                      backgroundColor: "black",
-                      paddingTop: theme.spacing(2),
-                      paddingBottom: theme.spacing(2),
-                      paddingLeft: theme.spacing(1),
-                      paddingRight: theme.spacing(1),
-                      fontSize: "6em"
-                    }}
-                  >
-                    <Aws fontSize="inherit" className={classes.mIcon} />
-                    <Azure fontSize="inherit" className={classes.mIcon} />
-                    <LanguagePython
-                      fontSize="inherit"
-                      className={classes.mIcon}
-                    />
-                    <FontAwesomeIcon
-                      icon={faSketch}
-                      className={classes.mIcon}
-                    />
-                  </div>
-                </CardMedia>
-                <CardContent>
-                  <Typography variant="h4">Platform / Other</Typography>
-                  <List>
-                    {platformOther.map(poText => {
-                      return (
-                        <ListItem key={poText.text}>
-                          {poText.starred && (
-                            <ListItemIcon>
-                              <StarIcon />
-                            </ListItemIcon>
-                          )}
-                          <ListItemText
-                            primaryTypographyProps={{ variant: "h6" }}
-                            primary={poText.text}
-                          />
-                        </ListItem>
-                      );
-                    })}
-                  </List>
-                </CardContent>
-              </Card>
-            </Grid>
+            {technologies.map(({ icons, names }, index: number) => {
+              return (
+                <Grid key={index} item xs={4}>
+                  <TechnologiesCard
+                    technology={{ icons: icons, names: names }}
+                  />
+                </Grid>
+              );
+            })}
           </Grid>
         </div>
       </div>
