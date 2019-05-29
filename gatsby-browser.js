@@ -1,11 +1,15 @@
-const { MuiThemeProvider, createMuiTheme } = require("@material-ui/core");
 const React = require("react");
 const Layout = require("./src/components/layout").default;
-const blue = require("@material-ui/core/colors/blue");
+const grey = require("@material-ui/core/colors/grey").default;
+const pink = require("@material-ui/core/colors/pink").default;
+const ThemeProvider = require("@material-ui/styles/ThemeProvider").default;
+const { createMuiTheme } = require("@material-ui/core/styles");
+const Button = require("@material-ui/core/Button").default;
 
 const theme = createMuiTheme({
   palette: {
-    primary: blue[500]
+    primary: { main: grey[800] },
+    secondary: { main: pink[500] }
   },
   typography: {
     useNextVariants: true,
@@ -34,9 +38,10 @@ const theme = createMuiTheme({
 exports.wrapPageElement = ({ element, props }) => {
   // props provide same data to Layout as Page element will get
   // including location, data, etc - you don't need to pass it
+  console.log(theme);
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <Layout {...props}>{element}</Layout>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };

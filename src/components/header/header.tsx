@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import OfflineBolt from "@material-ui/icons/OfflineBolt";
 import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
-import hexToRgba from "../../utils/hex_rgba";
+import { hexToRgba, rgbToHex } from "../../utils/hex_rgba";
 
 const styles = createStyles({
   buttonLabel: {
@@ -76,7 +76,7 @@ class Header extends React.Component<Props, State> {
       window.scrollY
     );
     const rgba = hexToRgba(
-      this.props.theme.palette.primary.main,
+      rgbToHex(this.props.theme.palette.primary.dark),
       100 * backgroundColorOpacity
     );
     this.setState({
@@ -104,6 +104,7 @@ class Header extends React.Component<Props, State> {
                   classes={{
                     label: classes.buttonLabel
                   }}
+                  key={p.text}
                   size="large"
                   color="inherit"
                   href={p.link}

@@ -27,11 +27,14 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
-  ListItemIcon
+  ListItemIcon,
+  Divider
 } from "@material-ui/core";
 import { faSketch } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TechnologiesCard from "../components/technologies_card";
+import WaveBottom from "../components/wave_bottom";
+import Hero from "../components/hero";
 
 const styles = {
   mIcon: {
@@ -50,7 +53,47 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    position: "relative",
+    overflow: "hidden"
+  },
+  svg: {
+    "& path": {
+      fill: "black"
+    },
+    height: "100%",
+    width: "100%",
+    backgroundColor: "orange"
+  },
+  "@keyframes upDownWide": {
+    from: {
+      transform: "translateY(0)"
+    },
+    to: {
+      transform: "translateY(200px)"
+    }
+  },
+  "@keyframes upDown": {
+    from: {
+      transform: "translateY(0)"
+    },
+    to: {
+      transform: "translateY(30px)"
+    }
+  },
+  upDownDiv: {
+    animationName: "$upDown",
+    animation: "$upDown 4s ease-in-out infinite alternate",
+    width: "100%",
+    height: "100%",
+    position: "absolute"
+  },
+  upDownWideDiv: {
+    animationName: "$upDownWide",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    animation: "$upDownWide 18s ease-in-out infinite alternate"
   }
 };
 
@@ -104,21 +147,17 @@ const IndexPage = props => {
 
   return (
     <>
-      <div
-        className={classes.container}
-        style={{
-          backgroundColor: "red",
-          justifyContent: "center"
-        }}
-      >
-        <Typography variant="h4" className={classes.header}>
-          We want to build your software, the right way Roboto
+      <Hero colorBottom={"white"}>
+        <Typography variant="h1" className={classes.header} gutterBottom>
+          Company Name
         </Typography>
-      </div>
+        <Typography variant="h4" className={classes.header}>
+          We want to build your software, the right way
+        </Typography>
+      </Hero>
       <div
         className={classes.container}
         style={{
-          backgroundColor: "orange",
           justifyContent: "center"
         }}
       >
@@ -131,24 +170,45 @@ const IndexPage = props => {
             alignItems: "center"
           }}
         >
-          <Typography variant="h4" className={classes.header}>
+          <Typography variant="h4" style={{ textAlign: "center" }}>
             We founded _______ to engage with startups, business ideas, and
             interesting people. As as team of two, our expertise lies in the
             ability to learn and execute quickly, our focus is to deliver the
             best technology, and our advantage is being lean.
           </Typography>
-          <Button href="/contact" variant="outlined" color="secondary">
+          <Button
+            style={{
+              height: "3rem",
+              width: "10rem",
+              fontSize: "1rem",
+              marginTop: "3%"
+            }}
+            href="/contact"
+            variant="contained"
+            color="secondary"
+          >
             Services
           </Button>
         </div>
       </div>
+      <Divider
+        style={{
+          marginTop: "2%",
+          marginBottom: "2%",
+          marginRight: "20%",
+          marginLeft: "20%",
+          height: "2px"
+        }}
+      />
 
       <div
         style={{
+          width: "100%",
+          height: "100vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          paddingTop: theme.spacing(5)
+          justifyContent: "center"
         }}
       >
         <Typography variant="h4" gutterBottom>
@@ -160,7 +220,8 @@ const IndexPage = props => {
             alignSelf: "stretch",
             marginTop: theme.spacing(5),
             marginLeft: theme.spacing(10),
-            marginRight: theme.spacing(10)
+            marginRight: theme.spacing(10),
+            marginBottom: theme.spacing(5)
           }}
         >
           <Grid
@@ -182,20 +243,36 @@ const IndexPage = props => {
           </Grid>
         </div>
       </div>
+      <WaveBottom colorBottom={"black"} />
       <div
         className={classes.container}
         style={{
-          backgroundColor: "green",
+          backgroundColor: "black",
           justifyContent: "center"
         }}
       >
-        <Typography component="h1" variant="h4" className={classes.header}>
+        <Typography variant="h2" className={classes.header} gutterBottom>
           Interested in working together?
         </Typography>
-        <Typography component="h4" variant="h4" className={classes.header}>
-          — Contact us to discuss your project and how we can collaborate.
+        <Typography
+          component="h4"
+          variant="h4"
+          className={classes.header}
+          gutterBottom
+        >
+          Contact us to discuss your project and how we can collaborate.
         </Typography>
-        <Button href="/contact" variant="outlined" color="secondary">
+        <Button
+          style={{
+            height: "3rem",
+            width: "10rem",
+            fontSize: "1rem",
+            marginTop: "3%"
+          }}
+          href="/contact"
+          variant="contained"
+          color="secondary"
+        >
           Contact Us
         </Button>
       </div>
