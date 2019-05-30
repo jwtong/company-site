@@ -14,6 +14,8 @@ import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ServiceCard from "../components/service_card";
+import Hero from "../components/hero";
+import WaveBottom from "../components/wave_bottom";
 
 const styles = theme => ({
   // mIcon: {
@@ -21,7 +23,8 @@ const styles = theme => ({
   // },
   header: {
     color: "white !important",
-    textAlign: "center"
+    textAlign: "center",
+    width: "80%"
   },
   centerer: {
     justifyContent: "center"
@@ -80,13 +83,7 @@ const ServicesPage = props => {
   ];
   return (
     <>
-      <div
-        className={classes.container}
-        style={{
-          backgroundColor: "orange",
-          justifyContent: "center"
-        }}
-      >
+      <Hero colorBottom="white">
         <div
           style={{
             display: "flex",
@@ -96,7 +93,7 @@ const ServicesPage = props => {
             alignItems: "center"
           }}
         >
-          <Typography variant="h2" className={classes.header} gutterBottom>
+          <Typography variant="h1" className={classes.header} gutterBottom>
             Services
           </Typography>
           <Typography variant="h4" className={classes.header}>
@@ -105,7 +102,7 @@ const ServicesPage = props => {
             following roles to ensure that we can help you along at any stage.
           </Typography>
         </div>
-      </div>
+      </Hero>
       <Grid
         container
         spacing={3}
@@ -114,7 +111,8 @@ const ServicesPage = props => {
         alignItems="stretch"
         alignContent="center"
         style={{
-          fontSize: "10em"
+          fontSize: "10em",
+          marginBottom: "3%"
         }}
       >
         {roles.map(role => {
@@ -125,33 +123,51 @@ const ServicesPage = props => {
           );
         })}
       </Grid>
+      <WaveBottom colorBottom="black" />
       <div
         className={classes.container}
         style={{
-          backgroundColor: "green",
+          backgroundColor: "black",
           justifyContent: "center"
         }}
       >
+        <Typography variant="h4" className={classes.header} gutterBottom>
+          The roles above were defined with respect to specific experience we
+          each have, and are representative of the commitment we have towards
+          working through the entire development process. We encourage you to
+          learn more about our backgrounds and experience, with specific
+          examples of how we might serve each role we defined.
+        </Typography>
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            paddingRight: "10%",
-            paddingLeft: "10%",
-            alignItems: "center"
+            justifyContent: "space-between",
+            marginTop: "3%",
+            width: "30%"
           }}
         >
-          <Typography component="h5" variant="h5" className={classes.header}>
-            The roles above were defined with respect to specific experience we
-            each have, and are representative of the commitment we have towards
-            working through the entire development process. We encourage you to
-            learn more about our backgrounds and experience, with specific
-            examples of how we might serve each role we defined.
-          </Typography>
-          <Button href="/about" variant="outlined" color="secondary">
+          <Button
+            style={{
+              height: "3rem",
+              width: "10rem",
+              fontSize: "1rem"
+            }}
+            href="/about"
+            variant="contained"
+            color="secondary"
+          >
             About Us
           </Button>
-          <Button href="/sample-work" variant="outlined" color="secondary">
+          <Button
+            style={{
+              height: "3rem",
+              width: "10rem",
+              fontSize: "1rem"
+            }}
+            href="/sample-work"
+            variant="contained"
+            color="secondary"
+          >
             Sample Work
           </Button>
         </div>

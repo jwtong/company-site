@@ -8,8 +8,8 @@ const Button = require("@material-ui/core/Button").default;
 
 const theme = createMuiTheme({
   palette: {
-    primary: { main: grey[800] },
-    secondary: { main: pink[500] }
+    primary: { main: grey[900] },
+    secondary: { main: pink[500], contrastText: "#fff" }
   },
   typography: {
     useNextVariants: true,
@@ -27,7 +27,9 @@ const theme = createMuiTheme({
       fontFamily: "Lato"
     },
     h5: {
-      fontFamily: "Lato"
+      fontFamily: "Lato",
+      fontWeight: 800,
+      color: "#5e5e5e"
     },
     h6: {
       fontFamily: "Lato"

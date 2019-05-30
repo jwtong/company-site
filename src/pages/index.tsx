@@ -102,6 +102,7 @@ const IndexPage = props => {
 
   const technologies = [
     {
+      title: "Front-end",
       icons: [
         { component: ReactIcon },
         { component: Vuejs },
@@ -116,6 +117,7 @@ const IndexPage = props => {
       ]
     },
     {
+      title: "Back-end",
       icons: [
         { component: Nodejs },
         { component: LanguageRubyOnRails },
@@ -130,6 +132,7 @@ const IndexPage = props => {
       ]
     },
     {
+      title: "Platform / Other",
       icons: [
         { component: Aws },
         { component: Azure },
@@ -191,15 +194,6 @@ const IndexPage = props => {
           </Button>
         </div>
       </div>
-      <Divider
-        style={{
-          marginTop: "2%",
-          marginBottom: "2%",
-          marginRight: "20%",
-          marginLeft: "20%",
-          height: "2px"
-        }}
-      />
 
       <div
         style={{
@@ -211,16 +205,27 @@ const IndexPage = props => {
           justifyContent: "center"
         }}
       >
-        <Typography variant="h4" gutterBottom>
-          Progressive Web and Mobile Application Development
-        </Typography>
+        <div style={{ width: "90%" }}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            style={{ textAlign: "left", textTransform: "uppercase" }}
+          >
+            Progressive Web and Mobile Application Development
+          </Typography>
+          <Divider
+            style={{
+              height: "2px"
+            }}
+          />
+        </div>
         <div
           style={{
             display: "flex",
-            alignSelf: "stretch",
+            alignSelf: "center",
+            alignItems: "center",
+            width: "90%",
             marginTop: theme.spacing(5),
-            marginLeft: theme.spacing(10),
-            marginRight: theme.spacing(10),
             marginBottom: theme.spacing(5)
           }}
         >
@@ -231,11 +236,11 @@ const IndexPage = props => {
             justify="center"
             alignItems="stretch"
           >
-            {technologies.map(({ icons, names }, index: number) => {
+            {technologies.map(({ icons, names, title }, index: number) => {
               return (
                 <Grid key={index} item xs={4}>
                   <TechnologiesCard
-                    technology={{ icons: icons, names: names }}
+                    technology={{ icons: icons, names: names, title: title }}
                   />
                 </Grid>
               );

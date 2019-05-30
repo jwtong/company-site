@@ -72,6 +72,7 @@ const Hero = ({ children, colorBottom }: Props) => {
       <div className={classes.container}>
         <div className={classes.upDownDiv}>
           <SVG
+            animated
             icon="triangle"
             width={"12rem"}
             stroke={theme.palette.secondary.light}
@@ -79,6 +80,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             top="20%"
           />
           <SVG
+            animated
             icon="hexa"
             width={"12rem"}
             stroke={theme.palette.secondary.dark}
@@ -86,6 +88,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             top="70%"
           />
           <SVG
+            animated
             icon="box"
             width={"1.5rem"}
             fill={theme.palette.primary.dark}
@@ -95,6 +98,7 @@ const Hero = ({ children, colorBottom }: Props) => {
         </div>
         <div className={classes.upDownWideDiv}>
           <SVG
+            animated
             icon="arrowUp"
             width={"4rem"}
             fill={theme.palette.secondary.main}
@@ -102,6 +106,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             top="10%"
           />
           <SVG
+            animated
             icon="triangle"
             width={"3rem"}
             stroke={theme.palette.secondary.main}
@@ -109,6 +114,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             top="50%"
           />
           <SVG
+            animated
             icon="circle"
             width={"4rem"}
             fill={theme.palette.primary.dark}
@@ -116,6 +122,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             top="90%"
           />
           <SVG
+            animated
             icon="triangle"
             width={"4rem"}
             stroke={theme.palette.primary.main}
@@ -123,6 +130,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             top="65%"
           />
           <SVG
+            animated
             icon="cross"
             width={"4rem"}
             stroke={theme.palette.secondary.main}
@@ -130,6 +138,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             top="15%"
           />
           <SVG
+            animated
             icon="circle"
             width={"1.5rem"}
             fill={theme.palette.primary.main}
@@ -137,6 +146,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             top="10%"
           />
           <SVG
+            animated
             icon="upDown"
             width={"2rem"}
             fill={theme.palette.primary.main}
@@ -145,6 +155,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           />
         </div>
         <SVG
+          animated
           icon="circle"
           width={"6rem"}
           fill={theme.palette.primary.main}
@@ -152,6 +163,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="70%"
         />
         <SVG
+          animated
           icon="circle"
           width={"1.5rem"}
           fill={theme.palette.primary.main}
@@ -159,6 +171,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="20%"
         />
         <SVG
+          animated
           icon="circle"
           width={"3rem"}
           fill={theme.palette.primary.main}
@@ -166,6 +179,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="60%"
         />
         <SVG
+          animated
           icon="upDown"
           width={"2rem"}
           fill={theme.palette.primary.main}
@@ -173,6 +187,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="90%"
         />
         <SVG
+          animated
           icon="upDown"
           width={"6rem"}
           fill={theme.palette.primary.main}
@@ -180,6 +195,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="80%"
         />
         <SVG
+          animated
           icon="triangle"
           width={"2rem"}
           stroke={theme.palette.primary.main}
@@ -187,6 +203,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="5%"
         />
         <SVG
+          animated
           icon="circle"
           width={"16rem"}
           fill={theme.palette.secondary.main}
@@ -194,6 +211,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="5%"
         />
         <SVG
+          animated
           icon="box"
           width={"16rem"}
           fill={theme.palette.primary.main}
@@ -201,6 +219,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="110%"
         />
         <SVG
+          animated
           icon="box"
           width={"1.5rem"}
           fill={theme.palette.primary.main}
@@ -208,6 +227,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="10%"
         />
         <SVG
+          animated
           icon="box"
           width={"3rem"}
           fill={theme.palette.primary.main}
@@ -215,6 +235,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="30%"
         />
         <SVG
+          animated
           icon="hexa"
           width={"4rem"}
           stroke={theme.palette.primary.main}
@@ -222,6 +243,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           top="50%"
         />
         <SVG
+          animated
           icon="hexa"
           width={"2rem"}
           stroke={theme.palette.primary.main}
