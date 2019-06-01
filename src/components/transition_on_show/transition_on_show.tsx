@@ -7,6 +7,7 @@ interface Props {
   transitionType: "Slide" | "Collapse" | "Fade" | "Grow" | "Zoom";
   transitionProps: any;
   transitionsMap: any;
+  delay?: number;
 }
 
 interface State {
@@ -32,11 +33,12 @@ export default class TransitionOnShow extends React.Component<Props, State> {
   }
 
   private onChange = (isVisible: boolean) => {
-    console.log(isVisible);
     if (isVisible) {
-      this.setState({
-        isVisible: true
-      });
+      setTimeout(() => {
+        this.setState({
+          isVisible: true
+        });
+      }, this.props.delay || 0);
     }
   };
 

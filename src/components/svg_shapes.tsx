@@ -152,7 +152,6 @@ const SVG = ({
     return (
       <Spring
         config={config.molasses}
-        delay={2000}
         from={{ x: strokeDasharray || 0 }}
         to={{ x: 0 }}
         {...animatedProps}
@@ -172,7 +171,6 @@ const SVG = ({
     return (
       <Spring
         config={config.molasses}
-        delay={2000}
         from={{ x: 0 }}
         to={{ x: 1 }}
         {...animatedProps}

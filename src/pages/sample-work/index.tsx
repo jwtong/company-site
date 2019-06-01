@@ -10,6 +10,7 @@ import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
 import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
 import Grid from "@material-ui/core/Grid";
 import Img from "gatsby-image/withIEPolyfill";
+import VisibilitySensor from "react-visibility-sensor";
 
 import {
   Typography,
@@ -18,10 +19,15 @@ import {
   ListItemText,
   GridListTile,
   GridList,
-  GridListTileBar
+  GridListTileBar,
+  createStyles,
+  withStyles,
+  WithStyles,
+  Zoom
 } from "@material-ui/core";
+import Hero from "../../components/hero";
 
-const useStyles = makeStyles({
+const styles = createStyles({
   mIcon: {
     color: "black"
   },
@@ -52,148 +58,168 @@ const useStyles = makeStyles({
   },
   container: {
     width: "100vw",
-    height: "100vh",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center"
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: "3%",
+    paddingBottom: "3%"
+  },
+  juggleGridTile: {
+    backgroundColor: "white"
   }
 });
 
-const SampleWorkPage = ({ data }: { data: any }) => {
-  const classes = useStyles();
-  return (
-    <>
-      <div
-        className={classes.container}
-        style={{
-          backgroundColor: "orange",
-          justifyContent: "center"
-        }}
-      >
-        <GridList style={{ width: "810px" }} cellHeight={270} cols={3}>
-          <GridListTile
-            cols={1}
-            rows={1}
-            onClick={event => {
-              event.preventDefault();
-              navigate("/sample-work/juggle");
+interface Props extends WithStyles<typeof styles> {}
+
+class SampleWorkPage extends React.Component<Props, State> {
+  public constructor(props: Props) {
+    super(props);
+    const dataLength = 6;
+    const preState: any = {};
+    for (let i = 0; i < dataLength; i++) {
+      preState[i] = false;
+    }
+
+    this.state = {
+      ...preState,
+      randomOrder: this.shuffle(
+        Array.from(Array(dataLength), (x, index) => index)
+      )
+    };
+  }
+
+  private onChange = (isVisible: boolean) => {
+    if (isVisible) {
+      for (let i = 0; i < this.state.randomOrder.length; i++) {
+        const randomDelay = this.state.randomOrder[i] * 200;
+        setTimeout(() => {
+          this.setState({
+            [i]: true
+          });
+        }, randomDelay);
+      }
+    }
+  };
+
+  private shuffle = (array: Array<any>) => {
+    return array.sort(() => Math.random() - 0.5);
+  };
+
+  public render() {
+    const { classes, data } = this.props;
+    const sampleWorkData = [
+      {
+        title: "Juggle Mobile App",
+        url: "/sample-work/juggle",
+        customClassname: classes.juggleGridTile,
+        fluidImage: data.juggleLogo.childImageSharp.fluid,
+        imageStyle: { backgroundColor: "white " },
+        cols: 1,
+        rows: 1
+      },
+      {
+        title: "Parking Meter Predictive Model",
+        url: "/sample-work/parking-meter",
+        fluidImage: data.parkingMeterLogo.childImageSharp.fluid,
+        cols: 1,
+        rows: 1
+      },
+      {
+        title: "Computer Vision Recipe Builder",
+        url: "/sample-work/recipe-builder",
+        fluidImage: data.recipeBuilderLogo.childImageSharp.fluid,
+        cols: 1,
+        rows: 1
+      },
+      {
+        title: "Zic Web Jukebox",
+        url: "/sample-work/zic",
+        fluidImage: data.zicLogo.childImageSharp.fluid,
+        cols: 1,
+        rows: 1
+      },
+      {
+        title: "Barter App UI/UX",
+        url: "/sample-work/barter",
+        fluidImage: data.barterLogo.childImageSharp.fluid,
+        cols: 1,
+        rows: 1
+      },
+      {
+        title: "Web Scrape Stock Analyzer",
+        url: "/sample-work/web-scrape-dcf",
+        fluidImage: data.webScrapeDcfLogo.childImageSharp.fluid,
+        cols: 1,
+        rows: 1
+      }
+    ];
+
+    return (
+      <>
+        <Hero colorBottom={"white"}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignSelf: "center"
             }}
-            className={classes.gridTile}
           >
-            <Img
-              style={{ backgroundColor: "white", height: "100%" }}
-              objectFit="cover"
-              fluid={data.juggleLogo.childImageSharp.fluid}
-            />
-            <GridListTileBar
-              className={classes.tileTitle}
-              title={"Juggle Mobile App"}
-            />
-          </GridListTile>
-          <GridListTile
-            onClick={event => {
-              event.preventDefault();
-              navigate("/sample-work/parking-meter");
+            <Typography variant="h1" className={classes.header} gutterBottom>
+              Sample Work
+            </Typography>
+            <Typography component="h2" variant="h4" className={classes.header}>
+              Some examples of our previous work
+            </Typography>
+          </div>
+        </Hero>
+        <VisibilitySensor partialVisibility onChange={this.onChange}>
+          <div
+            className={classes.container}
+            style={{
+              backgroundColor: "white",
+              justifyContent: "center"
             }}
-            cols={1}
-            rows={1}
-            className={classes.gridTile}
           >
-            <Img
-              fluid={data.parkingMeterLogo.childImageSharp.fluid}
-              objectFit="cover"
-              style={{ height: "100%" }}
-              alt={"Parking Meter Predictive Model"}
-            />
-            <GridListTileBar
-              className={classes.tileTitle}
-              title={"Parking Meter Predictive Model"}
-            />
-          </GridListTile>
-          <GridListTile
-            onClick={event => {
-              event.preventDefault();
-              navigate("/sample-work/recipe-builder");
-            }}
-            cols={1}
-            rows={1}
-            className={classes.gridTile}
-          >
-            <Img
-              fluid={data.recipeBuilderLogo.childImageSharp.fluid}
-              objectFit="cover"
-              style={{ height: "100%" }}
-              alt={"Computer Vision Recipe Builder"}
-            />
-            <GridListTileBar
-              className={classes.tileTitle}
-              title={"Computer Vision Recipe Builder"}
-            />
-          </GridListTile>
-          <GridListTile
-            onClick={event => {
-              event.preventDefault();
-              navigate("/sample-work/zic");
-            }}
-            cols={1}
-            rows={1}
-            className={classes.gridTile}
-          >
-            <Img
-              objectFit="cover"
-              style={{ height: "100%" }}
-              fluid={data.zicLogo.childImageSharp.fluid}
-              alt={"Zic"}
-            />
-            <GridListTileBar
-              className={classes.tileTitle}
-              title={"Zic Web Jukebox"}
-            />
-          </GridListTile>
-          <GridListTile
-            onClick={event => {
-              event.preventDefault();
-              navigate("/sample-work/barter");
-            }}
-            cols={1}
-            rows={1}
-            className={classes.gridTile}
-          >
-            <Img
-              objectFit="cover"
-              style={{ height: "100%" }}
-              fluid={data.barterLogo.childImageSharp.fluid}
-            />
-            <GridListTileBar
-              className={classes.tileTitle}
-              title={"Barter App UI/UX"}
-            />
-          </GridListTile>
-          <GridListTile
-            onClick={event => {
-              event.preventDefault();
-              navigate("/sample-work/web-scrape-dcf");
-            }}
-            cols={1}
-            rows={1}
-            className={classes.gridTile}
-          >
-            <Img
-              objectFit="cover"
-              style={{ height: "100%" }}
-              fluid={data.webScrapeDcfLogo.childImageSharp.fluid}
-            />
-            <GridListTileBar
-              className={classes.tileTitle}
-              title={"Web Scrape Stock Analyzer"}
-            />
-          </GridListTile>
-        </GridList>
-      </div>
-    </>
-  );
-};
+            <GridList
+              style={{ width: "810px" }}
+              cellHeight={270}
+              cols={sampleWorkData.length / 2}
+            >
+              {sampleWorkData.map((swd: any, index: number) => {
+                return (
+                  <Zoom in={this.state[index]} timeout={500}>
+                    <GridListTile
+                      cols={swd.cols}
+                      rows={swd.rows}
+                      onClick={event => {
+                        event.preventDefault();
+                        navigate(swd.url);
+                      }}
+                      className={classes.gridTile}
+                    >
+                      <Img
+                        style={{ height: "100%" }}
+                        className={swd.customClassname}
+                        objectFit="cover"
+                        fluid={swd.fluidImage}
+                        alt={swd.title}
+                      />
+                      <GridListTileBar
+                        className={classes.tileTitle}
+                        title={swd.title}
+                      />
+                    </GridListTile>
+                  </Zoom>
+                );
+              })}
+            </GridList>
+          </div>
+        </VisibilitySensor>
+      </>
+    );
+  }
+}
 
 export const query = graphql`
   query {
@@ -248,4 +274,4 @@ export const query = graphql`
   }
 `;
 
-export default SampleWorkPage;
+export default withStyles(styles)(SampleWorkPage);

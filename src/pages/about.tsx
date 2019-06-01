@@ -35,6 +35,7 @@ import {
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import hexToRgba from "../utils/hex_rgba";
+import Hero from "../components/hero";
 
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -64,28 +65,22 @@ const AboutPage = ({ data }: { data: any }) => {
   const classes = useStyles();
   return (
     <>
-      <div
-        className={classes.container}
-        style={{
-          backgroundColor: "orange",
-          justifyContent: "center"
-        }}
-      >
+      <Hero colorBottom={"white"}>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            paddingRight: "10%",
-            paddingLeft: "10%",
-            alignItems: "center"
+            alignSelf: "center"
           }}
         >
+          <Typography variant="h1" className={classes.header} gutterBottom>
+            About Us
+          </Typography>
           <Typography component="h2" variant="h4" className={classes.header}>
             Meet the co-founders of _______
           </Typography>
         </div>
-      </div>
-
+      </Hero>
       <div
         style={{
           marginTop: "5%",

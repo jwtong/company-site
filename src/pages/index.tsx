@@ -35,6 +35,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TechnologiesCard from "../components/technologies_card";
 import WaveBottom from "../components/wave_bottom";
 import Hero from "../components/hero";
+import LineSvg from "../assets/svg/line.svg";
+import SubtitleDivider from "../components/subtitle_divider";
+import TransitionOnShow from "../components/transition_on_show";
 
 const styles = {
   mIcon: {
@@ -94,6 +97,13 @@ const styles = {
     height: "100%",
     position: "absolute",
     animation: "$upDownWide 18s ease-in-out infinite alternate"
+  },
+  line: {
+    "& path": {
+      stroke: "#F6F6F6"
+    },
+    height: "80%",
+    width: "80%"
   }
 };
 
@@ -151,12 +161,20 @@ const IndexPage = props => {
   return (
     <>
       <Hero colorBottom={"white"}>
-        <Typography variant="h1" className={classes.header} gutterBottom>
-          Company Name
-        </Typography>
-        <Typography variant="h4" className={classes.header}>
-          We want to build your software, the right way
-        </Typography>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center"
+          }}
+        >
+          <Typography variant="h1" className={classes.header} gutterBottom>
+            Company Name
+          </Typography>
+          <Typography variant="h4" className={classes.header}>
+            We want to build your software, the right way
+          </Typography>
+        </div>
       </Hero>
       <div
         className={classes.container}
@@ -166,6 +184,19 @@ const IndexPage = props => {
       >
         <div
           style={{
+            position: "absolute",
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: -1
+          }}
+        >
+          <LineSvg className={classes.line} />
+        </div>
+        <div
+          style={{
             display: "flex",
             flexDirection: "column",
             paddingRight: "10%",
@@ -173,6 +204,15 @@ const IndexPage = props => {
             alignItems: "center"
           }}
         >
+          <Divider
+            style={{
+              marginBottom: "10%",
+              height: "4px",
+              width: "10%",
+              borderRadius: "2px",
+              backgroundColor: theme.palette.secondary.main
+            }}
+          />
           <Typography variant="h4" style={{ textAlign: "center" }}>
             We founded _______ to engage with startups, business ideas, and
             interesting people. As as team of two, our expertise lies in the
@@ -192,6 +232,15 @@ const IndexPage = props => {
           >
             Services
           </Button>
+          <Divider
+            style={{
+              marginTop: "10%",
+              height: "4px",
+              width: "10%",
+              backgroundColor: theme.palette.secondary.main,
+              borderRadius: "2px"
+            }}
+          />
         </div>
       </div>
 
@@ -205,20 +254,10 @@ const IndexPage = props => {
           justifyContent: "center"
         }}
       >
-        <div style={{ width: "90%" }}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            style={{ textAlign: "left", textTransform: "uppercase" }}
-          >
-            Progressive Web and Mobile Application Development
-          </Typography>
-          <Divider
-            style={{
-              height: "2px"
-            }}
-          />
-        </div>
+        <SubtitleDivider
+          text="Progressive Web and Mobile Application Development"
+          containerStyle={{ width: "90%" }}
+        />
         <div
           style={{
             display: "flex",
@@ -239,9 +278,22 @@ const IndexPage = props => {
             {technologies.map(({ icons, names, title }, index: number) => {
               return (
                 <Grid key={index} item xs={4}>
-                  <TechnologiesCard
-                    technology={{ icons: icons, names: names, title: title }}
-                  />
+                  <TransitionOnShow
+                    visibilitySensorProps={{ partialVisibility: true }}
+                    transitionType="Zoom"
+                    delay={index * 200}
+                    transitionProps={{ timeout: { enter: 1000 } }}
+                  >
+                    <div>
+                      <TechnologiesCard
+                        technology={{
+                          icons: icons,
+                          names: names,
+                          title: title
+                        }}
+                      />
+                    </div>
+                  </TransitionOnShow>
                 </Grid>
               );
             })}

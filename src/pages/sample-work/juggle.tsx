@@ -23,11 +23,9 @@ import Img from "gatsby-image/withIEPolyfill";
 import Slide from "@material-ui/core/Slide";
 import VisibilitySensor from "react-visibility-sensor";
 import TransitionOnShow from "../../components/transition_on_show";
+import Hero from "../../components/hero";
 
 const styles = {
-  mIcon: {
-    color: "black"
-  },
   header: {
     color: "white !important",
     textAlign: "center"
@@ -66,13 +64,7 @@ class JugglePage extends React.Component {
     const { classes, data } = this.props;
     return (
       <>
-        <div
-          className={classes.container}
-          style={{
-            backgroundColor: "orange",
-            justifyContent: "center"
-          }}
-        >
+        <Hero colorBottom={"white"}>
           <div
             style={{
               display: "flex",
@@ -82,27 +74,37 @@ class JugglePage extends React.Component {
               alignItems: "center"
             }}
           >
-            <Typography variant="h2" className={classes.header} gutterBottom>
+            <Typography variant="h1" className={classes.header} gutterBottom>
               Juggle
             </Typography>
-            <Typography variant="h5" className={classes.header} gutterBottom>
+            <Typography variant="h4" className={classes.header}>
               A mobile app that allows families to book sitters on demand,
               designed with a focus on ease-of-use while providing a robust set
               of user-feedback driven features.
             </Typography>
           </div>
-        </div>
+        </Hero>
         <div
           style={{
-            marginTop: "2%",
-            marginBottom: "2%",
             padding: "0% 15% 0% 15%",
-            alignItems: "stretch"
+            alignItems: "stretch",
+            marginBottom: "3%"
           }}
         >
-          <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
-            Services Provided
-          </Typography>
+          <div style={{ marginBottom: "3%", marginTop: "3%" }}>
+            <Typography
+              variant="h5"
+              gutterBottom
+              style={{ textAlign: "left", textTransform: "uppercase" }}
+            >
+              Services Provided
+            </Typography>
+            <Divider
+              style={{
+                height: "2px"
+              }}
+            />
+          </div>
           <Grid container spacing={3} direction="row" justify="center">
             <Grid item>
               <StandardPopover popoverText={"Software Developer"}>
@@ -120,7 +122,11 @@ class JugglePage extends React.Component {
                     width: "70px"
                   }}
                 >
-                  <Code fontSize="inherit" className={classes.mIcon} />
+                  <Code
+                    color="secondary"
+                    fontSize="inherit"
+                    className={classes.mIcon}
+                  />
                 </Card>
               </StandardPopover>
             </Grid>
@@ -141,6 +147,7 @@ class JugglePage extends React.Component {
                   }}
                 >
                   <PaletteOutlined
+                    color="secondary"
                     fontSize="inherit"
                     className={classes.mIcon}
                   />
@@ -164,6 +171,7 @@ class JugglePage extends React.Component {
                   }}
                 >
                   <BusinessCenterOutlined
+                    color="secondary"
                     fontSize="inherit"
                     className={classes.mIcon}
                   />
@@ -187,6 +195,7 @@ class JugglePage extends React.Component {
                   }}
                 >
                   <AssignmentOutlined
+                    color="secondary"
                     fontSize="inherit"
                     className={classes.mIcon}
                   />
@@ -194,13 +203,20 @@ class JugglePage extends React.Component {
               </StandardPopover>
             </Grid>
           </Grid>
-          <Divider
-            variant="middle"
-            style={{ marginTop: "2%", marginBottom: "2%" }}
-          />
-          <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
-            Technologies
-          </Typography>
+          <div style={{ marginBottom: "3%", marginTop: "3%" }}>
+            <Typography
+              variant="h5"
+              gutterBottom
+              style={{ textAlign: "left", textTransform: "uppercase" }}
+            >
+              Technologies
+            </Typography>
+            <Divider
+              style={{
+                height: "2px"
+              }}
+            />
+          </div>
           <Grid justify="center" container spacing={1}>
             <Grid item>
               <Chip label="React Native" />
@@ -224,13 +240,30 @@ class JugglePage extends React.Component {
               <Chip label="Google Firebase" />
             </Grid>
           </Grid>
-          <Divider
-            variant="middle"
-            style={{ marginTop: "2%", marginBottom: "2%" }}
-          />
-          <Typography variant="h4" style={{ textAlign: "center" }} gutterBottom>
-            Preliminary Design
-          </Typography>
+          <div style={{ marginBottom: "3%", marginTop: "3%" }}>
+            <Typography
+              variant="h5"
+              gutterBottom
+              style={{ textAlign: "left", textTransform: "uppercase" }}
+            >
+              Preliminary Design
+            </Typography>
+            <Divider
+              style={{
+                height: "2px"
+              }}
+            />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginBottom: "3%"
+            }}
+          >
+            <Img fixed={data.newAppFlow.childImageSharp.fixed} />
+          </div>
           <Typography variant="subtitle1" style={{ textAlign: "left" }}>
             Juggle's mobile app was rebuilt to offer cross-platform
             (Android/iOS) support, a revamped user-interface, and to support a
@@ -241,17 +274,24 @@ class JugglePage extends React.Component {
             Juggle team, then refined to unitized objectives to be translated
             into code.
           </Typography>
-          <Divider
-            variant="middle"
-            style={{ marginTop: "2%", marginBottom: "2%" }}
-          />
-          <Typography variant="h4" style={{ textAlign: "center" }}>
-            Notable Features
-          </Typography>
+          <div style={{ marginBottom: "3%", marginTop: "3%" }}>
+            <Typography
+              variant="h5"
+              gutterBottom
+              style={{ textAlign: "left", textTransform: "uppercase" }}
+            >
+              Notable Features
+            </Typography>
+            <Divider
+              style={{
+                height: "2px"
+              }}
+            />
+          </div>
           <TransitionOnShow
             visibilitySensorProps={{ partialVisibility: true }}
-            transitionType="Slide"
-            transitionProps={{ direction: "right", timeout: { enter: 3000 } }}
+            transitionType="Zoom"
+            transitionProps={{ timeout: { enter: 1500 } }}
           >
             <div
               style={{
@@ -272,10 +312,18 @@ class JugglePage extends React.Component {
             real-time, making it easier to coordinate bookings and special
             requests.
           </Typography>
+          <Divider
+            style={{
+              height: "1px",
+              marginTop: "4%",
+              marginBottom: "2%",
+              color: "#F6F6F6"
+            }}
+          />
           <TransitionOnShow
             visibilitySensorProps={{ partialVisibility: true }}
-            transitionType="Slide"
-            transitionProps={{ direction: "right", timeout: { enter: 3000 } }}
+            transitionType="Zoom"
+            transitionProps={{ timeout: { enter: 1500 } }}
           >
             <div
               style={{
@@ -288,7 +336,6 @@ class JugglePage extends React.Component {
               <Img fixed={data.pricing2.childImageSharp.fixed} />
               <Img fixed={data.pricing3.childImageSharp.fixed} />
               <Img fixed={data.pricing4.childImageSharp.fixed} />
-              <Img fixed={data.pricing5.childImageSharp.fixed} />
             </div>
           </TransitionOnShow>
           <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
@@ -300,6 +347,14 @@ class JugglePage extends React.Component {
             accomodate high-demand periods, promo-code and gift cards,
             transportation reimbursement, and pre-booking payment estimation.
           </Typography>
+          <Divider
+            style={{
+              height: "1px",
+              marginTop: "4%",
+              marginBottom: "2%",
+              color: "#F6F6F6"
+            }}
+          />
           <div
             style={{
               display: "flex",
@@ -323,6 +378,14 @@ class JugglePage extends React.Component {
             weighted rating that depends on number of connections, rating, and
             number of jobs completed.
           </Typography>
+          <Divider
+            style={{
+              height: "1px",
+              marginTop: "4%",
+              marginBottom: "2%",
+              color: "#F6F6F6"
+            }}
+          />
           <div
             style={{
               display: "flex",
@@ -343,6 +406,14 @@ class JugglePage extends React.Component {
             process the completed checks automatically into the app as
             represented by the green shield checkmark.
           </Typography>
+          <Divider
+            style={{
+              height: "1px",
+              marginTop: "4%",
+              marginBottom: "2%",
+              color: "#F6F6F6"
+            }}
+          />
           <div
             style={{
               display: "flex",
@@ -368,10 +439,18 @@ class JugglePage extends React.Component {
             booking. The user base has nearly doubled since this feature was
             made live.
           </Typography>
+          <Divider
+            style={{
+              height: "1px",
+              marginTop: "4%",
+              marginBottom: "2%",
+              color: "#F6F6F6"
+            }}
+          />
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "space-between",
               flexWrap: "wrap"
             }}
           >
@@ -429,7 +508,7 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/pricing/pricing1.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
+        fixed(width: 245, height: 550, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -438,7 +517,7 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/pricing/pricing2.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
+        fixed(width: 245, height: 550, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -447,7 +526,7 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/pricing/pricing3.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
+        fixed(width: 245, height: 550, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -456,16 +535,7 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/pricing/pricing4.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    pricing5: file(
-      relativePath: { eq: "sample_work/juggle/pricing/pricing5.png" }
-    ) {
-      childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
+        fixed(width: 245, height: 550, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -550,7 +620,7 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/emergency/emergency1.png" }
     ) {
       childImageSharp {
-        fixed(width: 250, height: 550, cropFocus: CENTER) {
+        fixed(width: 245, height: 550, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -559,7 +629,7 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/emergency/emergency2.png" }
     ) {
       childImageSharp {
-        fixed(width: 250, height: 550, cropFocus: CENTER) {
+        fixed(width: 245, height: 550, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -568,7 +638,7 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/emergency/emergency3.png" }
     ) {
       childImageSharp {
-        fixed(width: 250, height: 550, cropFocus: CENTER) {
+        fixed(width: 245, height: 550, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -577,7 +647,16 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/emergency/emergency4.png" }
     ) {
       childImageSharp {
-        fixed(width: 250, height: 550, cropFocus: CENTER) {
+        fixed(width: 245, height: 550, cropFocus: CENTER) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    newAppFlow: file(
+      relativePath: { eq: "sample_work/juggle/new_app_flow.png" }
+    ) {
+      childImageSharp {
+        fixed(width: 1500, height: 600, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed
         }
       }

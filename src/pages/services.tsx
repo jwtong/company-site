@@ -23,8 +23,7 @@ const styles = theme => ({
   // },
   header: {
     color: "white !important",
-    textAlign: "center",
-    width: "80%"
+    textAlign: "center"
   },
   centerer: {
     justifyContent: "center"
@@ -105,14 +104,13 @@ const ServicesPage = props => {
       </Hero>
       <Grid
         container
-        spacing={3}
         direction="column"
-        justify="flex-start"
-        alignItems="stretch"
+        alignItems="center"
         alignContent="center"
         style={{
           fontSize: "10em",
-          marginBottom: "3%"
+          marginBottom: "3%",
+          width: "100%"
         }}
       >
         {roles.map(role => {
@@ -131,13 +129,15 @@ const ServicesPage = props => {
           justifyContent: "center"
         }}
       >
-        <Typography variant="h4" className={classes.header} gutterBottom>
-          The roles above were defined with respect to specific experience we
-          each have, and are representative of the commitment we have towards
-          working through the entire development process. We encourage you to
-          learn more about our backgrounds and experience, with specific
-          examples of how we might serve each role we defined.
-        </Typography>
+        <div style={{ paddingLeft: "10%", paddingRight: "10%" }}>
+          <Typography variant="h4" className={classes.header} gutterBottom>
+            The roles above were defined with respect to specific experience we
+            each have, and are representative of the commitment we have towards
+            working through the entire development process. We encourage you to
+            learn more about our backgrounds and experience, with specific
+            examples of how we might serve each role we defined.
+          </Typography>
+        </div>
         <div
           style={{
             display: "flex",

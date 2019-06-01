@@ -29,10 +29,15 @@ const theme = createMuiTheme({
     h5: {
       fontFamily: "Lato",
       fontWeight: 800,
-      color: "#5e5e5e"
+      color: "#919191"
     },
     h6: {
-      fontFamily: "Lato"
+      fontFamily: "Lato",
+      fontSize: 22
+    },
+    subtitle1: {
+      color: "#5e5e5e",
+      fontSize: 18
     }
   }
 });

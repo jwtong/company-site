@@ -1,6 +1,6 @@
 import { WithStyles, makeStyles } from "@material-ui/core";
 import React from "react";
-import WaveBottomSVG from "../../assets/wave_bottom.svg";
+import WaveBottomSVG from "../../assets/svg/wave_bottom.svg";
 
 const useStyles = makeStyles({
   bottomWrapper: {

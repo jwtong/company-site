@@ -34,28 +34,26 @@ interface Props extends WithStyles<typeof styles> {
   linkedIn?: string;
 }
 
-class Footer extends React.Component<Props> {
-  public render() {
-    const { classes, mainText, email, linkedIn } = this.props;
-    return (
-      <footer>
-        <div className={classes.container}>
-          <div className={classes.left}>{mainText}</div>
-          <div className={classes.right}>
-            {email && (
-              <IconButton className={classes.icon} href={`mailto:${email}`}>
-                <MailIcon fontSize="inherit" />
-              </IconButton>
-            )}
-            {linkedIn && (
-              <IconButton className={classes.icon} href={linkedIn}>
-                <Linkedin fontSize="inherit" />
-              </IconButton>
-            )}
-          </div>
+const Footer = ({ classes, mainText, email, linkedIn }: Props) => {
+  return (
+    <footer>
+      <div className={classes.container}>
+        <div className={classes.left}>{mainText}</div>
+        <div className={classes.right}>
+          {email && (
+            <IconButton className={classes.icon} href={`mailto:${email}`}>
+              <MailIcon fontSize="inherit" />
+            </IconButton>
+          )}
+          {linkedIn && (
+            <IconButton className={classes.icon} href={linkedIn}>
+              <Linkedin fontSize="inherit" />
+            </IconButton>
+          )}
         </div>
-      </footer>
-    );
-  }
-}
+      </div>
+    </footer>
+  );
+};
+
 export default withStyles(styles)(Footer);

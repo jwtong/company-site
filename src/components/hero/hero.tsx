@@ -75,6 +75,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="triangle"
             width={"12rem"}
+            animatedProps={{ delay: 2000 }}
             stroke={theme.palette.secondary.light}
             left="10%"
             top="20%"
@@ -83,6 +84,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="hexa"
             width={"12rem"}
+            animatedProps={{ delay: 2000 }}
             stroke={theme.palette.secondary.dark}
             left="60%"
             top="70%"
@@ -91,6 +93,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="box"
             width={"1.5rem"}
+            animatedProps={{ delay: 1000 }}
             fill={theme.palette.primary.dark}
             left="60%"
             top="15%"
@@ -101,6 +104,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="arrowUp"
             width={"4rem"}
+            animatedProps={{ delay: 2000 }}
             fill={theme.palette.secondary.main}
             left="80%"
             top="10%"
@@ -109,6 +113,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="triangle"
             width={"3rem"}
+            animatedProps={{ delay: 2000 }}
             stroke={theme.palette.secondary.main}
             left="90%"
             top="50%"
@@ -117,6 +122,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="circle"
             width={"4rem"}
+            animatedProps={{ delay: 1000 }}
             fill={theme.palette.primary.dark}
             left="70%"
             top="90%"
@@ -125,6 +131,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="triangle"
             width={"4rem"}
+            animatedProps={{ delay: 2000 }}
             stroke={theme.palette.primary.main}
             left="30%"
             top="65%"
@@ -133,6 +140,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="cross"
             width={"4rem"}
+            animatedProps={{ delay: 2000 }}
             stroke={theme.palette.secondary.main}
             left="28%"
             top="15%"
@@ -141,6 +149,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="circle"
             width={"1.5rem"}
+            animatedProps={{ delay: 1000 }}
             fill={theme.palette.primary.main}
             left="75%"
             top="10%"
@@ -149,6 +158,7 @@ const Hero = ({ children, colorBottom }: Props) => {
             animated
             icon="upDown"
             width={"2rem"}
+            animatedProps={{ delay: 1000 }}
             fill={theme.palette.primary.main}
             left="45%"
             top="10%"
@@ -158,6 +168,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           animated
           icon="circle"
           width={"6rem"}
+          animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="5%"
           top="70%"
@@ -166,6 +177,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           animated
           icon="circle"
           width={"1.5rem"}
+          animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="4%"
           top="20%"
@@ -174,6 +186,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           animated
           icon="circle"
           width={"3rem"}
+          animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="50%"
           top="60%"
@@ -182,6 +195,7 @@ const Hero = ({ children, colorBottom }: Props) => {
           animated
           icon="upDown"
           width={"2rem"}
+          animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="95%"
           top="90%"
@@ -190,12 +204,14 @@ const Hero = ({ children, colorBottom }: Props) => {
           animated
           icon="upDown"
           width={"6rem"}
+          animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="40%"
           top="80%"
         />
         <SVG
           animated
+          animatedProps={{ delay: 2000 }}
           icon="triangle"
           width={"2rem"}
           stroke={theme.palette.primary.main}
@@ -204,6 +220,7 @@ const Hero = ({ children, colorBottom }: Props) => {
         />
         <SVG
           animated
+          animatedProps={{ delay: 2000 }}
           icon="circle"
           width={"16rem"}
           fill={theme.palette.secondary.main}
@@ -212,6 +229,7 @@ const Hero = ({ children, colorBottom }: Props) => {
         />
         <SVG
           animated
+          animatedProps={{ delay: 1000 }}
           icon="box"
           width={"16rem"}
           fill={theme.palette.primary.main}
@@ -220,6 +238,7 @@ const Hero = ({ children, colorBottom }: Props) => {
         />
         <SVG
           animated
+          animatedProps={{ delay: 1000 }}
           icon="box"
           width={"1.5rem"}
           fill={theme.palette.primary.main}
@@ -228,6 +247,7 @@ const Hero = ({ children, colorBottom }: Props) => {
         />
         <SVG
           animated
+          animatedProps={{ delay: 1000 }}
           icon="box"
           width={"3rem"}
           fill={theme.palette.primary.main}
@@ -236,6 +256,7 @@ const Hero = ({ children, colorBottom }: Props) => {
         />
         <SVG
           animated
+          animatedProps={{ delay: 2000 }}
           icon="hexa"
           width={"4rem"}
           stroke={theme.palette.primary.main}
@@ -244,6 +265,7 @@ const Hero = ({ children, colorBottom }: Props) => {
         />
         <SVG
           animated
+          animatedProps={{ delay: 2000 }}
           icon="hexa"
           width={"2rem"}
           stroke={theme.palette.primary.main}
