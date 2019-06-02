@@ -26,6 +26,7 @@ import {
   Zoom
 } from "@material-ui/core";
 import Hero from "../../components/hero";
+import TransitionGridList from "../../components/transition_grid_list";
 
 const styles = createStyles({
   mIcon: {
@@ -72,39 +73,43 @@ const styles = createStyles({
 
 interface Props extends WithStyles<typeof styles> {}
 
-class SampleWorkPage extends React.Component<Props, State> {
-  public constructor(props: Props) {
-    super(props);
-    const dataLength = 6;
-    const preState: any = {};
-    for (let i = 0; i < dataLength; i++) {
-      preState[i] = false;
-    }
-
-    this.state = {
-      ...preState,
-      randomOrder: this.shuffle(
-        Array.from(Array(dataLength), (x, index) => index)
-      )
-    };
-  }
-
-  private onChange = (isVisible: boolean) => {
-    if (isVisible) {
-      for (let i = 0; i < this.state.randomOrder.length; i++) {
-        const randomDelay = this.state.randomOrder[i] * 200;
-        setTimeout(() => {
-          this.setState({
-            [i]: true
-          });
-        }, randomDelay);
-      }
-    }
-  };
-
+class SampleWorkPage extends React.Component<Props> {
   private shuffle = (array: Array<any>) => {
     return array.sort(() => Math.random() - 0.5);
   };
+
+  private getGridListTileData(sampleWorkData: any, classes: any) {
+    const delays = this.shuffle(
+      Array.from(Array(sampleWorkData.length), (_, index) => index * 300)
+    );
+
+    return sampleWorkData.map((swd: any, index: number) => {
+      return {
+        delay: delays[index],
+        props: {
+          cols: swd.cols,
+          rows: swd.rows,
+          onClick: (event: any) => {
+            event.preventDefault();
+            navigate(swd.url);
+          },
+          className: classes.gridTile
+        },
+        children: (
+          <>
+            <Img
+              style={{ height: "100%" }}
+              className={swd.customClassname}
+              objectFit="cover"
+              fluid={swd.fluidImage}
+              alt={swd.title}
+            />
+            <GridListTileBar className={classes.tileTitle} title={swd.title} />
+          </>
+        )
+      };
+    });
+  }
 
   public render() {
     const { classes, data } = this.props;
@@ -155,6 +160,7 @@ class SampleWorkPage extends React.Component<Props, State> {
       }
     ];
 
+    const gridListTileData = this.getGridListTileData(sampleWorkData, classes);
     return (
       <>
         <Hero colorBottom={"white"}>
@@ -173,49 +179,22 @@ class SampleWorkPage extends React.Component<Props, State> {
             </Typography>
           </div>
         </Hero>
-        <VisibilitySensor partialVisibility onChange={this.onChange}>
-          <div
-            className={classes.container}
-            style={{
-              backgroundColor: "white",
-              justifyContent: "center"
+        <div className={classes.container}>
+          <TransitionGridList
+            transitionType={"Zoom"}
+            visibilitySensorProps={{ partialVisibility: true }}
+            transitionProps={{ timeout: { enter: 500 } }}
+            gridListProps={{
+              style: {
+                width: `${(sampleWorkData.length / 2) * 270}px`,
+                backgroundColor: "white"
+              },
+              cellHeight: 270,
+              cols: sampleWorkData.length / 2
             }}
-          >
-            <GridList
-              style={{ width: "810px" }}
-              cellHeight={270}
-              cols={sampleWorkData.length / 2}
-            >
-              {sampleWorkData.map((swd: any, index: number) => {
-                return (
-                  <Zoom in={this.state[index]} timeout={500}>
-                    <GridListTile
-                      cols={swd.cols}
-                      rows={swd.rows}
-                      onClick={event => {
-                        event.preventDefault();
-                        navigate(swd.url);
-                      }}
-                      className={classes.gridTile}
-                    >
-                      <Img
-                        style={{ height: "100%" }}
-                        className={swd.customClassname}
-                        objectFit="cover"
-                        fluid={swd.fluidImage}
-                        alt={swd.title}
-                      />
-                      <GridListTileBar
-                        className={classes.tileTitle}
-                        title={swd.title}
-                      />
-                    </GridListTile>
-                  </Zoom>
-                );
-              })}
-            </GridList>
-          </div>
-        </VisibilitySensor>
+            gridListTileData={gridListTileData}
+          />
+        </div>
       </>
     );
   }
