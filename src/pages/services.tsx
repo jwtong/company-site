@@ -16,6 +16,8 @@ import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
 import ServiceCard from "../components/service_card";
 import Hero from "../components/hero";
 import WaveBottom from "../components/wave_bottom";
+import PageBottom from "../components/page_bottom";
+import roles from "../utils/roles";
 
 const styles = theme => ({
   // mIcon: {
@@ -30,7 +32,7 @@ const styles = theme => ({
   },
   container: {
     width: "100vw",
-    height: "100vh",
+    height: "60vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -48,38 +50,6 @@ const styles = theme => ({
 
 const ServicesPage = props => {
   const { classes } = props;
-  const roles = [
-    {
-      title: "Software Developer",
-      text:
-        "Specializing in progressive web and mobile applications, our responsibility under this role is to write code in accordance to the project specifications, then configure the hosting platform to serve the website or application live. This role may also include a discussion and recommendation of the right front-end/back-end languages and hosting platform to use.",
-      icon: Code
-    },
-    {
-      title: "UI/UX Designer",
-      text:
-        "If you're not sure how you want your application to look and how you want people to interact with it, we can help apply user-interface best practices and sketch out a visual representation of the application. Note, this does not include branding design such as logos or visual content that may be served up by your application.",
-      icon: PaletteOutlined
-    },
-    {
-      title: "Product Manager",
-      text:
-        "If you have limited knowledge about software, we can take a greater function in making architectural and design choices as related to the code. This primarily means spec'ing features, i.e. translating broader business logic into implementable, scoped tasks. Additionally, we are happy to provide much more feedback and advice in more of a consultant role.",
-      icon: AssignmentOutlined
-    },
-    {
-      title: "Business Logic Analyst",
-      text:
-        "If you just have an idea, we can help you all the way from the bottom-up, suggesting business logic decisions that may pair well with a software implementation. Our focus in this role would be to think critically of the economic and social impacts of the core idea.",
-      icon: BusinessCenterOutlined
-    },
-    {
-      title: "Data Analyst",
-      text:
-        "Parallel to the software development, we can apply data analytic and machine learning principles to provide valuable insights into the efficacy of your application as it relates to your economic or social imperatives.",
-      icon: InsertChartOutlined
-    }
-  ];
   return (
     <>
       <Hero colorBottom="white">
@@ -115,27 +85,16 @@ const ServicesPage = props => {
       >
         {roles.map(role => {
           return (
-            <Grid item xs={11} style={{ marginTop: "5%" }}>
+            <Grid key={role.title} item xs={11} style={{ marginTop: "5%" }}>
               <ServiceCard role={role} />
             </Grid>
           );
         })}
       </Grid>
-      <WaveBottom colorBottom="black" />
-      <div
-        className={classes.container}
-        style={{
-          backgroundColor: "black",
-          justifyContent: "center"
-        }}
-      >
+      <PageBottom>
         <div style={{ paddingLeft: "10%", paddingRight: "10%" }}>
           <Typography variant="h4" className={classes.header} gutterBottom>
-            The roles above were defined with respect to specific experience we
-            each have, and are representative of the commitment we have towards
-            working through the entire development process. We encourage you to
-            learn more about our backgrounds and experience, with specific
-            examples of how we might serve each role we defined.
+            Learn more about our experience in each of these roles
           </Typography>
         </div>
         <div
@@ -143,7 +102,7 @@ const ServicesPage = props => {
             display: "flex",
             justifyContent: "space-between",
             marginTop: "3%",
-            width: "30%"
+            width: "25%"
           }}
         >
           <Button
@@ -171,7 +130,7 @@ const ServicesPage = props => {
             Sample Work
           </Button>
         </div>
-      </div>
+      </PageBottom>
     </>
   );
 };

@@ -1,10 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
 import { withStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import StarIcon from "@material-ui/icons/Star";
 import {
   React as ReactIcon,
   Vuejs,
@@ -14,96 +11,24 @@ import {
   LanguageRubyOnRails,
   DotNet,
   Firebase,
-  Database,
   Aws,
   Azure,
   LanguagePython
 } from "mdi-material-ui";
-import {
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  ListItemIcon,
-  Divider
-} from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { faSketch } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TechnologiesCard from "../components/technologies_card";
-import WaveBottom from "../components/wave_bottom";
 import Hero from "../components/hero";
-import LineSvg from "../assets/svg/line.svg";
 import SubtitleDivider from "../components/subtitle_divider";
 import TransitionOnShow from "../components/transition_on_show";
+import PageBottom from "../components/page_bottom";
+import SplashPage from "../components/splash_page";
 
 const styles = {
-  mIcon: {
-    color: "white"
-  },
   header: {
     color: "white !important",
     textAlign: "center"
-  },
-  centerer: {
-    justifyContent: "center"
-  },
-  container: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-    overflow: "hidden"
-  },
-  svg: {
-    "& path": {
-      fill: "black"
-    },
-    height: "100%",
-    width: "100%",
-    backgroundColor: "orange"
-  },
-  "@keyframes upDownWide": {
-    from: {
-      transform: "translateY(0)"
-    },
-    to: {
-      transform: "translateY(200px)"
-    }
-  },
-  "@keyframes upDown": {
-    from: {
-      transform: "translateY(0)"
-    },
-    to: {
-      transform: "translateY(30px)"
-    }
-  },
-  upDownDiv: {
-    animationName: "$upDown",
-    animation: "$upDown 4s ease-in-out infinite alternate",
-    width: "100%",
-    height: "100%",
-    position: "absolute"
-  },
-  upDownWideDiv: {
-    animationName: "$upDownWide",
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    animation: "$upDownWide 18s ease-in-out infinite alternate"
-  },
-  line: {
-    "& path": {
-      stroke: "#F6F6F6"
-    },
-    height: "80%",
-    width: "80%"
   }
 };
 
@@ -176,74 +101,27 @@ const IndexPage = props => {
           </Typography>
         </div>
       </Hero>
-      <div
-        className={classes.container}
-        style={{
-          justifyContent: "center"
-        }}
-      >
-        <div
+      <SplashPage>
+        <Typography variant="h4" style={{ textAlign: "center" }}>
+          We founded _______ to engage with startups, business ideas, and
+          interesting people. As as team of two, our expertise lies in the
+          ability to learn and execute quickly, our focus is to deliver the best
+          technology, and our advantage is being lean.
+        </Typography>
+        <Button
           style={{
-            position: "absolute",
-            height: "100%",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: -1
+            height: "3rem",
+            width: "10rem",
+            fontSize: "1rem",
+            marginTop: "3%"
           }}
+          href="/contact"
+          variant="contained"
+          color="secondary"
         >
-          <LineSvg className={classes.line} />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            paddingRight: "10%",
-            paddingLeft: "10%",
-            alignItems: "center"
-          }}
-        >
-          <Divider
-            style={{
-              marginBottom: "10%",
-              height: "4px",
-              width: "10%",
-              borderRadius: "2px",
-              backgroundColor: theme.palette.secondary.main
-            }}
-          />
-          <Typography variant="h4" style={{ textAlign: "center" }}>
-            We founded _______ to engage with startups, business ideas, and
-            interesting people. As as team of two, our expertise lies in the
-            ability to learn and execute quickly, our focus is to deliver the
-            best technology, and our advantage is being lean.
-          </Typography>
-          <Button
-            style={{
-              height: "3rem",
-              width: "10rem",
-              fontSize: "1rem",
-              marginTop: "3%"
-            }}
-            href="/contact"
-            variant="contained"
-            color="secondary"
-          >
-            Services
-          </Button>
-          <Divider
-            style={{
-              marginTop: "10%",
-              height: "4px",
-              width: "10%",
-              backgroundColor: theme.palette.secondary.main,
-              borderRadius: "2px"
-            }}
-          />
-        </div>
-      </div>
-
+          Services
+        </Button>
+      </SplashPage>
       <div
         style={{
           width: "100%",
@@ -300,14 +178,7 @@ const IndexPage = props => {
           </Grid>
         </div>
       </div>
-      <WaveBottom colorBottom={"black"} />
-      <div
-        className={classes.container}
-        style={{
-          backgroundColor: "black",
-          justifyContent: "center"
-        }}
-      >
+      <PageBottom>
         <Typography variant="h2" className={classes.header} gutterBottom>
           Interested in working together?
         </Typography>
@@ -332,7 +203,7 @@ const IndexPage = props => {
         >
           Contact Us
         </Button>
-      </div>
+      </PageBottom>
     </>
   );
 };

@@ -21,6 +21,7 @@ const Layout = ({ children }: { children: any }) => (
       <>
         <Header
           pages={[
+            { text: "Process", link: "/process/" },
             { text: "Services", link: "/services/" },
             { text: "About Us", link: "/about/" },
             { text: "Sample Work", link: "/sample-work/" },

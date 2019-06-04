@@ -1,8 +1,8 @@
 {
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": { "*": ["types/*"] },
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
     "target": "esnext",
     "module": "commonjs",
     "lib": ["dom", "es2017"],

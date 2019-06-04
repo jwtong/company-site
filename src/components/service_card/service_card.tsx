@@ -14,7 +14,6 @@ const styles = (theme: { palette: { secondary: { light: any } } }) =>
       paddingTop: "5%",
       paddingBottom: "5%",
       paddingRight: "15%",
-      backgroundColor: "#f6f6f6",
       borderTop: `6px solid ${theme.palette.secondary.light}`
     },
     grid: {
@@ -29,7 +28,7 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 const ServiceCard = ({ role: { title, icon, text }, classes }: Props) => (
-  <Card raised key={title} className={classes.card}>
+  <Card key={title} className={classes.card}>
     <Grid container direction="row">
       <Grid item xs={4} className={classes.grid}>
         {React.createElement(icon, {

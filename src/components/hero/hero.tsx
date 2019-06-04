@@ -4,15 +4,14 @@ import {
   Typography,
   withStyles,
   createStyles,
-  WithStyles,
-  makeStyles
+  WithStyles
 } from "@material-ui/core";
 import React from "react";
 import SVG from "../svg_shapes";
 import WaveBottom from "../wave_bottom";
 import { useTheme } from "@material-ui/styles";
 
-const useStyles = makeStyles({
+const styles = createStyles({
   centerer: {
     justifyContent: "center"
   },
@@ -59,13 +58,12 @@ const useStyles = makeStyles({
   }
 });
 
-interface Props extends WithStyles<typeof useStyles> {
+interface Props extends WithStyles<typeof styles> {
   children: any;
   colorBottom: string;
 }
 
-const Hero = ({ children, colorBottom }: Props) => {
-  const classes = useStyles({ colorBottom });
+const Hero = ({ children, colorBottom, classes }: Props) => {
   const theme: any = useTheme();
   return (
     <>
@@ -279,4 +277,4 @@ const Hero = ({ children, colorBottom }: Props) => {
   );
 };
 
-export default Hero;
+export default withStyles(styles)(Hero);

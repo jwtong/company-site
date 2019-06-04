@@ -1,4 +1,4 @@
-import { WithStyles, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import React from "react";
 import WaveBottomSVG from "../../assets/svg/wave_bottom.svg";
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   }
 });
 
-interface Props extends WithStyles<typeof useStyles> {
+interface Props {
   colorTop?: string;
   colorBottom?: string;
   flip?: boolean;

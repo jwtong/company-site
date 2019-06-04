@@ -24,6 +24,9 @@ import Slide from "@material-ui/core/Slide";
 import VisibilitySensor from "react-visibility-sensor";
 import TransitionOnShow from "../../components/transition_on_show";
 import Hero from "../../components/hero";
+import roles from "../../utils/roles";
+import ServicePopovers from "../../components/service_popovers";
+import SampleWorkTemplate from "../../components/sample_work_template";
 
 const styles = {
   header: {
@@ -52,7 +55,6 @@ class JugglePage extends React.Component {
   }
 
   private onChange = elementId => isVisible => {
-    console.log(isVisible);
     if (isVisible) {
       this.setState({
         [elementId]: isVisible
@@ -62,424 +64,263 @@ class JugglePage extends React.Component {
 
   public render() {
     const { classes, data } = this.props;
+
+    const juggleRoles = [roles[0], roles[1], roles[2], roles[3]];
+    const juggleTechnologies = [
+      "React Native",
+      "Sketch",
+      "Balsamiq",
+      "Ruby on Rails",
+      "MySQL",
+      "AWS",
+      "Google Firebase"
+    ];
+
     return (
-      <>
-        <Hero colorBottom={"white"}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              paddingRight: "10%",
-              paddingLeft: "10%",
-              alignItems: "center"
-            }}
+      <SampleWorkTemplate
+        title={"Juggle"}
+        subtitle={
+          "A mobile app that allows families to book sitters on demand, designed with a focus on ease-of-use while providing a robust set of user-feedback driven features."
+        }
+        roles={juggleRoles}
+        technologies={juggleTechnologies}
+      >
+        <div style={{ marginBottom: "3%", marginTop: "3%" }}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            style={{ textAlign: "left", textTransform: "uppercase" }}
           >
-            <Typography variant="h1" className={classes.header} gutterBottom>
-              Juggle
-            </Typography>
-            <Typography variant="h4" className={classes.header}>
-              A mobile app that allows families to book sitters on demand,
-              designed with a focus on ease-of-use while providing a robust set
-              of user-feedback driven features.
-            </Typography>
-          </div>
-        </Hero>
+            Preliminary Design
+          </Typography>
+          <Divider
+            style={{
+              height: "2px"
+            }}
+          />
+        </div>
         <div
           style={{
-            padding: "0% 15% 0% 15%",
-            alignItems: "stretch",
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap",
             marginBottom: "3%"
           }}
         >
-          <div style={{ marginBottom: "3%", marginTop: "3%" }}>
-            <Typography
-              variant="h5"
-              gutterBottom
-              style={{ textAlign: "left", textTransform: "uppercase" }}
-            >
-              Services Provided
-            </Typography>
-            <Divider
-              style={{
-                height: "2px"
-              }}
-            />
-          </div>
-          <Grid container spacing={3} direction="row" justify="center">
-            <Grid item>
-              <StandardPopover popoverText={"Software Developer"}>
-                <Card
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    alignSelf: "stretch",
-                    flexGrow: "1",
-                    // backgroundColor: "red",
-                    fontSize: "4em",
-                    height: "70px",
-                    width: "70px"
-                  }}
-                >
-                  <Code
-                    color="secondary"
-                    fontSize="inherit"
-                    className={classes.mIcon}
-                  />
-                </Card>
-              </StandardPopover>
-            </Grid>
-            <Grid item>
-              <StandardPopover popoverText={"UI/UX Designer"}>
-                <Card
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    alignSelf: "stretch",
-                    flexGrow: "1",
-                    // backgroundColor: "red",
-                    fontSize: "4em",
-                    height: "70px",
-                    width: "70px"
-                  }}
-                >
-                  <PaletteOutlined
-                    color="secondary"
-                    fontSize="inherit"
-                    className={classes.mIcon}
-                  />
-                </Card>
-              </StandardPopover>
-            </Grid>
-            <Grid item>
-              <StandardPopover popoverText={"Business Logic Analyst"}>
-                <Card
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    alignSelf: "stretch",
-                    flexGrow: "1",
-                    // backgroundColor: "red",
-                    fontSize: "4em",
-                    height: "70px",
-                    width: "70px"
-                  }}
-                >
-                  <BusinessCenterOutlined
-                    color="secondary"
-                    fontSize="inherit"
-                    className={classes.mIcon}
-                  />
-                </Card>
-              </StandardPopover>
-            </Grid>
-            <Grid item>
-              <StandardPopover popoverText={"Project Management"}>
-                <Card
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    alignSelf: "stretch",
-                    flexGrow: "1",
-                    // backgroundColor: "red",
-                    fontSize: "4em",
-                    height: "70px",
-                    width: "70px"
-                  }}
-                >
-                  <AssignmentOutlined
-                    color="secondary"
-                    fontSize="inherit"
-                    className={classes.mIcon}
-                  />
-                </Card>
-              </StandardPopover>
-            </Grid>
-          </Grid>
-          <div style={{ marginBottom: "3%", marginTop: "3%" }}>
-            <Typography
-              variant="h5"
-              gutterBottom
-              style={{ textAlign: "left", textTransform: "uppercase" }}
-            >
-              Technologies
-            </Typography>
-            <Divider
-              style={{
-                height: "2px"
-              }}
-            />
-          </div>
-          <Grid justify="center" container spacing={1}>
-            <Grid item>
-              <Chip label="React Native" />
-            </Grid>
-            <Grid item>
-              <Chip label="Sketch" />
-            </Grid>
-            <Grid item>
-              <Chip label="Balsamiq" />
-            </Grid>
-            <Grid item>
-              <Chip label="Ruby on Rails" />
-            </Grid>
-            <Grid item>
-              <Chip label="MySQL" />
-            </Grid>
-            <Grid item>
-              <Chip label="AWS" />
-            </Grid>
-            <Grid item>
-              <Chip label="Google Firebase" />
-            </Grid>
-          </Grid>
-          <div style={{ marginBottom: "3%", marginTop: "3%" }}>
-            <Typography
-              variant="h5"
-              gutterBottom
-              style={{ textAlign: "left", textTransform: "uppercase" }}
-            >
-              Preliminary Design
-            </Typography>
-            <Divider
-              style={{
-                height: "2px"
-              }}
-            />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              marginBottom: "3%"
-            }}
-          >
-            <Img fixed={data.newAppFlow.childImageSharp.fixed} />
-          </div>
-          <Typography variant="subtitle1" style={{ textAlign: "left" }}>
-            Juggle's mobile app was rebuilt to offer cross-platform
-            (Android/iOS) support, a revamped user-interface, and to support a
-            suite of new critical features. First, a research study was
-            conducted on families and sitters to ensure that the new app
-            targeted the right concerns. Next, feature specifications and UI/UX
-            mockups were drafted and presented to users and shared with the
-            Juggle team, then refined to unitized objectives to be translated
-            into code.
-          </Typography>
-          <div style={{ marginBottom: "3%", marginTop: "3%" }}>
-            <Typography
-              variant="h5"
-              gutterBottom
-              style={{ textAlign: "left", textTransform: "uppercase" }}
-            >
-              Notable Features
-            </Typography>
-            <Divider
-              style={{
-                height: "2px"
-              }}
-            />
-          </div>
-          <TransitionOnShow
-            visibilitySensorProps={{ partialVisibility: true }}
-            transitionType="Zoom"
-            transitionProps={{ timeout: { enter: 1500 } }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center"
-              }}
-            >
-              <Img fixed={data.messaging1.childImageSharp.fixed} />
-              <Img fixed={data.messaging2.childImageSharp.fixed} />
-            </div>
-          </TransitionOnShow>
-          <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
-            Proprietary In-App Messaging Platform
-          </Typography>
-          <Typography variant="subtitle1" style={{ textAlign: "left" }}>
-            Built in Google Firebase and inspired by Tinder, Juggle's in-app
-            messaging platform allows families to communicate with sitters in
-            real-time, making it easier to coordinate bookings and special
-            requests.
-          </Typography>
-          <Divider
-            style={{
-              height: "1px",
-              marginTop: "4%",
-              marginBottom: "2%",
-              color: "#F6F6F6"
-            }}
-          />
-          <TransitionOnShow
-            visibilitySensorProps={{ partialVisibility: true }}
-            transitionType="Zoom"
-            transitionProps={{ timeout: { enter: 1500 } }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                flexWrap: "wrap"
-              }}
-            >
-              <Img fixed={data.pricing1.childImageSharp.fixed} />
-              <Img fixed={data.pricing2.childImageSharp.fixed} />
-              <Img fixed={data.pricing3.childImageSharp.fixed} />
-              <Img fixed={data.pricing4.childImageSharp.fixed} />
-            </div>
-          </TransitionOnShow>
-          <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
-            Surge / Variable Pricing Model Support and Roll-Out
-          </Typography>
-          <Typography variant="subtitle1" style={{ textAlign: "left" }}>
-            Juggle's new app supports a completely revamped pricing model. This
-            includes variable pricing for each market location, surge pricing to
-            accomodate high-demand periods, promo-code and gift cards,
-            transportation reimbursement, and pre-booking payment estimation.
-          </Typography>
-          <Divider
-            style={{
-              height: "1px",
-              marginTop: "4%",
-              marginBottom: "2%",
-              color: "#F6F6F6"
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap"
-            }}
-          >
-            <Img fixed={data.search1.childImageSharp.fixed} />
-            <Img fixed={data.search2.childImageSharp.fixed} />
-            <Img fixed={data.search3.childImageSharp.fixed} />
-          </div>
-          <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
-            Smart Search
-          </Typography>
-          <Typography variant="subtitle1" style={{ textAlign: "left" }}>
-            In the new app, Juggle families can now browse, favorite, and
-            request their sitters directly. Date and time filters allow families
-            to find sitters by their posted availabilities, while profile
-            filters allow families to narrow sitters based on experience,
-            certifications, and interests. Search results are sorted by a
-            weighted rating that depends on number of connections, rating, and
-            number of jobs completed.
-          </Typography>
-          <Divider
-            style={{
-              height: "1px",
-              marginTop: "4%",
-              marginBottom: "2%",
-              color: "#F6F6F6"
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap"
-            }}
-          >
-            <Img fixed={data.backgroundCheck1.childImageSharp.fixed} />
-            <Img fixed={data.backgroundCheck2.childImageSharp.fixed} />
-          </div>
-          <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
-            Evident Background Check Integration
-          </Typography>
-          <Typography variant="subtitle1" style={{ textAlign: "left" }}>
-            After discussing with Evident, Juggle's third party background check
-            provider, a solution was formulated to automatically distribute
-            checks to sitter's who requested them on their applications, then
-            process the completed checks automatically into the app as
-            represented by the green shield checkmark.
-          </Typography>
-          <Divider
-            style={{
-              height: "1px",
-              marginTop: "4%",
-              marginBottom: "2%",
-              color: "#F6F6F6"
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap"
-            }}
-          >
-            <Img fixed={data.referral1.childImageSharp.fixed} />
-            <Img fixed={data.referral2.childImageSharp.fixed} />
-            <Img fixed={data.referral3.childImageSharp.fixed} />
-          </div>
-          <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
-            Referral Code Program
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            style={{ textAlign: "left" }}
-            gutterBottom
-          >
-            As inspired by Uber and Lyft, Juggle has referral codes that allow
-            families and sitters to receive benefits for signing up for the
-            platform, as well as having a referred user complete their first
-            booking. The user base has nearly doubled since this feature was
-            made live.
-          </Typography>
-          <Divider
-            style={{
-              height: "1px",
-              marginTop: "4%",
-              marginBottom: "2%",
-              color: "#F6F6F6"
-            }}
-          />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexWrap: "wrap"
-            }}
-          >
-            <Img fixed={data.emergency1.childImageSharp.fixed} />
-            <Img fixed={data.emergency2.childImageSharp.fixed} />
-            <Img fixed={data.emergency3.childImageSharp.fixed} />
-            <Img fixed={data.emergency4.childImageSharp.fixed} />
-          </div>
-          <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
-            Emergency / Last Minute Need Support
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            style={{ textAlign: "left" }}
-            gutterBottom
-          >
-            To outcompete similar apps, much of Juggle's new functionality
-            centers around addressing last-minute emergency situations. When
-            scheduling a booking, families may optionally specify whether Juggle
-            should automatically post a new job for applicants if the scheduled
-            sitter cancels, and within 48 hours of a booking start, they may
-            additionally add a cash bonus to incentivize sitters to cover the
-            booking. Juggle also features an alert dashboard to announce
-            last-minute opportunities to sitters. Together, this allows Juggle
-            to successfully match sitters with families for over 90% of requests
-            made.
-          </Typography>
+          <Img fixed={data.newAppFlow.childImageSharp.fixed} />
         </div>
-      </>
+        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+          Juggle's mobile app was rebuilt to offer cross-platform (Android/iOS)
+          support, a revamped user-interface, and to support a suite of new
+          critical features. First, a research study was conducted on families
+          and sitters to ensure that the new app targeted the right concerns.
+          Next, feature specifications and UI/UX mockups were drafted and
+          presented to users and shared with the Juggle team, then refined to
+          unitized objectives to be translated into code.
+        </Typography>
+        <div style={{ marginBottom: "3%", marginTop: "3%" }}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            style={{ textAlign: "left", textTransform: "uppercase" }}
+          >
+            Notable Features
+          </Typography>
+          <Divider
+            style={{
+              height: "2px"
+            }}
+          />
+        </div>
+        <TransitionOnShow
+          visibilitySensorProps={{ partialVisibility: true }}
+          transitionType="Zoom"
+          transitionProps={{ timeout: { enter: 1000 } }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center"
+            }}
+          >
+            <Img fixed={data.messaging1.childImageSharp.fixed} />
+            <Img fixed={data.messaging2.childImageSharp.fixed} />
+          </div>
+        </TransitionOnShow>
+        <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
+          Proprietary In-App Messaging Platform
+        </Typography>
+        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+          Built in Google Firebase and inspired by Tinder, Juggle's in-app
+          messaging platform allows families to communicate with sitters in
+          real-time, making it easier to coordinate bookings and special
+          requests.
+        </Typography>
+        <Divider
+          style={{
+            height: "1px",
+            marginTop: "4%",
+            marginBottom: "2%",
+            color: "#F6F6F6"
+          }}
+        />
+        <TransitionOnShow
+          visibilitySensorProps={{ partialVisibility: true }}
+          transitionType="Zoom"
+          transitionProps={{ timeout: { enter: 1000 } }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap"
+            }}
+          >
+            <Img fixed={data.pricing1.childImageSharp.fixed} />
+            <Img fixed={data.pricing2.childImageSharp.fixed} />
+            <Img fixed={data.pricing3.childImageSharp.fixed} />
+            <Img fixed={data.pricing4.childImageSharp.fixed} />
+          </div>
+        </TransitionOnShow>
+        <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
+          Surge / Variable Pricing Model Support and Roll-Out
+        </Typography>
+        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+          Juggle's new app supports a completely revamped pricing model. This
+          includes variable pricing for each market location, surge pricing to
+          accomodate high-demand periods, promo-code and gift cards,
+          transportation reimbursement, and pre-booking payment estimation.
+        </Typography>
+        <Divider
+          style={{
+            height: "1px",
+            marginTop: "4%",
+            marginBottom: "2%",
+            color: "#F6F6F6"
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap"
+          }}
+        >
+          <Img fixed={data.search1.childImageSharp.fixed} />
+          <Img fixed={data.search2.childImageSharp.fixed} />
+          <Img fixed={data.search3.childImageSharp.fixed} />
+        </div>
+        <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
+          Smart Search
+        </Typography>
+        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+          In the new app, Juggle families can now browse, favorite, and request
+          their sitters directly. Date and time filters allow families to find
+          sitters by their posted availabilities, while profile filters allow
+          families to narrow sitters based on experience, certifications, and
+          interests. Search results are sorted by a weighted rating that depends
+          on number of connections, rating, and number of jobs completed.
+        </Typography>
+        <Divider
+          style={{
+            height: "1px",
+            marginTop: "4%",
+            marginBottom: "2%",
+            color: "#F6F6F6"
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap"
+          }}
+        >
+          <Img fixed={data.backgroundCheck1.childImageSharp.fixed} />
+          <Img fixed={data.backgroundCheck2.childImageSharp.fixed} />
+        </div>
+        <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
+          Evident Background Check Integration
+        </Typography>
+        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+          After discussing with Evident, Juggle's third party background check
+          provider, a solution was formulated to automatically distribute checks
+          to sitter's who requested them on their applications, then process the
+          completed checks automatically into the app as represented by the
+          green shield checkmark.
+        </Typography>
+        <Divider
+          style={{
+            height: "1px",
+            marginTop: "4%",
+            marginBottom: "2%",
+            color: "#F6F6F6"
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap"
+          }}
+        >
+          <Img fixed={data.referral1.childImageSharp.fixed} />
+          <Img fixed={data.referral2.childImageSharp.fixed} />
+          <Img fixed={data.referral3.childImageSharp.fixed} />
+        </div>
+        <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
+          Referral Code Program
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          style={{ textAlign: "left" }}
+          gutterBottom
+        >
+          As inspired by Uber and Lyft, Juggle has referral codes that allow
+          families and sitters to receive benefits for signing up for the
+          platform, as well as having a referred user complete their first
+          booking. The user base has nearly doubled since this feature was made
+          live.
+        </Typography>
+        <Divider
+          style={{
+            height: "1px",
+            marginTop: "4%",
+            marginBottom: "2%",
+            color: "#F6F6F6"
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap"
+          }}
+        >
+          <Img fixed={data.emergency1.childImageSharp.fixed} />
+          <Img fixed={data.emergency2.childImageSharp.fixed} />
+          <Img fixed={data.emergency3.childImageSharp.fixed} />
+          <Img fixed={data.emergency4.childImageSharp.fixed} />
+        </div>
+        <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
+          Emergency / Last Minute Need Support
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          style={{ textAlign: "left" }}
+          gutterBottom
+        >
+          To outcompete similar apps, much of Juggle's new functionality centers
+          around addressing last-minute emergency situations. When scheduling a
+          booking, families may optionally specify whether Juggle should
+          automatically post a new job for applicants if the scheduled sitter
+          cancels, and within 48 hours of a booking start, they may additionally
+          add a cash bonus to incentivize sitters to cover the booking. Juggle
+          also features an alert dashboard to announce last-minute opportunities
+          to sitters. Together, this allows Juggle to successfully match sitters
+          with families for over 90% of requests made.
+        </Typography>
+      </SampleWorkTemplate>
     );
   }
 }

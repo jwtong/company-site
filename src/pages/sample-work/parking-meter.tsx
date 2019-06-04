@@ -53,7 +53,7 @@ class ParkingMeterPage extends React.Component {
   }
 
   private onChange = elementId => isVisible => {
-    console.log(isVisible);
+    ;
     if (isVisible) {
       this.setState({
         [elementId]: true

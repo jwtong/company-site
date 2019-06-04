@@ -7,7 +7,6 @@ import {
   CardContent,
   ListItem,
   ListItemIcon,
-  CardMedia,
   List,
   ListItemText
 } from "@material-ui/core";
@@ -47,19 +46,17 @@ const TechnologiesCard = ({
   technology: { title, icons, names },
   classes
 }: Props) => (
-  <Card raised className={classes.card}>
-    <CardMedia>
-      <div className={classes.iconWrapper}>
-        {icons.map((i: any, index: number) =>
-          React.createElement(i.component, {
-            key: index,
-            fontSize: "inherit",
-            className: classes.icon,
-            ...i.additionalProps
-          })
-        )}
-      </div>
-    </CardMedia>
+  <Card className={classes.card}>
+    <div className={classes.iconWrapper}>
+      {icons.map((i: any, index: number) =>
+        React.createElement(i.component, {
+          key: index,
+          fontSize: "inherit",
+          className: classes.icon,
+          ...i.additionalProps
+        })
+      )}
+    </div>
     <CardContent>
       <Typography variant="h4">{title}</Typography>
       <List>

@@ -190,7 +190,8 @@ class SampleWorkPage extends React.Component<Props> {
                 backgroundColor: "white"
               },
               cellHeight: 270,
-              cols: sampleWorkData.length / 2
+              cols: sampleWorkData.length / 2,
+              spacing: 10
             }}
             gridListTileData={gridListTileData}
           />
