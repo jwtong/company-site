@@ -27,6 +27,7 @@ import Hero from "../../components/hero";
 import roles from "../../utils/roles";
 import ServicePopovers from "../../components/service_popovers";
 import SampleWorkTemplate from "../../components/sample_work_template";
+import SubtitleDivider from "../../components/subtitle_divider";
 
 const styles = {
   header: {
@@ -85,20 +86,10 @@ class JugglePage extends React.Component {
         roles={juggleRoles}
         technologies={juggleTechnologies}
       >
-        <div style={{ marginBottom: "3%", marginTop: "3%" }}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            style={{ textAlign: "left", textTransform: "uppercase" }}
-          >
-            Preliminary Design
-          </Typography>
-          <Divider
-            style={{
-              height: "2px"
-            }}
-          />
-        </div>
+        <SubtitleDivider
+          text={"Preliminary Design"}
+          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+        />
         <div
           style={{
             display: "flex",
@@ -118,20 +109,10 @@ class JugglePage extends React.Component {
           presented to users and shared with the Juggle team, then refined to
           unitized objectives to be translated into code.
         </Typography>
-        <div style={{ marginBottom: "3%", marginTop: "3%" }}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            style={{ textAlign: "left", textTransform: "uppercase" }}
-          >
-            Notable Features
-          </Typography>
-          <Divider
-            style={{
-              height: "2px"
-            }}
-          />
-        </div>
+        <SubtitleDivider
+          text={"Notable Features"}
+          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+        />
         <TransitionOnShow
           visibilitySensorProps={{ partialVisibility: true }}
           transitionType="Zoom"

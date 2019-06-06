@@ -51,7 +51,11 @@ const SampleWorkTemplate = ({
     <>
       <Hero colorBottom={"white"}>
         <div className={classes.headerWrapper}>
-          <Typography variant="h1" className={classes.header} gutterBottom>
+          <Typography
+            variant={title.length > 14 ? "h2" : "h1"}
+            className={classes.header}
+            gutterBottom
+          >
             {title}
           </Typography>
           <Typography variant="h4" className={classes.header}>

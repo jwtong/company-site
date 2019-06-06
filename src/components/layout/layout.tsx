@@ -6,7 +6,13 @@ import "./layout.css";
 import Header from "../header";
 import Footer from "../footer";
 
-const Layout = ({ children }: { children: any }) => (
+const Layout = ({
+  children,
+  location: any
+}: {
+  children: any;
+  location: any;
+}) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -20,6 +26,7 @@ const Layout = ({ children }: { children: any }) => (
     render={data => (
       <>
         <Header
+          location={location}
           pages={[
             { text: "Process", link: "/process/" },
             { text: "Services", link: "/services/" },
