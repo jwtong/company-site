@@ -10,8 +10,11 @@ const styles = (theme: {
   createStyles({
     left: {
       color: "white !important",
-      fontFamily: "Lato",
-      fontSize: "14px"
+      fontFamily: "Roboto Condensed",
+      fontSize: "1rem",
+      [theme.breakpoints.down("md")]: {
+        fontSize: ".65rem"
+      }
     },
     right: { display: "flex", justifyContent: "flex-end" },
     container: {
@@ -20,11 +23,17 @@ const styles = (theme: {
       justifyContent: "space-between",
       padding: "0% 5% 0% 5%",
       alignItems: "center",
-      backgroundColor: theme.palette.primary.main
+      backgroundColor: theme.palette.primary.main,
+      [theme.breakpoints.down("md")]: {
+        height: "50.5px"
+      }
     },
     icon: {
-      fontSize: "30px",
-      color: "white"
+      fontSize: "2rem",
+      color: "white",
+      [theme.breakpoints.down("md")]: {
+        fontSize: "1.5rem"
+      }
     }
   });
 
@@ -38,7 +47,11 @@ const Footer = ({ classes, mainText, email, linkedIn }: Props) => {
   return (
     <footer>
       <div className={classes.container}>
-        <div className={classes.left}>{mainText}</div>
+        <div>
+          <Typography variant="h6" className={classes.left}>
+            {mainText}
+          </Typography>
+        </div>
         <div className={classes.right}>
           {email && (
             <IconButton className={classes.icon} href={`mailto:${email}`}>

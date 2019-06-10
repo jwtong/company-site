@@ -44,6 +44,10 @@ class ZicPage extends React.Component {
         roles={zicRoles}
         technologies={zicTechnologies}
       >
+        <SubtitleDivider
+          text={"Overview"}
+          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+        />
         <Typography
           variant="subtitle1"
           style={{ textAlign: "left" }}
@@ -67,7 +71,10 @@ class ZicPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.zic1.childImageSharp.fixed} />
+          <Img
+            style={{ width: "60%" }}
+            fluid={data.zic1.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           The first step was to diagram the business-logic features and
@@ -82,7 +89,10 @@ class ZicPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.zic2.childImageSharp.fixed} />
+          <Img
+            style={{ width: "70%" }}
+            fluid={data.zic2.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           Once drafted, these considerations were translated into UML diagram
@@ -98,7 +108,10 @@ class ZicPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.zic3.childImageSharp.fixed} />
+          <Img
+            style={{ width: "70%" }}
+            fluid={data.zic3.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           Next, UI/UX mockups were created to show the layout of the actual
@@ -119,7 +132,10 @@ class ZicPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.zic4.childImageSharp.fixed} />
+          <Img
+            style={{ width: "80%" }}
+            fluid={data.zic4.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           In terms of future business applications of this software, it could be
@@ -135,29 +151,29 @@ export const query = graphql`
   query {
     zic1: file(relativePath: { eq: "sample_work/zic/zic1.png" }) {
       childImageSharp {
-        fixed(width: 700) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
     zic2: file(relativePath: { eq: "sample_work/zic/zic2.png" }) {
       childImageSharp {
-        fixed(width: 700) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
     zic3: file(relativePath: { eq: "sample_work/zic/zic3.jpg" }) {
       childImageSharp {
-        fixed(width: 700) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
     zic4: file(relativePath: { eq: "sample_work/zic/zic4.png" }) {
       childImageSharp {
-        fixed(width: 1000) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

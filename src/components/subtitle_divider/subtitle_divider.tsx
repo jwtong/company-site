@@ -4,7 +4,10 @@ import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
 import { CSSProperties } from "@material-ui/styles";
 
 const styles = createStyles({
-  text: { textAlign: "left", textTransform: "uppercase" },
+  text: {
+    textAlign: "left",
+    textTransform: "uppercase"
+  },
   divider: {
     height: "2px",
     backgroundColor: "#919191"
@@ -14,11 +17,17 @@ const styles = createStyles({
 interface Props extends WithStyles<typeof styles> {
   text: string;
   containerStyle?: CSSProperties;
+  otherProps?: any;
 }
 
-const SubtitleDivider = ({ classes, text, containerStyle }: Props) => {
+const SubtitleDivider = ({
+  classes,
+  text,
+  containerStyle,
+  otherProps
+}: Props) => {
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} {...otherProps}>
       <Typography variant="h5" gutterBottom className={classes.text}>
         {text}
       </Typography>

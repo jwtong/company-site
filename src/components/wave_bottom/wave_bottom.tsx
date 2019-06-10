@@ -1,11 +1,9 @@
-import { makeStyles } from "@material-ui/core";
+import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
 import WaveBottomSVG from "../../assets/svg/wave_bottom.svg";
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 
-const useStyles = makeStyles({
-  bottomWrapper: {
-    display: "flex"
-  },
+const styles = createStyles({
   svg: {
     "& path": {
       fill: props => props.colorTop
@@ -17,19 +15,15 @@ const useStyles = makeStyles({
   }
 });
 
-interface Props {
+interface Props extends WithStyles<typeof styles> {
   colorTop?: string;
   colorBottom?: string;
   flip?: boolean;
+  width: Breakpoint;
 }
 
-const WaveBottom = ({ colorTop, colorBottom, flip }: Props) => {
-  const classes = useStyles({ colorTop, colorBottom, flip });
-  return (
-    <div className={classes.bottomWrapper}>
-      <WaveBottomSVG className={classes.svg} />
-    </div>
-  );
+const WaveBottom = ({ colorTop, colorBottom, flip, classes }: Props) => {
+  return <WaveBottomSVG className={classes.svg} display={"block"} />;
 };
 
 WaveBottom.defaultProps = {
@@ -38,4 +32,4 @@ WaveBottom.defaultProps = {
   flip: false
 };
 
-export default WaveBottom;
+export default withStyles(styles)(WaveBottom);

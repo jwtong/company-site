@@ -1,66 +1,78 @@
-import {
-  Card,
-  Grid,
-  Typography,
-  withStyles,
-  createStyles,
-  WithStyles
-} from "@material-ui/core";
+import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
 import SVG from "../svg_shapes";
 import WaveBottom from "../wave_bottom";
 import { useTheme } from "@material-ui/styles";
 
-const styles = createStyles({
-  centerer: {
-    justifyContent: "center"
-  },
-  container: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "relative",
-    overflow: "hidden",
-    backgroundColor: "black"
-  },
-  "@keyframes upDownWide": {
-    from: {
-      transform: "translateY(0)"
+const styles = (theme: any) =>
+  createStyles({
+    contentWrapper: {
+      position: "relative",
+      marginRight: theme.spacing(10),
+      marginLeft: theme.spacing(10),
+      [theme.breakpoints.down("md")]: {
+        marginRight: theme.spacing(2),
+        marginLeft: theme.spacing(2)
+      }
     },
-    to: {
-      transform: "translateY(200px)"
-    }
-  },
-  "@keyframes upDown": {
-    from: {
-      transform: "translateY(0)"
+    centerer: {
+      justifyContent: "center"
     },
-    to: {
-      transform: "translateY(30px)"
+    titleWrapper: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
+    },
+    container: {
+      width: "100vw",
+      height: "100vh",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "10px",
+        height: "330.25px"
+      },
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      position: "relative",
+      overflow: "hidden",
+      backgroundColor: "black"
+    },
+    "@keyframes upDownWide": {
+      from: {
+        transform: "translateY(0)"
+      },
+      to: {
+        transform: "translateY(200px)"
+      }
+    },
+    "@keyframes upDown": {
+      from: {
+        transform: "translateY(0)"
+      },
+      to: {
+        transform: "translateY(30px)"
+      }
+    },
+    upDownDiv: {
+      animationName: "$upDown",
+      animation: "$upDown 4s ease-in-out infinite alternate",
+      width: "100%",
+      height: "100%",
+      position: "absolute"
+    },
+    upDownWideDiv: {
+      animationName: "$upDownWide",
+      width: "100%",
+      height: "100%",
+      position: "absolute",
+      animation: "$upDownWide 18s ease-in-out infinite alternate"
     }
-  },
-  upDownDiv: {
-    animationName: "$upDown",
-    animation: "$upDown 4s ease-in-out infinite alternate",
-    width: "100%",
-    height: "100%",
-    position: "absolute"
-  },
-  upDownWideDiv: {
-    animationName: "$upDownWide",
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    animation: "$upDownWide 18s ease-in-out infinite alternate"
-  }
-});
+  });
 
 interface Props extends WithStyles<typeof styles> {
-  children: any;
   colorBottom: string;
+  children?: any;
 }
 
 const Hero = ({ children, colorBottom, classes }: Props) => {
@@ -72,7 +84,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="triangle"
-            width={"12rem"}
+            width={"12em"}
             animatedProps={{ delay: 2000 }}
             stroke={theme.palette.secondary.light}
             left="10%"
@@ -81,7 +93,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="hexa"
-            width={"12rem"}
+            width={"12em"}
             animatedProps={{ delay: 2000 }}
             stroke={theme.palette.secondary.dark}
             left="60%"
@@ -90,7 +102,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="box"
-            width={"1.5rem"}
+            width={"1.5em"}
             animatedProps={{ delay: 1000 }}
             fill={theme.palette.primary.dark}
             left="60%"
@@ -101,7 +113,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="arrowUp"
-            width={"4rem"}
+            width={"4em"}
             animatedProps={{ delay: 2000 }}
             fill={theme.palette.secondary.main}
             left="80%"
@@ -110,7 +122,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="triangle"
-            width={"3rem"}
+            width={"3em"}
             animatedProps={{ delay: 2000 }}
             stroke={theme.palette.secondary.main}
             left="90%"
@@ -119,7 +131,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="circle"
-            width={"4rem"}
+            width={"4em"}
             animatedProps={{ delay: 1000 }}
             fill={theme.palette.primary.dark}
             left="70%"
@@ -128,7 +140,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="triangle"
-            width={"4rem"}
+            width={"4em"}
             animatedProps={{ delay: 2000 }}
             stroke={theme.palette.primary.main}
             left="30%"
@@ -137,7 +149,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="cross"
-            width={"4rem"}
+            width={"4em"}
             animatedProps={{ delay: 2000 }}
             stroke={theme.palette.secondary.main}
             left="28%"
@@ -146,7 +158,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="circle"
-            width={"1.5rem"}
+            width={"1.5em"}
             animatedProps={{ delay: 1000 }}
             fill={theme.palette.primary.main}
             left="75%"
@@ -155,7 +167,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           <SVG
             animated
             icon="upDown"
-            width={"2rem"}
+            width={"2em"}
             animatedProps={{ delay: 1000 }}
             fill={theme.palette.primary.main}
             left="45%"
@@ -165,7 +177,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
         <SVG
           animated
           icon="circle"
-          width={"6rem"}
+          width={"6em"}
           animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="5%"
@@ -174,7 +186,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
         <SVG
           animated
           icon="circle"
-          width={"1.5rem"}
+          width={"1.5em"}
           animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="4%"
@@ -183,7 +195,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
         <SVG
           animated
           icon="circle"
-          width={"3rem"}
+          width={"3em"}
           animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="50%"
@@ -192,7 +204,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
         <SVG
           animated
           icon="upDown"
-          width={"2rem"}
+          width={"2em"}
           animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="95%"
@@ -201,7 +213,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
         <SVG
           animated
           icon="upDown"
-          width={"6rem"}
+          width={"6em"}
           animatedProps={{ delay: 1000 }}
           fill={theme.palette.primary.main}
           left="40%"
@@ -211,7 +223,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           animated
           animatedProps={{ delay: 2000 }}
           icon="triangle"
-          width={"2rem"}
+          width={"2em"}
           stroke={theme.palette.primary.main}
           left="25%"
           top="5%"
@@ -220,7 +232,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           animated
           animatedProps={{ delay: 2000 }}
           icon="circle"
-          width={"16rem"}
+          width={"16em"}
           fill={theme.palette.secondary.main}
           left="95%"
           top="5%"
@@ -229,7 +241,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           animated
           animatedProps={{ delay: 1000 }}
           icon="box"
-          width={"16rem"}
+          width={"16em"}
           fill={theme.palette.primary.main}
           left="5%"
           top="110%"
@@ -238,7 +250,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           animated
           animatedProps={{ delay: 1000 }}
           icon="box"
-          width={"1.5rem"}
+          width={"1.5em"}
           fill={theme.palette.primary.main}
           left="10%"
           top="10%"
@@ -247,7 +259,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           animated
           animatedProps={{ delay: 1000 }}
           icon="box"
-          width={"3rem"}
+          width={"3em"}
           fill={theme.palette.primary.main}
           left="40%"
           top="30%"
@@ -256,7 +268,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           animated
           animatedProps={{ delay: 2000 }}
           icon="hexa"
-          width={"4rem"}
+          width={"4em"}
           stroke={theme.palette.primary.main}
           left="10%"
           top="50%"
@@ -265,13 +277,14 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           animated
           animatedProps={{ delay: 2000 }}
           icon="hexa"
-          width={"2rem"}
+          width={"2em"}
           stroke={theme.palette.primary.main}
           left="80%"
           top="70%"
         />
-        <div style={{ position: "relative" }}>{children}</div>
+        <div className={classes.contentWrapper}>{children}</div>
       </div>
+
       <WaveBottom colorTop={"black"} colorBottom={colorBottom} />
     </>
   );

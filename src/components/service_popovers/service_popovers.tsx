@@ -3,10 +3,13 @@ import {
   Grid,
   withStyles,
   createStyles,
-  WithStyles
+  WithStyles,
+  withWidth
 } from "@material-ui/core";
 import React from "react";
 import StandardPopover from "../standard_popover";
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
+import { isWidthDown } from "@material-ui/core/withWidth";
 
 const styles = (theme: { palette: { secondary: { light: any } } }) =>
   createStyles({
@@ -17,9 +20,14 @@ const styles = (theme: { palette: { secondary: { light: any } } }) =>
       alignItems: "center",
       alignSelf: "stretch",
       flexGrow: 1,
-      fontSize: "4em",
-      height: "70px",
-      width: "70px"
+      fontSize: "4rem",
+      height: "5rem",
+      width: "5rem",
+      [theme.breakpoints.down("md")]: {
+        height: "3.5rem",
+        width: "3.5rem",
+        fontSize: "3rem"
+      }
     },
     grid: {
       display: "flex",
@@ -30,10 +38,16 @@ const styles = (theme: { palette: { secondary: { light: any } } }) =>
 
 interface Props extends WithStyles<typeof styles> {
   roles: Array<{ title: string; icon: any }>;
+  width: Breakpoint;
 }
 
-const ServicePopovers = ({ roles, classes }: Props) => (
-  <Grid container spacing={3} direction="row" justify="center">
+const ServicePopovers = ({ roles, classes, width }: Props) => (
+  <Grid
+    container
+    spacing={isWidthDown("md", width) ? 2 : 3}
+    direction="row"
+    justify="center"
+  >
     {roles.map((role: any) => {
       return (
         <Grid item key={role.title}>
@@ -51,4 +65,4 @@ const ServicePopovers = ({ roles, classes }: Props) => (
   </Grid>
 );
 
-export default withStyles(styles)(ServicePopovers);
+export default withWidth()(withStyles(styles)(ServicePopovers));

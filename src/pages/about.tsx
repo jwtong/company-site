@@ -20,26 +20,63 @@ import technologyColorMap from "../utils/technologies";
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const styles = createStyles({
-  mIcon: {
-    color: "black"
-  },
-  header: {
-    color: "white !important",
-    textAlign: "center"
-  },
-  centerer: {
-    justifyContent: "center"
-  },
-  container: {
-    width: "100vw",
-    height: "60vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center"
-  }
-});
+const styles = theme =>
+  createStyles({
+    mIcon: {
+      color: "black"
+    },
+    header: {
+      color: "white !important",
+      textAlign: "center"
+    },
+    centerer: {
+      justifyContent: "center"
+    },
+    button: {
+      marginTop: theme.spacing(6),
+      [theme.breakpoints.down("md")]: {
+        marginTop: theme.spacing(2)
+      }
+    },
+    aboutWrapper: {
+      paddingTop: theme.spacing(4),
+      paddingBottom: theme.spacing(4),
+      paddingLeft: theme.spacing(25),
+      paddingRight: theme.spacing(25),
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3)
+      },
+      alignItems: "stretch"
+    },
+    avatar: {
+      borderRadius: "100px",
+      marginTop: theme.spacing(4)
+    },
+    divider: {
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4),
+      [theme.breakpoints.down("md")]: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3)
+      }
+    },
+    skillsGrid: {
+      paddingLeft: theme.spacing(15),
+      paddingRight: theme.spacing(15),
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: theme.spacing(0),
+        paddingRight: theme.spacing(0)
+      }
+    },
+    name: {
+      fontFamily: "Lato",
+      fontWeight: 800,
+      [theme.breakpoints.down("md")]: {
+        fontSize: "1.75rem"
+      }
+    }
+  });
 
 const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
   const technologies: Array<any> = [
@@ -96,7 +133,7 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
           <Typography variant="h1" className={classes.header} gutterBottom>
             About Us
           </Typography>
-          <Typography component="h2" variant="h4" className={classes.header}>
+          <Typography variant="h4" className={classes.header}>
             Meet the co-founders of _______
           </Typography>
         </div>
@@ -105,9 +142,8 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
         return (
           <div key={p.name}>
             <div
+              className={classes.aboutWrapper}
               style={{
-                padding: "2% 15% 2% 15%",
-                alignItems: "stretch",
                 backgroundColor: p.backgroundColor
               }}
             >
@@ -118,21 +154,18 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
                   flexDirection: "column"
                 }}
               >
-                <Typography
-                  style={{ fontFamily: "Lato", fontWeight: 800 }}
-                  variant="h4"
-                >
+                <Typography className={classes.name} variant="h4">
                   {p.name}
                 </Typography>
                 <Img
                   fixed={p.avatar.childImageSharp.fixed}
                   alt={p.name}
-                  style={{ borderRadius: "100px", margin: "2% 0% 2% 0%" }}
+                  className={classes.avatar}
                 />
               </div>
               <SubtitleDivider
                 text={"About Me"}
-                containerStyle={{ marginBottom: "3%" }}
+                otherProps={{ className: classes.divider }}
               />
               {p.about.map((paragraph, index) => {
                 return (
@@ -145,10 +178,10 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
               })}
               <SubtitleDivider
                 text={"Top Skills"}
-                containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+                otherProps={{ className: classes.divider }}
               />
               <Grid
-                style={{ paddingRight: "5%", paddingLeft: "5%" }}
+                className={classes.skillsGrid}
                 justify="center"
                 container
                 spacing={1}
@@ -168,7 +201,7 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
                   );
                 })}
               </Grid>
-              <Divider style={{ marginTop: "3%", marginBottom: "3%" }} />
+              <Divider className={classes.divider} />
               <div
                 style={{
                   display: "flex",
@@ -190,19 +223,12 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
           </div>
         );
       })}
-      <PageBottom>
-        <div style={{ paddingLeft: "10%", paddingRight: "10%" }}>
-          <Typography variant="h4" className={classes.header} gutterBottom>
-            Some examples of previous work
-          </Typography>
-        </div>
+      <PageBottom colorTop={people[1].backgroundColor}>
+        <Typography variant="h4" className={classes.header} gutterBottom>
+          Some examples of previous work
+        </Typography>
         <Button
-          style={{
-            height: "3rem",
-            width: "10rem",
-            fontSize: "1rem",
-            marginTop: "3%"
-          }}
+          className={classes.button}
           href="/sample-work"
           variant="contained"
           color="secondary"

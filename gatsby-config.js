@@ -8,7 +8,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ["Roboto", "Lato"]
+          families: ["Roboto", "Lato", "Roboto Condensed"]
         }
       }
     },

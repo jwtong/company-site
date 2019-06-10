@@ -12,24 +12,40 @@ import ServicePopovers from "../service_popovers";
 import technologyColorMap from "../../utils/technologies";
 import SubtitleDivider from "../subtitle_divider";
 
-const styles = createStyles({
-  headerWrapper: {
-    display: "flex",
-    flexDirection: "column",
-    paddingRight: "10%",
-    paddingLeft: "10%",
-    alignItems: "center"
-  },
-  header: {
-    color: "white !important",
-    textAlign: "center"
-  },
-  mainContentWrapper: {
-    padding: "0% 15% 0% 15%",
-    alignItems: "stretch",
-    marginBottom: "3%"
-  }
-});
+const styles = theme =>
+  createStyles({
+    header: {
+      color: "white !important",
+      textAlign: "center"
+    },
+    mainContentWrapper: {
+      paddingLeft: theme.spacing(15),
+      paddingRight: theme.spacing(15),
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3)
+      },
+      alignItems: "stretch",
+      marginBottom: "3%"
+    },
+    skillsGrid: {
+      paddingLeft: theme.spacing(15),
+      paddingRight: theme.spacing(15),
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: theme.spacing(0),
+        paddingRight: theme.spacing(0),
+        marginBottom: theme.spacing(3)
+      }
+    },
+    divider: {
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4),
+      [theme.breakpoints.down("md")]: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3)
+      }
+    }
+  });
 
 interface Props extends WithStyles<typeof styles> {
   children: any;
@@ -50,31 +66,30 @@ const SampleWorkTemplate = ({
   return (
     <>
       <Hero colorBottom={"white"}>
-        <div className={classes.headerWrapper}>
-          <Typography
-            variant={title.length > 14 ? "h2" : "h1"}
-            className={classes.header}
-            gutterBottom
-          >
-            {title}
-          </Typography>
-          <Typography variant="h4" className={classes.header}>
-            {subtitle}
-          </Typography>
-        </div>
+        <Typography variant="h1" className={classes.header} gutterBottom>
+          {title}
+        </Typography>
+        <Typography variant="h4" className={classes.header}>
+          {subtitle}
+        </Typography>
       </Hero>
       <div className={classes.mainContentWrapper}>
         {children}
         <SubtitleDivider
           text={"Services Provided"}
-          containerStyle={{ marginTop: "3%", marginBottom: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
         <ServicePopovers roles={roles} />
         <SubtitleDivider
           text={"Technologies"}
-          containerStyle={{ marginTop: "3%", marginBottom: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
-        <Grid justify="center" container spacing={1}>
+        <Grid
+          className={classes.skillsGrid}
+          justify="center"
+          container
+          spacing={1}
+        >
           {technologies.map((t: string) => {
             return (
               <Grid key={t} item>

@@ -24,16 +24,73 @@ import SubtitleDivider from "../components/subtitle_divider";
 import TransitionOnShow from "../components/transition_on_show";
 import PageBottom from "../components/page_bottom";
 import SplashPage from "../components/splash_page";
+import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 
-const styles = {
+const styles = theme => ({
+  technologiesWrapper: {
+    width: "100%",
+    paddingLeft: theme.spacing(10),
+    paddingRight: theme.spacing(10),
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2)
+    },
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    "-webkit-box-sizing": "border-box",
+    "-moz-box-sizing": "border-box",
+    "box-sizing": "border-box"
+  },
+  gridWrapper: {
+    width: "100%",
+    display: "flex",
+    alignSelf: "center",
+    alignItems: "center",
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(5),
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2)
+    }
+  },
   header: {
     color: "white !important",
     textAlign: "center"
+  },
+  header2: {
+    color: "white !important",
+    textAlign: "center",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "2.5em"
+    }
+  },
+  subHeader2: {
+    color: "white !important",
+    textAlign: "center",
+    [theme.breakpoints.down("md")]: {
+      fontSize: "1.75em"
+    }
+  },
+  button: {
+    marginTop: theme.spacing(6),
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(2)
+    }
+  },
+  bottomWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   }
-};
+});
 
 const IndexPage = props => {
-  const { classes, theme } = props;
+  const { classes, theme, width } = props;
 
   const technologies = [
     {
@@ -86,66 +143,39 @@ const IndexPage = props => {
   return (
     <>
       <Hero colorBottom={"white"}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-          }}
-        >
-          <Typography variant="h1" className={classes.header} gutterBottom>
-            Company Name
-          </Typography>
-          <Typography variant="h4" className={classes.header}>
-            We want to build your software, the right way
-          </Typography>
-        </div>
+        <Typography variant="h1" className={classes.header} gutterBottom>
+          Company Name
+        </Typography>
+        <Typography variant="h4" className={classes.header}>
+          We want to build your software, the right way
+        </Typography>
       </Hero>
       <SplashPage>
-        <Typography variant="h4" style={{ textAlign: "center" }}>
-          We founded _______ to engage with startups, business ideas, and
-          interesting people. As as team of two, our expertise lies in the
-          ability to learn and execute quickly, our focus is to deliver the best
-          technology, and our advantage is being lean.
-        </Typography>
-        <Button
-          style={{
-            height: "3rem",
-            width: "10rem",
-            fontSize: "1rem",
-            marginTop: "3%"
-          }}
-          href="/contact"
-          variant="contained"
-          color="secondary"
-        >
-          Services
-        </Button>
+        <div className={classes.bottomWrapper}>
+          <Typography variant="h4" style={{ textAlign: "center" }}>
+            We founded _______ to engage with startups, business ideas, and
+            interesting people. As as team of two, our expertise lies in the
+            ability to learn and execute quickly, our focus is to deliver the
+            best technology, and our advantage is being lean.
+          </Typography>
+          <Button
+            className={classes.button}
+            href="/services"
+            variant="contained"
+            color="secondary"
+          >
+            Services
+          </Button>
+        </div>
       </SplashPage>
-      <div
-        style={{
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
+      <div className={classes.technologiesWrapper}>
         <SubtitleDivider
           text="Progressive Web and Mobile Application Development"
-          containerStyle={{ width: "90%" }}
-        />
-        <div
-          style={{
-            display: "flex",
-            alignSelf: "center",
-            alignItems: "center",
-            width: "90%",
-            marginTop: theme.spacing(5),
-            marginBottom: theme.spacing(5)
+          containerStyle={{
+            width: "100%"
           }}
-        >
+        />
+        <div className={classes.gridWrapper}>
           <Grid
             container
             spacing={3}
@@ -155,11 +185,11 @@ const IndexPage = props => {
           >
             {technologies.map(({ icons, names, title }, index: number) => {
               return (
-                <Grid key={index} item xs={4}>
+                <Grid key={index} item xs={12} md={4}>
                   <TransitionOnShow
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"
-                    delay={index * 200}
+                    delay={isWidthDown("md", width) ? 0 : index * 200}
                     transitionProps={{ timeout: { enter: 1000 } }}
                   >
                     <div>
@@ -182,21 +212,11 @@ const IndexPage = props => {
         <Typography variant="h2" className={classes.header} gutterBottom>
           Interested in working together?
         </Typography>
-        <Typography
-          component="h4"
-          variant="h4"
-          className={classes.header}
-          gutterBottom
-        >
+        <Typography variant="h4" className={classes.header} gutterBottom>
           Contact us to discuss your project and how we can collaborate.
         </Typography>
         <Button
-          style={{
-            height: "3rem",
-            width: "10rem",
-            fontSize: "1rem",
-            marginTop: "3%"
-          }}
+          className={classes.button}
           href="/contact"
           variant="contained"
           color="secondary"
@@ -208,4 +228,4 @@ const IndexPage = props => {
   );
 };
 
-export default withStyles(styles, { withTheme: true })(IndexPage);
+export default withWidth()(withStyles(styles, { withTheme: true })(IndexPage));

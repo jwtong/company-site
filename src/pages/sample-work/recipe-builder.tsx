@@ -88,7 +88,10 @@ class RecipeBuilderPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.recipeBuilder2.childImageSharp.fixed} />
+          <Img
+            style={{ width: "60%" }}
+            fluid={data.recipeBuilder2.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           We retrained the existing SVM AlexNet to handle food recognition,
@@ -112,7 +115,10 @@ class RecipeBuilderPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.recipeBuilder4.childImageSharp.fixed} />
+          <Img
+            style={{ width: "50%" }}
+            fluid={data.recipeBuilder4.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           First, we simplified this problem to the stock image above, and
@@ -128,7 +134,10 @@ class RecipeBuilderPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.recipeBuilder5.childImageSharp.fixed} />
+          <Img
+            style={{ width: "50%" }}
+            fluid={data.recipeBuilder5.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           Next, we used a 90 degree orientation Gabor image filter to filter the
@@ -143,7 +152,10 @@ class RecipeBuilderPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.recipeBuilder6.childImageSharp.fixed} />
+          <Img
+            style={{ width: "50%" }}
+            fluid={data.recipeBuilder6.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           Since we only wanted the shelves, we isolated the most prominent
@@ -159,10 +171,22 @@ class RecipeBuilderPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.recipeBuilder7.childImageSharp.fixed} />
-          <Img fixed={data.recipeBuilder8.childImageSharp.fixed} />
-          <Img fixed={data.recipeBuilder9.childImageSharp.fixed} />
-          <Img fixed={data.recipeBuilder10.childImageSharp.fixed} />
+          <Img
+            style={{ width: "50%" }}
+            fluid={data.recipeBuilder7.childImageSharp.fluid}
+          />
+          <Img
+            style={{ width: "50%" }}
+            fluid={data.recipeBuilder8.childImageSharp.fluid}
+          />
+          <Img
+            style={{ width: "50%" }}
+            fluid={data.recipeBuilder9.childImageSharp.fluid}
+          />
+          <Img
+            style={{ width: "50%" }}
+            fluid={data.recipeBuilder10.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           Finally, we cut the original image along those lines, resulting in
@@ -182,7 +206,10 @@ class RecipeBuilderPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.recipeBuilder3.childImageSharp.fixed} />
+          <Img
+            style={{ width: "100%" }}
+            fluid={data.recipeBuilder3.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           With the neural-network we trained, we implemented a simple Java GUI
@@ -238,8 +265,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder1.png" }
     ) {
       childImageSharp {
-        fixed(width: 500) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 500) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -247,8 +274,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder2.png" }
     ) {
       childImageSharp {
-        fixed(width: 600) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 600) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -256,8 +283,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder3.png" }
     ) {
       childImageSharp {
-        fixed(width: 1000) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -265,8 +292,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder4.png" }
     ) {
       childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -274,8 +301,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder5.png" }
     ) {
       childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -283,8 +310,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder6.png" }
     ) {
       childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -292,8 +319,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder7.png" }
     ) {
       childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -301,8 +328,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder8.png" }
     ) {
       childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -310,8 +337,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder9.png" }
     ) {
       childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -319,8 +346,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/recipe-builder/recipe_builder10.png" }
     ) {
       childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

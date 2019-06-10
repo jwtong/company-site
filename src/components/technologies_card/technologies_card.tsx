@@ -27,10 +27,36 @@ const styles = (theme: any) =>
       paddingBottom: theme.spacing(2),
       paddingLeft: theme.spacing(1),
       paddingRight: theme.spacing(1),
-      fontSize: "6em"
+      fontSize: "6em",
+      [theme.breakpoints.down("md")]: {
+        fontSize: "4rem",
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1)
+      }
     },
     icon: {
       color: "white"
+    },
+    // title: {
+    //   [theme.breakpoints.down("md")]: {
+    //     fontSize: "1.25rem"
+    //   }
+    // },
+    // itemText: {
+    //   [theme.breakpoints.down("md")]: {
+    //     fontSize: "1rem"
+    //   }
+    // },
+    listItemText: {
+      [theme.breakpoints.down("md")]: {
+        margin: 0
+      }
+    },
+    starIcon: {
+      marginRight: "5%",
+      [theme.breakpoints.down("md")]: {
+        fontSize: "1rem"
+      }
     }
   });
 
@@ -64,12 +90,12 @@ const TechnologiesCard = ({
           return (
             <ListItem key={poText.text}>
               {poText.starred && (
-                <ListItemIcon>
-                  <StarIcon />
-                </ListItemIcon>
+                <StarIcon color="secondary" className={classes.starIcon} />
               )}
               <ListItemText
-                primaryTypographyProps={{ variant: "h6" }}
+                primaryTypographyProps={{
+                  variant: "h6"
+                }}
                 primary={poText.text}
               />
             </ListItem>

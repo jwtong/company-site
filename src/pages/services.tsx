@@ -10,7 +10,13 @@ import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
 import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
 import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
 import Grid from "@material-ui/core/Grid";
-import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
+import {
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  withWidth
+} from "@material-ui/core";
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ServiceCard from "../components/service_card";
@@ -18,99 +24,92 @@ import Hero from "../components/hero";
 import WaveBottom from "../components/wave_bottom";
 import PageBottom from "../components/page_bottom";
 import roles from "../utils/roles";
+import { isWidthDown } from "@material-ui/core/withWidth";
 
 const styles = theme => ({
-  // mIcon: {
-  //   color: "red"
-  // },
+  grid: {
+    width: "100%"
+  },
+  button: {
+    width: "11rem"
+  },
+  buttonWrapper: {
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "3%",
+    width: "30%",
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "center",
+      justify: "space-around",
+      height: "100px",
+      width: "100%"
+    }
+  },
   header: {
     color: "white !important",
     textAlign: "center"
   },
-  centerer: {
-    justifyContent: "center"
-  },
-  container: {
-    width: "100vw",
-    height: "60vh",
+  roleWrapper: {
+    width: "100%",
+    paddingLeft: theme.spacing(10),
+    paddingRight: theme.spacing(10),
+    marginBottom: theme.spacing(1),
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2)
+    },
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    "-webkit-box-sizing": "border-box",
+    "-moz-box-sizing": "border-box",
+    "box-sizing": "border-box"
   },
-  card: {
-    marginTop: "5%",
-    paddingTop: "5%",
-    paddingBottom: "5%",
-    paddingRight: "15%",
-    backgroundColor: "#f6f6f6",
-    borderTop: `6px solid ${theme.palette.primary.main}`
+  serviceCardWrapper: {
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2)
+    }
   }
 });
 
 const ServicesPage = props => {
-  const { classes } = props;
+  const { classes, width } = props;
   return (
     <>
       <Hero colorBottom="white">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            paddingRight: "10%",
-            paddingLeft: "10%",
-            alignItems: "center"
-          }}
-        >
-          <Typography variant="h1" className={classes.header} gutterBottom>
-            Services
-          </Typography>
-          <Typography variant="h4" className={classes.header}>
-            Our core product is code, but we never expect you to come to us with
-            a complete blueprint of your idea. We offer any combination of the
-            following roles to ensure that we can help you along at any stage.
-          </Typography>
-        </div>
+        <Typography variant="h1" className={classes.header} gutterBottom>
+          Services
+        </Typography>
+        <Typography variant="h4" className={classes.header}>
+          Our core product is code, but we never expect you to come to us with a
+          complete blueprint of your idea. We offer any combination of the
+          following roles to ensure that we can help you along at any stage.
+        </Typography>
       </Hero>
-      <Grid
-        container
-        direction="column"
-        alignItems="center"
-        alignContent="center"
-        style={{
-          fontSize: "10em",
-          marginBottom: "3%",
-          width: "100%"
-        }}
-      >
+      <div className={classes.roleWrapper}>
         {roles.map(role => {
           return (
-            <Grid key={role.title} item xs={11} style={{ marginTop: "5%" }}>
-              <ServiceCard role={role} />
-            </Grid>
+            <div className={classes.serviceCardWrapper}>
+              <ServiceCard key={role.title} role={role} />
+            </div>
           );
         })}
-      </Grid>
+      </div>
       <PageBottom>
-        <div style={{ paddingLeft: "10%", paddingRight: "10%" }}>
-          <Typography variant="h4" className={classes.header} gutterBottom>
-            Learn more about our experience in each of these roles
-          </Typography>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "3%",
-            width: "25%"
-          }}
-        >
+        <Typography variant="h4" className={classes.header} gutterBottom>
+          Learn more about our experience in each of these roles
+        </Typography>
+        <div className={classes.buttonWrapper}>
           <Button
-            style={{
-              height: "3rem",
-              width: "10rem",
-              fontSize: "1rem"
-            }}
+            className={classes.button}
             href="/about"
             variant="contained"
             color="secondary"
@@ -118,11 +117,7 @@ const ServicesPage = props => {
             About Us
           </Button>
           <Button
-            style={{
-              height: "3rem",
-              width: "10rem",
-              fontSize: "1rem"
-            }}
+            className={classes.button}
             href="/sample-work"
             variant="contained"
             color="secondary"
@@ -135,4 +130,4 @@ const ServicesPage = props => {
   );
 };
 
-export default withStyles(styles)(ServicesPage);
+export default withWidth()(withStyles(styles)(ServicesPage));

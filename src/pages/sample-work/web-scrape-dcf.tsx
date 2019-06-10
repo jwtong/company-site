@@ -55,7 +55,10 @@ class WebScrapeDcfPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.webScrapeDcf1.childImageSharp.fixed} />
+          <Img
+            style={{ width: "60%" }}
+            fluid={data.webScrapeDcf1.childImageSharp.fluid}
+          />
         </div>
         <Typography
           variant="subtitle1"
@@ -80,7 +83,10 @@ class WebScrapeDcfPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.webScrapeDcf2.childImageSharp.fixed} />
+          <Img
+            style={{ width: "50%" }}
+            fluid={data.webScrapeDcf2.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           Built primarily with the limited Microsoft VBA, the program interfaces
@@ -98,8 +104,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/web-scrape-dcf/web_scrape_dcf1.png" }
     ) {
       childImageSharp {
-        fixed(width: 700) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -107,8 +113,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/web-scrape-dcf/web_scrape_dcf2.png" }
     ) {
       childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

@@ -3,10 +3,16 @@ const Layout = require("./src/components/layout").default;
 const grey = require("@material-ui/core/colors/grey").default;
 const pink = require("@material-ui/core/colors/pink").default;
 const ThemeProvider = require("@material-ui/styles/ThemeProvider").default;
-const { createMuiTheme } = require("@material-ui/core/styles");
+const {
+  createMuiTheme,
+  responsiveFontSizes
+} = require("@material-ui/core/styles");
+const createBreakpoints = require("@material-ui/core/styles/createBreakpoints")
+  .default;
 const Button = require("@material-ui/core/Button").default;
 
-const theme = createMuiTheme({
+const breakpoints = createBreakpoints({});
+let theme = createMuiTheme({
   palette: {
     primary: { main: grey[900] },
     secondary: { main: pink[500], contrastText: "#fff" }
@@ -15,7 +21,8 @@ const theme = createMuiTheme({
     useNextVariants: true,
     // Use the system font instead of the default Roboto font.
     h1: {
-      fontFamily: "Lato"
+      fontFamily: "Roboto Condensed",
+      fontWeight: "500"
     },
     h2: {
       fontFamily: "Lato"
@@ -24,7 +31,10 @@ const theme = createMuiTheme({
       fontFamily: "Lato"
     },
     h4: {
-      fontFamily: "Lato"
+      fontFamily: "Lato",
+      [breakpoints.down("md")]: {
+        fontSize: "1.25rem"
+      }
     },
     h5: {
       fontFamily: "Lato",
@@ -33,14 +43,30 @@ const theme = createMuiTheme({
     },
     h6: {
       fontFamily: "Lato",
-      fontSize: 22
+      fontSize: "1.375em",
+      [breakpoints.down("md")]: {
+        fontSize: "1rem"
+      }
     },
     subtitle1: {
       color: "#5e5e5e",
-      fontSize: 18
+      fontSize: "1.125rem",
+      [breakpoints.down("md")]: {
+        fontSize: "1rem"
+      }
+    },
+    button: {
+      fontFamily: "Roboto Condensed",
+      fontWeight: "Bold",
+      fontSize: "1.25rem",
+      [breakpoints.down("md")]: {
+        fontSize: "1rem"
+      }
     }
   }
 });
+
+theme = responsiveFontSizes(theme);
 
 exports.wrapPageElement = ({ element, props }) => {
   // props provide same data to Layout as Page element will get

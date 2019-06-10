@@ -1,75 +1,56 @@
 import React from "react";
-import { Link, graphql, navigate } from "gatsby";
-import { makeStyles } from "@material-ui/styles";
-import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
-import Code from "@material-ui/icons/Code";
-import InsertChartOutlined from "@material-ui/icons/InsertChartOutlined";
-import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
-import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
-import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
-import Grid from "@material-ui/core/Grid";
-import Img from "gatsby-image/withIEPolyfill";
-import VisibilitySensor from "react-visibility-sensor";
+import { graphql, navigate } from "gatsby";
 
 import {
   Typography,
-  List,
-  ListItem,
-  ListItemText,
-  GridListTile,
-  GridList,
   GridListTileBar,
   createStyles,
   withStyles,
   WithStyles,
-  Zoom
+  withWidth
 } from "@material-ui/core";
 import Hero from "../../components/hero";
 import TransitionGridList from "../../components/transition_grid_list";
+import Img from "gatsby-image/withIEPolyfill";
+import { isWidthDown } from "@material-ui/core/withWidth";
 
-const styles = createStyles({
-  mIcon: {
-    color: "black"
-  },
-  "@keyframes anim": {
-    from: { transform: "scale(1.0)", filter: "grayscale(0%)" },
-    to: { transform: "scale(1.1)", filter: "grayscale(60%)" }
-  },
-  gridTile: {
-    "&:hover $tileTitle": {
-      opacity: 100
+const styles = theme =>
+  createStyles({
+    "@keyframes anim": {
+      from: { transform: "scale(1.0)", filter: "grayscale(0%)" },
+      to: { transform: "scale(1.1)", filter: "grayscale(60%)" }
     },
-    "&:hover img": {
-      animationName: "$anim",
-      animationDuration: ".3s",
-      transform: "scale(1.1)",
-      filter: "grayscale(60%)"
+    gridTile: {
+      "&:hover $tileTitle": {
+        opacity: 100
+      },
+      "&:hover img": {
+        animationName: "$anim",
+        animationDuration: ".3s",
+        transform: "scale(1.1)",
+        filter: "grayscale(60%)"
+      }
+    },
+    tileTitle: {
+      opacity: 0
+    },
+    header: {
+      color: "white !important",
+      textAlign: "center"
+    },
+    container: {
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      paddingTop: theme.spacing(3),
+      paddingBottom: theme.spacing(3)
+    },
+    juggleGridTile: {
+      backgroundColor: "white"
     }
-  },
-  tileTitle: {
-    opacity: 0
-  },
-  header: {
-    color: "white !important",
-    textAlign: "center"
-  },
-  centerer: {
-    justifyContent: "center"
-  },
-  container: {
-    width: "100vw",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingTop: "3%",
-    paddingBottom: "3%"
-  },
-  juggleGridTile: {
-    backgroundColor: "white"
-  }
-});
+  });
 
 interface Props extends WithStyles<typeof styles> {}
 
@@ -85,7 +66,7 @@ class SampleWorkPage extends React.Component<Props> {
 
     return sampleWorkData.map((swd: any, index: number) => {
       return {
-        delay: delays[index],
+        delay: isWidthDown("xs", this.props.width) ? 500 : delays[index],
         props: {
           cols: swd.cols,
           rows: swd.rows,
@@ -96,7 +77,7 @@ class SampleWorkPage extends React.Component<Props> {
           className: classes.gridTile
         },
         children: (
-          <>
+          <div style={{ width: "100%", height: "100%" }}>
             <Img
               style={{ height: "100%" }}
               className={swd.customClassname}
@@ -105,14 +86,14 @@ class SampleWorkPage extends React.Component<Props> {
               alt={swd.title}
             />
             <GridListTileBar className={classes.tileTitle} title={swd.title} />
-          </>
+          </div>
         )
       };
     });
   }
 
   public render() {
-    const { classes, data } = this.props;
+    const { classes, data, width } = this.props;
     const sampleWorkData = [
       {
         title: "Juggle Mobile App",
@@ -160,6 +141,7 @@ class SampleWorkPage extends React.Component<Props> {
       }
     ];
 
+    const columns = isWidthDown("xs", width) ? 1 : sampleWorkData.length / 2;
     const gridListTileData = this.getGridListTileData(sampleWorkData, classes);
     return (
       <>
@@ -182,15 +164,16 @@ class SampleWorkPage extends React.Component<Props> {
         <div className={classes.container}>
           <TransitionGridList
             transitionType={"Zoom"}
+            individualVisibility={isWidthDown("xs", width)}
             visibilitySensorProps={{ partialVisibility: true }}
             transitionProps={{ timeout: { enter: 500 } }}
             gridListProps={{
               style: {
-                width: `${(sampleWorkData.length / 2) * 270}px`,
+                width: `${columns * 270}px`,
                 backgroundColor: "white"
               },
               cellHeight: 270,
-              cols: sampleWorkData.length / 2,
+              cols: columns,
               spacing: 10
             }}
             gridListTileData={gridListTileData}
@@ -254,4 +237,4 @@ export const query = graphql`
   }
 `;
 
-export default withStyles(styles)(SampleWorkPage);
+export default withWidth()(withStyles(styles)(SampleWorkPage));

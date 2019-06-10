@@ -73,14 +73,10 @@ class ParkingMeterPage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Card
-            raised
-            style={{
-              display: "flex"
-            }}
-          >
-            <Img fixed={data.main.childImageSharp.fixed} />
-          </Card>
+          <Img
+            style={{ width: "80%" }}
+            fluid={data.main.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           Inspired by Donald Shoup's book "The High Cost of Free Parking", this
@@ -114,11 +110,8 @@ class ParkingMeterPage extends React.Component {
           }}
         >
           <Img
-            style={{
-              border: "1px solid #DDD",
-              boxShadow: "0px 1px 3px 0px rgba(0, 0, 0, 0.1)"
-            }}
-            fixed={data.bostonChart.childImageSharp.fixed}
+            style={{ width: "60%" }}
+            fluid={data.bostonChart.childImageSharp.fluid}
           />
         </div>
         <Typography variant="subtitle1" style={{}}>
@@ -137,9 +130,12 @@ class ParkingMeterPage extends React.Component {
             marginTop: "1%"
           }}
         >
-          <Img fixed={data.occupancyPrediction.childImageSharp.fixed} />
+          <Img
+            style={{ width: "50%" }}
+            fluid={data.occupancyPrediction.childImageSharp.fluid}
+          />
         </div>
-        <Typography variant="subtitle1" style={{}}>
+        <Typography variant="subtitle1">
           Combining a San Diego historical weather data set with the original
           parking data set, I tested 5 different classification methods. Of the
           numerous predictive models built, the random forest yielded the
@@ -159,28 +155,8 @@ class ParkingMeterPage extends React.Component {
           }}
         >
           <Img
-            style={{
-              border: "1px solid #DDD",
-              boxShadow: "0px 1px 3px 0px rgba(0, 0, 0, 0.1)"
-            }}
-            fixed={data.map1.childImageSharp.fixed}
-          />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: "3%",
-            marginTop: "3%"
-          }}
-        >
-          <Img
-            style={{
-              border: "1px solid #DDD",
-              boxShadow: "0px 1px 3px 0px rgba(0, 0, 0, 0.1)"
-            }}
-            fixed={data.map2.childImageSharp.fixed}
+            style={{ width: "80%" }}
+            fluid={data.map1.childImageSharp.fluid}
           />
         </div>
         <Typography variant="subtitle1" style={{}}>
@@ -195,7 +171,7 @@ class ParkingMeterPage extends React.Component {
           text={"Economic Analysis"}
           containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
         />
-        <Typography variant="subtitle1" style={{}}>
+        <Typography variant="subtitle1">
           In the end, the predictive power of the final data model was limited,
           but could be significantly improved with better and more features.
           Nonetheless, the project provides an optimistic outlook into how data
@@ -233,8 +209,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/parking-meter/parking_meter1.png" }
     ) {
       childImageSharp {
-        fixed(width: 800) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 800) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -242,8 +218,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/parking-meter/parking_meter2.png" }
     ) {
       childImageSharp {
-        fixed(width: 600) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 600) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -251,8 +227,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/parking-meter/parking_meter3.png" }
     ) {
       childImageSharp {
-        fixed(width: 500) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 500) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -260,8 +236,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/parking-meter/parking_meter4.png" }
     ) {
       childImageSharp {
-        fixed(width: 700) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -269,8 +245,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/parking-meter/parking_meter5.png" }
     ) {
       childImageSharp {
-        fixed(width: 700) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

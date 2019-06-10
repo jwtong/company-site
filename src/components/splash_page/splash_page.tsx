@@ -23,6 +23,9 @@ const styles = (theme: {
     container: {
       width: "100vw",
       height: "100vh",
+      [theme.breakpoints.down("md")]: {
+        height: "330px"
+      },
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
@@ -34,6 +37,11 @@ const styles = (theme: {
       position: "absolute",
       height: "100%",
       width: "100%",
+      [theme.breakpoints.down("xs")]: {
+        width: "150%",
+        height: "150%",
+        overflow: "hidden"
+      },
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -42,13 +50,18 @@ const styles = (theme: {
     bodyContainer: {
       display: "flex",
       flexDirection: "column",
-      paddingRight: "10%",
-      paddingLeft: "10%",
+      paddingRight: theme.spacing(20),
+      paddingLeft: theme.spacing(20),
+      [theme.breakpoints.down("xs")]: {
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2)
+      },
       alignItems: "center"
     },
     line: {
       "& path": {
         stroke: "#F6F6F6"
+        // stroke: "black"
       },
       height: "80%",
       width: "80%"
@@ -61,11 +74,17 @@ const styles = (theme: {
     },
     dividerTop: {
       ...divider(theme),
-      marginBottom: "10%"
+      marginBottom: theme.spacing(10),
+      [theme.breakpoints.down("md")]: {
+        marginBottom: theme.spacing(3)
+      }
     },
     dividerBottom: {
       ...divider(theme),
-      marginTop: "10%"
+      marginTop: theme.spacing(10),
+      [theme.breakpoints.down("md")]: {
+        marginTop: theme.spacing(3)
+      }
     }
   });
 

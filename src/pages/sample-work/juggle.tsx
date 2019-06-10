@@ -1,70 +1,44 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
-import { makeStyles } from "@material-ui/styles";
-import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
-import Code from "@material-ui/icons/Code";
-import InsertChartOutlined from "@material-ui/icons/InsertChartOutlined";
-import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
-import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
-import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
-import Grid from "@material-ui/core/Grid";
+import { graphql } from "gatsby";
 import {
   Typography,
-  List,
-  ListItem,
-  ListItemText,
   Divider,
   withStyles,
-  Chip
+  withWidth,
+  createStyles
 } from "@material-ui/core";
-import StandardPopover from "../../components/standard_popover";
 import Img from "gatsby-image/withIEPolyfill";
-import Slide from "@material-ui/core/Slide";
-import VisibilitySensor from "react-visibility-sensor";
 import TransitionOnShow from "../../components/transition_on_show";
-import Hero from "../../components/hero";
 import roles from "../../utils/roles";
-import ServicePopovers from "../../components/service_popovers";
 import SampleWorkTemplate from "../../components/sample_work_template";
 import SubtitleDivider from "../../components/subtitle_divider";
+import { isWidthDown } from "@material-ui/core/withWidth";
 
-const styles = {
-  header: {
-    color: "white !important",
-    textAlign: "center"
-  },
-  centerer: {
-    justifyContent: "center"
-  },
-  container: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center"
-  }
-};
+const styles = theme =>
+  createStyles({
+    divider: {
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4),
+      [theme.breakpoints.down("md")]: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3)
+      }
+    },
+    appImage: {
+      width: "300px",
+      height: "550px",
+      [theme.breakpoints.down("md")]: {
+        width: "275px",
+        height: "500px"
+      }
+    }
+  });
 
 class JugglePage extends React.Component {
-  public constructor(props) {
-    super(props);
-    this.state = {
-      element1: false
-    };
-  }
-
-  private onChange = elementId => isVisible => {
-    if (isVisible) {
-      this.setState({
-        [elementId]: isVisible
-      });
-    }
-  };
-
   public render() {
     const { classes, data } = this.props;
+
+    const themeWidth = this.props.width;
 
     const juggleRoles = [roles[0], roles[1], roles[2], roles[3]];
     const juggleTechnologies = [
@@ -77,6 +51,9 @@ class JugglePage extends React.Component {
       "Google Firebase"
     ];
 
+    const height = isWidthDown("md", themeWidth) ? 300 : 600;
+    const width = (height * 1500) / 600;
+
     return (
       <SampleWorkTemplate
         title={"Juggle"}
@@ -88,7 +65,7 @@ class JugglePage extends React.Component {
       >
         <SubtitleDivider
           text={"Preliminary Design"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
         <div
           style={{
@@ -98,7 +75,10 @@ class JugglePage extends React.Component {
             marginBottom: "3%"
           }}
         >
-          <Img fixed={data.newAppFlow.childImageSharp.fixed} />
+          <Img
+            style={{ width, height }}
+            fluid={data.newAppFlow.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
           Juggle's mobile app was rebuilt to offer cross-platform (Android/iOS)
@@ -111,23 +91,36 @@ class JugglePage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Notable Features"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
-        <TransitionOnShow
-          visibilitySensorProps={{ partialVisibility: true }}
-          transitionType="Zoom"
-          transitionProps={{ timeout: { enter: 1000 } }}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap"
+          }}
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center"
-            }}
+          <TransitionOnShow
+            visibilitySensorProps={{ partialVisibility: true }}
+            transitionType="Zoom"
+            transitionProps={{ timeout: { enter: 1000 } }}
           >
-            <Img fixed={data.messaging1.childImageSharp.fixed} />
-            <Img fixed={data.messaging2.childImageSharp.fixed} />
-          </div>
-        </TransitionOnShow>
+            <Img
+              className={classes.appImage}
+              fluid={data.messaging1.childImageSharp.fluid}
+            />
+          </TransitionOnShow>
+          <TransitionOnShow
+            visibilitySensorProps={{ partialVisibility: true }}
+            transitionType="Zoom"
+            transitionProps={{ timeout: { enter: 1000 } }}
+          >
+            <Img
+              className={classes.appImage}
+              fluid={data.messaging2.childImageSharp.fluid}
+            />
+          </TransitionOnShow>
+        </div>
         <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
           Proprietary In-App Messaging Platform
         </Typography>
@@ -139,11 +132,10 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider
           style={{
-            height: "1px",
-            marginTop: "4%",
-            marginBottom: "2%",
+            maxHeight: "1px",
             color: "#F6F6F6"
           }}
+          className={classes.divider}
         />
         <TransitionOnShow
           visibilitySensorProps={{ partialVisibility: true }}
@@ -157,10 +149,22 @@ class JugglePage extends React.Component {
               flexWrap: "wrap"
             }}
           >
-            <Img fixed={data.pricing1.childImageSharp.fixed} />
-            <Img fixed={data.pricing2.childImageSharp.fixed} />
-            <Img fixed={data.pricing3.childImageSharp.fixed} />
-            <Img fixed={data.pricing4.childImageSharp.fixed} />
+            <Img
+              className={classes.appImage}
+              fluid={data.pricing1.childImageSharp.fluid}
+            />
+            <Img
+              className={classes.appImage}
+              fluid={data.pricing2.childImageSharp.fluid}
+            />
+            <Img
+              className={classes.appImage}
+              fluid={data.pricing3.childImageSharp.fluid}
+            />
+            <Img
+              className={classes.appImage}
+              fluid={data.pricing4.childImageSharp.fluid}
+            />
           </div>
         </TransitionOnShow>
         <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
@@ -174,11 +178,10 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider
           style={{
-            height: "1px",
-            marginTop: "4%",
-            marginBottom: "2%",
+            maxHeight: "1px",
             color: "#F6F6F6"
           }}
+          className={classes.divider}
         />
         <div
           style={{
@@ -187,9 +190,18 @@ class JugglePage extends React.Component {
             flexWrap: "wrap"
           }}
         >
-          <Img fixed={data.search1.childImageSharp.fixed} />
-          <Img fixed={data.search2.childImageSharp.fixed} />
-          <Img fixed={data.search3.childImageSharp.fixed} />
+          <Img
+            className={classes.appImage}
+            fluid={data.search1.childImageSharp.fluid}
+          />
+          <Img
+            className={classes.appImage}
+            fluid={data.search2.childImageSharp.fluid}
+          />
+          <Img
+            className={classes.appImage}
+            fluid={data.search3.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
           Smart Search
@@ -204,11 +216,10 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider
           style={{
-            height: "1px",
-            marginTop: "4%",
-            marginBottom: "2%",
+            maxHeight: "1px",
             color: "#F6F6F6"
           }}
+          className={classes.divider}
         />
         <div
           style={{
@@ -217,8 +228,14 @@ class JugglePage extends React.Component {
             flexWrap: "wrap"
           }}
         >
-          <Img fixed={data.backgroundCheck1.childImageSharp.fixed} />
-          <Img fixed={data.backgroundCheck2.childImageSharp.fixed} />
+          <Img
+            className={classes.appImage}
+            fluid={data.backgroundCheck1.childImageSharp.fluid}
+          />
+          <Img
+            className={classes.appImage}
+            fluid={data.backgroundCheck2.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
           Evident Background Check Integration
@@ -232,11 +249,10 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider
           style={{
-            height: "1px",
-            marginTop: "4%",
-            marginBottom: "2%",
+            maxHeight: "1px",
             color: "#F6F6F6"
           }}
+          className={classes.divider}
         />
         <div
           style={{
@@ -245,9 +261,18 @@ class JugglePage extends React.Component {
             flexWrap: "wrap"
           }}
         >
-          <Img fixed={data.referral1.childImageSharp.fixed} />
-          <Img fixed={data.referral2.childImageSharp.fixed} />
-          <Img fixed={data.referral3.childImageSharp.fixed} />
+          <Img
+            className={classes.appImage}
+            fluid={data.referral1.childImageSharp.fluid}
+          />
+          <Img
+            className={classes.appImage}
+            fluid={data.referral2.childImageSharp.fluid}
+          />
+          <Img
+            className={classes.appImage}
+            fluid={data.referral3.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
           Referral Code Program
@@ -265,23 +290,34 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider
           style={{
-            height: "1px",
-            marginTop: "4%",
-            marginBottom: "2%",
+            maxHeight: "1px",
             color: "#F6F6F6"
           }}
+          className={classes.divider}
         />
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             flexWrap: "wrap"
           }}
         >
-          <Img fixed={data.emergency1.childImageSharp.fixed} />
-          <Img fixed={data.emergency2.childImageSharp.fixed} />
-          <Img fixed={data.emergency3.childImageSharp.fixed} />
-          <Img fixed={data.emergency4.childImageSharp.fixed} />
+          <Img
+            className={classes.appImage}
+            fluid={data.emergency1.childImageSharp.fluid}
+          />
+          <Img
+            className={classes.appImage}
+            fluid={data.emergency2.childImageSharp.fluid}
+          />
+          <Img
+            className={classes.appImage}
+            fluid={data.emergency3.childImageSharp.fluid}
+          />
+          <Img
+            className={classes.appImage}
+            fluid={data.emergency4.childImageSharp.fluid}
+          />
         </div>
         <Typography variant="h6" style={{ textAlign: "left" }} gutterBottom>
           Emergency / Last Minute Need Support
@@ -312,8 +348,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/messaging/messaging1.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -321,8 +357,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/messaging/messaging2.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -330,8 +366,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/pricing/pricing1.png" }
     ) {
       childImageSharp {
-        fixed(width: 245, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -339,8 +375,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/pricing/pricing2.png" }
     ) {
       childImageSharp {
-        fixed(width: 245, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -348,8 +384,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/pricing/pricing3.png" }
     ) {
       childImageSharp {
-        fixed(width: 245, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -357,8 +393,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/pricing/pricing4.png" }
     ) {
       childImageSharp {
-        fixed(width: 245, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -366,8 +402,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/search/search1.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -375,8 +411,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/search/search2.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -384,8 +420,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/search/search3.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -395,8 +431,8 @@ export const query = graphql`
       }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -406,8 +442,8 @@ export const query = graphql`
       }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -415,8 +451,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/referral/referral1.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -424,8 +460,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/referral/referral2.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -433,8 +469,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/referral/referral3.png" }
     ) {
       childImageSharp {
-        fixed(width: 300, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -442,8 +478,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/emergency/emergency1.png" }
     ) {
       childImageSharp {
-        fixed(width: 245, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -451,8 +487,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/emergency/emergency2.png" }
     ) {
       childImageSharp {
-        fixed(width: 245, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -460,8 +496,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/emergency/emergency3.png" }
     ) {
       childImageSharp {
-        fixed(width: 245, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -469,8 +505,8 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/emergency/emergency4.png" }
     ) {
       childImageSharp {
-        fixed(width: 245, height: 550, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -478,12 +514,12 @@ export const query = graphql`
       relativePath: { eq: "sample_work/juggle/new_app_flow.png" }
     ) {
       childImageSharp {
-        fixed(width: 1500, height: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 1500, maxHeight: 600) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
   }
 `;
 
-export default withStyles(styles, { withTheme: true })(JugglePage);
+export default withWidth()(withStyles(styles, { withTheme: true })(JugglePage));

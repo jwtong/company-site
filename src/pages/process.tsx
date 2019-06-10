@@ -18,38 +18,55 @@ import Hero from "../components/hero";
 import WaveBottom from "../components/wave_bottom";
 import SubtitleDivider from "../components/subtitle_divider";
 import PageBottom from "../components/page_bottom";
+import { useTheme } from "@material-ui/styles";
 
 const styles = theme => ({
   // mIcon: {
   //   color: "red"
   // },
+  processWrapper: {
+    width: "100%",
+    paddingLeft: theme.spacing(10),
+    paddingRight: theme.spacing(10),
+    marginBottom: theme.spacing(1),
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
+      marginTop: theme.spacing(0),
+      marginBottom: theme.spacing(4)
+    },
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    "-webkit-box-sizing": "border-box",
+    "-moz-box-sizing": "border-box",
+    "box-sizing": "border-box"
+  },
   header: {
     color: "white !important",
     textAlign: "center"
   },
-  centerer: {
-    justifyContent: "center"
+  button: {
+    marginTop: theme.spacing(6),
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(2)
+    }
   },
-  container: {
-    width: "100vw",
-    height: "60vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center"
-  },
-  card: {
-    marginTop: "5%",
-    paddingTop: "5%",
-    paddingBottom: "5%",
-    paddingRight: "15%",
-    backgroundColor: "#f6f6f6",
-    borderTop: `6px solid ${theme.palette.primary.main}`
+  divider: {
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(3)
+    }
   }
 });
 
 const ProcessPage = props => {
   const { classes } = props;
+
   const steps = [
     {
       title: "Step 1 - Contact Us",
@@ -92,40 +109,24 @@ const ProcessPage = props => {
   return (
     <>
       <Hero colorBottom="white">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-
-            alignItems: "center"
-          }}
-        >
-          <Typography variant="h1" className={classes.header} gutterBottom>
-            Process
-          </Typography>
-          <Typography variant="h4" className={classes.header}>
-            A breakdown of how we conduct a project
-          </Typography>
-        </div>
+        <Typography variant="h1" className={classes.header} gutterBottom>
+          Process
+        </Typography>
+        <Typography variant="h4" className={classes.header}>
+          A breakdown of how we conduct a project
+        </Typography>
       </Hero>
-      <div
-        style={{
-          marginBottom: "3%",
-          marginTop: "3%",
-          paddingLeft: "10%",
-          paddingRight: "10%"
-        }}
-      >
+      <div className={classes.processWrapper}>
         {steps.map(s => {
           return (
             <div key={s.title}>
               <SubtitleDivider
                 text={s.title}
-                containerStyle={{ marginBottom: "3%", marginTop: "6%" }}
+                otherProps={{ className: classes.divider }}
               />
 
-              <Grid alignItems="center" container direction="row">
-                <Grid item xs={3} className={classes.grid}>
+              <Grid alignItems="center" container direction="row" spacing={2}>
+                <Grid item xs={12} md={3} className={classes.grid}>
                   <Card
                     style={{
                       display: "flex",
@@ -146,7 +147,7 @@ const ProcessPage = props => {
                     })}
                   </Card>
                 </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={12} md={8}>
                   {s.texts.map((t, index) => {
                     return (
                       <Typography
@@ -171,18 +172,11 @@ const ProcessPage = props => {
         })}
       </div>
       <PageBottom>
-        <div style={{ paddingLeft: "10%", paddingRight: "10%" }}>
-          <Typography variant="h4" className={classes.header} gutterBottom>
-            Learn more about what types of work we can do for you
-          </Typography>
-        </div>
+        <Typography variant="h4" className={classes.header} gutterBottom>
+          Learn more about what types of work we can do for you
+        </Typography>
         <Button
-          style={{
-            height: "3rem",
-            width: "10rem",
-            fontSize: "1rem",
-            marginTop: "3%"
-          }}
+          className={classes.button}
           href="/services"
           variant="contained"
           color="secondary"
