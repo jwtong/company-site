@@ -18,6 +18,11 @@ const styles = theme =>
       color: "white !important",
       textAlign: "center"
     },
+    title: {
+      [theme.breakpoints.down("md")]: {
+        fontSize: props => (props.title.length > 20 ? "2.5rem" : "3.5rem")
+      }
+    },
     mainContentWrapper: {
       paddingLeft: theme.spacing(15),
       paddingRight: theme.spacing(15),
@@ -66,7 +71,11 @@ const SampleWorkTemplate = ({
   return (
     <>
       <Hero colorBottom={"white"}>
-        <Typography variant="h1" className={classes.header} gutterBottom>
+        <Typography
+          variant="h1"
+          className={`${classes.header} ${classes.title}`}
+          gutterBottom
+        >
           {title}
         </Typography>
         <Typography variant="h4" className={classes.header}>

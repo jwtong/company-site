@@ -1,31 +1,62 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Typography, withStyles } from "@material-ui/core";
+import { Typography, withStyles, createStyles } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/sample_work_template";
 import roles from "../../utils/roles";
 import SubtitleDivider from "../../components/subtitle_divider";
 
-const styles = {
-  mIcon: {
-    color: "black"
-  },
-  header: {
-    color: "white !important",
-    textAlign: "center"
-  },
-  centerer: {
-    justifyContent: "center"
-  },
-  container: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center"
-  }
-};
+const styles = theme =>
+  createStyles({
+    divider: {
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4),
+      [theme.breakpoints.down("md")]: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3)
+      }
+    },
+    topBottomImageWrapper: {
+      display: "flex",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      marginBottom: theme.spacing(3),
+      marginTop: theme.spacing(3)
+    },
+    designImage: {
+      width: "60%",
+      [theme.breakpoints.down("md")]: {
+        width: "100%"
+      }
+    },
+    diagramImage: {
+      width: "70%",
+      [theme.breakpoints.down("md")]: {
+        width: "100%"
+      }
+    },
+    diagramImage2Wrapper: {
+      width: "100%",
+      overflow: "hidden",
+      [theme.breakpoints.up("md")]: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }
+    },
+    diagramImage2: {
+      width: "70%",
+      [theme.breakpoints.down("md")]: {
+        width: "480px"
+      }
+    },
+    applicationImage: {
+      width: "80%",
+      [theme.breakpoints.down("md")]: {
+        width: "100%"
+      }
+    }
+  });
 
 class ZicPage extends React.Component {
   public render() {
@@ -46,13 +77,9 @@ class ZicPage extends React.Component {
       >
         <SubtitleDivider
           text={"Overview"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
-        <Typography
-          variant="subtitle1"
-          style={{ textAlign: "left" }}
-          gutterBottom
-        >
+        <Typography variant="subtitle1" gutterBottom>
           A full-stack web application that allows one user to host a playlist
           on their computer, which other users can connect to and add songs of
           their choice from the SoundCloud library. As songs are added, the host
@@ -60,60 +87,38 @@ class ZicPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Design"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginTop: "3%",
-            marginBottom: "3%"
-          }}
-        >
+        <div className={classes.topBottomImageWrapper}>
           <Img
-            style={{ width: "60%" }}
+            className={classes.designImage}
             fluid={data.zic1.childImageSharp.fluid}
           />
         </div>
-        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+        <Typography variant="subtitle1">
           The first step was to diagram the business-logic features and
           user-interactions of this multi-faceted program.
         </Typography>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginTop: "3%",
-            marginBottom: "3%"
-          }}
-        >
+        <div className={classes.topBottomImageWrapper}>
           <Img
-            style={{ width: "70%" }}
+            className={classes.diagramImage}
             fluid={data.zic2.childImageSharp.fluid}
           />
         </div>
-        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+        <Typography variant="subtitle1">
           Once drafted, these considerations were translated into UML diagram
           that better defined how the features would be translated to code and
           data.
         </Typography>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginTop: "3%",
-            marginBottom: "3%"
-          }}
-        >
-          <Img
-            style={{ width: "70%" }}
-            fluid={data.zic3.childImageSharp.fluid}
-          />
+        <div className={classes.topBottomImageWrapper}>
+          <div className={classes.diagramImage2Wrapper}>
+            <Img
+              className={classes.diagramImage2}
+              fluid={data.zic3.childImageSharp.fluid}
+            />
+          </div>
         </div>
-        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+        <Typography variant="subtitle1">
           Next, UI/UX mockups were created to show the layout of the actual
           music player. Note that the host's interface would include more
           functionality than those of connected clients, including executive
@@ -121,23 +126,15 @@ class ZicPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Final Product"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginTop: "3%",
-            marginBottom: "3%"
-          }}
-        >
+        <div className={classes.topBottomImageWrapper}>
           <Img
-            style={{ width: "80%" }}
+            className={classes.applicationImage}
             fluid={data.zic4.childImageSharp.fluid}
           />
         </div>
-        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+        <Typography variant="subtitle1">
           In terms of future business applications of this software, it could be
           installed into a speaker or a speaker attachment via a microcomputer
           (e.g. Raspberry Pi) or be hosted completely online.

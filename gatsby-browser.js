@@ -51,6 +51,7 @@ let theme = createMuiTheme({
     subtitle1: {
       color: "#5e5e5e",
       fontSize: "1.125rem",
+      textAlign: "left",
       [breakpoints.down("md")]: {
         fontSize: "1rem"
       }

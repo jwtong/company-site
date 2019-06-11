@@ -1,31 +1,41 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { Typography, withStyles } from "@material-ui/core";
+import { Typography, withStyles, createStyles } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/sample_work_template";
 import roles from "../../utils/roles";
 import SubtitleDivider from "../../components/subtitle_divider";
 
-const styles = {
-  mIcon: {
-    color: "black"
-  },
-  header: {
-    color: "white !important",
-    textAlign: "center"
-  },
-  centerer: {
-    justifyContent: "center"
-  },
-  container: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center"
-  }
-};
+const styles = theme =>
+  createStyles({
+    divider: {
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4),
+      [theme.breakpoints.down("md")]: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3)
+      }
+    },
+    topBottomImageWrapper: {
+      display: "flex",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      marginBottom: theme.spacing(3),
+      marginTop: theme.spacing(3)
+    },
+    mainImage: {
+      width: "60%",
+      [theme.breakpoints.down("md")]: {
+        width: "100%"
+      }
+    },
+    sensitivityImage: {
+      width: "50%",
+      [theme.breakpoints.down("md")]: {
+        width: "100%"
+      }
+    }
+  });
 
 class WebScrapeDcfPage extends React.Component {
   public render() {
@@ -44,19 +54,11 @@ class WebScrapeDcfPage extends React.Component {
       >
         <SubtitleDivider
           text={"Overview"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginTop: "3%",
-            marginBottom: "3%"
-          }}
-        >
+        <div className={classes.topBottomImageWrapper}>
           <Img
-            style={{ width: "60%" }}
+            className={classes.mainImage}
             fluid={data.webScrapeDcf1.childImageSharp.fluid}
           />
         </div>
@@ -74,17 +76,9 @@ class WebScrapeDcfPage extends React.Component {
           Yahoo Finance), and has buttons that allow for easy parametization,
           expediting the process to minutes.
         </Typography>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginTop: "3%",
-            marginBottom: "3%"
-          }}
-        >
+        <div className={classes.topBottomImageWrapper}>
           <Img
-            style={{ width: "50%" }}
+            className={classes.sensitivityImage}
             fluid={data.webScrapeDcf2.childImageSharp.fluid}
           />
         </div>

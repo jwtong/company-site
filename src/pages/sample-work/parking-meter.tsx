@@ -16,7 +16,8 @@ import {
   ListItemText,
   Divider,
   withStyles,
-  Chip
+  Chip,
+  createStyles
 } from "@material-ui/core";
 import StandardPopover from "../../components/standard_popover";
 import Img from "gatsby-image/withIEPolyfill";
@@ -26,25 +27,63 @@ import roles from "../../utils/roles";
 import SampleWorkTemplate from "../../components/sample_work_template";
 import SubtitleDivider from "../../components/subtitle_divider";
 
-const styles = {
-  mIcon: {
-    color: "black"
-  },
-  header: {
-    color: "white !important"
-  },
-  centerer: {
-    justifyContent: "center"
-  },
-  container: {
-    width: "100vw",
-    height: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
-    alignItems: "center"
-  }
-};
+const styles = theme =>
+  createStyles({
+    divider: {
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4),
+      [theme.breakpoints.down("md")]: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3)
+      }
+    },
+    imageWrapper: {
+      display: "flex",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      marginBottom: theme.spacing(3)
+    },
+    topBottomImageWrapper: {
+      display: "flex",
+      justifyContent: "center",
+      flexWrap: "wrap",
+      marginBottom: theme.spacing(3),
+      marginTop: theme.spacing(3)
+    },
+    mainWrapper: {
+      overflow: "hidden",
+      width: "100%",
+      [theme.breakpoints.up("md")]: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }
+    },
+    mainImage: {
+      width: "90%",
+      [theme.breakpoints.down("md")]: {
+        width: "425px"
+      }
+    },
+    mapImage: {
+      width: "90%",
+      [theme.breakpoints.down("md")]: {
+        width: "375px"
+      }
+    },
+    bostonImage: {
+      width: "60%",
+      [theme.breakpoints.down("md")]: {
+        width: "100%"
+      }
+    },
+    occupancyImage: {
+      width: "50%",
+      [theme.breakpoints.down("md")]: {
+        width: "100%"
+      }
+    }
+  });
 
 class ParkingMeterPage extends React.Component {
   public render() {
@@ -63,22 +102,17 @@ class ParkingMeterPage extends React.Component {
       >
         <SubtitleDivider
           text={"Overview"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: "3%"
-          }}
-        >
-          <Img
-            style={{ width: "80%" }}
-            fluid={data.main.childImageSharp.fluid}
-          />
+        <div className={classes.imageWrapper}>
+          <div className={classes.mainWrapper}>
+            <Img
+              className={classes.mainImage}
+              fluid={data.main.childImageSharp.fluid}
+            />
+          </div>
         </div>
-        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+        <Typography variant="subtitle1">
           Inspired by Donald Shoup's book "The High Cost of Free Parking", this
           project was an investigation and analysis of daily parking meter data
           from San Diego's metropolitan area. First, I created a number of
@@ -89,9 +123,9 @@ class ParkingMeterPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Data Prediction and Model"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
-        <Typography variant="subtitle1" style={{}}>
+        <Typography variant="subtitle1">
           Before building the predictive model, I needed to pick a set of
           features or measurable factors that I felt might have notable
           correlation with parking meter occupancy. I determined that price,
@@ -100,38 +134,22 @@ class ParkingMeterPage extends React.Component {
           predict variances in daily occupancy, since they don't change each
           day.
         </Typography>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: "3%",
-            marginTop: "3%"
-          }}
-        >
+        <div className={classes.topBottomImageWrapper}>
           <Img
-            style={{ width: "60%" }}
+            className={classes.bostonImage}
             fluid={data.bostonChart.childImageSharp.fluid}
           />
         </div>
-        <Typography variant="subtitle1" style={{}}>
+        <Typography variant="subtitle1">
           In order to account for differences in daily occupancy, I suspected
           there would be a correlation with weather (e.g. rainy days meant less
           demand). Using another data set from Boston's parking meters, I
           confirmed that seasonality did exhibit correlation with parking meter
           demand, likely due to weather conditions.
         </Typography>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: "1%",
-            marginTop: "1%"
-          }}
-        >
+        <div className={classes.topBottomImageWrapper}>
           <Img
-            style={{ width: "50%" }}
+            className={classes.occupancyImage}
             fluid={data.occupancyPrediction.childImageSharp.fluid}
           />
         </div>
@@ -143,23 +161,17 @@ class ParkingMeterPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Web Application"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: "3%",
-            marginTop: "3%"
-          }}
-        >
-          <Img
-            style={{ width: "80%" }}
-            fluid={data.map1.childImageSharp.fluid}
-          />
+        <div className={classes.imageWrapper}>
+          <div className={classes.mainWrapper}>
+            <Img
+              className={classes.mapImage}
+              fluid={data.map1.childImageSharp.fluid}
+            />
+          </div>
         </div>
-        <Typography variant="subtitle1" style={{}}>
+        <Typography variant="subtitle1">
           Using the random-forest model, I created an application that queries
           current weather data for San Diego and displays predictions of each
           meter's occupancy for the day on a zoomable and clickable interactive
@@ -169,7 +181,7 @@ class ParkingMeterPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Economic Analysis"}
-          containerStyle={{ marginBottom: "3%", marginTop: "3%" }}
+          otherProps={{ className: classes.divider }}
         />
         <Typography variant="subtitle1">
           In the end, the predictive power of the final data model was limited,
@@ -182,10 +194,7 @@ class ParkingMeterPage extends React.Component {
           scenarios (e.g. pricing changes) that could improve the economic
           efficiency of the meters.
         </Typography>
-        <Divider
-          variant="middle"
-          style={{ marginTop: "2%", marginBottom: "2%" }}
-        />
+        <Divider variant="middle" className={classes.divider} />
         <div
           style={{
             display: "flex",
