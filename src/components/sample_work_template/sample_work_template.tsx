@@ -19,14 +19,14 @@ const styles = theme =>
       textAlign: "center"
     },
     title: {
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: props => (props.title.length > 20 ? "2.5rem" : "3.5rem")
       }
     },
     mainContentWrapper: {
       paddingLeft: theme.spacing(15),
       paddingRight: theme.spacing(15),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingLeft: theme.spacing(3),
         paddingRight: theme.spacing(3)
       },
@@ -36,7 +36,7 @@ const styles = theme =>
     skillsGrid: {
       paddingLeft: theme.spacing(15),
       paddingRight: theme.spacing(15),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingLeft: theme.spacing(0),
         paddingRight: theme.spacing(0),
         marginBottom: theme.spacing(3)
@@ -45,7 +45,7 @@ const styles = theme =>
     divider: {
       marginTop: theme.spacing(4),
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3)
       }

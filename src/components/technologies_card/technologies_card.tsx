@@ -28,7 +28,7 @@ const styles = (theme: any) =>
       paddingLeft: theme.spacing(1),
       paddingRight: theme.spacing(1),
       fontSize: "6em",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "4rem",
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1)
@@ -38,23 +38,23 @@ const styles = (theme: any) =>
       color: "white"
     },
     // title: {
-    //   [theme.breakpoints.down("md")]: {
+    //   [theme.breakpoints.down("xs")]: {
     //     fontSize: "1.25rem"
     //   }
     // },
     // itemText: {
-    //   [theme.breakpoints.down("md")]: {
+    //   [theme.breakpoints.down("xs")]: {
     //     fontSize: "1rem"
     //   }
     // },
     listItemText: {
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         margin: 0
       }
     },
     starIcon: {
       marginRight: "5%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "1rem"
       }
     }

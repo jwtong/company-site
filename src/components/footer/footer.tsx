@@ -12,7 +12,7 @@ const styles = (theme: {
       color: "white !important",
       fontFamily: "Roboto Condensed",
       fontSize: "1rem",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: ".65rem"
       }
     },
@@ -24,14 +24,14 @@ const styles = (theme: {
       padding: "0% 5% 0% 5%",
       alignItems: "center",
       backgroundColor: theme.palette.primary.main,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         height: "50.5px"
       }
     },
     icon: {
       fontSize: "2rem",
       color: "white",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "1.5rem"
       }
     }

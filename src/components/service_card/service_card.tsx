@@ -14,7 +14,7 @@ const styles = (theme: { palette: { secondary: { light: any } } }) =>
       paddingTop: theme.spacing(10),
       paddingBottom: theme.spacing(10),
       paddingRight: theme.spacing(15),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
         paddingRight: theme.spacing(2),
@@ -28,7 +28,7 @@ const styles = (theme: { palette: { secondary: { light: any } } }) =>
       justifyContent: "center",
       color: theme.palette.secondary.light,
       fontSize: "10rem",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "7rem"
       }
     }

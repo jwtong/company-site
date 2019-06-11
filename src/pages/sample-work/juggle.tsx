@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import { graphql } from "gatsby";
 import {
   Typography,
@@ -19,7 +20,7 @@ const styles = theme =>
     divider: {
       marginTop: theme.spacing(4),
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3)
       }
@@ -31,7 +32,7 @@ const styles = theme =>
     appImage: {
       width: "300px",
       height: "550px",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "275px",
         height: "500px"
       }
@@ -41,7 +42,7 @@ const styles = theme =>
       justifyContent: "center",
       flexWrap: "wrap",
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginBottom: theme.spacing(3)
       }
     },
@@ -62,8 +63,8 @@ const styles = theme =>
   });
 
 class JugglePage extends React.Component {
-  private getAppImage = (imageName: string) => {
-    const { classes, data } = this.props;
+  private getAppImage = (appImages: Array<any>, imageName: string) => {
+    const { classes } = this.props;
     return (
       <TransitionOnShow
         visibilitySensorProps={{ partialVisibility: true }}
@@ -72,7 +73,10 @@ class JugglePage extends React.Component {
       >
         <Img
           className={classes.appImage}
-          fluid={data[imageName].childImageSharp.fluid}
+          fluid={
+            _.find(appImages, (ai: { name: string }) => ai.name === imageName)
+              .childImageSharp.fluid
+          }
         />
       </TransitionOnShow>
     );
@@ -80,8 +84,9 @@ class JugglePage extends React.Component {
 
   public render() {
     const { classes, data } = this.props;
-
     const themeWidth = this.props.width;
+
+    const appImages = data.appImages.edges.map((e: { node: any }) => e.node);
 
     const juggleRoles = [roles[0], roles[1], roles[2], roles[3]];
     const juggleTechnologies = [
@@ -127,8 +132,8 @@ class JugglePage extends React.Component {
           otherProps={{ className: classes.divider }}
         />
         <div className={classes.appImageWrapper}>
-          {this.getAppImage("messaging1")}
-          {this.getAppImage("messaging2")}
+          {this.getAppImage(appImages, "messaging1")}
+          {this.getAppImage(appImages, "messaging2")}
         </div>
         <Typography variant="h6" gutterBottom>
           Proprietary In-App Messaging Platform
@@ -141,10 +146,10 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider className={`${classes.divider} ${classes.dividerLine}`} />
         <div className={classes.appImageWrapper}>
-          {this.getAppImage("pricing1")}
-          {this.getAppImage("pricing2")}
-          {this.getAppImage("pricing3")}
-          {this.getAppImage("pricing4")}
+          {this.getAppImage(appImages, "pricing1")}
+          {this.getAppImage(appImages, "pricing2")}
+          {this.getAppImage(appImages, "pricing3")}
+          {this.getAppImage(appImages, "pricing4")}
         </div>
 
         <Typography variant="h6" gutterBottom>
@@ -158,9 +163,9 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider className={`${classes.divider} ${classes.dividerLine}`} />
         <div className={classes.appImageWrapper}>
-          {this.getAppImage("search1")}
-          {this.getAppImage("search2")}
-          {this.getAppImage("search3")}
+          {this.getAppImage(appImages, "search1")}
+          {this.getAppImage(appImages, "search2")}
+          {this.getAppImage(appImages, "search3")}
         </div>
         <Typography variant="h6" gutterBottom>
           Smart Search
@@ -175,8 +180,8 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider className={`${classes.divider} ${classes.dividerLine}`} />
         <div className={classes.appImageWrapper}>
-          {this.getAppImage("backgroundCheck1")}
-          {this.getAppImage("backgroundCheck2")}
+          {this.getAppImage(appImages, "background_check1")}
+          {this.getAppImage(appImages, "background_check2")}
         </div>
         <Typography variant="h6" gutterBottom>
           Evident Background Check Integration
@@ -190,9 +195,9 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider className={`${classes.divider} ${classes.dividerLine}`} />
         <div className={classes.appImageWrapper}>
-          {this.getAppImage("referral1")}
-          {this.getAppImage("referral2")}
-          {this.getAppImage("referral3")}
+          {this.getAppImage(appImages, "referral1")}
+          {this.getAppImage(appImages, "referral2")}
+          {this.getAppImage(appImages, "referral3")}
         </div>
         <Typography variant="h6" gutterBottom>
           Referral Code Program
@@ -206,10 +211,10 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider className={`${classes.divider} ${classes.dividerLine}`} />
         <div className={classes.appImageWrapper}>
-          {this.getAppImage("emergency1")}
-          {this.getAppImage("emergency2")}
-          {this.getAppImage("emergency3")}
-          {this.getAppImage("emergency4")}
+          {this.getAppImage(appImages, "emergency1")}
+          {this.getAppImage(appImages, "emergency2")}
+          {this.getAppImage(appImages, "emergency3")}
+          {this.getAppImage(appImages, "emergency4")}
         </div>
         <Typography variant="h6" gutterBottom>
           Emergency / Last Minute Need Support
@@ -232,169 +237,17 @@ class JugglePage extends React.Component {
 
 export const query = graphql`
   query {
-    messaging1: file(
-      relativePath: { eq: "sample_work/juggle/messaging/messaging1.png" }
+    appImages: allFile(
+      filter: { relativePath: { regex: "/sample_work/juggle/app_images/" } }
     ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    messaging2: file(
-      relativePath: { eq: "sample_work/juggle/messaging/messaging2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    pricing1: file(
-      relativePath: { eq: "sample_work/juggle/pricing/pricing1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    pricing2: file(
-      relativePath: { eq: "sample_work/juggle/pricing/pricing2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    pricing3: file(
-      relativePath: { eq: "sample_work/juggle/pricing/pricing3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    pricing4: file(
-      relativePath: { eq: "sample_work/juggle/pricing/pricing4.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    search1: file(
-      relativePath: { eq: "sample_work/juggle/search/search1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    search2: file(
-      relativePath: { eq: "sample_work/juggle/search/search2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    search3: file(
-      relativePath: { eq: "sample_work/juggle/search/search3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    backgroundCheck1: file(
-      relativePath: {
-        eq: "sample_work/juggle/background_check/background_check1.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    backgroundCheck2: file(
-      relativePath: {
-        eq: "sample_work/juggle/background_check/background_check2.png"
-      }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    referral1: file(
-      relativePath: { eq: "sample_work/juggle/referral/referral1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    referral2: file(
-      relativePath: { eq: "sample_work/juggle/referral/referral2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    referral3: file(
-      relativePath: { eq: "sample_work/juggle/referral/referral3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    emergency1: file(
-      relativePath: { eq: "sample_work/juggle/emergency/emergency1.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    emergency2: file(
-      relativePath: { eq: "sample_work/juggle/emergency/emergency2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    emergency3: file(
-      relativePath: { eq: "sample_work/juggle/emergency/emergency3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    emergency4: file(
-      relativePath: { eq: "sample_work/juggle/emergency/emergency4.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid(maxWidth: 300, maxHeight: 600, cropFocus: CENTER) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import { graphql } from "gatsby";
 import { Typography, withStyles, createStyles } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
@@ -11,7 +12,7 @@ const styles = theme =>
     divider: {
       marginTop: theme.spacing(4),
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3)
       }
@@ -25,13 +26,13 @@ const styles = theme =>
     },
     mainImage: {
       width: "60%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
     sensitivityImage: {
       width: "50%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     }
@@ -42,6 +43,10 @@ class WebScrapeDcfPage extends React.Component {
     const { classes, data } = this.props;
     const webScrapeDcfRoles = [roles[0], roles[4]];
     const webScrapeDcfTechnologies = ["C#", "Excel VBA"];
+
+    const images = data.images.edges.map((e: { node: any }) => e.node);
+
+    console.log(images);
 
     return (
       <SampleWorkTemplate
@@ -59,7 +64,12 @@ class WebScrapeDcfPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.mainImage}
-            fluid={data.webScrapeDcf1.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "web_scrape_dcf1"
+              ).childImageSharp.fluid
+            }
           />
         </div>
         <Typography
@@ -79,7 +89,12 @@ class WebScrapeDcfPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.sensitivityImage}
-            fluid={data.webScrapeDcf2.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "web_scrape_dcf2"
+              ).childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1" style={{ textAlign: "left" }}>
@@ -94,21 +109,17 @@ class WebScrapeDcfPage extends React.Component {
 
 export const query = graphql`
   query {
-    webScrapeDcf1: file(
-      relativePath: { eq: "sample_work/web-scrape-dcf/web_scrape_dcf1.png" }
+    images: allFile(
+      filter: { relativeDirectory: { eq: "sample_work/web-scrape-dcf" } }
     ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    webScrapeDcf2: file(
-      relativePath: { eq: "sample_work/web-scrape-dcf/web_scrape_dcf2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }

@@ -23,7 +23,7 @@ const styles = (theme: {
     container: {
       width: "100vw",
       height: "100vh",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         height: "330px"
       },
       display: "flex",
@@ -75,14 +75,14 @@ const styles = (theme: {
     dividerTop: {
       ...divider(theme),
       marginBottom: theme.spacing(10),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginBottom: theme.spacing(3)
       }
     },
     dividerBottom: {
       ...divider(theme),
       marginTop: theme.spacing(10),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(3)
       }
     }

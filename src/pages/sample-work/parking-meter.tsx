@@ -1,28 +1,14 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
-import { makeStyles } from "@material-ui/styles";
-import Card from "@material-ui/core/Card";
+import _ from "lodash";
+import { graphql } from "gatsby";
 import Button from "@material-ui/core/Button";
-import Code from "@material-ui/icons/Code";
-import InsertChartOutlined from "@material-ui/icons/InsertChartOutlined";
-import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
-import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
-import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
-import Grid from "@material-ui/core/Grid";
+import Img from "gatsby-image/withIEPolyfill";
 import {
   Typography,
-  List,
-  ListItem,
-  ListItemText,
   Divider,
   withStyles,
-  Chip,
   createStyles
 } from "@material-ui/core";
-import StandardPopover from "../../components/standard_popover";
-import Img from "gatsby-image/withIEPolyfill";
-import Slide from "@material-ui/core/Slide";
-import VisibilitySensor from "react-visibility-sensor";
 import roles from "../../utils/roles";
 import SampleWorkTemplate from "../../components/sample_work_template";
 import SubtitleDivider from "../../components/subtitle_divider";
@@ -32,7 +18,7 @@ const styles = theme =>
     divider: {
       marginTop: theme.spacing(4),
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3)
       }
@@ -53,7 +39,7 @@ const styles = theme =>
     mainWrapper: {
       overflow: "hidden",
       width: "100%",
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("xs")]: {
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
@@ -61,25 +47,25 @@ const styles = theme =>
     },
     mainImage: {
       width: "90%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "425px"
       }
     },
     mapImage: {
       width: "90%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "375px"
       }
     },
     bostonImage: {
       width: "60%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
     occupancyImage: {
       width: "50%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     }
@@ -90,6 +76,8 @@ class ParkingMeterPage extends React.Component {
     const { classes, data } = this.props;
     const parkingMeterRoles = [roles[0], roles[1], roles[4]];
     const parkingMeterTechnologies = ["React", "Python (SciKit-Learn)"];
+
+    const images = data.images.edges.map((e: { node: any }) => e.node);
 
     return (
       <SampleWorkTemplate
@@ -108,7 +96,12 @@ class ParkingMeterPage extends React.Component {
           <div className={classes.mainWrapper}>
             <Img
               className={classes.mainImage}
-              fluid={data.main.childImageSharp.fluid}
+              fluid={
+                _.find(
+                  images,
+                  (d: { name: string }) => d.name === "parking_meter1"
+                ).childImageSharp.fluid
+              }
             />
           </div>
         </div>
@@ -137,7 +130,12 @@ class ParkingMeterPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.bostonImage}
-            fluid={data.bostonChart.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "parking_meter2"
+              ).childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -150,7 +148,12 @@ class ParkingMeterPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.occupancyImage}
-            fluid={data.occupancyPrediction.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "parking_meter3"
+              ).childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -167,7 +170,12 @@ class ParkingMeterPage extends React.Component {
           <div className={classes.mainWrapper}>
             <Img
               className={classes.mapImage}
-              fluid={data.map1.childImageSharp.fluid}
+              fluid={
+                _.find(
+                  images,
+                  (d: { name: string }) => d.name === "parking_meter4"
+                ).childImageSharp.fluid
+              }
             />
           </div>
         </div>
@@ -214,48 +222,17 @@ class ParkingMeterPage extends React.Component {
 
 export const query = graphql`
   query {
-    main: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter1.png" }
+    images: allFile(
+      filter: { relativeDirectory: { eq: "sample_work/parking-meter" } }
     ) {
-      childImageSharp {
-        fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    bostonChart: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 600) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    occupancyPrediction: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    map1: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter4.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    map2: file(
-      relativePath: { eq: "sample_work/parking-meter/parking_meter5.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }

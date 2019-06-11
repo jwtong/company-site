@@ -29,7 +29,7 @@ const styles = theme => ({
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
     marginBottom: theme.spacing(1),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(3),
       marginTop: theme.spacing(0),
@@ -50,14 +50,14 @@ const styles = theme => ({
   },
   button: {
     marginTop: theme.spacing(6),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       marginTop: theme.spacing(2)
     }
   },
   divider: {
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       marginTop: theme.spacing(4),
       marginBottom: theme.spacing(3)
     }

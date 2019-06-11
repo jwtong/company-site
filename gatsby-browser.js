@@ -32,7 +32,7 @@ let theme = createMuiTheme({
     },
     h4: {
       fontFamily: "Lato",
-      [breakpoints.down("md")]: {
+      [breakpoints.down("xs")]: {
         fontSize: "1.25rem"
       }
     },
@@ -44,7 +44,7 @@ let theme = createMuiTheme({
     h6: {
       fontFamily: "Lato",
       fontSize: "1.375em",
-      [breakpoints.down("md")]: {
+      [breakpoints.down("xs")]: {
         fontSize: "1rem"
       }
     },
@@ -52,7 +52,7 @@ let theme = createMuiTheme({
       color: "#5e5e5e",
       fontSize: "1.125rem",
       textAlign: "left",
-      [breakpoints.down("md")]: {
+      [breakpoints.down("xs")]: {
         fontSize: "1rem"
       }
     },
@@ -60,7 +60,7 @@ let theme = createMuiTheme({
       fontFamily: "Roboto Condensed",
       fontWeight: "Bold",
       fontSize: "1.25rem",
-      [breakpoints.down("md")]: {
+      [breakpoints.down("xs")]: {
         fontSize: "1rem"
       }
     }

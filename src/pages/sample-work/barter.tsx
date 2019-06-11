@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import { graphql } from "gatsby";
 import { makeStyles } from "@material-ui/styles";
 import { Divider, withStyles, createStyles } from "@material-ui/core";
@@ -10,7 +11,7 @@ const styles = theme =>
   createStyles({
     image: {
       width: "40%",
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "90%"
       }
     },
@@ -23,7 +24,7 @@ const styles = theme =>
     divider: {
       marginTop: theme.spacing(4),
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2)
       }
@@ -36,6 +37,7 @@ class BarterPage extends React.Component {
 
     const barterRoles = [roles[1], roles[3]];
     const barterTechnologies = ["Sketch"];
+    const images = data.images.edges.map((e: { node: any }) => e.node);
 
     return (
       <SampleWorkTemplate
@@ -51,31 +53,49 @@ class BarterPage extends React.Component {
         <div className={classes.imageWrapper}>
           <Img
             className={classes.image}
-            fluid={data.barter1.childImageSharp.fluid}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === "barter1")
+                .childImageSharp.fluid
+            }
           />
           <Img
             className={classes.image}
-            fluid={data.barter2.childImageSharp.fluid}
-          />
-        </div>
-        <div className={classes.imageWrapper}>
-          <Img
-            className={classes.image}
-            fluid={data.barter3.childImageSharp.fluid}
-          />
-          <Img
-            className={classes.image}
-            fluid={data.barter4.childImageSharp.fluid}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === "barter2")
+                .childImageSharp.fluid
+            }
           />
         </div>
         <div className={classes.imageWrapper}>
           <Img
             className={classes.image}
-            fluid={data.barter5.childImageSharp.fluid}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === "barter3")
+                .childImageSharp.fluid
+            }
           />
           <Img
             className={classes.image}
-            fluid={data.barter6.childImageSharp.fluid}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === "barter4")
+                .childImageSharp.fluid
+            }
+          />
+        </div>
+        <div className={classes.imageWrapper}>
+          <Img
+            className={classes.image}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === "barter5")
+                .childImageSharp.fluid
+            }
+          />
+          <Img
+            className={classes.image}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === "barter6")
+                .childImageSharp.fluid
+            }
           />
         </div>
         <Divider variant="middle" className={classes.divider} />
@@ -84,66 +104,19 @@ class BarterPage extends React.Component {
   }
 }
 
-// export const query = graphql`
-//   query {
-//     images: allFile(
-//       filter: { relativeDirectory: { eq: "sample_work/barter" } }
-//     ) {
-//       edges {
-//         node {
-//           name
-//           childImageSharp {
-//             fluid(cropFocus: CENTER) {
-//               ...GatsbyImageSharpFluid
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
-
 export const query = graphql`
   query {
-    barter1: file(relativePath: { eq: "sample_work/barter/barter1.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    barter2: file(relativePath: { eq: "sample_work/barter/barter2.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    barter3: file(relativePath: { eq: "sample_work/barter/barter3.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    barter4: file(relativePath: { eq: "sample_work/barter/barter4.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    barter5: file(relativePath: { eq: "sample_work/barter/barter5.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    barter6: file(relativePath: { eq: "sample_work/barter/barter6.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 500, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid
+    images: allFile(
+      filter: { relativeDirectory: { eq: "sample_work/barter" } }
+    ) {
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid(maxWidth: 500, cropFocus: CENTER) {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }

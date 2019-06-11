@@ -23,7 +23,7 @@ const styles = (theme: { palette: { secondary: { light: any } } }) =>
       fontSize: "4rem",
       height: "5rem",
       width: "5rem",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         height: "3.5rem",
         width: "3.5rem",
         fontSize: "3rem"
@@ -44,7 +44,7 @@ interface Props extends WithStyles<typeof styles> {
 const ServicePopovers = ({ roles, classes, width }: Props) => (
   <Grid
     container
-    spacing={isWidthDown("md", width) ? 2 : 3}
+    spacing={isWidthDown("xs", width) ? 2 : 3}
     direction="row"
     justify="center"
   >

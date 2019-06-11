@@ -31,7 +31,7 @@ const styles = theme => ({
     width: "100%",
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       marginTop: theme.spacing(2),
@@ -53,7 +53,7 @@ const styles = theme => ({
     alignItems: "center",
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(5),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(2)
     }
@@ -65,20 +65,20 @@ const styles = theme => ({
   header2: {
     color: "white !important",
     textAlign: "center",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "2.5em"
     }
   },
   subHeader2: {
     color: "white !important",
     textAlign: "center",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       fontSize: "1.75em"
     }
   },
   button: {
     marginTop: theme.spacing(6),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       marginTop: theme.spacing(2)
     }
   },
@@ -189,7 +189,7 @@ const IndexPage = props => {
                   <TransitionOnShow
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"
-                    delay={isWidthDown("md", width) ? 0 : index * 200}
+                    delay={isWidthDown("xs", width) ? 0 : index * 200}
                     transitionProps={{ timeout: { enter: 1000 } }}
                   >
                     <div>

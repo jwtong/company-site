@@ -38,7 +38,7 @@ const styles = theme => ({
     justifyContent: "space-between",
     marginTop: "3%",
     width: "30%",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       flexDirection: "column",
       alignItems: "center",
       justify: "space-around",
@@ -55,7 +55,7 @@ const styles = theme => ({
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
     marginBottom: theme.spacing(1),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       marginTop: theme.spacing(2),
@@ -73,7 +73,7 @@ const styles = theme => ({
   serviceCardWrapper: {
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(2)
     }

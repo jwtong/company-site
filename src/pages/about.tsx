@@ -34,7 +34,7 @@ const styles = theme =>
     },
     button: {
       marginTop: theme.spacing(6),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(2)
       }
     },
@@ -43,7 +43,7 @@ const styles = theme =>
       paddingBottom: theme.spacing(4),
       paddingLeft: theme.spacing(25),
       paddingRight: theme.spacing(25),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingLeft: theme.spacing(3),
         paddingRight: theme.spacing(3)
       },
@@ -56,7 +56,7 @@ const styles = theme =>
     divider: {
       marginTop: theme.spacing(4),
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3)
       }
@@ -64,7 +64,7 @@ const styles = theme =>
     skillsGrid: {
       paddingLeft: theme.spacing(15),
       paddingRight: theme.spacing(15),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingLeft: theme.spacing(0),
         paddingRight: theme.spacing(0)
       }
@@ -72,7 +72,7 @@ const styles = theme =>
     name: {
       fontFamily: "Lato",
       fontWeight: 800,
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "1.75rem"
       }
     }

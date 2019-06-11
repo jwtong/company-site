@@ -29,15 +29,15 @@ const styles = (theme: any) =>
       alignItems: "center",
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
-      [theme.breakpoints.up("sm")]: {
-        paddingLeft: theme.spacing(3),
-        paddingRight: theme.spacing(3)
+      [theme.breakpoints.up("xs")]: {
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1)
       }
     },
     appBar: { background: "transparent", boxShadow: "none" },
     icon: {
       fontSize: "50px",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         fontSize: "40px"
       },
       color: "white"
@@ -147,7 +147,7 @@ class Header extends React.Component<Props, State> {
           <IconButton href={"/"} className={classes.icon}>
             <OfflineBolt fontSize="inherit" />
           </IconButton>
-          {isWidthDown("md", width) ? (
+          {isWidthDown("xs", width) ? (
             <>
               <IconButton color="inherit" onClick={this.handleMenu}>
                 <MenuIcon className={classes.icon} />

@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import { graphql } from "gatsby";
 import { Typography, withStyles, createStyles } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
@@ -11,7 +12,7 @@ const styles = theme =>
     divider: {
       marginTop: theme.spacing(4),
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3)
       }
@@ -25,20 +26,20 @@ const styles = theme =>
     },
     designImage: {
       width: "60%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
     diagramImage: {
       width: "70%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
     diagramImage2Wrapper: {
       width: "100%",
       overflow: "hidden",
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("xs")]: {
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
@@ -46,13 +47,13 @@ const styles = theme =>
     },
     diagramImage2: {
       width: "70%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "480px"
       }
     },
     applicationImage: {
       width: "80%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     }
@@ -67,6 +68,8 @@ class ZicPage extends React.Component {
       "Javascript / JQuery",
       "Java (Spark)"
     ];
+
+    const images = data.images.edges.map((e: { node: any }) => e.node);
 
     return (
       <SampleWorkTemplate
@@ -92,7 +95,10 @@ class ZicPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.designImage}
-            fluid={data.zic1.childImageSharp.fluid}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === "zic1")
+                .childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -102,7 +108,10 @@ class ZicPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.diagramImage}
-            fluid={data.zic2.childImageSharp.fluid}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === "zic2")
+                .childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -114,7 +123,10 @@ class ZicPage extends React.Component {
           <div className={classes.diagramImage2Wrapper}>
             <Img
               className={classes.diagramImage2}
-              fluid={data.zic3.childImageSharp.fluid}
+              fluid={
+                _.find(images, (d: { name: string }) => d.name === "zic3")
+                  .childImageSharp.fluid
+              }
             />
           </div>
         </div>
@@ -131,7 +143,10 @@ class ZicPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.applicationImage}
-            fluid={data.zic4.childImageSharp.fluid}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === "zic4")
+                .childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -146,31 +161,15 @@ class ZicPage extends React.Component {
 
 export const query = graphql`
   query {
-    zic1: file(relativePath: { eq: "sample_work/zic/zic1.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    zic2: file(relativePath: { eq: "sample_work/zic/zic2.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    zic3: file(relativePath: { eq: "sample_work/zic/zic3.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 700) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    zic4: file(relativePath: { eq: "sample_work/zic/zic4.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 1000) {
-          ...GatsbyImageSharpFluid
+    images: allFile(filter: { relativeDirectory: { eq: "sample_work/zic" } }) {
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }

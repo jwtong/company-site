@@ -1,29 +1,13 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
-import { makeStyles } from "@material-ui/styles";
-import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
-import Code from "@material-ui/icons/Code";
-import InsertChartOutlined from "@material-ui/icons/InsertChartOutlined";
-import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
-import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
-import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
-import Grid from "@material-ui/core/Grid";
+import _ from "lodash";
+import { graphql } from "gatsby";
 import {
   Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Divider,
   withStyles,
-  Chip,
   createStyles,
   withWidth
 } from "@material-ui/core";
-import StandardPopover from "../../components/standard_popover";
 import Img from "gatsby-image/withIEPolyfill";
-import Slide from "@material-ui/core/Slide";
-import VisibilitySensor from "react-visibility-sensor";
 import SampleWorkTemplate from "../../components/sample_work_template";
 import roles from "../../utils/roles";
 import SubtitleDivider from "../../components/subtitle_divider";
@@ -34,7 +18,7 @@ const styles = theme =>
     divider: {
       marginTop: theme.spacing(4),
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(3)
       }
@@ -56,13 +40,13 @@ const styles = theme =>
     },
     confusionMatrixImage: {
       width: "60%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
     shelfImage: {
       width: "50%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "80%"
       }
     },
@@ -80,7 +64,7 @@ const styles = theme =>
     },
     applicationImage: {
       width: "100%",
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         width: "500px"
       }
     },
@@ -95,6 +79,8 @@ class RecipeBuilderPage extends React.Component {
     const { classes, data, width } = this.props;
     const recipeBuilderRoles = [roles[0], roles[4]];
     const recipeBuilderTechnologies = ["Java", "MATLAB"];
+
+    const images = data.images.edges.map((e: { node: any }) => e.node);
 
     const applicationSteps = [
       "Select images",
@@ -134,7 +120,12 @@ class RecipeBuilderPage extends React.Component {
         <div className={classes.imageWrapper}>
           <Img
             className={classes.confusionMatrixImage}
-            fluid={data.recipeBuilder2.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "recipe_builder2"
+              ).childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -153,7 +144,12 @@ class RecipeBuilderPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.shelfImage}
-            fluid={data.recipeBuilder4.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "recipe_builder4"
+              ).childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -164,7 +160,12 @@ class RecipeBuilderPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.shelfImage}
-            fluid={data.recipeBuilder5.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "recipe_builder5"
+              ).childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -174,7 +175,12 @@ class RecipeBuilderPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.shelfImage}
-            fluid={data.recipeBuilder6.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "recipe_builder6"
+              ).childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -184,19 +190,39 @@ class RecipeBuilderPage extends React.Component {
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.shelfImage}
-            fluid={data.recipeBuilder7.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "recipe_builder7"
+              ).childImageSharp.fluid
+            }
           />
           <Img
             className={classes.shelfImage}
-            fluid={data.recipeBuilder8.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "recipe_builder8"
+              ).childImageSharp.fluid
+            }
           />
           <Img
             className={classes.shelfImage}
-            fluid={data.recipeBuilder9.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "recipe_builder9"
+              ).childImageSharp.fluid
+            }
           />
           <Img
             className={classes.shelfImage}
-            fluid={data.recipeBuilder10.childImageSharp.fluid}
+            fluid={
+              _.find(
+                images,
+                (d: { name: string }) => d.name === "recipe_builder10"
+              ).childImageSharp.fluid
+            }
           />
         </div>
         <Typography variant="subtitle1">
@@ -214,7 +240,12 @@ class RecipeBuilderPage extends React.Component {
               <div className={classes.applicationImageSmallWrapper}>
                 <Img
                   className={classes.applicationImage}
-                  fluid={data.recipeBuilder3.childImageSharp.fluid}
+                  fluid={
+                    _.find(
+                      images,
+                      (d: { name: string }) => d.name === "recipe_builder3"
+                    ).childImageSharp.fluid
+                  }
                 />
               </div>
               <div className={classes.applicationImageSmallWrapper}>
@@ -222,14 +253,24 @@ class RecipeBuilderPage extends React.Component {
                   className={`${classes.applicationImage} ${
                     classes.applicationImage2
                   }`}
-                  fluid={data.recipeBuilder3.childImageSharp.fluid}
+                  fluid={
+                    _.find(
+                      images,
+                      (d: { name: string }) => d.name === "recipe_builder3"
+                    ).childImageSharp.fluid
+                  }
                 />
               </div>
             </>
           ) : (
             <Img
               className={classes.applicationImage}
-              fluid={data.recipeBuilder3.childImageSharp.fluid}
+              fluid={
+                _.find(
+                  images,
+                  (d: { name: string }) => d.name === "recipe_builder3"
+                ).childImageSharp.fluid
+              }
             />
           )}
         </div>
@@ -259,93 +300,17 @@ class RecipeBuilderPage extends React.Component {
 
 export const query = graphql`
   query {
-    recipeBuilder1: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder1.png" }
+    images: allFile(
+      filter: { relativeDirectory: { eq: "sample_work/recipe-builder" } }
     ) {
-      childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    recipeBuilder2: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder2.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 600) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    recipeBuilder3: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder3.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 1000) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    recipeBuilder4: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder4.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    recipeBuilder5: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder5.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    recipeBuilder6: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder6.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    recipeBuilder7: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder7.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    recipeBuilder8: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder8.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    recipeBuilder9: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder9.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    recipeBuilder10: file(
-      relativePath: { eq: "sample_work/recipe-builder/recipe_builder10.png" }
-    ) {
-      childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
         }
       }
     }

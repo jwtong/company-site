@@ -10,7 +10,7 @@ const styles = (theme: any) =>
       position: "relative",
       marginRight: theme.spacing(10),
       marginLeft: theme.spacing(10),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         marginRight: theme.spacing(2),
         marginLeft: theme.spacing(2)
       }

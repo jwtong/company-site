@@ -7,12 +7,12 @@ const styles = theme =>
   createStyles({
     container: {
       width: "100vw",
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("xs")]: {
         height: "50vh"
       },
       paddingRight: theme.spacing(10),
       paddingLeft: theme.spacing(10),
-      [theme.breakpoints.down("md")]: {
+      [theme.breakpoints.down("xs")]: {
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
         paddingRight: theme.spacing(2),
