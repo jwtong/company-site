@@ -1,7 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
 import { withStyles } from "@material-ui/core/styles";
-import Image from "../components/image";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import FormatAlignLeft from "@material-ui/icons/FormatAlignLeft";
@@ -9,21 +7,13 @@ import Chat from "@material-ui/icons/Chat";
 import { ViewDashboardOutline, Rocket } from "mdi-material-ui";
 import Code from "@material-ui/icons/Code";
 import Grid from "@material-ui/core/Grid";
-
-import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
-// import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ServiceCard from "../components/service_card";
-import Hero from "../components/hero";
-import WaveBottom from "../components/wave_bottom";
-import SubtitleDivider from "../components/subtitle_divider";
-import PageBottom from "../components/page_bottom";
+import { Typography } from "@material-ui/core";
+import Hero from "../components/Hero";
+import SubtitleDivider from "../components/SubtitleDivider";
+import PageBottom from "../components/PageBottom";
 import { useTheme } from "@material-ui/styles";
 
 const styles = theme => ({
-  // mIcon: {
-  //   color: "red"
-  // },
   processWrapper: {
     width: "100%",
     paddingLeft: theme.spacing(10),
@@ -50,6 +40,9 @@ const styles = theme => ({
   },
   button: {
     marginTop: theme.spacing(6),
+    [theme.breakpoints.down("sm")]: {
+      marginTop: theme.spacing(4)
+    },
     [theme.breakpoints.down("xs")]: {
       marginTop: theme.spacing(2)
     }

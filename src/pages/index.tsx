@@ -18,12 +18,12 @@ import {
 import { Typography } from "@material-ui/core";
 import { faSketch } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import TechnologiesCard from "../components/technologies_card";
-import Hero from "../components/hero";
-import SubtitleDivider from "../components/subtitle_divider";
-import TransitionOnShow from "../components/transition_on_show";
-import PageBottom from "../components/page_bottom";
-import SplashPage from "../components/splash_page";
+import TechnologiesCard from "../components/TechnologiesCard";
+import Hero from "../components/Hero";
+import SubtitleDivider from "../components/SubtitleDivider";
+import TransitionOnShow from "../components/TransitionOnShow";
+import PageBottom from "../components/PageBottom";
+import SplashPage from "../components/SplashPage";
 import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 
 const styles = theme => ({
@@ -31,6 +31,12 @@ const styles = theme => ({
     width: "100%",
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+      marginTop: theme.spacing(4),
+      marginBottom: theme.spacing(4)
+    },
     [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
@@ -78,6 +84,9 @@ const styles = theme => ({
   },
   button: {
     marginTop: theme.spacing(6),
+    [theme.breakpoints.down("sm")]: {
+      marginTop: theme.spacing(4)
+    },
     [theme.breakpoints.down("xs")]: {
       marginTop: theme.spacing(2)
     }
@@ -185,11 +194,11 @@ const IndexPage = props => {
           >
             {technologies.map(({ icons, names, title }, index: number) => {
               return (
-                <Grid key={index} item xs={12} md={4}>
+                <Grid key={index} item xs={12} sm={12} md={4}>
                   <TransitionOnShow
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"
-                    delay={isWidthDown("xs", width) ? 0 : index * 200}
+                    delay={isWidthDown("sm", width) ? 0 : index * 200}
                     transitionProps={{ timeout: { enter: 1000 } }}
                   >
                     <div>

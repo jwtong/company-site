@@ -23,15 +23,18 @@ const styles = (theme: {
     container: {
       width: "100vw",
       height: "100vh",
-      [theme.breakpoints.down("xs")]: {
-        height: "330px"
-      },
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
       position: "relative",
-      overflow: "hidden"
+      overflow: "hidden",
+      [theme.breakpoints.down("sm")]: {
+        height: "500px"
+      },
+      [theme.breakpoints.down("xs")]: {
+        height: "330px"
+      }
     },
     svgContainer: {
       position: "absolute",
@@ -52,11 +55,15 @@ const styles = (theme: {
       flexDirection: "column",
       paddingRight: theme.spacing(20),
       paddingLeft: theme.spacing(20),
+      alignItems: "center",
+      [theme.breakpoints.down("sm")]: {
+        paddingRight: theme.spacing(4),
+        paddingLeft: theme.spacing(4)
+      },
       [theme.breakpoints.down("xs")]: {
         paddingRight: theme.spacing(2),
         paddingLeft: theme.spacing(2)
-      },
-      alignItems: "center"
+      }
     },
     line: {
       "& path": {

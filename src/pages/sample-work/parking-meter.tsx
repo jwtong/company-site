@@ -10,8 +10,8 @@ import {
   createStyles
 } from "@material-ui/core";
 import roles from "../../utils/roles";
-import SampleWorkTemplate from "../../components/sample_work_template";
-import SubtitleDivider from "../../components/subtitle_divider";
+import SampleWorkTemplate from "../../components/SampleWorkTemplate";
+import SubtitleDivider from "../../components/SubtitleDivider";
 
 const styles = theme =>
   createStyles({
@@ -99,7 +99,7 @@ class ParkingMeterPage extends React.Component {
               fluid={
                 _.find(
                   images,
-                  (d: { name: string }) => d.name === "parking_meter1"
+                  (d: { name: string }) => d.name === "parkingMeter1"
                 ).childImageSharp.fluid
               }
             />
@@ -133,7 +133,7 @@ class ParkingMeterPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "parking_meter2"
+                (d: { name: string }) => d.name === "parkingMeter2"
               ).childImageSharp.fluid
             }
           />
@@ -151,7 +151,7 @@ class ParkingMeterPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "parking_meter3"
+                (d: { name: string }) => d.name === "parkingMeter3"
               ).childImageSharp.fluid
             }
           />
@@ -173,7 +173,7 @@ class ParkingMeterPage extends React.Component {
               fluid={
                 _.find(
                   images,
-                  (d: { name: string }) => d.name === "parking_meter4"
+                  (d: { name: string }) => d.name === "parkingMeter4"
                 ).childImageSharp.fluid
               }
             />

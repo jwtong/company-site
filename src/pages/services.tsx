@@ -19,10 +19,10 @@ import {
 } from "@material-ui/core";
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ServiceCard from "../components/service_card";
-import Hero from "../components/hero";
-import WaveBottom from "../components/wave_bottom";
-import PageBottom from "../components/page_bottom";
+import ServiceCard from "../components/ServiceCard";
+import Hero from "../components/Hero";
+import WaveBottom from "../components/WaveBottom";
+import PageBottom from "../components/PageBottom";
 import roles from "../utils/roles";
 import { isWidthDown } from "@material-ui/core/withWidth";
 

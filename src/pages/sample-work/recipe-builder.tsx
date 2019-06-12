@@ -8,9 +8,9 @@ import {
   withWidth
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
-import SampleWorkTemplate from "../../components/sample_work_template";
+import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
-import SubtitleDivider from "../../components/subtitle_divider";
+import SubtitleDivider from "../../components/SubtitleDivider";
 import { isWidthDown } from "@material-ui/core/withWidth";
 
 const styles = theme =>
@@ -123,7 +123,7 @@ class RecipeBuilderPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipe_builder2"
+                (d: { name: string }) => d.name === "recipeBuilder2"
               ).childImageSharp.fluid
             }
           />
@@ -147,7 +147,7 @@ class RecipeBuilderPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipe_builder4"
+                (d: { name: string }) => d.name === "recipeBuilder4"
               ).childImageSharp.fluid
             }
           />
@@ -163,7 +163,7 @@ class RecipeBuilderPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipe_builder5"
+                (d: { name: string }) => d.name === "recipeBuilder5"
               ).childImageSharp.fluid
             }
           />
@@ -178,7 +178,7 @@ class RecipeBuilderPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipe_builder6"
+                (d: { name: string }) => d.name === "recipeBuilder6"
               ).childImageSharp.fluid
             }
           />
@@ -193,7 +193,7 @@ class RecipeBuilderPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipe_builder7"
+                (d: { name: string }) => d.name === "recipeBuilder7"
               ).childImageSharp.fluid
             }
           />
@@ -202,7 +202,7 @@ class RecipeBuilderPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipe_builder8"
+                (d: { name: string }) => d.name === "recipeBuilder8"
               ).childImageSharp.fluid
             }
           />
@@ -211,7 +211,7 @@ class RecipeBuilderPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipe_builder9"
+                (d: { name: string }) => d.name === "recipeBuilder9"
               ).childImageSharp.fluid
             }
           />
@@ -220,7 +220,7 @@ class RecipeBuilderPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipe_builder10"
+                (d: { name: string }) => d.name === "recipeBuilder10"
               ).childImageSharp.fluid
             }
           />
@@ -243,7 +243,7 @@ class RecipeBuilderPage extends React.Component {
                   fluid={
                     _.find(
                       images,
-                      (d: { name: string }) => d.name === "recipe_builder3"
+                      (d: { name: string }) => d.name === "recipeBuilder3"
                     ).childImageSharp.fluid
                   }
                 />
@@ -256,7 +256,7 @@ class RecipeBuilderPage extends React.Component {
                   fluid={
                     _.find(
                       images,
-                      (d: { name: string }) => d.name === "recipe_builder3"
+                      (d: { name: string }) => d.name === "recipeBuilder3"
                     ).childImageSharp.fluid
                   }
                 />
@@ -268,7 +268,7 @@ class RecipeBuilderPage extends React.Component {
               fluid={
                 _.find(
                   images,
-                  (d: { name: string }) => d.name === "recipe_builder3"
+                  (d: { name: string }) => d.name === "recipeBuilder3"
                 ).childImageSharp.fluid
               }
             />

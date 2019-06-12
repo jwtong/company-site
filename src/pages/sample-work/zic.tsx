@@ -3,9 +3,9 @@ import _ from "lodash";
 import { graphql } from "gatsby";
 import { Typography, withStyles, createStyles } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
-import SampleWorkTemplate from "../../components/sample_work_template";
+import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
-import SubtitleDivider from "../../components/subtitle_divider";
+import SubtitleDivider from "../../components/SubtitleDivider";
 
 const styles = theme =>
   createStyles({

@@ -9,10 +9,10 @@ import {
   createStyles
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
-import TransitionOnShow from "../../components/transition_on_show";
+import TransitionOnShow from "../../components/TransitionOnShow";
 import roles from "../../utils/roles";
-import SampleWorkTemplate from "../../components/sample_work_template";
-import SubtitleDivider from "../../components/subtitle_divider";
+import SampleWorkTemplate from "../../components/SampleWorkTemplate";
+import SubtitleDivider from "../../components/SubtitleDivider";
 import { isWidthDown } from "@material-ui/core/withWidth";
 
 const styles = theme =>
@@ -180,8 +180,8 @@ class JugglePage extends React.Component {
         </Typography>
         <Divider className={`${classes.divider} ${classes.dividerLine}`} />
         <div className={classes.appImageWrapper}>
-          {this.getAppImage(appImages, "background_check1")}
-          {this.getAppImage(appImages, "background_check2")}
+          {this.getAppImage(appImages, "backgroundCheck1")}
+          {this.getAppImage(appImages, "backgroundCheck2")}
         </div>
         <Typography variant="h6" gutterBottom>
           Evident Background Check Integration

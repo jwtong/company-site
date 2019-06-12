@@ -1,23 +1,14 @@
 import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import WaveBottom from "../wave_bottom";
+import WaveBottom from "../WaveBottom";
 import { useTheme } from "@material-ui/styles";
 
 const styles = theme =>
   createStyles({
     container: {
       width: "100vw",
-      [theme.breakpoints.up("xs")]: {
-        height: "50vh"
-      },
       paddingRight: theme.spacing(10),
       paddingLeft: theme.spacing(10),
-      [theme.breakpoints.down("xs")]: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-        paddingRight: theme.spacing(2),
-        paddingLeft: theme.spacing(2)
-      },
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
@@ -25,7 +16,22 @@ const styles = theme =>
       backgroundColor: "black",
       "-webkit-box-sizing": "border-box",
       "-moz-box-sizing": "border-box",
-      "box-sizing": "border-box"
+      "box-sizing": "border-box",
+      [theme.breakpoints.up("md")]: {
+        height: "50vh"
+      },
+      [theme.breakpoints.down("sm")]: {
+        paddingTop: theme.spacing(10),
+        paddingBottom: theme.spacing(10),
+        paddingRight: theme.spacing(4),
+        paddingLeft: theme.spacing(4)
+      },
+      [theme.breakpoints.down("xs")]: {
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
+        paddingRight: theme.spacing(2),
+        paddingLeft: theme.spacing(2)
+      }
     }
   });
 

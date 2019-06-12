@@ -7,7 +7,7 @@ import {
   withWidth
 } from "@material-ui/core";
 import React from "react";
-import StandardPopover from "../standard_popover";
+import StandardPopover from "../StandardPopover";
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 import { isWidthDown } from "@material-ui/core/withWidth";
 

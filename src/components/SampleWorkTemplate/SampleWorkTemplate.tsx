@@ -7,10 +7,10 @@ import {
   Chip
 } from "@material-ui/core";
 import React from "react";
-import Hero from "../hero";
-import ServicePopovers from "../service_popovers";
+import Hero from "../Hero";
+import ServicePopovers from "../ServicePopovers";
 import technologyColorMap from "../../utils/technologies";
-import SubtitleDivider from "../subtitle_divider";
+import SubtitleDivider from "../SubtitleDivider";
 
 const styles = theme =>
   createStyles({

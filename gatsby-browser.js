@@ -1,5 +1,5 @@
 const React = require("react");
-const Layout = require("./src/components/layout").default;
+const Layout = require("./src/components/Layout").default;
 const grey = require("@material-ui/core/colors/grey").default;
 const pink = require("@material-ui/core/colors/pink").default;
 const ThemeProvider = require("@material-ui/styles/ThemeProvider").default;
@@ -69,7 +69,7 @@ let theme = createMuiTheme({
 
 theme = responsiveFontSizes(theme);
 
-exports.wrapPageElement = ({ element, props }) => {
+const wrappedPage = ({ element, props }) => {
   // props provide same data to Layout as Page element will get
   // including location, data, etc - you don't need to pass it
   return (
@@ -78,3 +78,5 @@ exports.wrapPageElement = ({ element, props }) => {
     </ThemeProvider>
   );
 };
+
+exports.wrapPageElement = wrappedPage;

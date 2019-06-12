@@ -3,9 +3,9 @@ import _ from "lodash";
 import { graphql } from "gatsby";
 import { Typography, withStyles, createStyles } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
-import SampleWorkTemplate from "../../components/sample_work_template";
+import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
-import SubtitleDivider from "../../components/subtitle_divider";
+import SubtitleDivider from "../../components/SubtitleDivider";
 
 const styles = theme =>
   createStyles({
@@ -67,7 +67,7 @@ class WebScrapeDcfPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "web_scrape_dcf1"
+                (d: { name: string }) => d.name === "webScrapeDcf1"
               ).childImageSharp.fluid
             }
           />
@@ -92,7 +92,7 @@ class WebScrapeDcfPage extends React.Component {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "web_scrape_dcf2"
+                (d: { name: string }) => d.name === "webScrapeDcf2"
               ).childImageSharp.fluid
             }
           />

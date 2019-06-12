@@ -11,10 +11,10 @@ import {
   withStyles
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
-import Hero from "../components/hero";
-import WaveBottom from "../components/wave_bottom";
-import SubtitleDivider from "../components/subtitle_divider";
-import PageBottom from "../components/page_bottom";
+import Hero from "../components/Hero";
+import WaveBottom from "../components/WaveBottom";
+import SubtitleDivider from "../components/SubtitleDivider";
+import PageBottom from "../components/PageBottom";
 import technologyColorMap from "../utils/technologies";
 
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";

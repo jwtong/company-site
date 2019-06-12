@@ -3,8 +3,8 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 
 import "./layout.css";
-import Header from "../header";
-import Footer from "../footer";
+import Header from "../Header";
+import Footer from "../Footer";
 
 const Layout = ({
   children,

@@ -1,7 +1,7 @@
 import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import SVG from "../svg_shapes";
-import WaveBottom from "../wave_bottom";
+import SVG from "../SvgShapes";
+import WaveBottom from "../WaveBottom";
 import { useTheme } from "@material-ui/styles";
 
 const styles = (theme: any) =>
@@ -10,6 +10,10 @@ const styles = (theme: any) =>
       position: "relative",
       marginRight: theme.spacing(10),
       marginLeft: theme.spacing(10),
+      [theme.breakpoints.down("sm")]: {
+        marginRight: theme.spacing(4),
+        marginLeft: theme.spacing(4)
+      },
       [theme.breakpoints.down("xs")]: {
         marginRight: theme.spacing(2),
         marginLeft: theme.spacing(2)
@@ -26,6 +30,10 @@ const styles = (theme: any) =>
     container: {
       width: "100vw",
       height: "100vh",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "15px",
+        height: "500px"
+      },
       [theme.breakpoints.down("xs")]: {
         fontSize: "10px",
         height: "330.25px"

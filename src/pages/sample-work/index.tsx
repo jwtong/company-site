@@ -9,8 +9,8 @@ import {
   WithStyles,
   withWidth
 } from "@material-ui/core";
-import Hero from "../../components/hero";
-import TransitionGridList from "../../components/transition_grid_list";
+import Hero from "../../components/Hero";
+import TransitionGridList from "../../components/TransitionGridList";
 import Img from "gatsby-image/withIEPolyfill";
 import { isWidthDown } from "@material-ui/core/withWidth";
 

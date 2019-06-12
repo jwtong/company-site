@@ -1,6 +1,6 @@
 import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import WaveBottomSVG from "../../assets/svg/wave_bottom.svg";
+import WaveBottomSVG from "../../assets/svg/waveBottom.svg";
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 
 const styles = createStyles({

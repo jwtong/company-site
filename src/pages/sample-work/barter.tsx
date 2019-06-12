@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import { makeStyles } from "@material-ui/styles";
 import { Divider, withStyles, createStyles } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
-import SampleWorkTemplate from "../../components/sample_work_template";
+import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
 
 const styles = theme =>
