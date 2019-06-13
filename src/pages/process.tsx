@@ -12,6 +12,10 @@ import Hero from "../components/Hero";
 import SubtitleDivider from "../components/SubtitleDivider";
 import PageBottom from "../components/PageBottom";
 import { useTheme } from "@material-ui/styles";
+import {
+  buttonWithMargin,
+  dividerWithMargin
+} from "../components/SharedStyles";
 
 const styles = theme => ({
   processWrapper: {
@@ -19,6 +23,12 @@ const styles = theme => ({
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
     marginBottom: theme.spacing(1),
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(5),
+      paddingRight: theme.spacing(5),
+      marginTop: theme.spacing(0),
+      marginBottom: theme.spacing(4)
+    },
     [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(3),
@@ -27,7 +37,7 @@ const styles = theme => ({
     },
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center",
     alignSelf: "center",
     "-webkit-box-sizing": "border-box",
@@ -38,23 +48,8 @@ const styles = theme => ({
     color: "white !important",
     textAlign: "center"
   },
-  button: {
-    marginTop: theme.spacing(6),
-    [theme.breakpoints.down("sm")]: {
-      marginTop: theme.spacing(4)
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: theme.spacing(2)
-    }
-  },
-  divider: {
-    marginTop: theme.spacing(4),
-    marginBottom: theme.spacing(4),
-    [theme.breakpoints.down("xs")]: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(3)
-    }
-  }
+  buttonWithMargin: buttonWithMargin(theme),
+  dividerWithMargin: dividerWithMargin(theme)
 });
 
 const ProcessPage = props => {
@@ -90,6 +85,7 @@ const ProcessPage = props => {
         "Once the project blueprint is signed off and a formal contract is agreed upon, we’ll begin working, and provide you with weekly updates on progress."
       ]
     },
+
     {
       title: "Step 5 - Launch",
       icon: Rocket,
@@ -115,11 +111,11 @@ const ProcessPage = props => {
             <div key={s.title}>
               <SubtitleDivider
                 text={s.title}
-                otherProps={{ className: classes.divider }}
+                otherProps={{ className: classes.dividerWithMargin }}
               />
 
               <Grid alignItems="center" container direction="row" spacing={2}>
-                <Grid item xs={12} md={3} className={classes.grid}>
+                <Grid item xs={12} sm={4} md={3} className={classes.grid}>
                   <Card
                     style={{
                       display: "flex",
@@ -140,7 +136,7 @@ const ProcessPage = props => {
                     })}
                   </Card>
                 </Grid>
-                <Grid item xs={12} md={8}>
+                <Grid item xs={12} sm={8} md={8}>
                   {s.texts.map((t, index) => {
                     return (
                       <Typography
@@ -169,7 +165,7 @@ const ProcessPage = props => {
           Learn more about what types of work we can do for you
         </Typography>
         <Button
-          className={classes.button}
+          className={classes.buttonWithMargin}
           href="/services"
           variant="contained"
           color="secondary"

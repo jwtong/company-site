@@ -141,7 +141,14 @@ class SampleWorkPage extends React.Component<Props> {
       }
     ];
 
-    const columns = isWidthDown("xs", width) ? 1 : sampleWorkData.length / 2;
+    let columns;
+    if (isWidthDown("xs", width)) {
+      columns = 1;
+    } else if (isWidthDown("sm", width)) {
+      columns = 2;
+    } else {
+      columns = sampleWorkData.length / 2;
+    }
     const gridListTileData = this.getGridListTileData(sampleWorkData, classes);
     return (
       <>

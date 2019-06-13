@@ -6,7 +6,6 @@ import {
   WithStyles,
   CardContent,
   ListItem,
-  ListItemIcon,
   List,
   ListItemText
 } from "@material-ui/core";
@@ -16,7 +15,8 @@ import StarIcon from "@material-ui/icons/Star";
 const styles = (theme: any) =>
   createStyles({
     card: {
-      backgroundColor: "white"
+      backgroundColor: "white",
+      height: "100%"
     },
     iconWrapper: {
       display: "flex",
@@ -37,16 +37,6 @@ const styles = (theme: any) =>
     icon: {
       color: "white"
     },
-    // title: {
-    //   [theme.breakpoints.down("xs")]: {
-    //     fontSize: "1.25rem"
-    //   }
-    // },
-    // itemText: {
-    //   [theme.breakpoints.down("xs")]: {
-    //     fontSize: "1rem"
-    //   }
-    // },
     listItemText: {
       [theme.breakpoints.down("xs")]: {
         margin: 0

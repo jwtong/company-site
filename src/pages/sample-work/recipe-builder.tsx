@@ -12,40 +12,31 @@ import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
 import SubtitleDivider from "../../components/SubtitleDivider";
 import { isWidthDown } from "@material-ui/core/withWidth";
+import {
+  dividerWithMargin,
+  topBottomImageWrapper,
+  imageWrapper
+} from "../../components/SharedStyles";
 
 const styles = theme =>
   createStyles({
-    divider: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3)
-      }
-    },
-    imageWrapper: {
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      marginBottom: theme.spacing(3)
-    },
-    topBottomImageWrapper: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      marginBottom: theme.spacing(3),
-      marginTop: theme.spacing(3)
-    },
+    dividerWithMargin: dividerWithMargin(theme),
+    topBottomImageWrapper: topBottomImageWrapper(theme),
+    imageWrapper: imageWrapper(theme),
     confusionMatrixImage: {
       width: "60%",
+      [theme.breakpoints.down("sm")]: {
+        width: "75%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
     shelfImage: {
       width: "50%",
+      [theme.breakpoints.down("sm")]: {
+        width: "60%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "80%"
       }
@@ -101,7 +92,7 @@ class RecipeBuilderPage extends React.Component {
       >
         <SubtitleDivider
           text={"Overview"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <Typography variant="subtitle1">
           This project was split into three distinct parts, together
@@ -115,7 +106,7 @@ class RecipeBuilderPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Training the Neural Network on Food"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.imageWrapper}>
           <Img
@@ -139,7 +130,7 @@ class RecipeBuilderPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Compound Image Algorithm (Shelf-Detector)"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.topBottomImageWrapper}>
           <Img
@@ -232,7 +223,7 @@ class RecipeBuilderPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Java Application and Integration with Spoonacular API"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.imageWrapper}>
           {isWidthDown("xs", width) ? (

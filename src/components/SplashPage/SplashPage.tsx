@@ -6,6 +6,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import LineSvg from "../../assets/svg/line.svg";
+import { pageContainer } from "../SharedStyles";
 
 const divider = (theme: { palette: { secondary: { main: any } } }) => {
   return {
@@ -20,22 +21,7 @@ const styles = (theme: {
   palette: { secondary: { main: string | undefined } };
 }) =>
   createStyles({
-    container: {
-      width: "100vw",
-      height: "100vh",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      position: "relative",
-      overflow: "hidden",
-      [theme.breakpoints.down("sm")]: {
-        height: "500px"
-      },
-      [theme.breakpoints.down("xs")]: {
-        height: "330px"
-      }
-    },
+    pageContainer: pageContainer(theme),
     svgContainer: {
       position: "absolute",
       height: "100%",
@@ -56,6 +42,10 @@ const styles = (theme: {
       paddingRight: theme.spacing(20),
       paddingLeft: theme.spacing(20),
       alignItems: "center",
+      [theme.breakpoints.down("md")]: {
+        paddingRight: theme.spacing(10),
+        paddingLeft: theme.spacing(10)
+      },
       [theme.breakpoints.down("sm")]: {
         paddingRight: theme.spacing(4),
         paddingLeft: theme.spacing(4)
@@ -101,7 +91,7 @@ interface Props extends WithStyles<typeof styles> {
 
 const SplashPage = ({ children, classes }: Props) => {
   return (
-    <div className={classes.container}>
+    <div className={classes.pageContainer}>
       <div className={classes.svgContainer}>
         <LineSvg className={classes.line} />
       </div>

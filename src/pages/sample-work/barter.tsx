@@ -6,29 +6,21 @@ import { Divider, withStyles, createStyles } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
+import { dividerWithMargin, imageWrapper } from "../../components/SharedStyles";
 
 const styles = theme =>
   createStyles({
     image: {
       width: "40%",
-      [theme.breakpoints.down("xs")]: {
+      [theme.breakpoints.down("md")]: {
+        width: "50%"
+      },
+      [theme.breakpoints.down("sm")]: {
         width: "90%"
       }
     },
-    imageWrapper: {
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      marginBottom: theme.spacing(3)
-    },
-    divider: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2)
-      }
-    }
+    imageWrapper: imageWrapper(theme),
+    dividerWithMargin: dividerWithMargin(theme)
   });
 
 class BarterPage extends React.Component {
@@ -48,7 +40,7 @@ class BarterPage extends React.Component {
         roles={barterRoles}
         technologies={barterTechnologies}
       >
-        <Divider variant="middle" className={classes.divider} />
+        <Divider variant="middle" className={classes.dividerWithMargin} />
 
         <div className={classes.imageWrapper}>
           <Img
@@ -98,7 +90,7 @@ class BarterPage extends React.Component {
             }
           />
         </div>
-        <Divider variant="middle" className={classes.divider} />
+        <Divider variant="middle" className={classes.dividerWithMargin} />
       </SampleWorkTemplate>
     );
   }

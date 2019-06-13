@@ -25,8 +25,10 @@ import TransitionOnShow from "../components/TransitionOnShow";
 import PageBottom from "../components/PageBottom";
 import SplashPage from "../components/SplashPage";
 import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
+import { buttonWithMargin } from "../components/SharedStyles";
 
 const styles = theme => ({
+  buttonWithMargin: buttonWithMargin(theme),
   technologiesWrapper: {
     width: "100%",
     paddingLeft: theme.spacing(10),
@@ -80,15 +82,6 @@ const styles = theme => ({
     textAlign: "center",
     [theme.breakpoints.down("xs")]: {
       fontSize: "1.75em"
-    }
-  },
-  button: {
-    marginTop: theme.spacing(6),
-    [theme.breakpoints.down("sm")]: {
-      marginTop: theme.spacing(4)
-    },
-    [theme.breakpoints.down("xs")]: {
-      marginTop: theme.spacing(2)
     }
   },
   bottomWrapper: {
@@ -168,7 +161,7 @@ const IndexPage = props => {
             best technology, and our advantage is being lean.
           </Typography>
           <Button
-            className={classes.button}
+            className={classes.buttonWithMargin}
             href="/services"
             variant="contained"
             color="secondary"
@@ -199,7 +192,13 @@ const IndexPage = props => {
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"
                     delay={isWidthDown("sm", width) ? 0 : index * 200}
-                    transitionProps={{ timeout: { enter: 1000 } }}
+                    transitionProps={{
+                      timeout: { enter: 1000 },
+                      style: { height: "100%" }
+                    }}
+                    containerStyle={{
+                      height: "100%"
+                    }}
                   >
                     <div>
                       <TechnologiesCard
@@ -225,7 +224,7 @@ const IndexPage = props => {
           Contact us to discuss your project and how we can collaborate.
         </Typography>
         <Button
-          className={classes.button}
+          className={classes.buttonWithMargin}
           href="/contact"
           variant="contained"
           color="secondary"

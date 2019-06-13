@@ -14,17 +14,11 @@ import roles from "../../utils/roles";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import SubtitleDivider from "../../components/SubtitleDivider";
 import { isWidthDown } from "@material-ui/core/withWidth";
+import { dividerWithMargin } from "../../components/SharedStyles";
 
 const styles = theme =>
   createStyles({
-    divider: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3)
-      }
-    },
+    dividerWithMargin: dividerWithMargin(theme),
     dividerLine: {
       maxHeight: "1px",
       color: "#F6F6F6"
@@ -55,6 +49,10 @@ const styles = theme =>
     designImage: {
       width: "1500px",
       height: "600px",
+      [theme.breakpoints.down("sm")]: {
+        width: "1200px",
+        height: "400px"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "750px",
         height: "300px"
@@ -110,7 +108,7 @@ class JugglePage extends React.Component {
       >
         <SubtitleDivider
           text={"Preliminary Design"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.designImageWrapper}>
           <Img
@@ -129,7 +127,7 @@ class JugglePage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Notable Features"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "messaging1")}
@@ -144,7 +142,11 @@ class JugglePage extends React.Component {
           real-time, making it easier to coordinate bookings and special
           requests.
         </Typography>
-        <Divider className={`${classes.divider} ${classes.dividerLine}`} />
+        <Divider
+          className={`${classes.dividerWithMargin} ${
+            classes.dividerWithMarginLine
+          }`}
+        />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "pricing1")}
           {this.getAppImage(appImages, "pricing2")}
@@ -161,7 +163,11 @@ class JugglePage extends React.Component {
           accomodate high-demand periods, promo-code and gift cards,
           transportation reimbursement, and pre-booking payment estimation.
         </Typography>
-        <Divider className={`${classes.divider} ${classes.dividerLine}`} />
+        <Divider
+          className={`${classes.dividerWithMargin} ${
+            classes.dividerWithMarginLine
+          }`}
+        />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "search1")}
           {this.getAppImage(appImages, "search2")}
@@ -178,7 +184,11 @@ class JugglePage extends React.Component {
           interests. Search results are sorted by a weighted rating that depends
           on number of connections, rating, and number of jobs completed.
         </Typography>
-        <Divider className={`${classes.divider} ${classes.dividerLine}`} />
+        <Divider
+          className={`${classes.dividerWithMargin} ${
+            classes.dividerWithMarginLine
+          }`}
+        />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "backgroundCheck1")}
           {this.getAppImage(appImages, "backgroundCheck2")}
@@ -193,7 +203,11 @@ class JugglePage extends React.Component {
           completed checks automatically into the app as represented by the
           green shield checkmark.
         </Typography>
-        <Divider className={`${classes.divider} ${classes.dividerLine}`} />
+        <Divider
+          className={`${classes.dividerWithMargin} ${
+            classes.dividerWithMarginLine
+          }`}
+        />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "referral1")}
           {this.getAppImage(appImages, "referral2")}
@@ -209,7 +223,11 @@ class JugglePage extends React.Component {
           booking. The user base has nearly doubled since this feature was made
           live.
         </Typography>
-        <Divider className={`${classes.divider} ${classes.dividerLine}`} />
+        <Divider
+          className={`${classes.dividerWithMargin} ${
+            classes.dividerWithMarginLine
+          }`}
+        />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "emergency1")}
           {this.getAppImage(appImages, "emergency2")}

@@ -1,30 +1,12 @@
 import React from "react";
-import { Link } from "gatsby";
 import { withStyles } from "@material-ui/core/styles";
 import Image from "../components/image";
-import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
-import Code from "@material-ui/icons/Code";
-import InsertChartOutlined from "@material-ui/icons/InsertChartOutlined";
-import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
-import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
-import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
-import Grid from "@material-ui/core/Grid";
-import {
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  withWidth
-} from "@material-ui/core";
-// import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { Typography, withWidth, Button } from "@material-ui/core";
 import ServiceCard from "../components/ServiceCard";
 import Hero from "../components/Hero";
-import WaveBottom from "../components/WaveBottom";
 import PageBottom from "../components/PageBottom";
 import roles from "../utils/roles";
-import { isWidthDown } from "@material-ui/core/withWidth";
 
 const styles = theme => ({
   grid: {
@@ -38,10 +20,14 @@ const styles = theme => ({
     justifyContent: "space-between",
     marginTop: "3%",
     width: "30%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("md")]: {
+      justify: "space-around",
       flexDirection: "column",
       alignItems: "center",
-      justify: "space-around",
+      height: "120px",
+      width: "100%"
+    },
+    [theme.breakpoints.down("sm")]: {
       height: "100px",
       width: "100%"
     }
@@ -55,6 +41,12 @@ const styles = theme => ({
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
     marginBottom: theme.spacing(1),
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2)
+    },
     [theme.breakpoints.down("xs")]: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),

@@ -14,6 +14,12 @@ const styles = (theme: { palette: { secondary: { light: any } } }) =>
       paddingTop: theme.spacing(10),
       paddingBottom: theme.spacing(10),
       paddingRight: theme.spacing(15),
+      [theme.breakpoints.down("sm")]: {
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
+        paddingRight: theme.spacing(3),
+        paddingLeft: theme.spacing(0)
+      },
       [theme.breakpoints.down("xs")]: {
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
@@ -41,13 +47,13 @@ interface Props extends WithStyles<typeof styles> {
 const ServiceCard = ({ role: { title, icon, text }, classes }: Props) => (
   <Card key={title} className={classes.card}>
     <Grid container direction="row" spacing={1}>
-      <Grid item xs={12} md={4} className={classes.grid}>
+      <Grid item xs={12} sm={4} md={4} className={classes.grid}>
         {React.createElement(icon, {
           fontSize: "inherit",
           color: "inherit"
         })}
       </Grid>
-      <Grid item xs={12} md={8}>
+      <Grid item xs={12} sm={8} md={8}>
         <Grid container spacing={1} direction="column">
           <Grid item xs={12}>
             <Typography variant="h3" gutterBottom>

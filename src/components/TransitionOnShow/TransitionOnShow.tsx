@@ -8,6 +8,7 @@ interface Props {
   transitionProps: any;
   transitionsMap: any;
   delay?: number;
+  containerStyle?: any;
 }
 
 interface State {
@@ -46,12 +47,13 @@ export default class TransitionOnShow extends React.Component<Props, State> {
     const {
       visibilitySensorProps,
       transitionType,
-      transitionProps
+      transitionProps,
+      containerStyle
     } = this.props;
 
     return (
       <VisibilitySensor {...visibilitySensorProps} onChange={this.onChange}>
-        <div>
+        <div style={containerStyle}>
           {React.createElement(
             this.props.transitionsMap[transitionType],
             { ...transitionProps, in: this.state.isVisible },

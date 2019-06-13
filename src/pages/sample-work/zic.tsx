@@ -6,54 +6,47 @@ import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
 import SubtitleDivider from "../../components/SubtitleDivider";
+import {
+  dividerWithMargin,
+  topBottomImageWrapper,
+  imageShiftWrapper
+} from "../../components/SharedStyles";
 
 const styles = theme =>
   createStyles({
-    divider: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3)
-      }
-    },
-    topBottomImageWrapper: {
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      marginBottom: theme.spacing(3),
-      marginTop: theme.spacing(3)
-    },
+    dividerWithMargin: dividerWithMargin(theme),
+    topBottomImageWrapper: topBottomImageWrapper(theme),
+    imageShiftWrapper: imageShiftWrapper(theme),
     designImage: {
       width: "60%",
+      [theme.breakpoints.down("sm")]: {
+        width: "70%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
     diagramImage: {
       width: "70%",
+      [theme.breakpoints.down("sm")]: {
+        width: "80%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
-    diagramImage2Wrapper: {
-      width: "100%",
-      overflow: "hidden",
-      [theme.breakpoints.up("xs")]: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }
-    },
     diagramImage2: {
       width: "70%",
+      [theme.breakpoints.down("sm")]: {
+        width: "80%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "480px"
       }
     },
     applicationImage: {
       width: "80%",
-      [theme.breakpoints.down("xs")]: {
+      [theme.breakpoints.down("md")]: {
         width: "100%"
       }
     }
@@ -80,7 +73,7 @@ class ZicPage extends React.Component {
       >
         <SubtitleDivider
           text={"Overview"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <Typography variant="subtitle1" gutterBottom>
           A full-stack web application that allows one user to host a playlist
@@ -90,7 +83,7 @@ class ZicPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Design"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.topBottomImageWrapper}>
           <Img
@@ -120,7 +113,7 @@ class ZicPage extends React.Component {
           data.
         </Typography>
         <div className={classes.topBottomImageWrapper}>
-          <div className={classes.diagramImage2Wrapper}>
+          <div className={classes.imageShiftWrapper}>
             <Img
               className={classes.diagramImage2}
               fluid={
@@ -138,7 +131,7 @@ class ZicPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Final Product"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.topBottomImageWrapper}>
           <Img

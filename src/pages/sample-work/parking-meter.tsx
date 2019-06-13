@@ -12,59 +12,51 @@ import {
 import roles from "../../utils/roles";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import SubtitleDivider from "../../components/SubtitleDivider";
+import {
+  dividerWithMargin,
+  topBottomImageWrapper,
+  imageWrapper,
+  imageShiftWrapper
+} from "../../components/SharedStyles";
 
 const styles = theme =>
   createStyles({
-    divider: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3)
-      }
-    },
-    imageWrapper: {
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      marginBottom: theme.spacing(3)
-    },
-    topBottomImageWrapper: {
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      marginBottom: theme.spacing(3),
-      marginTop: theme.spacing(3)
-    },
-    mainWrapper: {
-      overflow: "hidden",
-      width: "100%",
-      [theme.breakpoints.up("xs")]: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }
-    },
+    dividerWithMargin: dividerWithMargin(theme),
+    topBottomImageWrapper: topBottomImageWrapper(theme),
+    imageWrapper: imageWrapper(theme),
+    imageShiftWrapper: imageShiftWrapper(theme),
     mainImage: {
       width: "90%",
+      [theme.breakpoints.down("sm")]: {
+        width: "100%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "425px"
       }
     },
     mapImage: {
       width: "90%",
+      [theme.breakpoints.down("sm")]: {
+        width: "100%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "375px"
       }
     },
     bostonImage: {
       width: "60%",
+      [theme.breakpoints.down("sm")]: {
+        width: "75%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
     occupancyImage: {
       width: "50%",
+      [theme.breakpoints.down("sm")]: {
+        width: "65%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
@@ -90,10 +82,10 @@ class ParkingMeterPage extends React.Component {
       >
         <SubtitleDivider
           text={"Overview"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.imageWrapper}>
-          <div className={classes.mainWrapper}>
+          <div className={classes.imageShiftWrapper}>
             <Img
               className={classes.mainImage}
               fluid={
@@ -116,7 +108,7 @@ class ParkingMeterPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Data Prediction and Model"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <Typography variant="subtitle1">
           Before building the predictive model, I needed to pick a set of
@@ -164,10 +156,10 @@ class ParkingMeterPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Web Application"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.imageWrapper}>
-          <div className={classes.mainWrapper}>
+          <div className={classes.imageShiftWrapper}>
             <Img
               className={classes.mapImage}
               fluid={
@@ -189,7 +181,7 @@ class ParkingMeterPage extends React.Component {
         </Typography>
         <SubtitleDivider
           text={"Economic Analysis"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <Typography variant="subtitle1">
           In the end, the predictive power of the final data model was limited,
@@ -202,7 +194,7 @@ class ParkingMeterPage extends React.Component {
           scenarios (e.g. pricing changes) that could improve the economic
           efficiency of the meters.
         </Typography>
-        <Divider variant="middle" className={classes.divider} />
+        <Divider variant="middle" className={classes.dividerWithMargin} />
         <div
           style={{
             display: "flex",

@@ -11,6 +11,7 @@ import Hero from "../Hero";
 import ServicePopovers from "../ServicePopovers";
 import technologyColorMap from "../../utils/technologies";
 import SubtitleDivider from "../SubtitleDivider";
+import { dividerWithMargin } from "../SharedStyles";
 
 const styles = theme =>
   createStyles({
@@ -26,6 +27,10 @@ const styles = theme =>
     mainContentWrapper: {
       paddingLeft: theme.spacing(15),
       paddingRight: theme.spacing(15),
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: theme.spacing(8),
+        paddingRight: theme.spacing(8)
+      },
       [theme.breakpoints.down("xs")]: {
         paddingLeft: theme.spacing(3),
         paddingRight: theme.spacing(3)
@@ -42,14 +47,7 @@ const styles = theme =>
         marginBottom: theme.spacing(3)
       }
     },
-    divider: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3)
-      }
-    }
+    dividerWithMargin: dividerWithMargin(theme)
   });
 
 interface Props extends WithStyles<typeof styles> {
@@ -86,12 +84,12 @@ const SampleWorkTemplate = ({
         {children}
         <SubtitleDivider
           text={"Services Provided"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <ServicePopovers roles={roles} />
         <SubtitleDivider
           text={"Technologies"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <Grid
           className={classes.skillsGrid}

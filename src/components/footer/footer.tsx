@@ -24,6 +24,9 @@ const styles = (theme: {
       padding: "0% 5% 0% 5%",
       alignItems: "center",
       backgroundColor: theme.palette.primary.main,
+      [theme.breakpoints.down("md")]: {
+        height: "75px"
+      },
       [theme.breakpoints.down("xs")]: {
         height: "50.5px"
       }

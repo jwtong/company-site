@@ -6,32 +6,29 @@ import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
 import SubtitleDivider from "../../components/SubtitleDivider";
+import {
+  dividerWithMargin,
+  topBottomImageWrapper
+} from "../../components/SharedStyles";
 
 const styles = theme =>
   createStyles({
-    divider: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3)
-      }
-    },
-    topBottomImageWrapper: {
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      marginBottom: theme.spacing(3),
-      marginTop: theme.spacing(3)
-    },
+    dividerWithMargin: dividerWithMargin(theme),
+    topBottomImageWrapper: topBottomImageWrapper(theme),
     mainImage: {
       width: "60%",
+      [theme.breakpoints.down("sm")]: {
+        width: "90%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
     },
     sensitivityImage: {
       width: "50%",
+      [theme.breakpoints.down("sm")]: {
+        width: "70%"
+      },
       [theme.breakpoints.down("xs")]: {
         width: "100%"
       }
@@ -59,7 +56,7 @@ class WebScrapeDcfPage extends React.Component {
       >
         <SubtitleDivider
           text={"Overview"}
-          otherProps={{ className: classes.divider }}
+          otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.topBottomImageWrapper}>
           <Img

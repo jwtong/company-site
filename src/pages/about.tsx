@@ -16,33 +16,31 @@ import WaveBottom from "../components/WaveBottom";
 import SubtitleDivider from "../components/SubtitleDivider";
 import PageBottom from "../components/PageBottom";
 import technologyColorMap from "../utils/technologies";
+import {
+  buttonWithMargin,
+  dividerWithMargin
+} from "../components/SharedStyles";
 
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const styles = theme =>
   createStyles({
-    mIcon: {
-      color: "black"
-    },
     header: {
       color: "white !important",
       textAlign: "center"
     },
-    centerer: {
-      justifyContent: "center"
-    },
-    button: {
-      marginTop: theme.spacing(6),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(2)
-      }
-    },
+    buttonWithMargin: buttonWithMargin(theme),
+    dividerWithMargin: dividerWithMargin(theme),
     aboutWrapper: {
       paddingTop: theme.spacing(4),
       paddingBottom: theme.spacing(4),
       paddingLeft: theme.spacing(25),
       paddingRight: theme.spacing(25),
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: theme.spacing(10),
+        paddingRight: theme.spacing(10)
+      },
       [theme.breakpoints.down("xs")]: {
         paddingLeft: theme.spacing(3),
         paddingRight: theme.spacing(3)
@@ -53,18 +51,10 @@ const styles = theme =>
       borderRadius: "100px",
       marginTop: theme.spacing(4)
     },
-    divider: {
-      marginTop: theme.spacing(4),
-      marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3)
-      }
-    },
     skillsGrid: {
       paddingLeft: theme.spacing(15),
       paddingRight: theme.spacing(15),
-      [theme.breakpoints.down("xs")]: {
+      [theme.breakpoints.down("sm")]: {
         paddingLeft: theme.spacing(0),
         paddingRight: theme.spacing(0)
       }
@@ -165,7 +155,7 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
               </div>
               <SubtitleDivider
                 text={"About Me"}
-                otherProps={{ className: classes.divider }}
+                otherProps={{ className: classes.dividerWithMargin }}
               />
               {p.about.map((paragraph, index) => {
                 return (
@@ -178,7 +168,7 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
               })}
               <SubtitleDivider
                 text={"Top Skills"}
-                otherProps={{ className: classes.divider }}
+                otherProps={{ className: classes.dividerWithMargin }}
               />
               <Grid
                 className={classes.skillsGrid}
@@ -201,7 +191,7 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
                   );
                 })}
               </Grid>
-              <Divider className={classes.divider} />
+              <Divider className={classes.dividerWithMargin} />
               <div
                 style={{
                   display: "flex",
@@ -228,7 +218,7 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
           Some examples of previous work
         </Typography>
         <Button
-          className={classes.button}
+          className={classes.buttonWithMargin}
           href="/sample-work"
           variant="contained"
           color="secondary"

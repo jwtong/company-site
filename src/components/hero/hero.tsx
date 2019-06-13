@@ -3,6 +3,7 @@ import React from "react";
 import SVG from "../SvgShapes";
 import WaveBottom from "../WaveBottom";
 import { useTheme } from "@material-ui/styles";
+import { pageContainer } from "../SharedStyles";
 
 const styles = (theme: any) =>
   createStyles({
@@ -27,23 +28,8 @@ const styles = (theme: any) =>
       flexDirection: "column",
       alignItems: "center"
     },
+    pageContainer: pageContainer(theme),
     container: {
-      width: "100vw",
-      height: "100vh",
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "15px",
-        height: "500px"
-      },
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "10px",
-        height: "330.25px"
-      },
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      position: "relative",
-      overflow: "hidden",
       backgroundColor: "black"
     },
     "@keyframes upDownWide": {
@@ -87,7 +73,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
   const theme: any = useTheme();
   return (
     <>
-      <div className={classes.container}>
+      <div className={`${classes.container} ${classes.pageContainer}`}>
         <div className={classes.upDownDiv}>
           <SVG
             animated

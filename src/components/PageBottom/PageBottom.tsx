@@ -17,10 +17,10 @@ const styles = theme =>
       "-webkit-box-sizing": "border-box",
       "-moz-box-sizing": "border-box",
       "box-sizing": "border-box",
-      [theme.breakpoints.up("md")]: {
+      [theme.breakpoints.up("lg")]: {
         height: "50vh"
       },
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("md")]: {
         paddingTop: theme.spacing(10),
         paddingBottom: theme.spacing(10),
         paddingRight: theme.spacing(4),
