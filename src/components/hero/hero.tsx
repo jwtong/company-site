@@ -1,5 +1,6 @@
 import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
+import clsx from "clsx";
 import SVG from "../SvgShapes";
 import WaveBottom from "../WaveBottom";
 import { useTheme } from "@material-ui/styles";
@@ -73,7 +74,7 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
   const theme: any = useTheme();
   return (
     <>
-      <div className={`${classes.container} ${classes.pageContainer}`}>
+      <div className={clsx(classes.container, classes.pageContainer)}>
         <div className={classes.upDownDiv}>
           <SVG
             animated

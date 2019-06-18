@@ -15,6 +15,7 @@ import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import SubtitleDivider from "../../components/SubtitleDivider";
 import { isWidthDown } from "@material-ui/core/withWidth";
 import { dividerWithMargin } from "../../components/SharedStyles";
+import clsx from "clsx";
 
 const styles = theme =>
   createStyles({
@@ -143,9 +144,10 @@ class JugglePage extends React.Component {
           requests.
         </Typography>
         <Divider
-          className={`${classes.dividerWithMargin} ${
+          className={clsx(
+            classes.dividerWithMargin,
             classes.dividerWithMarginLine
-          }`}
+          )}
         />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "pricing1")}
@@ -164,9 +166,10 @@ class JugglePage extends React.Component {
           transportation reimbursement, and pre-booking payment estimation.
         </Typography>
         <Divider
-          className={`${classes.dividerWithMargin} ${
+          className={clsx(
+            classes.dividerWithMargin,
             classes.dividerWithMarginLine
-          }`}
+          )}
         />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "search1")}
@@ -185,9 +188,10 @@ class JugglePage extends React.Component {
           on number of connections, rating, and number of jobs completed.
         </Typography>
         <Divider
-          className={`${classes.dividerWithMargin} ${
+          className={clsx(
+            classes.dividerWithMargin,
             classes.dividerWithMarginLine
-          }`}
+          )}
         />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "backgroundCheck1")}
@@ -204,9 +208,10 @@ class JugglePage extends React.Component {
           green shield checkmark.
         </Typography>
         <Divider
-          className={`${classes.dividerWithMargin} ${
+          className={clsx(
+            classes.dividerWithMargin,
             classes.dividerWithMarginLine
-          }`}
+          )}
         />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "referral1")}
@@ -224,9 +229,10 @@ class JugglePage extends React.Component {
           live.
         </Typography>
         <Divider
-          className={`${classes.dividerWithMargin} ${
+          className={clsx(
+            classes.dividerWithMargin,
             classes.dividerWithMarginLine
-          }`}
+          )}
         />
         <div className={classes.appImageWrapper}>
           {this.getAppImage(appImages, "emergency1")}

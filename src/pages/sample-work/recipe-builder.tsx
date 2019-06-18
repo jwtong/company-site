@@ -17,6 +17,7 @@ import {
   topBottomImageWrapper,
   imageWrapper
 } from "../../components/SharedStyles";
+import clsx from "clsx";
 
 const styles = theme =>
   createStyles({
@@ -241,9 +242,10 @@ class RecipeBuilderPage extends React.Component {
               </div>
               <div className={classes.applicationImageSmallWrapper}>
                 <Img
-                  className={`${classes.applicationImage} ${
+                  className={clsx(
+                    classes.applicationImage,
                     classes.applicationImage2
-                  }`}
+                  )}
                   fluid={
                     _.find(
                       images,

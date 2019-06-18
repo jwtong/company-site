@@ -6,6 +6,7 @@ import {
   Grid,
   Chip
 } from "@material-ui/core";
+import clsx from "clsx";
 import React from "react";
 import Hero from "../Hero";
 import ServicePopovers from "../ServicePopovers";
@@ -71,7 +72,7 @@ const SampleWorkTemplate = ({
       <Hero colorBottom={"white"}>
         <Typography
           variant="h1"
-          className={`${classes.header} ${classes.title}`}
+          className={clsx(classes.header, classes.title)}
           gutterBottom
         >
           {title}
