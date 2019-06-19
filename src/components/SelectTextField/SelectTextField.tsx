@@ -5,7 +5,8 @@ import {
   OutlinedInput,
   FilledInput,
   Input,
-  Select
+  Select,
+  FormHelperText
 } from "@material-ui/core";
 
 interface Props {
@@ -17,6 +18,7 @@ interface Props {
   InputLabelProps?: any;
   variant?: "standard" | "outlined" | "filled";
   children?: any;
+  helperText?: string;
   options?: Array<{ value: string | null; label: string }>;
   [key: string]: any;
 }
@@ -48,6 +50,7 @@ class SelectTextField extends React.Component<Props, State> {
       name,
       autoComplete,
       children,
+      helperText,
       ...other
     } = this.props;
 
@@ -83,6 +86,7 @@ class SelectTextField extends React.Component<Props, State> {
               })
             : children}
         </Select>
+        <FormHelperText>{helperText}</FormHelperText>
       </FormControl>
     );
   }

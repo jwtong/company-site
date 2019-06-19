@@ -37,6 +37,8 @@ import {
 import * as moment from "moment";
 import MaskedTextField from "../components/MaskedTextField";
 import SelectTextField from "../components/SelectTextField";
+import ContactForm from "../components/ContactForm";
+import ProjectForm from "../components/ProjectForm";
 // import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -86,59 +88,95 @@ const styles = theme =>
 class ContactPage extends React.Component {
   public constructor(props) {
     super(props);
-    this.state = { form: null, open: false, textMask: "" };
+    this.state = { form: null, open: false, nameError: null };
   }
 
   public componentDidMount() {
     this.setState({ form: "gi" });
   }
 
-  private TextMaskCustom = (textMaskProps: {
-    [x: string]: any;
-    inputRef: any;
-  }) => {
-    const { inputRef, ...other } = textMaskProps;
-
-    return (
-      <MaskedInput
-        {...other}
-        ref={(ref: any) => {
-          inputRef(ref ? ref.inputElement : null);
-        }}
-        mask={[
-          "(",
-          /[1-9]/,
-          /\d/,
-          /\d/,
-          ")",
-          " ",
-          /\d/,
-          /\d/,
-          /\d/,
-          " ",
-          "-",
-          " ",
-          /\d/,
-          /\d/,
-          /\d/,
-          /\d/
-        ]}
-        placeholderChar={"\u2000"}
-      />
-    );
-  };
-
   private getForm1 = classes => {
     return (
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-start"
-          }}
-        >
+      <form
+        action="/"
+        method="POST"
+        onSubmit={e => {
+          e.preventDefault();
+          const data = new FormData(e.target);
+          for (var key of data.keys()) {
+            console.log(key);
+          }
+
+          const value = data.get("name");
+          if (!value) {
+            this.setState({ nameError: "required" });
+            return false;
+          }
+          return true;
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-start"
+            }}
+          >
+            <TextField
+              InputProps={{
+                style: {
+                  fontSize: "1.25rem"
+                }
+              }}
+              InputLabelProps={{
+                style: {
+                  fontSize: "1.25rem"
+                }
+              }}
+              style={{ marginRight: "5%" }}
+              label="Name *"
+              className={classes.textField}
+              type="name"
+              name="name"
+              margin="normal"
+              variant="outlined"
+              error={!!this.state.nameError}
+              helperText={this.state.nameError}
+              onBlur={event => {
+                event.preventDefault();
+                console.log(event.currentTarget.value);
+                if (!event.currentTarget.value) {
+                  this.setState({ nameError: "required" });
+                } else {
+                  this.setState({ nameError: null });
+                }
+              }}
+            />
+            <TextField
+              InputProps={{
+                style: {
+                  fontSize: "1.25rem"
+                }
+              }}
+              InputLabelProps={{
+                style: {
+                  fontSize: "1.25rem"
+                }
+              }}
+              label="Email"
+              className={classes.textField}
+              type="email"
+              name="email"
+              autoComplete="email"
+              margin="normal"
+              variant="outlined"
+            />
+          </div>
           <TextField
+            style={{ width: "100%" }}
+            label="Message"
+            className={classes.textField}
             InputProps={{
               style: {
                 fontSize: "1.25rem"
@@ -149,66 +187,26 @@ class ContactPage extends React.Component {
                 fontSize: "1.25rem"
               }
             }}
-            style={{ marginRight: "5%" }}
-            label="Name"
-            className={classes.textField}
-            type="name"
-            name="name"
+            name="message"
             margin="normal"
             variant="outlined"
+            multiline
+            rows={10}
           />
-          <TextField
-            InputProps={{
-              style: {
-                fontSize: "1.25rem"
-              }
+          <Button
+            color="secondary"
+            variant="contained"
+            style={{
+              width: "200px",
+              alignSelf: "center",
+              marginTop: "3%"
             }}
-            InputLabelProps={{
-              style: {
-                fontSize: "1.25rem"
-              }
-            }}
-            label="Email"
-            className={classes.textField}
-            type="email"
-            name="email"
-            autoComplete="email"
-            margin="normal"
-            variant="outlined"
-          />
+            type="submit"
+          >
+            Submit
+          </Button>
         </div>
-        <TextField
-          style={{ width: "100%" }}
-          label="Message"
-          className={classes.textField}
-          InputProps={{
-            style: {
-              fontSize: "1.25rem"
-            }
-          }}
-          InputLabelProps={{
-            style: {
-              fontSize: "1.25rem"
-            }
-          }}
-          name="message"
-          margin="normal"
-          variant="outlined"
-          multiline
-          rows={10}
-        />
-        <Button
-          color="secondary"
-          variant="contained"
-          style={{
-            width: "200px",
-            alignSelf: "center",
-            marginTop: "3%"
-          }}
-        >
-          Submit
-        </Button>
-      </div>
+      </form>
     );
   };
 
@@ -338,7 +336,7 @@ class ContactPage extends React.Component {
                   style: {
                     fontSize: "1.25rem"
                   },
-                  labelWidth: 60
+                  labelWidth: 70
                 }}
                 InputLabelProps={{
                   style: {
@@ -393,7 +391,7 @@ class ContactPage extends React.Component {
                 label={"Application Type"}
                 name={"applicationType"}
                 options={[
-                  { label: "", value: null },
+                  { label: "", value: "" },
                   { label: "Web", value: "web" },
                   { label: "Mobile", value: "mobile" },
                   { label: "Other", value: "other" },
@@ -519,7 +517,7 @@ class ContactPage extends React.Component {
               marginBottom: "5%",
               display: "flex",
               flexDirection: "column",
-              height: this.state.form === "gi" ? "500px" : "1100px"
+              height: this.state.form === "gi" ? "525px" : "1100px"
             }}
           >
             <div>
@@ -539,28 +537,27 @@ class ContactPage extends React.Component {
             <div
               style={{
                 position: "relative",
-                width: "100%"
+                width: "100%",
+                height: "100%"
               }}
             >
               <Slide
                 direction="right"
                 in={this.state.form === "gi"}
                 timeout={1000}
-                style={{ position: "absolute", width: "100%" }}
               >
-                {this.getForm1(classes)}
+                <ContactForm />
               </Slide>
               <Slide
                 direction="left"
                 in={this.state.form === "ps"}
                 timeout={1000}
-                style={{
-                  position: "absolute",
-                  width: "100%",
-                  display: this.state.form === "gi" ? "none" : "block"
-                }}
               >
-                {this.getForm2(classes)}
+                <ProjectForm
+                  containerStyle={{
+                    display: this.state.form === "gi" ? "none" : "block"
+                  }}
+                />
               </Slide>
             </div>
           </div>

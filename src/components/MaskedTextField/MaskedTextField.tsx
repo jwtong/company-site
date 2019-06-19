@@ -5,7 +5,8 @@ import {
   InputLabel,
   OutlinedInput,
   FilledInput,
-  Input
+  Input,
+  FormHelperText
 } from "@material-ui/core";
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
   InputProps?: any;
   InputLabelProps?: any;
   autoComplete?: string;
+  helperText?: string;
   variant?: "standard" | "outlined" | "filled";
   [key: string]: any;
 }
@@ -63,6 +65,7 @@ class MaskedTextField extends React.Component<Props, State> {
       mask,
       name,
       autoComplete,
+      helperText,
       ...other
     } = this.props;
 
@@ -87,6 +90,7 @@ class MaskedTextField extends React.Component<Props, State> {
           inputComponent: this.TextMaskCustom,
           ...InputProps
         })}
+        <FormHelperText>{helperText}</FormHelperText>
       </FormControl>
     );
   }

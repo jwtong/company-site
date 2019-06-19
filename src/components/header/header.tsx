@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import OfflineBolt from "@material-ui/icons/OfflineBolt";
 import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
-import { hexToRgba, rgbToHex } from "../../utils/hex_rgba";
+import { hexToRgba, rgbToHex } from "../../utils/hexRgba";
 import { Divider, withWidth, Menu, MenuItem } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { isWidthDown } from "@material-ui/core/withWidth";
