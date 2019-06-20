@@ -81,10 +81,6 @@ class MaskedTextField extends React.Component<Props, State> {
           {label}
         </InputLabel>
         {React.createElement(variantToInputMap[variant], {
-          onChange: (event: any) => {
-            this.setState({ value: event.target.value });
-          },
-          value: this.state.value,
           name: name,
           autoComplete: autoComplete,
           inputComponent: this.TextMaskCustom,

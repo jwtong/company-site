@@ -23,19 +23,10 @@ interface Props {
   [key: string]: any;
 }
 
-interface State {
-  value: any;
-}
-
-class SelectTextField extends React.Component<Props, State> {
+class SelectTextField extends React.Component<Props> {
   static defaultProps = {
     variant: "standard"
   };
-
-  public constructor(props: Props) {
-    super(props);
-    this.state = { value: null };
-  }
 
   render() {
     const {
@@ -66,10 +57,6 @@ class SelectTextField extends React.Component<Props, State> {
           {label}
         </InputLabel>
         <Select
-          value={this.state.value}
-          onChange={(event: any) => {
-            this.setState({ value: event.target.value });
-          }}
           input={React.createElement(variantToInputMap[variant], {
             name: name,
             ...InputProps

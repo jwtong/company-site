@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import _ from "lodash";
 import {
   TextField,
@@ -78,6 +79,7 @@ export interface Props extends WithStyles<typeof styles> {
   ) => any;
   formId: string;
   snackbarWrapperBottom: string;
+  formEndpoint: string;
 }
 
 export interface State {
@@ -91,7 +93,7 @@ export interface State {
 class Form extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
-    const state: State = { errors: {} };
+    const state: State = { errors: {}, openSuccess: false, openFailure: false };
     for (var fieldName of props.fieldNames) {
       state.errors[fieldName] = null;
     }
@@ -109,12 +111,7 @@ class Form extends React.Component<Props, State> {
         }
       }
 
-      if (message === "") {
-        this.setState(prevState => ({
-          errors: { ...prevState.errors, [fieldName]: null }
-        }));
-        return true;
-      } else {
+      if (message !== "") {
         this.setState(prevState => ({
           errors: {
             ...prevState.errors,
@@ -122,8 +119,13 @@ class Form extends React.Component<Props, State> {
           }
         }));
         return false;
+      } else {
+        this.setState(prevState => ({
+          errors: { ...prevState.errors, [fieldName]: null }
+        }));
       }
     }
+    return true;
   };
 
   private handleSubmit = (event: any) => {
@@ -138,14 +140,21 @@ class Form extends React.Component<Props, State> {
       }
     }
 
-    // if (formOk) {
-    if (document.getElementById(this.props.formId)) {
-      document.getElementById(this.props.formId).reset();
+    if (formOk) {
+      axios
+        .post(this.props.formEndpoint, data, {
+          headers: { Accept: "application/json" }
+        })
+        .then(response => {
+          if (document.getElementById(this.props.formId)) {
+            document.getElementById(this.props.formId).reset();
+          }
+          this.setState({ openSuccess: true });
+        })
+        .catch(error => {
+          this.setState({ openFailure: true });
+        });
     }
-    this.setState({ openFailure: true });
-    // }
-
-    return formOk;
   };
 
   private getValidationProps = (fieldName: any, helperText: any = null) => {
@@ -225,7 +234,7 @@ class Form extends React.Component<Props, State> {
         )}
         {this.getSnackbar(
           <SnackbarContent
-            className={classes.snackbar}
+            className={clsx(classes.snackbar, classes.errorSnackbar)}
             message="Sorry, there was an error submitting the form. You can also reach us by email at _____@mail.com"
           />,
           "openFailure",
