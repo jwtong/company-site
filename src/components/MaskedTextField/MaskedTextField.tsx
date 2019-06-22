@@ -86,7 +86,7 @@ class MaskedTextField extends React.Component<Props, State> {
           inputComponent: this.TextMaskCustom,
           ...InputProps
         })}
-        <FormHelperText>{helperText}</FormHelperText>
+        {helperText && <FormHelperText>{helperText}</FormHelperText>}
       </FormControl>
     );
   }

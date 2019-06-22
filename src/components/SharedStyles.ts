@@ -27,7 +27,7 @@ export const topBottomImageWrapper = (theme: any) => ({
   marginTop: theme.spacing(3)
 });
 
-export const imageWrapper = (theme: any) => ({
+export const imagesContainer = (theme: any) => ({
   display: "flex",
   justifyContent: "center",
   flexWrap: "wrap",

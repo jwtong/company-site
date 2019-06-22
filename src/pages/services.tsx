@@ -8,14 +8,14 @@ import Hero from "../components/Hero";
 import PageBottom from "../components/PageBottom";
 import roles from "../utils/roles";
 
-const styles = theme => ({
+const styles = (theme: any) => ({
   grid: {
     width: "100%"
   },
   button: {
     width: "11rem"
   },
-  buttonWrapper: {
+  buttonsContainer: {
     display: "flex",
     justifyContent: "space-between",
     marginTop: "3%",
@@ -36,7 +36,7 @@ const styles = theme => ({
     color: "white !important",
     textAlign: "center"
   },
-  roleWrapper: {
+  rolesContainer: {
     width: "100%",
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
@@ -86,7 +86,7 @@ const ServicesPage = props => {
           following roles to ensure that we can help you along at any stage.
         </Typography>
       </Hero>
-      <div className={classes.roleWrapper}>
+      <div className={classes.rolesContainer}>
         {roles.map(role => {
           return (
             <div className={classes.serviceCardWrapper}>
@@ -99,7 +99,7 @@ const ServicesPage = props => {
         <Typography variant="h4" className={classes.header} gutterBottom>
           Learn more about our experience in each of these roles
         </Typography>
-        <div className={classes.buttonWrapper}>
+        <div className={classes.buttonsContainer}>
           <Button
             className={classes.button}
             href="/about"

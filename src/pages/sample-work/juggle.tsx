@@ -17,7 +17,7 @@ import { isWidthDown } from "@material-ui/core/withWidth";
 import { dividerWithMargin } from "../../components/SharedStyles";
 import clsx from "clsx";
 
-const styles = theme =>
+const styles = (theme: any) =>
   createStyles({
     dividerWithMargin: dividerWithMargin(theme),
     dividerLine: {
@@ -41,7 +41,7 @@ const styles = theme =>
         marginBottom: theme.spacing(3)
       }
     },
-    appImageWrapper: {
+    appImagesContainer: {
       display: "flex",
       justifyContent: "center",
       flexWrap: "wrap",
@@ -130,7 +130,7 @@ class JugglePage extends React.Component {
           text={"Notable Features"}
           otherProps={{ className: classes.dividerWithMargin }}
         />
-        <div className={classes.appImageWrapper}>
+        <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "messaging1")}
           {this.getAppImage(appImages, "messaging2")}
         </div>
@@ -149,7 +149,7 @@ class JugglePage extends React.Component {
             classes.dividerWithMarginLine
           )}
         />
-        <div className={classes.appImageWrapper}>
+        <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "pricing1")}
           {this.getAppImage(appImages, "pricing2")}
           {this.getAppImage(appImages, "pricing3")}
@@ -171,7 +171,7 @@ class JugglePage extends React.Component {
             classes.dividerWithMarginLine
           )}
         />
-        <div className={classes.appImageWrapper}>
+        <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "search1")}
           {this.getAppImage(appImages, "search2")}
           {this.getAppImage(appImages, "search3")}
@@ -193,7 +193,7 @@ class JugglePage extends React.Component {
             classes.dividerWithMarginLine
           )}
         />
-        <div className={classes.appImageWrapper}>
+        <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "backgroundCheck1")}
           {this.getAppImage(appImages, "backgroundCheck2")}
         </div>
@@ -213,7 +213,7 @@ class JugglePage extends React.Component {
             classes.dividerWithMarginLine
           )}
         />
-        <div className={classes.appImageWrapper}>
+        <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "referral1")}
           {this.getAppImage(appImages, "referral2")}
           {this.getAppImage(appImages, "referral3")}
@@ -234,7 +234,7 @@ class JugglePage extends React.Component {
             classes.dividerWithMarginLine
           )}
         />
-        <div className={classes.appImageWrapper}>
+        <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "emergency1")}
           {this.getAppImage(appImages, "emergency2")}
           {this.getAppImage(appImages, "emergency3")}

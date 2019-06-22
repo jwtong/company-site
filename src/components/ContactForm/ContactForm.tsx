@@ -7,6 +7,7 @@ import {
 } from "@material-ui/core";
 import { formStyles } from "../Form/Form";
 import Form from "../Form";
+import { graphql } from "gatsby";
 
 const styles = (theme: any) => createStyles(formStyles(theme));
 
@@ -19,6 +20,7 @@ export interface Props extends WithStyles<typeof styles> {
     }>;
   };
   formId: string;
+  formEndpoint: string;
 }
 
 class ContactForm extends React.Component<Props> {
@@ -36,14 +38,16 @@ class ContactForm extends React.Component<Props> {
     const { classes, formId } = this.props;
     return (
       <form id={formId} className={classes.form} onSubmit={handleSubmit}>
-        <div className={classes.fieldsWrapper}>
+        <div className={classes.fieldsContainer}>
           <div className={classes.row1}>
             {getTextField("name", {
               className: classes.fieldWithMarginRight,
-              label: "Name *"
+              label: "Name *",
+              autoComplete: "name"
             })}
             {getTextField("email", {
-              label: "Email *"
+              label: "Email *",
+              autoComplete: "email"
             })}
           </div>
           {getTextField("message", {
@@ -73,10 +77,10 @@ class ContactForm extends React.Component<Props> {
         fieldNames={this.props.fieldNames}
         fieldValidations={this.props.fieldValidations}
         renderForm={this.renderForm}
-        snackbarWrapperBottom={"-500px"}
+        snackbarsContainerBottom={"-500px"}
+        formEndpoint={this.props.formEndpoint}
       />
     );
   }
 }
-
 export default withStyles(styles)(ContactForm);

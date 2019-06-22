@@ -12,7 +12,7 @@ import {
   imageShiftWrapper
 } from "../../components/SharedStyles";
 
-const styles = theme =>
+const styles = (theme: any) =>
   createStyles({
     dividerWithMargin: dividerWithMargin(theme),
     topBottomImageWrapper: topBottomImageWrapper(theme),

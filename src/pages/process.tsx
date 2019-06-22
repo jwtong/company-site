@@ -17,8 +17,8 @@ import {
   dividerWithMargin
 } from "../components/SharedStyles";
 
-const styles = theme => ({
-  processWrapper: {
+const styles = (theme: any) => ({
+  processContainer: {
     width: "100%",
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
@@ -105,7 +105,7 @@ const ProcessPage = props => {
           A breakdown of how we conduct a project
         </Typography>
       </Hero>
-      <div className={classes.processWrapper}>
+      <div className={classes.processContainer}>
         {steps.map(s => {
           return (
             <div key={s.title}>

@@ -15,15 +15,15 @@ import SubtitleDivider from "../../components/SubtitleDivider";
 import {
   dividerWithMargin,
   topBottomImageWrapper,
-  imageWrapper,
+  imagesContainer,
   imageShiftWrapper
 } from "../../components/SharedStyles";
 
-const styles = theme =>
+const styles = (theme: any) =>
   createStyles({
     dividerWithMargin: dividerWithMargin(theme),
     topBottomImageWrapper: topBottomImageWrapper(theme),
-    imageWrapper: imageWrapper(theme),
+    imagesContainer: imagesContainer(theme),
     imageShiftWrapper: imageShiftWrapper(theme),
     mainImage: {
       width: "90%",
@@ -84,7 +84,7 @@ class ParkingMeterPage extends React.Component {
           text={"Overview"}
           otherProps={{ className: classes.dividerWithMargin }}
         />
-        <div className={classes.imageWrapper}>
+        <div className={classes.imagesContainer}>
           <div className={classes.imageShiftWrapper}>
             <Img
               className={classes.mainImage}
@@ -158,7 +158,7 @@ class ParkingMeterPage extends React.Component {
           text={"Web Application"}
           otherProps={{ className: classes.dividerWithMargin }}
         />
-        <div className={classes.imageWrapper}>
+        <div className={classes.imagesContainer}>
           <div className={classes.imageShiftWrapper}>
             <Img
               className={classes.mapImage}

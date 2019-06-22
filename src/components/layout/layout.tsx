@@ -1,6 +1,7 @@
 // site wrapper contains header, footer, and things that belong on all pages
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
+import { Helmet } from "react-helmet";
 
 import "./layout.css";
 import Header from "../Header";
@@ -18,13 +19,18 @@ const Layout = ({
       query SiteTitleQuery {
         site {
           siteMetadata {
-            title
+            companyName
           }
         }
       }
     `}
     render={data => (
       <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{data.site.siteMetadata.companyName}</title>
+          <link rel="canonical" href="https://knit.dev" />
+        </Helmet>
         <Header
           location={location}
           pages={[
@@ -39,7 +45,9 @@ const Layout = ({
           <main>{children}</main>
         </div>
         <Footer
-          mainText={`Coded with ReactJS and GatsbyJS by ______ ©  ${new Date().getFullYear()}`}
+          mainText={`Coded with ReactJS and GatsbyJS by ${
+            data.site.siteMetadata.companyName
+          } ©  ${new Date().getFullYear()}`}
           email="blah"
           linkedIn="blah"
         />

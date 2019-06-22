@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Jeremy and Tommy's Website`
+    companyName: "Knit",
+    contactFormEndpoint: "https://formcarry.com/s/11PY44aSiKo",
+    projectFormEndpoint: "https://formcarry.com/s/11PY44aSiKo"
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -15,15 +15,15 @@ import { isWidthDown } from "@material-ui/core/withWidth";
 import {
   dividerWithMargin,
   topBottomImageWrapper,
-  imageWrapper
+  imagesContainer
 } from "../../components/SharedStyles";
 import clsx from "clsx";
 
-const styles = theme =>
+const styles = (theme: any) =>
   createStyles({
     dividerWithMargin: dividerWithMargin(theme),
     topBottomImageWrapper: topBottomImageWrapper(theme),
-    imageWrapper: imageWrapper(theme),
+    imagesContainer: imagesContainer(theme),
     confusionMatrixImage: {
       width: "60%",
       [theme.breakpoints.down("sm")]: {
@@ -42,7 +42,7 @@ const styles = theme =>
         width: "80%"
       }
     },
-    stepsWrapper: {
+    stepsContainer: {
       paddingTop: theme.spacing(2)
     },
     stepWrapper: {
@@ -109,7 +109,7 @@ class RecipeBuilderPage extends React.Component {
           text={"Training the Neural Network on Food"}
           otherProps={{ className: classes.dividerWithMargin }}
         />
-        <div className={classes.imageWrapper}>
+        <div className={classes.imagesContainer}>
           <Img
             className={classes.confusionMatrixImage}
             fluid={
@@ -226,7 +226,7 @@ class RecipeBuilderPage extends React.Component {
           text={"Java Application and Integration with Spoonacular API"}
           otherProps={{ className: classes.dividerWithMargin }}
         />
-        <div className={classes.imageWrapper}>
+        <div className={classes.imagesContainer}>
           {isWidthDown("xs", width) ? (
             <>
               <div className={classes.applicationImageSmallWrapper}>
@@ -274,7 +274,7 @@ class RecipeBuilderPage extends React.Component {
           proof-of-concept requires the user manually select multiple image
           files from their computer. The business logic is as follows...
         </Typography>
-        <div className={classes.stepsWrapper}>
+        <div className={classes.stepsContainer}>
           {applicationSteps.map((as, index) => {
             return (
               <div key={as} className={classes.stepWrapper}>

@@ -21,10 +21,7 @@ import {
   dividerWithMargin
 } from "../components/SharedStyles";
 
-// import { faReact, faNode, faAws } from "@fortawesome/free-brands-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-const styles = theme =>
+const styles = (theme: any) =>
   createStyles({
     header: {
       color: "white !important",
@@ -32,7 +29,7 @@ const styles = theme =>
     },
     buttonWithMargin: buttonWithMargin(theme),
     dividerWithMargin: dividerWithMargin(theme),
-    aboutWrapper: {
+    aboutContainer: {
       paddingTop: theme.spacing(4),
       paddingBottom: theme.spacing(4),
       paddingLeft: theme.spacing(25),
@@ -88,7 +85,7 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
       name: "Jeremy Tong",
       avatar: data.jeremyAvatar,
       about: [
-        "Jeremy Tong is a recent graduate of Brown University who double-majored in Computer Science and Economics with a focus on UI/UX design, Data Analytics, Behaviorial Economics, and Finance.",
+        "Jeremy Tong is a graduate of Brown University who double-majored in Computer Science and Economics, with a focus on UI/UX design, Data Analytics, Behaviorial Economics, and Finance.",
         "Most recently, Jeremy worked as a Venture for America fellow for Juggle, a startup that is best described as the Uber-for-Babysitting. There, he assumed the role of interim CTO, handling all aspects of the business related to Juggle's technology and mobile app. In his time there, he rebuilt much of the software platform from scratch that then served over 5000 monthly users and generated $200k in revenue in 2018, an 8x increase over 2017, with a projected increase of 2x in 2019.",
         "Jeremy has had 4+ years of full-stack experience developing web and mobile applications, and is most passionate about intelligent data-driven design. Outside of work, Jeremy loves rock-climbing, playing jazz piano, and hip-hop dance."
       ],
@@ -124,7 +121,7 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
             About Us
           </Typography>
           <Typography variant="h4" className={classes.header}>
-            Meet the co-founders of _______
+            Meet the co-founders of {data.site.siteMetadata.companyName}
           </Typography>
         </div>
       </Hero>
@@ -132,7 +129,7 @@ const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
         return (
           <div key={p.name}>
             <div
-              className={classes.aboutWrapper}
+              className={classes.aboutContainer}
               style={{
                 backgroundColor: p.backgroundColor
               }}
@@ -237,6 +234,11 @@ export const query = graphql`
         fixed(width: 200) {
           ...GatsbyImageSharpFixed
         }
+      }
+    }
+    site {
+      siteMetadata {
+        companyName
       }
     }
   }

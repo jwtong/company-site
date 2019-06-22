@@ -73,7 +73,7 @@ class SelectTextField extends React.Component<Props> {
               })
             : children}
         </Select>
-        <FormHelperText>{helperText}</FormHelperText>
+        {helperText && <FormHelperText>{helperText}</FormHelperText>}
       </FormControl>
     );
   }

@@ -26,10 +26,11 @@ import PageBottom from "../components/PageBottom";
 import SplashPage from "../components/SplashPage";
 import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 import { buttonWithMargin } from "../components/SharedStyles";
+import { graphql } from "gatsby";
 
-const styles = theme => ({
+const styles = (theme: any) => ({
   buttonWithMargin: buttonWithMargin(theme),
-  technologiesWrapper: {
+  technologiesContainer: {
     width: "100%",
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
@@ -54,7 +55,7 @@ const styles = theme => ({
     "-moz-box-sizing": "border-box",
     "box-sizing": "border-box"
   },
-  gridWrapper: {
+  grid: {
     width: "100%",
     display: "flex",
     alignSelf: "center",
@@ -84,15 +85,18 @@ const styles = theme => ({
       fontSize: "1.75em"
     }
   },
-  bottomWrapper: {
+  bottomContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
+  },
+  transition: {
+    height: "100%"
   }
 });
 
 const IndexPage = props => {
-  const { classes, theme, width } = props;
+  const { classes, theme, width, data } = props;
 
   const technologies = [
     {
@@ -146,19 +150,20 @@ const IndexPage = props => {
     <>
       <Hero colorBottom={"white"}>
         <Typography variant="h1" className={classes.header} gutterBottom>
-          Company Name
+          {data.site.siteMetadata.companyName}
         </Typography>
         <Typography variant="h4" className={classes.header}>
           We want to build your software, the right way
         </Typography>
       </Hero>
       <SplashPage>
-        <div className={classes.bottomWrapper}>
+        <div className={classes.bottomContainer}>
           <Typography variant="h4" style={{ textAlign: "center" }}>
-            We founded _______ to engage with startups, business ideas, and
-            interesting people. As as team of two, our expertise lies in the
-            ability to learn and execute quickly, our focus is to deliver the
-            best technology, and our advantage is being lean.
+            We founded {data.site.siteMetadata.companyName} to engage with
+            startups, business ideas, and interesting people. As as team of two,
+            our expertise lies in the ability to learn and execute quickly, our
+            focus is to deliver the best technology, and our advantage is being
+            lean.
           </Typography>
           <Button
             className={classes.buttonWithMargin}
@@ -170,7 +175,7 @@ const IndexPage = props => {
           </Button>
         </div>
       </SplashPage>
-      <div className={classes.technologiesWrapper}>
+      <div className={classes.technologiesContainer}>
         <SubtitleDivider
           text="Progressive Web and Mobile Application Development"
           containerStyle={{
@@ -194,7 +199,7 @@ const IndexPage = props => {
                     delay={isWidthDown("sm", width) ? 0 : index * 200}
                     transitionProps={{
                       timeout: { enter: 1000 },
-                      style: { height: "100%" }
+                      className: classes.transition
                     }}
                     containerStyle={{
                       height: "100%"
@@ -235,5 +240,15 @@ const IndexPage = props => {
     </>
   );
 };
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        companyName
+      }
+    }
+  }
+`;
 
 export default withWidth()(withStyles(styles, { withTheme: true })(IndexPage));

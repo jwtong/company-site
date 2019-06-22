@@ -6,9 +6,12 @@ import { Divider, withStyles, createStyles } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
-import { dividerWithMargin, imageWrapper } from "../../components/SharedStyles";
+import {
+  dividerWithMargin,
+  imagesContainer
+} from "../../components/SharedStyles";
 
-const styles = theme =>
+const styles = (theme: any) =>
   createStyles({
     image: {
       width: "40%",
@@ -19,7 +22,7 @@ const styles = theme =>
         width: "90%"
       }
     },
-    imageWrapper: imageWrapper(theme),
+    imagesContainer: imagesContainer(theme),
     dividerWithMargin: dividerWithMargin(theme)
   });
 
@@ -42,7 +45,7 @@ class BarterPage extends React.Component {
       >
         <Divider variant="middle" className={classes.dividerWithMargin} />
 
-        <div className={classes.imageWrapper}>
+        <div className={classes.imagesContainer}>
           <Img
             className={classes.image}
             fluid={
@@ -58,7 +61,7 @@ class BarterPage extends React.Component {
             }
           />
         </div>
-        <div className={classes.imageWrapper}>
+        <div className={classes.imagesContainer}>
           <Img
             className={classes.image}
             fluid={
@@ -74,7 +77,7 @@ class BarterPage extends React.Component {
             }
           />
         </div>
-        <div className={classes.imageWrapper}>
+        <div className={classes.imagesContainer}>
           <Img
             className={classes.image}
             fluid={

@@ -3,7 +3,7 @@ import React from "react";
 import WaveBottom from "../WaveBottom";
 import { useTheme } from "@material-ui/styles";
 
-const styles = theme =>
+const styles = (theme: any) =>
   createStyles({
     container: {
       width: "100vw",

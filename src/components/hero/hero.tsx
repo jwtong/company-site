@@ -8,7 +8,7 @@ import { pageContainer } from "../SharedStyles";
 
 const styles = (theme: any) =>
   createStyles({
-    contentWrapper: {
+    contentContainer: {
       position: "relative",
       marginRight: theme.spacing(10),
       marginLeft: theme.spacing(10),
@@ -20,14 +20,6 @@ const styles = (theme: any) =>
         marginRight: theme.spacing(2),
         marginLeft: theme.spacing(2)
       }
-    },
-    centerer: {
-      justifyContent: "center"
-    },
-    titleWrapper: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center"
     },
     pageContainer: pageContainer(theme),
     container: {
@@ -277,9 +269,8 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
           left="80%"
           top="70%"
         />
-        <div className={classes.contentWrapper}>{children}</div>
+        <div className={classes.contentContainer}>{children}</div>
       </div>
-
       <WaveBottom colorTop={"black"} colorBottom={colorBottom} />
     </>
   );

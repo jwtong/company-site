@@ -23,29 +23,42 @@ export const formStyles = (theme: any) => ({
     width: "100%"
   },
   fieldWithMarginRight: {
-    marginRight: "5%"
+    marginRight: "5%",
+    [theme.breakpoints.down("xs")]: {
+      marginRight: "0%"
+    }
   },
-  fieldsWrapper: {
+  fieldsContainer: {
     display: "flex",
     flexDirection: "column"
   },
-  row1: {
+  formRow: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    flexWrap: "wrap"
   },
   textField: {
-    width: "300px"
+    width: "300px",
+    [theme.breakpoints.down("sm")]: {
+      width: "275px"
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "100%"
+    }
   },
   inputText: {
-    fontSize: "1.25rem"
+    fontSize: "1.25rem",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1rem"
+    }
   },
   submitButton: {
     width: "200px",
     alignSelf: "center",
     marginTop: "3%"
   },
-  snackbarWrapper: {
+  snackbarsContainer: {
     width: "100%",
     position: "absolute"
   },
@@ -78,7 +91,7 @@ export interface Props extends WithStyles<typeof styles> {
     getValidationProps: any
   ) => any;
   formId: string;
-  snackbarWrapperBottom: string;
+  snackbarsContainerBottom: string;
   formEndpoint: string;
 }
 
@@ -162,7 +175,7 @@ class Form extends React.Component<Props, State> {
       error: !!this.state.errors[fieldName],
       helperText: this.state.errors[fieldName] || helperText,
       onBlur: (event: any) => {
-        event.preventDefault();
+        // event.preventDefault();
         this.handleValidations(fieldName, event.target.value);
       }
     };
@@ -214,12 +227,12 @@ class Form extends React.Component<Props, State> {
   };
 
   private renderSnackbars = () => {
-    const { classes, snackbarWrapperBottom } = this.props;
+    const { classes, snackbarsContainerBottom } = this.props;
     return (
       <div
-        className={classes.snackbarWrapper}
+        className={classes.snackbarsContainer}
         style={{
-          bottom: snackbarWrapperBottom
+          bottom: snackbarsContainerBottom
         }}
       >
         {this.getSnackbar(

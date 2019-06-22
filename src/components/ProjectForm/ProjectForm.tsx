@@ -15,6 +15,7 @@ import Form from "../Form";
 import MaskedTextField from "../MaskedTextField";
 import SelectTextField from "../SelectTextField";
 import clsx from "clsx";
+import { graphql } from "gatsby";
 
 const styles = (theme: any) =>
   createStyles({
@@ -26,13 +27,21 @@ const styles = (theme: any) =>
       height: "2px",
       backgroundColor: "black"
     },
-    formWrapper: {
-      marginTop: "2%",
+    formContainer: {
+      marginTop: theme.spacing(3),
       display: "flex",
       flexDirection: "column",
-      alignSelf: "stretch"
+      alignSelf: "stretch",
+      [theme.breakpoints.down("xs")]: {
+        marginTop: theme.spacing(2)
+      }
     },
-    sectionTitle: { marginTop: "2%" },
+    sectionTitle: {
+      marginTop: theme.spacing(3),
+      [theme.breakpoints.down("xs")]: {
+        marginTop: theme.spacing(1)
+      }
+    },
     ...formStyles(theme)
   });
 
@@ -46,6 +55,7 @@ interface Props extends WithStyles<typeof styles> {
   };
   formId: string;
   containerStyle: any;
+  formEndpoint: string;
 }
 
 interface State {
@@ -101,23 +111,25 @@ class ProjectForm extends React.Component<Props, State> {
         id={formId}
       >
         <div>
-          <div className={classes.formWrapper}>
+          <div className={classes.formContainer}>
             <Typography variant="h6">General Info</Typography>
             <Divider className={classes.underline} />
-            <div className={classes.row1}>
+            <div className={classes.formRow}>
               {getTextField("name", {
                 className: classes.fieldWithMarginRight,
-                label: "Name *"
+                label: "Name *",
+                autoComplete: "name"
               })}
               {getTextField("location", {
                 label: "Location *",
                 helperText: "city, state"
               })}
             </div>
-            <div className={classes.row1}>
+            <div className={classes.formRow}>
               {getTextField("email", {
                 className: classes.fieldWithMarginRight,
-                label: "Email *"
+                label: "Email *",
+                autoComplete: "email"
               })}
               <MaskedTextField
                 variant="outlined"
@@ -159,7 +171,7 @@ class ProjectForm extends React.Component<Props, State> {
               rows: 10,
               multiline: true
             })}
-            <div className={classes.row1}>
+            <div className={classes.formRow}>
               <SelectTextField
                 variant="outlined"
                 className={clsx(
@@ -227,8 +239,8 @@ class ProjectForm extends React.Component<Props, State> {
         fieldNames={this.props.fieldNames}
         fieldValidations={this.props.fieldValidations}
         renderForm={this.renderForm}
-        snackbarWrapperBottom={"-1000px"}
-        formEndpoint={"https://formcarry.com/s/11PY44aSiKo"}
+        snackbarsContainerBottom={"-1000px"}
+        formEndpoint={this.props.formEndpoint}
       />
     );
   }

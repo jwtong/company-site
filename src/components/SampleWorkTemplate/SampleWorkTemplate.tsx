@@ -14,7 +14,7 @@ import technologyColorMap from "../../utils/technologies";
 import SubtitleDivider from "../SubtitleDivider";
 import { dividerWithMargin } from "../SharedStyles";
 
-const styles = theme =>
+const styles = (theme: any) =>
   createStyles({
     header: {
       color: "white !important",
@@ -25,7 +25,7 @@ const styles = theme =>
         fontSize: props => (props.title.length > 20 ? "2.5rem" : "3.5rem")
       }
     },
-    mainContentWrapper: {
+    mainContentContainer: {
       paddingLeft: theme.spacing(15),
       paddingRight: theme.spacing(15),
       [theme.breakpoints.down("md")]: {
@@ -81,7 +81,7 @@ const SampleWorkTemplate = ({
           {subtitle}
         </Typography>
       </Hero>
-      <div className={classes.mainContentWrapper}>
+      <div className={classes.mainContentContainer}>
         {children}
         <SubtitleDivider
           text={"Services Provided"}

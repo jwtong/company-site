@@ -18,7 +18,7 @@ const styles = (theme: any) =>
       backgroundColor: "white",
       height: "100%"
     },
-    iconWrapper: {
+    iconsContainer: {
       display: "flex",
       justifyContent: "center",
       flexWrap: "wrap",
@@ -63,7 +63,7 @@ const TechnologiesCard = ({
   classes
 }: Props) => (
   <Card className={classes.card}>
-    <div className={classes.iconWrapper}>
+    <div className={classes.iconsContainer}>
       {icons.map((i: any, index: number) =>
         React.createElement(i.component, {
           key: index,

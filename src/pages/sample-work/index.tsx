@@ -13,8 +13,9 @@ import Hero from "../../components/Hero";
 import TransitionGridList from "../../components/TransitionGridList";
 import Img from "gatsby-image/withIEPolyfill";
 import { isWidthDown } from "@material-ui/core/withWidth";
+import clsx from "clsx";
 
-const styles = theme =>
+const styles = (theme: any) =>
   createStyles({
     "@keyframes anim": {
       from: { transform: "scale(1.0)", filter: "grayscale(0%)" },
@@ -49,7 +50,9 @@ const styles = theme =>
     },
     juggleGridTile: {
       backgroundColor: "white"
-    }
+    },
+    gridContainer: { width: "100%", height: "100%" },
+    gridImage: { height: "100%" }
   });
 
 interface Props extends WithStyles<typeof styles> {}
@@ -77,10 +80,9 @@ class SampleWorkPage extends React.Component<Props> {
           className: classes.gridTile
         },
         children: (
-          <div style={{ width: "100%", height: "100%" }}>
+          <div className={classes.gridContainer}>
             <Img
-              style={{ height: "100%" }}
-              className={swd.customClassname}
+              className={clsx(classes.gridImage, swd.customClassname)}
               objectFit="cover"
               fluid={swd.fluidImage}
               alt={swd.title}

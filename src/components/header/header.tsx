@@ -42,7 +42,7 @@ const styles = (theme: any) =>
       },
       color: "white"
     },
-    wrapperRight: {
+    containerRight: {
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-around",
@@ -189,7 +189,7 @@ class Header extends React.Component<Props, State> {
               </Menu>
             </>
           ) : (
-            <div className={classes.wrapperRight}>
+            <div className={classes.containerRight}>
               {pages.map((p: any) => {
                 return (
                   <div key={p.text}>

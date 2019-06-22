@@ -20,7 +20,7 @@ interface GridListTileData {
 }
 
 const styles = createStyles({
-  childrenWrapper: { width: "100%", height: "100%" }
+  transitionWrapper: { width: "100%", height: "100%" }
 });
 
 interface Props extends WithStyles<typeof styles> {
@@ -105,7 +105,7 @@ class TransitionGridList extends React.Component<Props, any> {
                     {...visibilitySensorProps}
                     onChange={this.onChangeIndividual(index)}
                   >
-                    <div className={classes.childrenWrapper}>
+                    <div className={classes.transitionWrapper}>
                       {React.createElement(
                         this.props.transitionsMap[transitionType],
                         {
