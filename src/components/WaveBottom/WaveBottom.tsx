@@ -22,7 +22,7 @@ interface Props extends WithStyles<typeof styles> {
   width: Breakpoint;
 }
 
-const WaveBottom = ({ colorTop, colorBottom, flip, classes }: Props) => {
+const WaveBottom = ({ classes }: Props) => {
   return <WaveBottomSVG className={classes.svg} display={"block"} />;
 };
 

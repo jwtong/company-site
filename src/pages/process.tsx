@@ -7,11 +7,10 @@ import Chat from "@material-ui/icons/Chat";
 import { ViewDashboardOutline, Rocket } from "mdi-material-ui";
 import Code from "@material-ui/icons/Code";
 import Grid from "@material-ui/core/Grid";
-import { Typography } from "@material-ui/core";
+import { Typography, WithStyles } from "@material-ui/core";
 import Hero from "../components/Hero";
 import SubtitleDivider from "../components/SubtitleDivider";
 import PageBottom from "../components/PageBottom";
-import { useTheme } from "@material-ui/styles";
 import {
   buttonWithMargin,
   dividerWithMargin
@@ -52,9 +51,9 @@ const styles = (theme: any) => ({
   dividerWithMargin: dividerWithMargin(theme)
 });
 
-const ProcessPage = props => {
-  const { classes } = props;
+interface Props extends WithStyles<typeof styles> {}
 
+const ProcessPage = ({ classes }: Props) => {
   const steps = [
     {
       title: "Step 1 - Contact Us",

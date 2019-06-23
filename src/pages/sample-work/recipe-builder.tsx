@@ -5,7 +5,8 @@ import {
   Typography,
   withStyles,
   createStyles,
-  withWidth
+  withWidth,
+  WithStyles
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
@@ -66,7 +67,12 @@ const styles = (theme: any) =>
     applicationImageSmallWrapper: { overflow: "hidden" }
   });
 
-class RecipeBuilderPage extends React.Component {
+interface Props extends WithStyles<typeof styles> {
+  data: any;
+  width: any;
+}
+
+class RecipeBuilderPage extends React.Component<Props> {
   public render() {
     const { classes, data, width } = this.props;
     const recipeBuilderRoles = [roles[0], roles[4]];

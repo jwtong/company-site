@@ -6,7 +6,8 @@ import {
   Divider,
   withStyles,
   withWidth,
-  createStyles
+  createStyles,
+  WithStyles
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import TransitionOnShow from "../../components/TransitionOnShow";
@@ -61,7 +62,11 @@ const styles = (theme: any) =>
     }
   });
 
-class JugglePage extends React.Component {
+interface Props extends WithStyles<typeof styles> {
+  data: any;
+  width: any;
+}
+class JugglePage extends React.Component<Props> {
   private getAppImage = (appImages: Array<any>, imageName: string) => {
     const { classes } = this.props;
     return (
@@ -144,10 +149,7 @@ class JugglePage extends React.Component {
           requests.
         </Typography>
         <Divider
-          className={clsx(
-            classes.dividerWithMargin,
-            classes.dividerWithMarginLine
-          )}
+          className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "pricing1")}
@@ -166,10 +168,7 @@ class JugglePage extends React.Component {
           transportation reimbursement, and pre-booking payment estimation.
         </Typography>
         <Divider
-          className={clsx(
-            classes.dividerWithMargin,
-            classes.dividerWithMarginLine
-          )}
+          className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "search1")}
@@ -188,10 +187,7 @@ class JugglePage extends React.Component {
           on number of connections, rating, and number of jobs completed.
         </Typography>
         <Divider
-          className={clsx(
-            classes.dividerWithMargin,
-            classes.dividerWithMarginLine
-          )}
+          className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "backgroundCheck1")}
@@ -208,10 +204,7 @@ class JugglePage extends React.Component {
           green shield checkmark.
         </Typography>
         <Divider
-          className={clsx(
-            classes.dividerWithMargin,
-            classes.dividerWithMarginLine
-          )}
+          className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "referral1")}
@@ -229,10 +222,7 @@ class JugglePage extends React.Component {
           live.
         </Typography>
         <Divider
-          className={clsx(
-            classes.dividerWithMargin,
-            classes.dividerWithMarginLine
-          )}
+          className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
           {this.getAppImage(appImages, "emergency1")}

@@ -1,8 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import Image from "../components/image";
-
-import { Typography, withWidth, Button } from "@material-ui/core";
+import { Typography, withWidth, Button, WithStyles } from "@material-ui/core";
 import ServiceCard from "../components/ServiceCard";
 import Hero from "../components/Hero";
 import PageBottom from "../components/PageBottom";
@@ -72,8 +70,11 @@ const styles = (theme: any) => ({
   }
 });
 
-const ServicesPage = props => {
-  const { classes, width } = props;
+interface Props extends WithStyles<typeof styles> {
+  width: any;
+}
+
+const ServicesPage = ({ classes, width }: Props) => {
   return (
     <>
       <Hero colorBottom="white">

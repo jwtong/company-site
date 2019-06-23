@@ -1,8 +1,12 @@
 import React from "react";
 import _ from "lodash";
 import { graphql } from "gatsby";
-import { makeStyles } from "@material-ui/styles";
-import { Divider, withStyles, createStyles } from "@material-ui/core";
+import {
+  Divider,
+  withStyles,
+  createStyles,
+  WithStyles
+} from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
@@ -26,7 +30,11 @@ const styles = (theme: any) =>
     dividerWithMargin: dividerWithMargin(theme)
   });
 
-class BarterPage extends React.Component {
+interface Props extends WithStyles<typeof styles> {
+  data: any;
+}
+
+class BarterPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props;
 

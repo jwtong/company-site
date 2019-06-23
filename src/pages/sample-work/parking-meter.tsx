@@ -7,7 +7,8 @@ import {
   Typography,
   Divider,
   withStyles,
-  createStyles
+  createStyles,
+  WithStyles
 } from "@material-ui/core";
 import roles from "../../utils/roles";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
@@ -63,7 +64,11 @@ const styles = (theme: any) =>
     }
   });
 
-class ParkingMeterPage extends React.Component {
+interface Props extends WithStyles<typeof styles> {
+  data: any;
+}
+
+class ParkingMeterPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props;
     const parkingMeterRoles = [roles[0], roles[1], roles[4]];

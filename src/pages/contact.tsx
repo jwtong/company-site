@@ -6,10 +6,11 @@ import {
   Card,
   Tabs,
   Tab,
-  Slide
+  Slide,
+  WithStyles
 } from "@material-ui/core";
 import Hero from "../components/Hero";
-import * as moment from "moment";
+import moment from "moment";
 import ContactForm from "../components/ContactForm";
 import ProjectForm from "../components/ProjectForm";
 import clsx from "clsx";
@@ -103,8 +104,18 @@ const styles = (theme: any) =>
     }
   });
 
-class ContactPage extends React.Component {
-  public constructor(props) {
+interface Props extends WithStyles<typeof styles> {
+  data: any;
+}
+
+interface State {
+  form: "gi" | "ps" | null;
+  open: boolean;
+  nameError: string | null;
+}
+
+class ContactPage extends React.Component<Props, State> {
+  public constructor(props: Props) {
     super(props);
     this.state = { form: null, open: false, nameError: null };
   }

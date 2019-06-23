@@ -15,7 +15,7 @@ import {
   Azure,
   LanguagePython
 } from "mdi-material-ui";
-import { Typography } from "@material-ui/core";
+import { Typography, WithStyles } from "@material-ui/core";
 import { faSketch } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TechnologiesCard from "../components/TechnologiesCard";
@@ -55,7 +55,7 @@ const styles = (theme: any) => ({
     "-moz-box-sizing": "border-box",
     "box-sizing": "border-box"
   },
-  grid: {
+  gridWrapper: {
     width: "100%",
     display: "flex",
     alignSelf: "center",
@@ -95,9 +95,12 @@ const styles = (theme: any) => ({
   }
 });
 
-const IndexPage = props => {
-  const { classes, theme, width, data } = props;
+interface Props extends WithStyles<typeof styles> {
+  data: any;
+  width: any;
+}
 
+const IndexPage = ({ classes, width, data }: Props) => {
   const technologies = [
     {
       title: "Front-end",
@@ -251,4 +254,4 @@ export const query = graphql`
   }
 `;
 
-export default withWidth()(withStyles(styles, { withTheme: true })(IndexPage));
+export default withWidth()(withStyles(styles)(IndexPage));

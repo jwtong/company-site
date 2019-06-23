@@ -1,7 +1,12 @@
 import React from "react";
 import _ from "lodash";
 import { graphql } from "gatsby";
-import { Typography, withStyles, createStyles } from "@material-ui/core";
+import {
+  Typography,
+  withStyles,
+  createStyles,
+  WithStyles
+} from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import roles from "../../utils/roles";
@@ -52,7 +57,11 @@ const styles = (theme: any) =>
     }
   });
 
-class ZicPage extends React.Component {
+interface Props extends WithStyles<typeof styles> {
+  data: any;
+}
+
+class ZicPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props;
     const zicRoles = [roles[0], roles[1], roles[2], roles[3]];

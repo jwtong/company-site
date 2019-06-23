@@ -8,7 +8,8 @@ import {
   Divider,
   Chip,
   createStyles,
-  withStyles
+  withStyles,
+  WithStyles
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import Hero from "../components/Hero";
@@ -65,7 +66,11 @@ const styles = (theme: any) =>
     }
   });
 
-const AboutPage = ({ data, classes }: { data: any; classes: any }) => {
+interface Props extends WithStyles<typeof styles> {
+  data: any;
+}
+
+const AboutPage = ({ data, classes }: Props) => {
   const technologies: Array<any> = [
     "React / React Native",
     "C / C++",

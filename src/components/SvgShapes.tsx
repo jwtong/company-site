@@ -1,8 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { CSSProperties } from "@material-ui/core/styles/withStyles";
-import { useSpring, animated } from "react-spring";
 import { Spring, config } from "react-spring/renderprops";
 
 const useStyles = makeStyles({
