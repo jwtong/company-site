@@ -84,6 +84,7 @@ class MaskedTextField extends React.Component<Props, State> {
           name: name,
           autoComplete: autoComplete,
           inputComponent: this.TextMaskCustom,
+          inputProps: { "aria-label": label },
           ...InputProps
         })}
         {helperText && <FormHelperText>{helperText}</FormHelperText>}

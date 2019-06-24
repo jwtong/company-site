@@ -57,6 +57,7 @@ class SelectTextField extends React.Component<Props> {
           {label}
         </InputLabel>
         <Select
+          aria-label={label}
           input={React.createElement(variantToInputMap[variant], {
             name: name,
             ...InputProps

@@ -191,6 +191,9 @@ class Form extends React.Component<Props, State> {
         InputProps={{
           className: classes.inputText
         }}
+        inputProps={{
+          "aria-label": _.capitalize(fieldName)
+        }}
         InputLabelProps={{
           className: classes.inputText
         }}
