@@ -14,6 +14,7 @@ import TransitionGridList from "../../components/TransitionGridList";
 import Img from "gatsby-image/withIEPolyfill";
 import { isWidthDown } from "@material-ui/core/withWidth";
 import clsx from "clsx";
+import SiteHelmet from "../../components/SiteHelmet";
 
 const styles = (theme: any) =>
   createStyles({
@@ -154,6 +155,12 @@ class SampleWorkPage extends React.Component<Props> {
     const gridListTileData = this.getGridListTileData(sampleWorkData, classes);
     return (
       <>
+        <SiteHelmet
+          description={`Sample work done by ${
+            data.site.siteMetadata.companyName
+          }`}
+          title={"Sample Work"}
+        />
         <Hero colorBottom={"white"}>
           <div
             style={{
@@ -241,6 +248,11 @@ export const query = graphql`
         fluid(maxWidth: 809) {
           ...GatsbyImageSharpFluid
         }
+      }
+    }
+    site {
+      siteMetadata {
+        companyName
       }
     }
   }

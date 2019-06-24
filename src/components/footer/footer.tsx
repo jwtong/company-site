@@ -57,12 +57,20 @@ const Footer = ({ classes, mainText, email, linkedIn }: Props) => {
         </div>
         <div className={classes.right}>
           {email && (
-            <IconButton className={classes.icon} href={`mailto:${email}`}>
+            <IconButton
+              aria-label="Link to email"
+              className={classes.icon}
+              href={`mailto:${email}`}
+            >
               <MailIcon fontSize="inherit" />
             </IconButton>
           )}
           {linkedIn && (
-            <IconButton className={classes.icon} href={linkedIn}>
+            <IconButton
+              aria-label="Link to LinkedIn"
+              className={classes.icon}
+              href={linkedIn}
+            >
               <Linkedin fontSize="inherit" />
             </IconButton>
           )}

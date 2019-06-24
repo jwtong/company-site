@@ -21,6 +21,7 @@ import {
   buttonWithMargin,
   dividerWithMargin
 } from "../components/SharedStyles";
+import SiteHelmet from "../components/SiteHelmet";
 
 const styles = (theme: any) =>
   createStyles({
@@ -114,6 +115,10 @@ const AboutPage = ({ data, classes }: Props) => {
 
   return (
     <>
+      <SiteHelmet
+        description={`About ${data.site.siteMetadata.companyName}`}
+        title={"About"}
+      />
       <Hero colorBottom={"white"}>
         <div
           style={{
@@ -201,7 +206,12 @@ const AboutPage = ({ data, classes }: Props) => {
                   flexDirection: "column"
                 }}
               >
-                <Button href={p.cv} variant="outlined" color="secondary">
+                <Button
+                  aria-label="View CV"
+                  href={p.cv}
+                  variant="outlined"
+                  color="secondary"
+                >
                   View CV
                 </Button>
               </div>
@@ -224,6 +234,7 @@ const AboutPage = ({ data, classes }: Props) => {
           href="/sample-work"
           variant="contained"
           color="secondary"
+          aria-label="Sample Work"
         >
           Sample Work
         </Button>

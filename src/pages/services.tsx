@@ -5,6 +5,8 @@ import ServiceCard from "../components/ServiceCard";
 import Hero from "../components/Hero";
 import PageBottom from "../components/PageBottom";
 import roles from "../utils/roles";
+import SiteHelmet from "../components/SiteHelmet";
+import { graphql } from "gatsby";
 
 const styles = (theme: any) => ({
   grid: {
@@ -72,11 +74,18 @@ const styles = (theme: any) => ({
 
 interface Props extends WithStyles<typeof styles> {
   width: any;
+  data: any;
 }
 
-const ServicesPage = ({ classes, width }: Props) => {
+const ServicesPage = ({ classes, width, data }: Props) => {
   return (
     <>
+      <SiteHelmet
+        description={`${
+          data.site.siteMetadata.companyName
+        }'s software development and consulting services`}
+        title={"Services"}
+      />
       <Hero colorBottom="white">
         <Typography variant="h1" className={classes.header} gutterBottom>
           Services
@@ -106,6 +115,7 @@ const ServicesPage = ({ classes, width }: Props) => {
             href="/about"
             variant="contained"
             color="secondary"
+            aria-label="About Us"
           >
             About Us
           </Button>
@@ -114,6 +124,7 @@ const ServicesPage = ({ classes, width }: Props) => {
             href="/sample-work"
             variant="contained"
             color="secondary"
+            aria-label="Sample Work"
           >
             Sample Work
           </Button>
@@ -122,5 +133,15 @@ const ServicesPage = ({ classes, width }: Props) => {
     </>
   );
 };
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        companyName
+      }
+    }
+  }
+`;
 
 export default withWidth()(withStyles(styles)(ServicesPage));

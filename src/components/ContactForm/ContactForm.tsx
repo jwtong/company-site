@@ -7,7 +7,6 @@ import {
 } from "@material-ui/core";
 import { formStyles } from "../Form/Form";
 import Form from "../Form";
-import { graphql } from "gatsby";
 
 const styles = (theme: any) => createStyles(formStyles(theme));
 
@@ -62,6 +61,7 @@ class ContactForm extends React.Component<Props> {
             variant="contained"
             className={classes.submitButton}
             type="submit"
+            aria-label="Submit Contact Form"
           >
             Submit
           </Button>

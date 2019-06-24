@@ -15,6 +15,8 @@ import {
   buttonWithMargin,
   dividerWithMargin
 } from "../components/SharedStyles";
+import SiteHelmet from "../components/SiteHelmet";
+import { graphql } from "gatsby";
 
 const styles = (theme: any) => ({
   processContainer: {
@@ -51,9 +53,11 @@ const styles = (theme: any) => ({
   dividerWithMargin: dividerWithMargin(theme)
 });
 
-interface Props extends WithStyles<typeof styles> {}
+interface Props extends WithStyles<typeof styles> {
+  data: any;
+}
 
-const ProcessPage = ({ classes }: Props) => {
+const ProcessPage = ({ classes, data }: Props) => {
   const steps = [
     {
       title: "Step 1 - Contact Us",
@@ -96,6 +100,12 @@ const ProcessPage = ({ classes }: Props) => {
 
   return (
     <>
+      <SiteHelmet
+        description={`A breakdown of ${
+          data.site.siteMetadata.companyName
+        }'s consulting process`}
+        title={"Process"}
+      />
       <Hero colorBottom="white">
         <Typography variant="h1" className={classes.header} gutterBottom>
           Process
@@ -168,6 +178,7 @@ const ProcessPage = ({ classes }: Props) => {
           href="/services"
           variant="contained"
           color="secondary"
+          aria-label="Services"
         >
           Services
         </Button>
@@ -175,5 +186,15 @@ const ProcessPage = ({ classes }: Props) => {
     </>
   );
 };
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        companyName
+      }
+    }
+  }
+`;
 
 export default withStyles(styles)(ProcessPage);

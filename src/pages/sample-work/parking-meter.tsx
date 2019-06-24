@@ -208,7 +208,12 @@ class ParkingMeterPage extends React.Component<Props> {
             marginBottom: "2%"
           }}
         >
-          <Button href={"/"} variant="outlined" color="secondary">
+          <Button
+            aria-label="View Paper"
+            href={"/"}
+            variant="outlined"
+            color="secondary"
+          >
             View Paper
           </Button>
         </div>

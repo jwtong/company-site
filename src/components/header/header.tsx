@@ -68,10 +68,10 @@ const styles = (theme: any) =>
   });
 
 interface Props extends WithStyles<typeof styles> {
-  theme: any;
   pages: Array<{ link: string; text: string }>;
   location: any;
   width: Breakpoint;
+  theme: any;
 }
 
 interface State {
@@ -135,7 +135,7 @@ class Header extends React.Component<Props, State> {
   };
 
   public render() {
-    const { classes, pages, location, width } = this.props;
+    const { classes, pages, location, width, theme } = this.props;
     return (
       <AppBar position="fixed" className={classes.appBar}>
         <div
@@ -144,12 +144,20 @@ class Header extends React.Component<Props, State> {
             backgroundColor: this.state.backgroundColor
           }}
         >
-          <IconButton href={"/"} className={classes.icon}>
+          <IconButton
+            aria-label="Go home icon"
+            href={"/"}
+            className={classes.icon}
+          >
             <OfflineBolt fontSize="inherit" />
           </IconButton>
           {isWidthDown("sm", width) ? (
             <>
-              <IconButton color="inherit" onClick={this.handleMenu}>
+              <IconButton
+                aria-label="Open menu"
+                color="inherit"
+                onClick={this.handleMenu}
+              >
                 <MenuIcon className={classes.icon} />
               </IconButton>
               <Menu
@@ -200,6 +208,7 @@ class Header extends React.Component<Props, State> {
                       size="large"
                       color="inherit"
                       href={p.link}
+                      aria-label={p.text}
                     >
                       {p.text}
                     </Button>

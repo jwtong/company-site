@@ -1,22 +1,19 @@
 // site wrapper contains header, footer, and things that belong on all pages
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { Helmet } from "react-helmet";
-
 import "./layout.css";
 import Header from "../Header";
 import Footer from "../Footer";
 
-const Layout = ({
-  children,
-  location: any
-}: {
+interface Props {
   children: any;
   location: any;
-}) => (
+}
+
+const Layout = ({ children, location }: Props) => (
   <StaticQuery
     query={graphql`
-      query SiteTitleQuery {
+      query LayoutQuery {
         site {
           siteMetadata {
             companyName
@@ -26,11 +23,6 @@ const Layout = ({
     `}
     render={data => (
       <>
-        <Helmet>
-          <meta charSet="utf-8" />
-          <title>{data.site.siteMetadata.companyName}</title>
-          <link rel="canonical" href="https://knit.dev" />
-        </Helmet>
         <Header
           location={location}
           pages={[

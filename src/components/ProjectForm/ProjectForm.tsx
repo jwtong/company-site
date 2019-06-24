@@ -1,7 +1,6 @@
 import React from "react";
 import _ from "lodash";
 import {
-  TextField,
   WithStyles,
   createStyles,
   Button,
@@ -9,13 +8,11 @@ import {
   Typography,
   Divider
 } from "@material-ui/core";
-import validations from "../../utils/validations";
 import { formStyles } from "../Form/Form.tsx";
 import Form from "../Form";
 import MaskedTextField from "../MaskedTextField";
 import SelectTextField from "../SelectTextField";
 import clsx from "clsx";
-import { graphql } from "gatsby";
 
 const styles = (theme: any) =>
   createStyles({
@@ -223,6 +220,7 @@ class ProjectForm extends React.Component<Props, State> {
               variant="contained"
               className={classes.submitButton}
               type="submit"
+              aria-label="Submit Project Form"
             >
               Submit
             </Button>

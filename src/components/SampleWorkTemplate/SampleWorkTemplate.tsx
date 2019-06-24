@@ -13,6 +13,7 @@ import ServicePopovers from "../ServicePopovers";
 import technologyColorMap from "../../utils/technologies";
 import SubtitleDivider from "../SubtitleDivider";
 import { dividerWithMargin } from "../SharedStyles";
+import SiteHelmet from "../SiteHelmet";
 
 const styles = (theme: any) =>
   createStyles({
@@ -69,6 +70,7 @@ const SampleWorkTemplate = ({
 }: Props) => {
   return (
     <>
+      <SiteHelmet description={`Sample work - ${title}`} title={title} />
       <Hero colorBottom={"white"}>
         <Typography
           variant="h1"

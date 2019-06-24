@@ -15,6 +15,7 @@ import ContactForm from "../components/ContactForm";
 import ProjectForm from "../components/ProjectForm";
 import clsx from "clsx";
 import { graphql } from "gatsby";
+import SiteHelmet from "../components/SiteHelmet";
 
 const styles = (theme: any) =>
   createStyles({
@@ -128,6 +129,10 @@ class ContactPage extends React.Component<Props, State> {
     const { classes, data } = this.props;
     return (
       <>
+        <SiteHelmet
+          description={`Contact ${data.site.siteMetadata.companyName}`}
+          title={"Contact"}
+        />
         <Hero colorBottom={"white"}>
           <Typography variant="h1" className={classes.header} gutterBottom>
             Contact Us

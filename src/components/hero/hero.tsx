@@ -60,10 +60,10 @@ const styles = (theme: any) =>
 interface Props extends WithStyles<typeof styles> {
   colorBottom: string;
   children?: any;
+  theme: any;
 }
 
-const Hero = ({ children, colorBottom, classes }: Props) => {
-  const theme: any = useTheme();
+const Hero = ({ children, colorBottom, classes, theme }: Props) => {
   return (
     <>
       <div className={clsx(classes.container, classes.pageContainer)}>
@@ -276,4 +276,4 @@ const Hero = ({ children, colorBottom, classes }: Props) => {
   );
 };
 
-export default withStyles(styles)(Hero);
+export default withStyles(styles, { withTheme: true })(Hero);
