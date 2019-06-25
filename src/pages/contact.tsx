@@ -102,6 +102,9 @@ const styles = (theme: any) =>
     projectForm: {
       height: "1100px",
       [theme.breakpoints.down("md")]: {
+        height: "1175px"
+      },
+      [theme.breakpoints.down("sm")]: {
         height: "1150px"
       },
       [theme.breakpoints.down("xs")]: {

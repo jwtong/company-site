@@ -58,7 +58,7 @@ class WebScrapeDcfPage extends React.Component<Props> {
       <SampleWorkTemplate
         title={"Web Scrape Stock Analyzer"}
         subtitle={
-          "An Excel VBA driven stock analysis program that scrapes live data directly from Yahoo Finance, and outputs a discounted cash flow model along with a stock price for given parameters"
+          "An Excel VBA driven stock analysis program that scrapes live data directly from Yahoo Finance and outputs a DCF model and predicted stock price"
         }
         roles={webScrapeDcfRoles}
         technologies={webScrapeDcfTechnologies}

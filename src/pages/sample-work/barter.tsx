@@ -46,7 +46,7 @@ class BarterPage extends React.Component<Props> {
       <SampleWorkTemplate
         title={"Barter"}
         subtitle={
-          "Barter is an app concept inspired by Tinder, Snapchat, and Instagram that utilizes social discovery to match individuals who want to exchange goods."
+          "An app concept inspired by Tinder, Snapchat, and Instagram that utilizes social discovery to match individuals who want to exchange goods."
         }
         roles={barterRoles}
         technologies={barterTechnologies}
