@@ -13,6 +13,7 @@ import {
 import roles from "../../utils/roles";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
 import SubtitleDivider from "../../components/SubtitleDivider";
+import ParkingMeterPaper from "../../assets/documents/ParkingMeterPaper.pdf";
 import {
   dividerWithMargin,
   topBottomImageWrapper,
@@ -80,7 +81,7 @@ class ParkingMeterPage extends React.Component<Props> {
       <SampleWorkTemplate
         title={"Parking Meter Predictive Model"}
         subtitle={
-          "An analysis of parking meter transactions in San Diego and an evaluation of economic applications (Brown University Senior Capstone Project)"
+          "An analysis of parking meter transactions in San Diego and an evaluation of economic applications"
         }
         roles={parkingMeterRoles}
         technologies={parkingMeterTechnologies}
@@ -210,7 +211,7 @@ class ParkingMeterPage extends React.Component<Props> {
         >
           <Button
             aria-label="View Paper"
-            href={"/"}
+            href={ParkingMeterPaper}
             variant="outlined"
             color="secondary"
           >

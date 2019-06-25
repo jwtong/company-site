@@ -63,14 +63,14 @@ const ProcessPage = ({ classes, data }: Props) => {
       title: "Step 1 - Contact Us",
       icon: FormatAlignLeft,
       texts: [
-        "Fill out the initial survey on our “Contact Us” page with details about your project, your timeframe, and anything else you’d like to let us know from the start. If you have a unique request, you may also email us directly. Once received, we’ll get back to you within 2 business days."
+        "Fill out the project form on our “Contact Us” page with details about your project, your timeframe, and anything else you’d like to let us know. If you have a unique request, you may also use the general inquiries form or email us directly. Once received, we’ll get back to you within 2 business days."
       ]
     },
     {
       title: "Step 2 - Initial Chat",
       icon: Chat,
       texts: [
-        "If we reach out and let you know we think it might be a good fit, we’ll schedule a quick 15-minute call so we can properly introduce ourselves and make sure we're both on the same page."
+        "If we reach out and let you know we think it might be a good fit, we’ll schedule a quick 15-minute call so we can properly introduce ourselves and make sure we're both on the same page. This is also a good chance to let us know your budget."
       ]
     },
     {
@@ -85,7 +85,7 @@ const ProcessPage = ({ classes, data }: Props) => {
       title: "Step 4 - Project Work",
       icon: Code,
       texts: [
-        "Once the project blueprint is signed off and a formal contract is agreed upon, we’ll begin working, and provide you with weekly updates on progress."
+        "Once the project blueprint is signed off and a formal contract is agreed upon, we’ll begin working, and provide you with periodic updates on progress."
       ]
     },
 

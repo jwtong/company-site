@@ -91,9 +91,8 @@ const ServicesPage = ({ classes, width, data }: Props) => {
           Services
         </Typography>
         <Typography variant="h4" className={classes.header}>
-          Our core product is code, but we never expect you to come to us with a
-          complete blueprint of your idea. We offer any combination of the
-          following roles to ensure that we can help you along at any stage.
+          We offer versatility across a number of different professional roles
+          defined below
         </Typography>
       </Hero>
       <div className={classes.rolesContainer}>

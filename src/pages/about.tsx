@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Resume from "../assets/documents/GS9_Color_Management.pdf";
+import JeremyTongResume from "../assets/documents/JeremyTongResume.pdf";
+import ThomasClarkResume from "../assets/documents/ThomasClarkResume.pdf";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {
@@ -96,7 +97,7 @@ const AboutPage = ({ data, classes }: Props) => {
         "Jeremy has had 4+ years of full-stack experience developing web and mobile applications, and is most passionate about intelligent data-driven design. Outside of work, Jeremy loves rock-climbing, playing jazz piano, and hip-hop dance."
       ],
       technologies,
-      cv: Resume,
+      cv: JeremyTongResume,
       backgroundColor: "white"
     },
     {
@@ -108,7 +109,7 @@ const AboutPage = ({ data, classes }: Props) => {
         "Jeremy has had 4+ years of full-stack experience developing web and mobile applications, and is most passionate about intelligent data-driven design. Outside of work, Jeremy loves rock-climbing, playing jazz piano, and hip-hop dance."
       ],
       technologies,
-      cv: Resume,
+      cv: ThomasClarkResume,
       backgroundColor: "#fcfcfc"
     }
   ];

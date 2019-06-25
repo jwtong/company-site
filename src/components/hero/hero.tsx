@@ -271,6 +271,7 @@ const Hero = ({ children, colorBottom, classes, theme }: Props) => {
         />
         <div className={classes.contentContainer}>{children}</div>
       </div>
+      <div style={{ width: "100%", height: ".75px" }} />
       <WaveBottom colorTop={"black"} colorBottom={colorBottom} />
     </>
   );

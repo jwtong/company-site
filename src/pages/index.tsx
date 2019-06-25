@@ -164,17 +164,17 @@ const IndexPage = ({ classes, width, data }: Props) => {
           {data.site.siteMetadata.companyName}
         </Typography>
         <Typography variant="h4" className={classes.header}>
-          We want to build your software, the right way
+          We build software as a craft
         </Typography>
       </Hero>
       <SplashPage>
         <div className={classes.bottomContainer}>
           <Typography variant="h4" style={{ textAlign: "center" }}>
             We founded {data.site.siteMetadata.companyName} to engage with
-            startups, business ideas, and interesting people. As as team of two,
-            our expertise lies in the ability to learn and execute quickly, our
-            focus is to deliver the best technology, and our advantage is being
-            lean.
+            startups, unique ideas, and interesting people. As as team of two,
+            we operate efficiently and routinely optimize our development
+            process, while aiming to deliver the highest standards of design,
+            code, and communication with clients.
           </Typography>
           <Button
             className={classes.buttonWithMargin}
