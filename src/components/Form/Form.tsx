@@ -91,22 +91,21 @@ export interface Props extends WithStyles<typeof styles> {
     getValidationProps: any
   ) => any;
   formId: string;
-  snackbarsContainerBottom: string;
   formEndpoint: string;
+  successCallback?: () => any;
+  failureCallback?: () => any;
 }
 
 export interface State {
   errors: {
     [key: string]: string | null;
   };
-  openSuccess: boolean;
-  openFailure: boolean;
 }
 
 class Form extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
-    const state: State = { errors: {}, openSuccess: false, openFailure: false };
+    const state: State = { errors: {} };
     for (var fieldName of props.fieldNames) {
       state.errors[fieldName] = null;
     }
@@ -162,10 +161,14 @@ class Form extends React.Component<Props, State> {
           if (document.getElementById(this.props.formId)) {
             document.getElementById(this.props.formId).reset();
           }
-          this.setState({ openSuccess: true });
+          if (this.props.successCallback) {
+            this.props.successCallback();
+          }
         })
         .catch(error => {
-          this.setState({ openFailure: true });
+          if (this.props.failureCallback) {
+            this.props.failureCallback();
+          }
         });
     }
   };
@@ -208,60 +211,6 @@ class Form extends React.Component<Props, State> {
     );
   };
 
-  private getSnackbar = (children: any, open: string, otherProps?: any) => {
-    return (
-      <Snackbar
-        className={this.props.classes.snackbar}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        autoHideDuration={5000}
-        onClose={() => {
-          this.setState({ [open]: false });
-        }}
-        open={this.state[open]}
-        TransitionComponent={Slide}
-        TransitionProps={{
-          direction: "up"
-        }}
-        {...otherProps}
-      >
-        {children}
-      </Snackbar>
-    );
-  };
-
-  private renderSnackbars = () => {
-    const { classes, snackbarsContainerBottom } = this.props;
-    return (
-      <div
-        className={classes.snackbarsContainer}
-        style={{
-          bottom: snackbarsContainerBottom
-        }}
-      >
-        {this.getSnackbar(
-          <SnackbarContent
-            className={classes.snackbar}
-            message="Thanks for reaching out! We've recieved your inquiry and will contact you soon."
-          />,
-          "openSuccess",
-          {
-            variant: "success"
-          }
-        )}
-        {this.getSnackbar(
-          <SnackbarContent
-            className={clsx(classes.snackbar, classes.errorSnackbar)}
-            message="Sorry, there was an error submitting the form. You can also reach us by email at _____@mail.com"
-          />,
-          "openFailure",
-          {
-            variant: "failure"
-          }
-        )}
-      </div>
-    );
-  };
-
   public render() {
     return (
       <div>
@@ -271,7 +220,6 @@ class Form extends React.Component<Props, State> {
           this.getTextField,
           this.getValidationProps
         )}
-        {this.renderSnackbars()}
       </div>
     );
   }

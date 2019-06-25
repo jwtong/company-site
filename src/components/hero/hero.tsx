@@ -54,6 +54,14 @@ const styles = (theme: any) =>
       height: "100%",
       position: "absolute",
       animation: "$upDownWide 18s ease-in-out infinite alternate"
+    },
+    pixelPiecer: {
+      width: "100%",
+      height: ".25px",
+      backgroundColor: "black",
+      [theme.breakpoints.up("sm")]: {
+        display: "none"
+      }
     }
   });
 
@@ -271,9 +279,8 @@ const Hero = ({ children, colorBottom, classes, theme }: Props) => {
         />
         <div className={classes.contentContainer}>{children}</div>
       </div>
-      <div
-        style={{ width: "100%", height: ".25px", backgroundColor: "black" }}
-      />
+
+      <div className={classes.pixelPiecer} />
       <WaveBottom colorTop={"black"} colorBottom={colorBottom} />
     </>
   );

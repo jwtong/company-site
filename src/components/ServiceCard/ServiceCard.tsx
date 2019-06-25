@@ -37,6 +37,17 @@ const styles = (theme: { palette: { secondary: { light: any } } }) =>
       [theme.breakpoints.down("xs")]: {
         fontSize: "7rem"
       }
+    },
+    serviceTitle: {
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "1.5rem"
+      }
+    },
+    serviceDescription: {
+      lineHeight: 1.75,
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "1rem"
+      }
     }
   });
 
@@ -56,12 +67,20 @@ const ServiceCard = ({ role: { title, icon, text }, classes }: Props) => (
       <Grid item xs={12} sm={8} md={8}>
         <Grid container spacing={1} direction="column">
           <Grid item xs={12}>
-            <Typography variant="h3" gutterBottom>
+            <Typography
+              className={classes.serviceTitle}
+              variant="h3"
+              gutterBottom
+            >
               {title}
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h5" gutterBottom>
+            <Typography
+              variant="h5"
+              className={classes.serviceDescription}
+              gutterBottom
+            >
               {text}
             </Typography>
           </Grid>

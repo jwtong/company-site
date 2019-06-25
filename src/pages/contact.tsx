@@ -7,7 +7,9 @@ import {
   Tabs,
   Tab,
   Slide,
-  WithStyles
+  WithStyles,
+  Snackbar,
+  SnackbarContent
 } from "@material-ui/core";
 import Hero from "../components/Hero";
 import moment from "moment";
@@ -99,9 +101,22 @@ const styles = (theme: any) =>
     },
     projectForm: {
       height: "1100px",
+      [theme.breakpoints.down("md")]: {
+        height: "1150px"
+      },
       [theme.breakpoints.down("xs")]: {
-        height: "1200px"
+        height: "1300px"
       }
+    },
+    snackbar: {
+      fontSize: "1rem",
+      textAlign: "center",
+      marginBottom: "10%",
+      width: "70%",
+      padding: "2%"
+    },
+    errorSnackbar: {
+      backgroundColor: theme.palette.secondary.main
     }
   });
 
@@ -111,19 +126,72 @@ interface Props extends WithStyles<typeof styles> {
 
 interface State {
   form: "gi" | "ps" | null;
-  open: boolean;
+  openSuccess: boolean;
+  openFailure: boolean;
   nameError: string | null;
 }
 
 class ContactPage extends React.Component<Props, State> {
   public constructor(props: Props) {
     super(props);
-    this.state = { form: null, open: false, nameError: null };
+    this.state = {
+      form: null,
+      openSuccess: false,
+      openFailure: false,
+      nameError: null
+    };
   }
 
   public componentDidMount() {
     this.setState({ form: "gi" });
   }
+
+  private getSnackbar = (children: any, open: string, otherProps?: any) => {
+    return (
+      <Snackbar
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        autoHideDuration={5000}
+        onClose={() => {
+          this.setState({ [open]: false });
+        }}
+        open={this.state[open]}
+        TransitionComponent={Slide}
+        TransitionProps={{
+          direction: "up"
+        }}
+        {...otherProps}
+      >
+        {children}
+      </Snackbar>
+    );
+  };
+  private renderSnackbars = () => {
+    const { classes } = this.props;
+    return (
+      <>
+        {this.getSnackbar(
+          <SnackbarContent
+            className={classes.snackbar}
+            message="Thanks for reaching out! We've recieved your inquiry and will contact you soon."
+          />,
+          "openSuccess",
+          {
+            variant: "success"
+          }
+        )}
+        {this.getSnackbar(
+          <SnackbarContent
+            className={clsx(classes.snackbar, classes.errorSnackbar)}
+            message="Sorry, there was an error submitting the form. You can also reach us by email at _____@mail.com"
+          />,
+          "openFailure",
+          {
+            variant: "failure"
+          }
+        )}
+      </>
+    );
+  };
 
   public render() {
     const { classes, data } = this.props;
@@ -185,6 +253,12 @@ class ContactPage extends React.Component<Props, State> {
                 timeout={1000}
               >
                 <ContactForm
+                  successCallback={() => {
+                    this.setState({ openSuccess: true });
+                  }}
+                  failureCallback={() => {
+                    this.setState({ openFailure: true });
+                  }}
                   formEndpoint={data.site.siteMetadata.contactFormEndpoint}
                 />
               </Slide>
@@ -194,6 +268,12 @@ class ContactPage extends React.Component<Props, State> {
                 timeout={1000}
               >
                 <ProjectForm
+                  successCallback={() => {
+                    this.setState({ openSuccess: true });
+                  }}
+                  failureCallback={() => {
+                    this.setState({ openFailure: true });
+                  }}
                   formEndpoint={data.site.siteMetadata.projectFormEndpoint}
                   containerStyle={{
                     display: this.state.form === "gi" ? "none" : "block"
@@ -201,6 +281,7 @@ class ContactPage extends React.Component<Props, State> {
                 />
               </Slide>
             </div>
+            {this.renderSnackbars()}
           </div>
         </div>
       </>

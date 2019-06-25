@@ -20,6 +20,8 @@ export interface Props extends WithStyles<typeof styles> {
   };
   formId: string;
   formEndpoint: string;
+  successCallback?: () => any;
+  failureCallback?: () => any;
 }
 
 class ContactForm extends React.Component<Props> {
@@ -77,7 +79,9 @@ class ContactForm extends React.Component<Props> {
         fieldNames={this.props.fieldNames}
         fieldValidations={this.props.fieldValidations}
         renderForm={this.renderForm}
-        snackbarsContainerBottom={"-500px"}
+        //TODO: Edit value
+        successCallback={this.props.successCallback}
+        failureCallback={this.props.failureCallback}
         formEndpoint={this.props.formEndpoint}
       />
     );

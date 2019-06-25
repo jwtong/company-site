@@ -24,6 +24,10 @@ const styles = (theme: any) => ({
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
     marginBottom: theme.spacing(1),
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(0),
+      marginBottom: theme.spacing(4)
+    },
     [theme.breakpoints.down("sm")]: {
       paddingLeft: theme.spacing(5),
       paddingRight: theme.spacing(5),
@@ -50,7 +54,29 @@ const styles = (theme: any) => ({
     textAlign: "center"
   },
   buttonWithMargin: buttonWithMargin(theme),
-  dividerWithMargin: dividerWithMargin(theme)
+  dividerWithMargin: dividerWithMargin(theme),
+  card: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+
+    fontSize: "5em",
+    height: "200px",
+    width: "200px",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "3em",
+      height: "150px",
+      width: "150px"
+    }
+  },
+  cardWrapper: {
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }
+  }
 });
 
 interface Props extends WithStyles<typeof styles> {
@@ -124,28 +150,22 @@ const ProcessPage = ({ classes, data }: Props) => {
               />
 
               <Grid alignItems="center" container direction="row" spacing={2}>
-                <Grid item xs={12} sm={4} md={3} className={classes.grid}>
-                  <Card
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      alignSelf: "stretch",
-                      flexGrow: "1",
-                      // backgroundColor: "red",
-                      fontSize: "5em",
-                      height: "200px",
-                      width: "200px"
-                    }}
-                  >
+                <Grid
+                  item
+                  xs={12}
+                  sm={4}
+                  md={4}
+                  lg={3}
+                  className={classes.cardWrapper}
+                >
+                  <Card className={classes.card}>
                     {React.createElement(s.icon, {
                       fontSize: "inherit",
                       color: "secondary"
                     })}
                   </Card>
                 </Grid>
-                <Grid item xs={12} sm={8} md={8}>
+                <Grid item xs={12} sm={8} md={7} lg={8}>
                   {s.texts.map((t, index) => {
                     return (
                       <Typography

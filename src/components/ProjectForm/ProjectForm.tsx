@@ -53,6 +53,8 @@ interface Props extends WithStyles<typeof styles> {
   formId: string;
   containerStyle: any;
   formEndpoint: string;
+  successCallback?: () => any;
+  failureCallback?: () => any;
 }
 
 interface State {
@@ -237,7 +239,8 @@ class ProjectForm extends React.Component<Props, State> {
         fieldNames={this.props.fieldNames}
         fieldValidations={this.props.fieldValidations}
         renderForm={this.renderForm}
-        snackbarsContainerBottom={"-1000px"}
+        successCallback={this.props.successCallback}
+        failureCallback={this.props.failureCallback}
         formEndpoint={this.props.formEndpoint}
       />
     );

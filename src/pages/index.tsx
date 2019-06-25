@@ -172,9 +172,9 @@ const IndexPage = ({ classes, width, data }: Props) => {
           <Typography variant="h4" style={{ textAlign: "center" }}>
             We founded {data.site.siteMetadata.companyName} to engage with
             startups, unique ideas, and interesting people. As as team of two,
-            we operate efficiently and routinely optimize our development
-            process, while aiming to deliver the highest standards of design,
-            code, and communication with clients.
+            we routinely optimize our development process to operate
+            efficiently, while aiming to deliver the highest standards of
+            design, code, and communication with clients.
           </Typography>
           <Button
             className={classes.buttonWithMargin}

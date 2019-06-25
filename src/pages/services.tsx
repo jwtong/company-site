@@ -69,6 +69,14 @@ const styles = (theme: any) => ({
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(2)
     }
+  },
+  pixelPiecer: {
+    width: "100%",
+    height: ".25px",
+    backgroundColor: "white",
+    [theme.breakpoints.up("sm")]: {
+      display: "none"
+    }
   }
 });
 
@@ -104,6 +112,7 @@ const ServicesPage = ({ classes, width, data }: Props) => {
           );
         })}
       </div>
+      <div className={classes.pixelPiecer} />
       <PageBottom>
         <Typography variant="h4" className={classes.header} gutterBottom>
           Learn more about our experience in each of these roles
