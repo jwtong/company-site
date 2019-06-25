@@ -8,13 +8,13 @@ const roles = [
   {
     title: "Software Developer",
     text:
-      "Specializing in progressive web and mobile applications, our responsibility under this role is to write code in accordance to the project specifications, then configure the hosting platform to serve the website or application live. This role may also include a discussion and recommendation of the right front-end/back-end languages and hosting platform to use.",
+      "We specialize in building progressive web and mobile applications. We will design an architecture to scale, then apply software engineering best practices to scaffold the code. Lastly, we will configure the hosting platform to serve the website or application live. Unless requested otherwise, we will select leading technologies to use in your project, making the codebase easy to inherit and build upon.",
     icon: Code
   },
   {
     title: "UI/UX Designer",
     text:
-      "If you're not sure how you want your application to look and how you want people to interact with it, we can help apply user-interface best practices and sketch out a visual representation of the application. Note, this does not include branding design such as logos or visual content that may be served up by your application.",
+      "If you're not sure how you want your application to look and how you want people to interact with it, we can help apply user-interface principles and sketch out a visual representation of the application. Note, this does not include branding design such as logos or visual content that may be served up by your application.",
     icon: PaletteOutlined
   },
   {
@@ -26,7 +26,7 @@ const roles = [
   {
     title: "Business Logic Analyst",
     text:
-      "If you just have an idea, we can help you all the way from the bottom-up, suggesting business logic decisions that may pair well with a software implementation. Our focus in this role would be to think critically of the economic and social impacts of the core idea.",
+      "If you just have an idea, we can help you all the way from the bottom-up, suggesting business logic decisions that may pair well with a software implementation. The focus of this role is to think critically of the economic and social impacts of the core idea.",
     icon: BusinessCenterOutlined
   },
   {

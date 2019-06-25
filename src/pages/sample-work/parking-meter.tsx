@@ -8,7 +8,8 @@ import {
   Divider,
   withStyles,
   createStyles,
-  WithStyles
+  WithStyles,
+  Paper
 } from "@material-ui/core";
 import roles from "../../utils/roles";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
@@ -26,23 +27,23 @@ const styles = (theme: any) =>
     dividerWithMargin: dividerWithMargin(theme),
     topBottomImageWrapper: topBottomImageWrapper(theme),
     imagesContainer: imagesContainer(theme),
-    imageShiftWrapper: imageShiftWrapper(theme),
-    mainImage: {
+    imageShiftWrapper: {
+      overflow: "hidden",
       width: "90%",
       [theme.breakpoints.down("sm")]: {
         width: "100%"
-      },
+      }
+    },
+    mainImage: {
       [theme.breakpoints.down("xs")]: {
-        width: "425px"
+        width: "425px",
+        marginRight: "-100px"
       }
     },
     mapImage: {
-      width: "90%",
-      [theme.breakpoints.down("sm")]: {
-        width: "100%"
-      },
       [theme.breakpoints.down("xs")]: {
-        width: "375px"
+        width: "375px",
+        marginRight: "-50px"
       }
     },
     bostonImage: {
@@ -91,7 +92,7 @@ class ParkingMeterPage extends React.Component<Props> {
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.imagesContainer}>
-          <div className={classes.imageShiftWrapper}>
+          <Paper className={classes.imageShiftWrapper}>
             <Img
               className={classes.mainImage}
               fluid={
@@ -101,7 +102,7 @@ class ParkingMeterPage extends React.Component<Props> {
                 ).childImageSharp.fluid
               }
             />
-          </div>
+          </Paper>
         </div>
         <Typography variant="subtitle1">
           Inspired by Donald Shoup's book "The High Cost of Free Parking", this
@@ -126,15 +127,16 @@ class ParkingMeterPage extends React.Component<Props> {
           day.
         </Typography>
         <div className={classes.topBottomImageWrapper}>
-          <Img
-            className={classes.bostonImage}
-            fluid={
-              _.find(
-                images,
-                (d: { name: string }) => d.name === "parkingMeter2"
-              ).childImageSharp.fluid
-            }
-          />
+          <Paper className={classes.bostonImage}>
+            <Img
+              fluid={
+                _.find(
+                  images,
+                  (d: { name: string }) => d.name === "parkingMeter2"
+                ).childImageSharp.fluid
+              }
+            />
+          </Paper>
         </div>
         <Typography variant="subtitle1">
           In order to account for differences in daily occupancy, I suspected
@@ -144,15 +146,16 @@ class ParkingMeterPage extends React.Component<Props> {
           demand, likely due to weather conditions.
         </Typography>
         <div className={classes.topBottomImageWrapper}>
-          <Img
-            className={classes.occupancyImage}
-            fluid={
-              _.find(
-                images,
-                (d: { name: string }) => d.name === "parkingMeter3"
-              ).childImageSharp.fluid
-            }
-          />
+          <Paper className={classes.occupancyImage}>
+            <Img
+              fluid={
+                _.find(
+                  images,
+                  (d: { name: string }) => d.name === "parkingMeter3"
+                ).childImageSharp.fluid
+              }
+            />
+          </Paper>
         </div>
         <Typography variant="subtitle1">
           Combining a San Diego historical weather data set with the original
@@ -165,7 +168,7 @@ class ParkingMeterPage extends React.Component<Props> {
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.imagesContainer}>
-          <div className={classes.imageShiftWrapper}>
+          <Paper className={classes.imageShiftWrapper}>
             <Img
               className={classes.mapImage}
               fluid={
@@ -175,7 +178,7 @@ class ParkingMeterPage extends React.Component<Props> {
                 ).childImageSharp.fluid
               }
             />
-          </div>
+          </Paper>
         </div>
         <Typography variant="subtitle1">
           Using the random-forest model, I created an application that queries

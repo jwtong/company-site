@@ -46,7 +46,8 @@ const styles = (theme: any) =>
         width: "80%"
       },
       [theme.breakpoints.down("xs")]: {
-        width: "480px"
+        width: "480px",
+        marginRight: "-150px"
       }
     },
     applicationImage: {

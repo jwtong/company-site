@@ -103,7 +103,7 @@ const ProcessPage = ({ classes, data }: Props) => {
       title: "Step 3 - Project Blueprint",
       icon: ViewDashboardOutline,
       texts: [
-        "After the introduction, the next step will be for us to draft a project blueprint. In this blueprint, we will outline the project scope, propose our recommended software technologies to use on the project, draft initial specification documents, and also possible design mockups if requested.",
+        "The next step will be for us to draft a project blueprint. In this blueprint, we will outline the project scope, propose our recommended software technologies to use on the project, draft initial specification documents, and also provide possible design mockups if requested.",
         "Depending on the size of the project and pre-work required, we may charge a non-refundable hourly rate for this work, though we will take the amount out of the final contracting fee agreed upon between parties. However, if you decide not to work with us after this step, you own your project blueprint and are free to take and use it as you wish."
       ]
     },

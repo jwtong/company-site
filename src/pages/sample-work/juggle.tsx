@@ -7,7 +7,8 @@ import {
   withStyles,
   withWidth,
   createStyles,
-  WithStyles
+  WithStyles,
+  Paper
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import TransitionOnShow from "../../components/TransitionOnShow";
@@ -116,12 +117,12 @@ class JugglePage extends React.Component<Props> {
           text={"Preliminary Design"}
           otherProps={{ className: classes.dividerWithMargin }}
         />
-        <div className={classes.designImageWrapper}>
+        <Paper className={classes.designImageWrapper}>
           <Img
             className={classes.designImage}
             fluid={data.newAppFlow.childImageSharp.fluid}
           />
-        </div>
+        </Paper>
         <Typography variant="subtitle1">
           Juggle's mobile app was rebuilt to offer cross-platform (Android/iOS)
           support, a revamped user-interface, and to support a suite of new

@@ -20,9 +20,9 @@ export const dividerWithMargin = (theme: any) => ({
 export const topBottomImageWrapper = (theme: any) => ({
   display: "flex",
   justifyContent: "center",
+  alignItems: "center",
   flexWrap: "wrap",
   flexDirection: "column",
-  alignItems: "center",
   marginBottom: theme.spacing(3),
   marginTop: theme.spacing(3)
 });
@@ -35,8 +35,10 @@ export const imagesContainer = (theme: any) => ({
 });
 
 export const imageShiftWrapper = (theme: any) => ({
-  overflow: "hidden",
   width: "100%",
+  [theme.breakpoints.down("xs")]: {
+    overflow: "hidden"
+  },
   [theme.breakpoints.up("xs")]: {
     display: "flex",
     alignItems: "center",

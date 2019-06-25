@@ -6,7 +6,8 @@ import {
   withStyles,
   createStyles,
   withWidth,
-  WithStyles
+  WithStyles,
+  Paper
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import SampleWorkTemplate from "../../components/SampleWorkTemplate";
@@ -156,15 +157,16 @@ class RecipeBuilderPage extends React.Component<Props> {
           horizontal axis (i.e. the shelves).
         </Typography>
         <div className={classes.topBottomImageWrapper}>
-          <Img
-            className={classes.shelfImage}
-            fluid={
-              _.find(
-                images,
-                (d: { name: string }) => d.name === "recipeBuilder5"
-              ).childImageSharp.fluid
-            }
-          />
+          <Paper className={classes.shelfImage}>
+            <Img
+              fluid={
+                _.find(
+                  images,
+                  (d: { name: string }) => d.name === "recipeBuilder5"
+                ).childImageSharp.fluid
+              }
+            />
+          </Paper>
         </div>
         <Typography variant="subtitle1">
           Next, we used a 90 degree orientation Gabor image filter to filter the
