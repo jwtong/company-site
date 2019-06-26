@@ -69,9 +69,16 @@ interface Props extends WithStyles<typeof styles> {
   colorBottom: string;
   children?: any;
   theme: any;
+  hideWaveBottom?: boolean;
 }
 
-const Hero = ({ children, colorBottom, classes, theme }: Props) => {
+const Hero = ({
+  children,
+  colorBottom,
+  classes,
+  theme,
+  hideWaveBottom
+}: Props) => {
   return (
     <>
       <div className={clsx(classes.container, classes.pageContainer)}>
@@ -279,9 +286,12 @@ const Hero = ({ children, colorBottom, classes, theme }: Props) => {
         />
         <div className={classes.contentContainer}>{children}</div>
       </div>
-
-      <div className={classes.pixelPiecer} />
-      <WaveBottom colorTop={"black"} colorBottom={colorBottom} />
+      {!hideWaveBottom && (
+        <>
+          <div className={classes.pixelPiecer} />
+          <WaveBottom colorTop={"black"} colorBottom={colorBottom} />
+        </>
+      )}
     </>
   );
 };

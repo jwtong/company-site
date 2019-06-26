@@ -1,10 +1,32 @@
 import React from "react";
+import {
+  Typography,
+  createStyles,
+  withStyles,
+  WithStyles
+} from "@material-ui/core";
+import Hero from "../components/Hero";
 
-const NotFoundPage = () => (
+const styles = createStyles({
+  header: {
+    color: "white !important",
+    textAlign: "center"
+  }
+});
+
+interface Props extends WithStyles<typeof styles> {}
+
+const NotFoundPage = ({ classes }: Props) => (
   <>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <Hero colorBottom={"white"} hideWaveBottom>
+      <Typography variant="h1" className={classes.header} gutterBottom>
+        Page Not Found
+      </Typography>
+      <Typography variant="h4" className={classes.header}>
+        404
+      </Typography>
+    </Hero>
   </>
 );
 
-export default NotFoundPage;
+export default withStyles(styles)(NotFoundPage);

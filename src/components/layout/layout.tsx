@@ -17,6 +17,8 @@ const Layout = ({ children, location }: Props) => (
         site {
           siteMetadata {
             companyName
+            email
+            linkedIn
           }
         }
       }
@@ -40,8 +42,8 @@ const Layout = ({ children, location }: Props) => (
           mainText={`Coded with ReactJS and GatsbyJS by ${
             data.site.siteMetadata.companyName
           } ©  ${new Date().getFullYear()}`}
-          email="blah"
-          linkedIn="blah"
+          email={data.site.siteMetadata.email}
+          linkedIn={data.site.siteMetadata.linkedIn}
         />
       </>
     )}
