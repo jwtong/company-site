@@ -16,7 +16,7 @@ import {
   dividerWithMargin
 } from "../components/SharedStyles";
 import SiteHelmet from "../components/SiteHelmet";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 const styles = (theme: any) => ({
   processContainer: {
@@ -195,7 +195,8 @@ const ProcessPage = ({ classes, data }: Props) => {
         </Typography>
         <Button
           className={classes.buttonWithMargin}
-          href="/services"
+          component={Link}
+          to="/services"
           variant="contained"
           color="secondary"
           aria-label="Services"

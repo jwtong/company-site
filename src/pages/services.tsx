@@ -6,7 +6,7 @@ import Hero from "../components/Hero";
 import PageBottom from "../components/PageBottom";
 import roles from "../utils/roles";
 import SiteHelmet from "../components/SiteHelmet";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 const styles = (theme: any) => ({
   grid: {
@@ -120,7 +120,8 @@ const ServicesPage = ({ classes, width, data }: Props) => {
         <div className={classes.buttonsContainer}>
           <Button
             className={classes.button}
-            href="/about"
+            component={Link}
+            to="/about"
             variant="contained"
             color="secondary"
             aria-label="About Us"
@@ -129,7 +130,8 @@ const ServicesPage = ({ classes, width, data }: Props) => {
           </Button>
           <Button
             className={classes.button}
-            href="/sample-work"
+            component={Link}
+            to="/sample-work"
             variant="contained"
             color="secondary"
             aria-label="Sample Work"

@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "knit-website",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Website of Knit LLC",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Jeremy Tong <13jeremywt@gmail.com>",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-brands-svg-icons": "^5.8.1",

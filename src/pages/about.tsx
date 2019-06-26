@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import JeremyTongResume from "../assets/documents/JeremyTongResume.pdf";
 import ThomasClarkResume from "../assets/documents/ThomasClarkResume.pdf";
 import Button from "@material-ui/core/Button";
@@ -215,7 +215,8 @@ const AboutPage = ({ data, classes }: Props) => {
         </Typography>
         <Button
           className={classes.buttonWithMargin}
-          href="/sample-work"
+          component={Link}
+          to="/sample-work"
           variant="contained"
           color="secondary"
           aria-label="Sample Work"

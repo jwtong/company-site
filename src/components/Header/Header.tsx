@@ -135,7 +135,7 @@ class Header extends React.Component<Props, State> {
   };
 
   public render() {
-    const { classes, pages, location, width, theme } = this.props;
+    const { classes, pages, location, width } = this.props;
     return (
       <AppBar position="fixed" className={classes.appBar}>
         <div
@@ -145,8 +145,9 @@ class Header extends React.Component<Props, State> {
           }}
         >
           <IconButton
+            component={Link}
             aria-label="Go home icon"
-            href={"/"}
+            to={"/"}
             className={classes.icon}
           >
             <OfflineBolt fontSize="inherit" />

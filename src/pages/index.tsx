@@ -1,5 +1,4 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -27,7 +26,7 @@ import PageBottom from "../components/PageBottom";
 import SplashPage from "../components/SplashPage";
 import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 import { buttonWithMargin } from "../components/SharedStyles";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import SiteHelmet from "../components/SiteHelmet";
 
 const styles = (theme: any) => ({
@@ -178,7 +177,8 @@ const IndexPage = ({ classes, width, data }: Props) => {
           </Typography>
           <Button
             className={classes.buttonWithMargin}
-            href="/services"
+            component={Link}
+            to="/services"
             variant="contained"
             color="secondary"
             aria-label="Services"
@@ -242,7 +242,8 @@ const IndexPage = ({ classes, width, data }: Props) => {
         </Typography>
         <Button
           className={classes.buttonWithMargin}
-          href="/contact"
+          component={Link}
+          to="/contact"
           variant="contained"
           color="secondary"
           aria-label="Contact Us"
