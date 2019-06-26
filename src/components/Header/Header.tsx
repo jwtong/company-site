@@ -202,12 +202,13 @@ class Header extends React.Component<Props, State> {
                 return (
                   <div key={p.text}>
                     <Button
+                      component={Link}
                       classes={{
                         label: classes.buttonLabel
                       }}
                       size="large"
                       color="inherit"
-                      href={p.link}
+                      to={p.link}
                       aria-label={p.text}
                     >
                       {p.text}
