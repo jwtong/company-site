@@ -17,9 +17,20 @@ export const formStyles = (theme: any) => ({
   form: {
     position: "absolute",
     left: "0",
-    right: "0"
+    right: "0",
     // width: "100%",
     // height: "100%"
+    paddingRight: theme.spacing(25),
+    paddingLeft: theme.spacing(25),
+    //prevent screen widening
+    [theme.breakpoints.down("md")]: {
+      paddingRight: theme.spacing(10),
+      paddingLeft: theme.spacing(10)
+    },
+    [theme.breakpoints.down("xs")]: {
+      paddingRight: theme.spacing(2),
+      paddingLeft: theme.spacing(2)
+    }
   },
   fullWidthField: {
     width: "100%"
@@ -214,15 +225,11 @@ class Form extends React.Component<Props, State> {
   };
 
   public render() {
-    return (
-      <div>
-        {this.props.renderForm(
-          this.handleValidations,
-          this.handleSubmit,
-          this.getTextField,
-          this.getValidationProps
-        )}
-      </div>
+    return this.props.renderForm(
+      this.handleValidations,
+      this.handleSubmit,
+      this.getTextField,
+      this.getValidationProps
     );
   }
 }
