@@ -9,7 +9,6 @@ const {
 } = require("@material-ui/core/styles");
 const createBreakpoints = require("@material-ui/core/styles/createBreakpoints")
   .default;
-const Button = require("@material-ui/core/Button").default;
 
 const breakpoints = createBreakpoints({});
 let theme = createMuiTheme({
