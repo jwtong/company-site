@@ -199,23 +199,6 @@ const AboutPage = ({ data, classes }: Props) => {
                   );
                 })}
               </Grid>
-              <Divider className={classes.dividerWithMargin} />
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column"
-                }}
-              >
-                <Button
-                  aria-label="View CV"
-                  href={p.cv}
-                  variant="outlined"
-                  color="secondary"
-                >
-                  View CV
-                </Button>
-              </div>
             </div>
             {index !== people.length - 1 && (
               <WaveBottom
