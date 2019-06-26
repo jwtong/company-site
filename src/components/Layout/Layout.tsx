@@ -35,9 +35,7 @@ const Layout = ({ children, location }: Props) => (
             { text: "Contact", link: "/contact/" }
           ]}
         />
-        <div>
-          <main>{children}</main>
-        </div>
+        <main>{children}</main>
         <Footer
           mainText={`Coded with ReactJS and GatsbyJS by ${
             data.site.siteMetadata.companyName
