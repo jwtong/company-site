@@ -11,43 +11,27 @@ interface Props {
 }
 
 const Layout = ({ children, location }: Props) => (
-  <StaticQuery
-    query={graphql`
-      query LayoutQuery {
-        site {
-          siteMetadata {
-            companyName
-            email
-            linkedIn
-          }
-        }
-      }
-    `}
-    render={data => (
-      <>
-        <Header
-          location={location}
-          pages={[
-            { text: "Process", link: "/process/" },
-            { text: "Services", link: "/services/" },
-            { text: "About Us", link: "/about/" },
-            { text: "Sample Work", link: "/sample-work/" },
-            { text: "Contact", link: "/contact/" }
-          ]}
-        />
-        <div>
-          <main>{children}</main>
-        </div>
-        <Footer
-          mainText={`Coded with ReactJS and GatsbyJS by ${
-            data.site.siteMetadata.companyName
-          } ©  ${new Date().getFullYear()}`}
-          email={data.site.siteMetadata.email}
-          linkedIn={data.site.siteMetadata.linkedIn}
-        />
-      </>
-    )}
-  />
+  <>
+    <Header
+      location={location}
+      pages={[
+        { text: "Process", link: "/process/" },
+        { text: "Services", link: "/services/" },
+        { text: "About Us", link: "/about/" },
+        { text: "Sample Work", link: "/sample-work/" },
+        { text: "Contact", link: "/contact/" }
+      ]}
+    />
+    <div>
+      <main>{children}</main>
+    </div>
+    <Footer
+      mainText={`Coded with ReactJS and GatsbyJS by Knit
+      } ©  ${new Date().getFullYear()}`}
+      email={"blah"}
+      linkedIn={"blah"}
+    />
+  </>
 );
 
 export default Layout;
