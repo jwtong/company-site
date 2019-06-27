@@ -11,8 +11,8 @@ import React from "react";
 const styles = (theme: { palette: { secondary: { light: any } } }) =>
   createStyles({
     card: {
-      paddingTop: theme.spacing(10),
-      paddingBottom: theme.spacing(10),
+      paddingTop: theme.spacing(8),
+      paddingBottom: theme.spacing(8),
       paddingRight: theme.spacing(15),
       [theme.breakpoints.down("sm")]: {
         paddingTop: theme.spacing(4),
@@ -44,9 +44,8 @@ const styles = (theme: { palette: { secondary: { light: any } } }) =>
       }
     },
     serviceDescription: {
-      lineHeight: 1.75,
       [theme.breakpoints.down("xs")]: {
-        fontSize: "1rem"
+        textAlign: "center"
       }
     }
   });
@@ -77,7 +76,7 @@ const ServiceCard = ({ role: { title, icon, text }, classes }: Props) => (
           </Grid>
           <Grid item xs={12}>
             <Typography
-              variant="h5"
+              variant="subtitle1"
               className={classes.serviceDescription}
               gutterBottom
             >
