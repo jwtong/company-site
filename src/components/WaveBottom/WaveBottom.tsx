@@ -1,6 +1,6 @@
 import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import WaveBottomSVG from "../../assets/svg/waveBottom.svg";
+import WaveBottomSVG from "../../assets/svg/wave.svg";
 import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 
 const styles = createStyles({
@@ -8,10 +8,9 @@ const styles = createStyles({
     "& path": {
       fill: props => props.colorTop
     },
-    height: "100%",
-    width: "100%",
     backgroundColor: props => props.colorBottom,
-    transform: props => (props.flip ? "scale(-1,1)" : null)
+    display: "block",
+    transform: "rotate(180deg) scaleX(-1)"
   }
 });
 
@@ -23,7 +22,7 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 const WaveBottom = ({ classes }: Props) => {
-  return <WaveBottomSVG className={classes.svg} display={"block"} />;
+  return <WaveBottomSVG className={classes.svg} />;
 };
 
 WaveBottom.defaultProps = {
