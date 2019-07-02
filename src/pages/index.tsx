@@ -163,7 +163,7 @@ const IndexPage = ({ classes, width, data }: Props) => {
           {data.site.siteMetadata.companyName}
         </Typography>
         <Typography variant="h4" className={classes.header}>
-          We build software as a craft
+          Code as Craft
         </Typography>
       </Hero>
       <SplashPage>
