@@ -26,13 +26,13 @@ const roles = [
   {
     title: "Business Logic Analyst",
     text:
-      "If you just have an idea, we can help you all the way from the bottom-up, suggesting business logic decisions that may pair well with a software implementation. The focus of this role is to think critically of the economic and social impacts of the core idea.",
+      "If you just have an idea, we can help you all the way from the bottom-up, suggesting business decisions that may pair well with a software implementation. The focus of this role is to think critically of the economic and social impacts of the core idea.",
     icon: BusinessCenterOutlined
   },
   {
     title: "Data Analyst",
     text:
-      "Parallel to the software development, we can apply data analytic and machine learning principles to provide valuable insights into the efficacy of your application as it relates to your economic or social imperatives.",
+      "In conjunction with software development, we can apply data analysis and machine learning methods to provide valuable insights into your application as it relates to your economic or social imperatives.",
     icon: InsertChartOutlined
   }
 ];

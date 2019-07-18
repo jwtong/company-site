@@ -99,8 +99,7 @@ const ServicesPage = ({ classes, width, data }: Props) => {
           Services
         </Typography>
         <Typography variant="h4" className={classes.header}>
-          We offer versatility across a number of different professional roles
-          defined below
+          We offer professional services in a number of different roles
         </Typography>
       </Hero>
       <div className={classes.rolesContainer}>
@@ -115,7 +114,7 @@ const ServicesPage = ({ classes, width, data }: Props) => {
       <div className={classes.pixelPiecer} />
       <PageBottom>
         <Typography variant="h4" className={classes.header} gutterBottom>
-          Learn more about our experience in each of these roles
+          Learn more about our professional experience
         </Typography>
         <div className={classes.buttonsContainer}>
           <Button

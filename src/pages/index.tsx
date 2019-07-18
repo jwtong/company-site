@@ -169,11 +169,9 @@ const IndexPage = ({ classes, width, data }: Props) => {
       <SplashPage>
         <div className={classes.bottomContainer}>
           <Typography variant="h4" style={{ textAlign: "center" }}>
-            We founded {data.site.siteMetadata.companyName} to engage with
-            startups, unique ideas, and interesting people. As as team of two,
-            we routinely optimize our development process to operate
-            efficiently, while aiming to deliver the highest standards of
-            design, code, and communication with clients.
+            {data.site.siteMetadata.companyName} is a software development
+            consultancy aimed to provide small businesses and startups with high
+            quality code through friendly, approachable means.
           </Typography>
           <Button
             className={classes.buttonWithMargin}

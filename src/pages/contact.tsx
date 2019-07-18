@@ -209,8 +209,7 @@ class ContactPage extends React.Component<Props, State> {
             Contact Us
           </Typography>
           <Typography variant="h4" className={classes.header}>
-            Fill out one of the two forms below, and we'll get back to you
-            within 2 days
+            Fill out a form below, and we'll get back to you within 2 days
           </Typography>
         </Hero>
         <div className={classes.mainContainer}>

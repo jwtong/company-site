@@ -94,7 +94,7 @@ const AboutPage = ({ data, classes }: Props) => {
       about: [
         "Jeremy Tong is a graduate of Brown University who double-majored in Computer Science and Economics, with a focus on UI/UX design, Data Analytics, Behaviorial Economics, and Finance.",
         "Most recently, Jeremy worked as a Venture for America fellow for Juggle, a startup that is best described as the Uber-for-Babysitting. There, he assumed the role of interim CTO, handling all aspects of the business related to Juggle's technology and mobile app. In his time there, he rebuilt much of the software platform from scratch that then served over 5000 monthly users and generated $200k in revenue in 2018, an 8x increase over 2017, with a projected increase of 2x in 2019.",
-        "Jeremy has had 4+ years of full-stack experience developing web and mobile applications, and is most passionate about intelligent data-driven design. Outside of work, Jeremy loves rock-climbing, playing jazz piano, and hip-hop dance."
+        "Jeremy has had 4+ years of full-stack experience developing web and mobile applications, and is most passionate about intelligent data-driven design. Outside of work, Jeremy loves rock climbing, playing jazz piano, and hip-hop dance."
       ],
       technologies,
       cv: JeremyTongResume,
@@ -132,7 +132,8 @@ const AboutPage = ({ data, classes }: Props) => {
             About Us
           </Typography>
           <Typography variant="h4" className={classes.header}>
-            Meet the co-founders of {data.site.siteMetadata.companyName}
+            Meet the two founder / software developers of{" "}
+            {data.site.siteMetadata.companyName}
           </Typography>
         </div>
       </Hero>
