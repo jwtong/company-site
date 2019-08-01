@@ -22,6 +22,7 @@ const styles = (theme: any) =>
       textAlign: "center"
     },
     title: {
+      fontSize: props => (props.title.length > 20 ? "5rem" : ""),
       [theme.breakpoints.down("xs")]: {
         fontSize: props => (props.title.length > 20 ? "2.5rem" : "3.5rem")
       }

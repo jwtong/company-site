@@ -13,13 +13,13 @@ const styles = (theme: any) => ({
     width: "100%"
   },
   button: {
-    width: "11rem"
+    width: "12rem"
   },
   buttonsContainer: {
     display: "flex",
     justifyContent: "space-between",
     marginTop: "3%",
-    width: "30%",
+    width: "35%",
     [theme.breakpoints.down("md")]: {
       justify: "space-around",
       flexDirection: "column",
@@ -69,14 +69,6 @@ const styles = (theme: any) => ({
       marginTop: theme.spacing(2),
       marginBottom: theme.spacing(2)
     }
-  },
-  pixelPiecer: {
-    width: "100%",
-    height: ".25px",
-    backgroundColor: "white",
-    [theme.breakpoints.up("sm")]: {
-      display: "none"
-    }
   }
 });
 
@@ -111,7 +103,6 @@ const ServicesPage = ({ classes, width, data }: Props) => {
           );
         })}
       </div>
-      <div className={classes.pixelPiecer} />
       <PageBottom>
         <Typography variant="h4" className={classes.header} gutterBottom>
           Learn more about our professional experience

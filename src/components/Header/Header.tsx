@@ -16,9 +16,10 @@ import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 const styles = (theme: any) =>
   createStyles({
     buttonLabel: {
-      fontFamily: "Roboto Condensed",
+      fontFamily: "Open Sans",
       fontWeight: "bold",
       fontSize: "20px"
+      // lineHeight: "3rem"
     },
     toolbar: {
       display: "flex",
@@ -27,6 +28,7 @@ const styles = (theme: any) =>
       flexWrap: "wrap",
       fontSize: "3em",
       alignItems: "center",
+      height: "5rem",
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
       [theme.breakpoints.down("xs")]: {
@@ -59,7 +61,7 @@ const styles = (theme: any) =>
     },
     menuItem: {
       color: "white",
-      fontFamily: "Roboto Condensed",
+      fontFamily: "Open Sans",
       fontWeight: "bold"
     },
     menuList: {

@@ -10,7 +10,7 @@ const styles = (theme: {
   createStyles({
     left: {
       color: "white !important",
-      fontFamily: "Roboto Condensed",
+      fontFamily: "Ubuntu",
       fontSize: "1rem",
       [theme.breakpoints.down("xs")]: {
         fontSize: ".65rem"

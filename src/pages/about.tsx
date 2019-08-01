@@ -60,7 +60,7 @@ const styles = (theme: any) =>
       }
     },
     name: {
-      fontFamily: "Lato",
+      fontFamily: "Open Sans",
       fontWeight: 800,
       [theme.breakpoints.down("xs")]: {
         fontSize: "1.75rem"

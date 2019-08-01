@@ -12,34 +12,35 @@ let theme = createMuiTheme({
     useNextVariants: true,
     // Use the system font instead of the default Roboto font.
     h1: {
-      fontFamily: "Roboto Condensed",
+      fontFamily: "Ubuntu",
       fontWeight: "500"
     },
     h2: {
-      fontFamily: "Lato"
+      fontFamily: "Open Sans"
     },
     h3: {
-      fontFamily: "Lato"
+      fontFamily: "Open Sans"
     },
     h4: {
-      fontFamily: "Lato",
+      fontFamily: "Open Sans",
       [breakpoints.down("xs")]: {
         fontSize: "1.25rem"
       }
     },
     h5: {
-      fontFamily: "Lato",
+      fontFamily: "Open Sans",
       fontWeight: 800,
       color: "#919191"
     },
     h6: {
-      fontFamily: "Lato",
+      fontFamily: "Open Sans",
       fontSize: "1.375em",
       [breakpoints.down("xs")]: {
         fontSize: "1rem"
       }
     },
     subtitle1: {
+      fontFamily: "Open Sans",
       color: "#5e5e5e",
       fontSize: "1.125rem",
       textAlign: "left",
@@ -48,12 +49,13 @@ let theme = createMuiTheme({
       }
     },
     button: {
-      fontFamily: "Roboto Condensed",
+      fontFamily: "Ubuntu",
       fontWeight: "Bold",
       fontSize: "1.25rem",
       [breakpoints.down("xs")]: {
         fontSize: "1rem"
-      }
+      },
+      letterSpacing: "1px"
     }
   }
 });

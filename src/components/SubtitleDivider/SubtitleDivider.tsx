@@ -6,7 +6,8 @@ import { CSSProperties } from "@material-ui/styles";
 const styles = createStyles({
   text: {
     textAlign: "left",
-    textTransform: "uppercase"
+    textTransform: "uppercase",
+    letterSpacing: "1px"
   },
   divider: {
     height: "2px",
