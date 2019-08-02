@@ -34,6 +34,7 @@ const styles = (theme: any) =>
       }
     },
     tileTitle: {
+      fontFamily: "Open Sans",
       opacity: 0
     },
     header: {
@@ -108,14 +109,14 @@ class SampleWorkPage extends React.Component<Props> {
         rows: 1
       },
       {
-        title: "Parking Meter Predictive Model",
+        title: "Parking Meter Data Analysis",
         url: "/sample-work/parking-meter",
         fluidImage: data.parkingMeterLogo.childImageSharp.fluid,
         cols: 1,
         rows: 1
       },
       {
-        title: "Computer Vision Recipe Builder",
+        title: "Comp. Vision Recipe Builder",
         url: "/sample-work/recipe-builder",
         fluidImage: data.recipeBuilderLogo.childImageSharp.fluid,
         cols: 1,

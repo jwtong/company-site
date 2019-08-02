@@ -11,6 +11,9 @@ const styles = (theme: any): any =>
     },
     paper: {
       padding: theme.spacing(1)
+    },
+    popoverText: {
+      fontFamily: "Open Sans"
     }
   });
 
@@ -67,7 +70,9 @@ class StandardPopover extends React.Component<Props> {
           onClose={this.handleStandardPopoverClose}
           disableRestoreFocus
         >
-          <Typography {...typographyProps}>{popoverText}</Typography>
+          <Typography className={classes.popoverText} {...typographyProps}>
+            {popoverText}
+          </Typography>
         </Popover>
       </div>
     );

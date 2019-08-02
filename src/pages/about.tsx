@@ -192,7 +192,8 @@ const AboutPage = ({ data, classes }: Props) => {
                         variant="outlined"
                         style={{
                           color: technologyColorMap[t],
-                          borderColor: technologyColorMap[t]
+                          borderColor: technologyColorMap[t],
+                          fontFamily: "Open Sans"
                         }}
                         label={t}
                       />

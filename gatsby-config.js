@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    companyName: "Knit",
+    companyName: "knit",
     contactFormEndpoint: "https://formcarry.com/s/11PY44aSiKo",
     projectFormEndpoint: "https://formcarry.com/s/11PY44aSiKo",
-    email: "blah",
+    email: "team@knit.dev",
     linkedIn: "blah"
   },
   plugins: [

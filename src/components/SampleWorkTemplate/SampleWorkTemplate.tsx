@@ -108,7 +108,8 @@ const SampleWorkTemplate = ({
                   variant="outlined"
                   style={{
                     color: technologyColorMap[t],
-                    borderColor: technologyColorMap[t]
+                    borderColor: technologyColorMap[t],
+                    fontFamily: "Open Sans"
                   }}
                   label={t}
                 />
