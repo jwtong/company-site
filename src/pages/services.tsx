@@ -97,7 +97,7 @@ const ServicesPage = ({ classes, width, data }: Props) => {
       <div className={classes.rolesContainer}>
         {roles.map(role => {
           return (
-            <div className={classes.serviceCardWrapper}>
+            <div key={role.title} className={classes.serviceCardWrapper}>
               <ServiceCard key={role.title} role={role} />
             </div>
           );

@@ -168,7 +168,11 @@ const AboutPage = ({ data, classes }: Props) => {
               />
               {p.about.map((paragraph, index) => {
                 return (
-                  <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+                  <Typography
+                    key={index}
+                    variant="subtitle1"
+                    style={{ textAlign: "left" }}
+                  >
                     {paragraph}
                     {index !== p.about.length - 1 && <br />}
                     {index !== p.about.length - 1 && <br />}
@@ -187,7 +191,7 @@ const AboutPage = ({ data, classes }: Props) => {
               >
                 {p.technologies.map(t => {
                   return (
-                    <Grid item>
+                    <Grid item key={t}>
                       <Chip
                         variant="outlined"
                         style={{

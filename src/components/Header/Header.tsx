@@ -1,5 +1,6 @@
 import { Link, navigate } from "gatsby";
 import React from "react";
+import _ from "lodash";
 import AppBar from "@material-ui/core/AppBar";
 //Toolbar has issues
 // import Toolbar from "@material-ui/core/Toolbar";
@@ -28,9 +29,11 @@ const styles = (theme: any) =>
       flexWrap: "wrap",
       fontSize: "3em",
       alignItems: "center",
-      height: "5rem",
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
+      [theme.breakpoints.up("md")]: {
+        height: "5rem"
+      },
       [theme.breakpoints.down("xs")]: {
         paddingLeft: theme.spacing(1),
         paddingRight: theme.spacing(1)
@@ -51,13 +54,13 @@ const styles = (theme: any) =>
       flexWrap: "wrap"
     },
     underline: {
-      backgroundColor: theme.palette.secondary.main,
       height: "3px",
       [theme.breakpoints.up("lg")]: {
         marginLeft: "10%",
         marginRight: "10%"
       },
-      borderRadius: "10px"
+      borderRadius: "10px",
+      backgroundColor: theme.palette.secondary.main
     },
     menuItem: {
       color: "white",
@@ -203,7 +206,16 @@ class Header extends React.Component<Props, State> {
             <div className={classes.containerRight}>
               {pages.map((p: any) => {
                 return (
-                  <div key={p.text}>
+                  <div
+                    key={p.text}
+                    style={{
+                      // backgroundColor: "blue",
+                      display: "flex",
+                      flexDirection: "column"
+                      // alignItems: "center",
+                      // justifyContent: "center"
+                    }}
+                  >
                     <Button
                       component={Link}
                       classes={{
@@ -213,6 +225,14 @@ class Header extends React.Component<Props, State> {
                       color="inherit"
                       to={p.link}
                       aria-label={p.text}
+                      //counter balance the underline so it is still centered
+                      style={
+                        _.find(pages, (p: any) =>
+                          location.pathname.includes(p.link.slice(0, -1))
+                        )
+                          ? { marginTop: "3px" }
+                          : undefined
+                      }
                     >
                       {p.text}
                     </Button>
