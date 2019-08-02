@@ -228,9 +228,13 @@ class ContactPage extends React.Component<Props, State> {
             </Card>
             <div>
               <Tabs
-                action={actions =>
-                  setTimeout(actions.updateIndicator.bind(actions), 0)
-                }
+                action={actions => {
+                  if (actions) {
+                    return setTimeout(actions.updateIndicator.bind(actions), 0);
+                  } else {
+                    return null;
+                  }
+                }}
                 value={this.state.form}
                 onChange={(_, value) => {
                   this.setState({ form: value });

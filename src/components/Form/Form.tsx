@@ -61,6 +61,7 @@ export const formStyles = (theme: any) => ({
     }
   },
   inputText: {
+    fontFamily: "Open Sans",
     fontSize: "1.25rem",
     [theme.breakpoints.down("xs")]: {
       fontSize: "1rem"
