@@ -49,7 +49,7 @@ let theme = createMuiTheme({
       }
     },
     button: {
-      fontFamily: "Ubuntu",
+      fontFamily: "Open Sans",
       fontWeight: "Bold",
       fontSize: "1.25rem",
       [breakpoints.down("xs")]: {

@@ -17,8 +17,6 @@ import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
 const styles = (theme: any) =>
   createStyles({
     buttonLabel: {
-      fontFamily: "Open Sans",
-      fontWeight: "bold",
       fontSize: "20px"
       // lineHeight: "3rem"
     },
@@ -64,7 +62,7 @@ const styles = (theme: any) =>
     },
     menuItem: {
       color: "white",
-      fontFamily: "Open Sans",
+      // fontFamily: "Open Sans",
       fontWeight: "bold"
     },
     menuList: {
@@ -209,11 +207,8 @@ class Header extends React.Component<Props, State> {
                   <div
                     key={p.text}
                     style={{
-                      // backgroundColor: "blue",
                       display: "flex",
                       flexDirection: "column"
-                      // alignItems: "center",
-                      // justifyContent: "center"
                     }}
                   >
                     <Button
