@@ -86,32 +86,32 @@ interface Props extends WithStyles<typeof styles> {
 const ProcessPage = ({ classes, data }: Props) => {
   const steps = [
     {
-      title: "Step 1 - Contact Us",
+      title: "Step 1 - Contact us",
       icon: FormatAlignLeft,
       texts: [
-        "Fill out the project form on our “Contact Us” page with details about your project, your timeframe, and anything else you’d like to let us know. If you have a unique request, you may also use the general inquiries form or email us directly. Once received, we’ll get back to you within 2 business days."
+        "Fill out the project form on our Contact page with as much detail as you'd like. If you have an unusual request, feel free to use the general inquiries form or email us directly. We'll follow up within 2 business days."
       ]
     },
     {
-      title: "Step 2 - Initial Chat",
+      title: "Step 2 - Initial chat",
       icon: Chat,
       texts: [
-        "If we reach out and let you know we think it might be a good fit, we’ll schedule a quick 15-minute call so we can properly introduce ourselves and make sure we're both on the same page. This is also a good chance to let us know your budget."
+        "If it appears we might be a good fit, we’ll schedule a quick 15-minute call to properly introduce ourselves. This is also a good opportunity to let us know your budget."
       ]
     },
     {
-      title: "Step 3 - Project Blueprint",
+      title: "Step 3 - Project blueprint",
       icon: ViewDashboardOutline,
       texts: [
-        "The next step will be for us to draft a project blueprint. In this blueprint, we will outline the project scope, propose our recommended software technologies to use on the project, draft initial specification documents, and also provide possible design mockups if requested.",
-        "Depending on the size of the project and pre-work required, we may charge a non-refundable hourly rate for this work, though we will take the amount out of the final contracting fee agreed upon between parties. However, if you decide not to work with us after this step, you own your project blueprint and are free to take and use it as you wish."
+        "Here we'll outline project scope, propose software technology options, draft initial specification documents, and provide design mockups (if requested).",
+        "Depending on the size and scope of your project, we may charge an initial fee at this stage. If we move forward from here, this charge will count toward the final contracting fee agreed upon between parties. If you decide after this step you'd like to go in a different direction, you own your project blueprint and are free to use it as you wish."
       ]
     },
     {
-      title: "Step 4 - Project Work",
+      title: "Step 4 - Project work",
       icon: Code,
       texts: [
-        "Once the project blueprint is signed off and a formal contract is agreed upon, we’ll begin working, and provide you with periodic updates on progress."
+        "Once the project blueprint is signed off and a formal contract agreed upon, we’ll begin working. You'll be kept in the loop with regularly scheduled progress updates."
       ]
     },
 
@@ -119,7 +119,7 @@ const ProcessPage = ({ classes, data }: Props) => {
       title: "Step 5 - Launch",
       icon: Rocket,
       texts: [
-        "Before launching, we’ll walk through a project demo together to make sure we have addressed all the points in the project blueprint. Once you’re satisfied with the product, we’ll launch your application live and celebrate together!"
+        "Before launch, we’ll walk through a project demo together to make sure all points in the project blueprint are met. Once you’re satisfied with the product, we’ll launch your application live and celebrate!"
       ]
     }
   ];
@@ -127,9 +127,7 @@ const ProcessPage = ({ classes, data }: Props) => {
   return (
     <>
       <SiteHelmet
-        description={`A breakdown of ${
-          data.site.siteMetadata.companyName
-        }'s consulting process`}
+        description={`A breakdown of knit's consulting process`}
         title={"Process"}
       />
       <Hero colorBottom="white">

@@ -154,9 +154,9 @@ const IndexPage = ({ classes, width, data }: Props) => {
     <>
       <SiteHelmet
         description={
-          "Web and mobile application development for startups and small businesses."
+          "Startup and small business software application development and deployment"
         }
-        title={"Software Development and Consulting"}
+        title={"code as craft"}
       />
       <Hero colorBottom={"white"}>
         <Typography variant="h1" className={classes.header} gutterBottom>
@@ -169,8 +169,8 @@ const IndexPage = ({ classes, width, data }: Props) => {
       <SplashPage>
         <div className={classes.bottomContainer}>
           <Typography variant="h4" style={{ textAlign: "center" }}>
-            {data.site.siteMetadata.companyName} is a software development
-            consultancy aimed to provide small businesses and startups with high
+            Knit is a software development
+            consultancy providing startups and small businesses with high
             quality code through friendly, approachable means.
           </Typography>
           <Button
@@ -187,7 +187,7 @@ const IndexPage = ({ classes, width, data }: Props) => {
       </SplashPage>
       <div className={classes.technologiesContainer}>
         <SubtitleDivider
-          text="Progressive Web and Mobile Application Development"
+          text="Application development core technologies"
           containerStyle={{
             width: "100%"
           }}
@@ -236,7 +236,7 @@ const IndexPage = ({ classes, width, data }: Props) => {
           Interested in working together?
         </Typography>
         <Typography variant="h4" className={classes.header} gutterBottom>
-          Contact us to discuss your project and how we can collaborate.
+          Discuss your project and explore collabrative opportunities
         </Typography>
         <Button
           className={classes.buttonWithMargin}

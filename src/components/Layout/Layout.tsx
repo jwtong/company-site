@@ -37,9 +37,7 @@ const Layout = ({ children, location }: Props) => (
         />
         <main>{children}</main>
         <Footer
-          mainText={`Coded with ReactJS and GatsbyJS by ${
-            data.site.siteMetadata.companyName
-          } ©  ${new Date().getFullYear()}`}
+          mainText={`Released under the MIT License © ${new Date().getFullYear()} Knit, LLC`}
           email={data.site.siteMetadata.email}
           linkedIn={data.site.siteMetadata.linkedIn}
         />
