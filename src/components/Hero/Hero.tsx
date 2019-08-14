@@ -2,8 +2,6 @@ import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
 import clsx from "clsx";
 import SVG from "../SvgShapes";
-import WaveBottom from "../WaveBottom";
-import { useTheme } from "@material-ui/styles";
 import { pageContainer } from "../SharedStyles";
 
 const styles = (theme: any) =>
@@ -69,16 +67,9 @@ interface Props extends WithStyles<typeof styles> {
   colorBottom: string;
   children?: any;
   theme: any;
-  hideWaveBottom?: boolean;
 }
 
-const Hero = ({
-  children,
-  colorBottom,
-  classes,
-  theme,
-  hideWaveBottom
-}: Props) => {
+const Hero = ({ children, classes, theme }: Props) => {
   return (
     <>
       <div className={clsx(classes.container, classes.pageContainer)}>
@@ -286,12 +277,6 @@ const Hero = ({
         />
         <div className={classes.contentContainer}>{children}</div>
       </div>
-      {!hideWaveBottom && (
-        <>
-          <div className={classes.pixelPiecer} />
-          <WaveBottom colorTop={"black"} colorBottom={colorBottom} />
-        </>
-      )}
     </>
   );
 };

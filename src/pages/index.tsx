@@ -28,6 +28,7 @@ import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 import { buttonWithMargin } from "../components/SharedStyles";
 import { graphql, Link } from "gatsby";
 import SiteHelmet from "../components/SiteHelmet";
+import technologyColorMap from "../utils/technologies";
 
 const styles = (theme: any) => ({
   buttonWithMargin: buttonWithMargin(theme),
@@ -106,10 +107,13 @@ const IndexPage = ({ classes, width, data }: Props) => {
     {
       title: "Front-end",
       icons: [
-        { component: ReactIcon },
-        { component: Vuejs },
-        { component: AppleIos },
-        { component: Android }
+        { component: ReactIcon, color: technologyColorMap.React },
+        { component: Vuejs, color: technologyColorMap.Vue },
+        {
+          component: AppleIos,
+          color: "black"
+        },
+        { component: Android, color: technologyColorMap.Android }
       ],
       names: [
         { text: "React / React Native", starred: true },

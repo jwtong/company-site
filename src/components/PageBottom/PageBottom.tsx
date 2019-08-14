@@ -1,7 +1,5 @@
 import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import WaveBottom from "../WaveBottom";
-import { useTheme } from "@material-ui/styles";
 
 const styles = (theme: any) =>
   createStyles({
@@ -41,12 +39,7 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 const PageBottom = ({ children, colorTop, classes }: Props) => {
-  return (
-    <>
-      <WaveBottom colorTop={colorTop} colorBottom="black" />
-      <div className={classes.container}>{children}</div>
-    </>
-  );
+  return <div className={classes.container}>{children}</div>;
 };
 
 PageBottom.defaultProps = {

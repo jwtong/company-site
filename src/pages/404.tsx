@@ -18,7 +18,7 @@ interface Props extends WithStyles<typeof styles> {}
 
 const NotFoundPage = ({ classes }: Props) => (
   <>
-    <Hero colorBottom={"white"} hideWaveBottom>
+    <Hero colorBottom={"white"}>
       <Typography variant="h1" className={classes.header} gutterBottom>
         Page Not Found
       </Typography>

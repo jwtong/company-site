@@ -7,10 +7,12 @@ import {
   CardContent,
   ListItem,
   List,
-  ListItemText
+  ListItemText,
+  Grid
 } from "@material-ui/core";
 import React from "react";
 import StarIcon from "@material-ui/icons/Star";
+import { ColorLuminance } from "../../utils/technologies";
 
 const styles = (theme: any) =>
   createStyles({
@@ -22,16 +24,16 @@ const styles = (theme: any) =>
       display: "flex",
       justifyContent: "center",
       flexWrap: "wrap",
-      backgroundColor: theme.palette.secondary.light,
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
+      // backgroundColor: theme.palette.secondary.light,
+      // paddingTop: theme.spacing(2),
+      // paddingBottom: theme.spacing(2),
       paddingLeft: theme.spacing(1),
       paddingRight: theme.spacing(1),
       fontSize: "6em",
       [theme.breakpoints.down("xs")]: {
-        fontSize: "4rem",
-        paddingTop: theme.spacing(1),
-        paddingBottom: theme.spacing(1)
+        fontSize: "4rem"
+        // paddingTop: theme.spacing(1),
+        // paddingBottom: theme.spacing(1)
       }
     },
     icon: {
@@ -63,35 +65,59 @@ const TechnologiesCard = ({
   classes
 }: Props) => (
   <Card className={classes.card}>
-    <div className={classes.iconsContainer}>
-      {icons.map((i: any, index: number) =>
-        React.createElement(i.component, {
-          key: index,
-          fontSize: "inherit",
-          className: classes.icon,
-          ...i.additionalProps
-        })
-      )}
-    </div>
-    <CardContent>
+    <CardContent
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center"
+      }}
+    >
       <Typography variant="h4">{title}</Typography>
-      <List>
-        {names.map(poText => {
-          return (
-            <ListItem key={poText.text}>
-              {poText.starred && (
-                <StarIcon color="secondary" className={classes.starIcon} />
-              )}
-              <ListItemText
-                primaryTypographyProps={{
-                  variant: "h6"
-                }}
-                primary={poText.text}
-              />
-            </ListItem>
-          );
-        })}
-      </List>
+    </CardContent>
+
+    <Grid
+      alignItems="center"
+      container
+      alignSelf="stretch"
+      direction="row"
+      spacing={1}
+      className={classes.iconsContainer}
+    >
+      {icons.map((i: any, index: number) => (
+        <Grid item>
+          <div
+            style={{
+              padding: "1rem",
+              // margin: "1%",
+              // backgroundColor: ColorLuminance(i.color, 0.99),
+              display: "flex",
+              border: `10px solid ${i.color}`
+            }}
+          >
+            {React.createElement(i.component, {
+              key: index,
+              fontSize: "inherit",
+              className: classes.icon,
+              style: { color: i.color },
+              ...i.additionalProps
+            })}
+          </div>
+        </Grid>
+      ))}
+    </Grid>
+
+    <CardContent
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
+      {names.map(po => (
+        <Typography variant="h6" style={{ lineHeight: "2.75rem" }}>
+          {po.text}
+        </Typography>
+      ))}
     </CardContent>
   </Card>
 );

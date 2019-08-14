@@ -1,20 +1,30 @@
 import React from "react";
-import { Typography, IconButton } from "@material-ui/core";
+import { Typography, IconButton, Button } from "@material-ui/core";
 import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
 import MailIcon from "@material-ui/icons/Mail";
-import { Linkedin } from "mdi-material-ui";
+import { Linkedin, GithubCircle } from "mdi-material-ui";
 
-const styles = (theme: {
-  palette: { primary: { main: string | undefined } };
-}) =>
+const styles = (theme: any) =>
   createStyles({
-    left: {
+    mainText: {
       color: "white !important",
       fontFamily: "Ubuntu",
       fontSize: "1rem",
       [theme.breakpoints.down("xs")]: {
         fontSize: ".65rem"
       }
+    },
+    button: {
+      fontSize: ".75rem",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: ".4rem"
+      },
+      marginLeft: theme.spacing(2)
+    },
+    leftContainer: {
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center"
     },
     right: { display: "flex", justifyContent: "flex-end" },
     container: {
@@ -37,6 +47,13 @@ const styles = (theme: {
       [theme.breakpoints.down("xs")]: {
         fontSize: "1.5rem"
       }
+    },
+    githubIcon: {
+      marginRight: theme.spacing(0.5),
+      fontSize: "1.25rem",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "1rem"
+      }
     }
   });
 
@@ -44,16 +61,33 @@ interface Props extends WithStyles<typeof styles> {
   mainText: string;
   email?: string;
   linkedIn?: string;
+  githubSource?: string;
 }
 
-const Footer = ({ classes, mainText, email, linkedIn }: Props) => {
+const Footer = ({
+  classes,
+  mainText,
+  email,
+  linkedIn,
+  githubSource
+}: Props) => {
   return (
     <footer>
       <div className={classes.container}>
-        <div>
-          <Typography variant="h6" className={classes.left}>
+        <div className={classes.leftContainer}>
+          <Typography variant="h6" className={classes.mainText}>
             {mainText}
           </Typography>
+          <Button
+            // color="secondary"
+            variant="contained"
+            aria-label="Website Source"
+            className={classes.button}
+            href={githubSource}
+          >
+            <GithubCircle className={classes.githubIcon} />
+            View Source
+          </Button>
         </div>
         <div className={classes.right}>
           {email && (

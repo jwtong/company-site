@@ -14,7 +14,6 @@ import {
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import Hero from "../components/Hero";
-import WaveBottom from "../components/WaveBottom";
 import SubtitleDivider from "../components/SubtitleDivider";
 import PageBottom from "../components/PageBottom";
 import technologyColorMap from "../utils/technologies";
@@ -206,12 +205,6 @@ const AboutPage = ({ data, classes }: Props) => {
                 })}
               </Grid>
             </div>
-            {index !== people.length - 1 && (
-              <WaveBottom
-                colorTop={p.backgroundColor}
-                colorBottom={people[index + 1].backgroundColor}
-              />
-            )}
           </div>
         );
       })}
