@@ -91,19 +91,17 @@ const AboutPage = ({ data, classes }: Props) => {
       name: "Jeremy Tong",
       avatar: data.jeremyAvatar,
       about: [
-        "Jeremy Tong is a graduate of Brown University who double-majored in Computer Science and Economics, with a focus on UI/UX design, Data Analytics, Behaviorial Economics, and Finance.",
-        "Most recently, Jeremy worked as a Venture for America fellow for Juggle, a startup that is best described as the Uber-for-Babysitting. There, he assumed the role of interim CTO, handling all aspects of the business related to Juggle's technology and mobile app. In his time there, he rebuilt much of the software platform from scratch that then served over 5000 monthly users and generated $200k in revenue in 2018, an 8x increase over 2017, with a projected increase of 2x in 2019.",
-        "Jeremy has had 4+ years of full-stack experience developing web and mobile applications, and is most passionate about intelligent data-driven design. Outside of work, Jeremy loves rock climbing, playing jazz piano, and hip-hop dance."
+        "Jeremy Tong is a graduate of Brown University with dual majors in Computer Science and Economics. His studies focused on UI/UX design, data analytics, behaviorial economics, and finance.",
+        "Most recently, Jeremy worked as a Venture for America fellow for Juggle, a startup best described as 'Uber for Babysitting'. He assumed the role of interim CTO, handling all aspects of business related to Juggle's technology and mobile app. During his tenure with Juggle, Jeremy rebuilt the software platform from scratch. The platform serves over 5000 monthly users and generated $200k in revenue in 2018, an 8x increase over 2017, with a projected increase of 2x in 2019.",
+        "Through his 4+ years of full-stack experience with web and mobile applications, Jeremy developed a passion for intelligent, data-driven design. Outside of work, Jeremy loves rock climbing, playing jazz piano, and hip-hop dance."
       ],
       backgroundColor: "#f9f9f9"
     },
     {
-      name: "Thomas Clark",
+      name: "Tommy Clark",
       avatar: data.jeremyAvatar,
       about: [
-        "Jeremy Tong is a recent graduate of Brown University who double-majored in Computer Science and Economics with a focus on UI/UX design, Data Analytics, Behaviorial Economics, and Finance.",
-        "Most recently, Jeremy worked as a Venture for America fellow for Juggle, a startup that is best described as the Uber-for-Babysitting. There, he assumed the role of interim CTO, handling all aspects of the business related to Juggle's technology and mobile app. In his time there, he rebuilt much of the software platform from scratch that then served over 5000 monthly users and generated $200k in revenue in 2018, an 8x increase over 2017, with a projected increase of 2x in 2019.",
-        "Jeremy has had 4+ years of full-stack experience developing web and mobile applications, and is most passionate about intelligent data-driven design. Outside of work, Jeremy loves rock-climbing, playing jazz piano, and hip-hop dance."
+        ""
       ],
       backgroundColor: "white"
     }
