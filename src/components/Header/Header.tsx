@@ -6,7 +6,7 @@ import AppBar from "@material-ui/core/AppBar";
 // import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import OfflineBolt from "@material-ui/icons/OfflineBolt";
+import KnitLogo from "../../assets/svg/KnitLogoWhiteBall.svg";
 import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
 import { hexToRgba, rgbToHex } from "../../utils/hexRgba";
 import { Divider, withWidth, Menu, MenuItem } from "@material-ui/core";
@@ -153,7 +153,7 @@ class Header extends React.Component<Props, State> {
             to={"/"}
             className={classes.icon}
           >
-            <OfflineBolt fontSize="inherit" />
+            <KnitLogo height="50px" width="50px" fontSize="inherit" />
           </IconButton>
           {isWidthDown("sm", width) ? (
             <>

@@ -6,10 +6,33 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import { dividerWithMargin } from "../SharedStyles";
+import KnitBackground from "../../assets/svg/KnitLightBackground2.svg";
 
 const styles = (theme: any) =>
   createStyles({
     container: {
+      // width: "100vw",
+      // height: "100vh",
+      // [theme.breakpoints.down("md")]: {
+      //   fontSize: "15px",
+      //   height: "600px"
+      // },
+      // [theme.breakpoints.down("sm")]: {
+      //   fontSize: "15px",
+      //   height: "500px"
+      // },
+      // [theme.breakpoints.down("xs")]: {
+      //   fontSize: "10px",
+      //   height: "330px"
+      // },
+      // display: "flex",
+      // flexDirection: "column",
+      // justifyContent: "center",
+      // alignItems: "center",
+      // position: "relative",
+      // overflow: "hidden"
+
+      position: "relative",
       width: "100vw",
       paddingRight: theme.spacing(10),
       paddingLeft: theme.spacing(10),
@@ -17,7 +40,7 @@ const styles = (theme: any) =>
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "#f9f9f9",
+      // backgroundColor: "#f9f9f9"
       "-webkit-box-sizing": "border-box",
       "-moz-box-sizing": "border-box",
       "box-sizing": "border-box",
@@ -31,6 +54,16 @@ const styles = (theme: any) =>
         paddingRight: theme.spacing(2),
         paddingLeft: theme.spacing(2)
       }
+    },
+    svgContainer: {
+      position: "absolute",
+      display: "block",
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      overflow: "hidden",
+      zIndex: -1
     }
   });
 
@@ -40,7 +73,14 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 const PageBottom = ({ children, classes }: Props) => {
-  return <div className={classes.container}>{children}</div>;
+  return (
+    <div className={classes.container}>
+      <div className={classes.svgContainer}>
+        <KnitBackground style={{ backgroundColor: "#f9f9f9" }} />
+      </div>
+      {children}
+    </div>
+  );
 };
 
 PageBottom.defaultProps = {

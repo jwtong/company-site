@@ -56,6 +56,7 @@ const styles = (theme: any) => ({
   buttonWithMargin: buttonWithMargin(theme),
   technologiesContainer: {
     width: "100%",
+    marginTop: theme.spacing(5),
     marginBottom: theme.spacing(5),
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
@@ -86,10 +87,10 @@ const styles = (theme: any) => ({
     alignSelf: "center",
     alignItems: "center",
     marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(5),
+    // marginBottom: theme.spacing(5),
     [theme.breakpoints.down("xs")]: {
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2)
+      marginTop: theme.spacing(2)
+      // marginBottom: theme.spacing(2)
     }
   },
   header: {
@@ -218,7 +219,7 @@ const IndexPage = ({ classes, width, data }: Props) => {
         }
         title={"Software Development and Consulting"}
       />
-      <Hero colorBottom={"white"}>
+      <Hero showAnimation colorBottom={"white"}>
         <Typography variant="h1" className={classes.header} gutterBottom>
           {data.site.siteMetadata.companyName}
         </Typography>
@@ -459,9 +460,19 @@ const IndexPage = ({ classes, width, data }: Props) => {
             })}
           </Grid>
         </div>
+        <Button
+          className={classes.buttonWithMargin}
+          component={Link}
+          to="/contact"
+          variant="contained"
+          color="secondary"
+          aria-label="Other Technologies"
+        >
+          View Knit's Technology List
+        </Button>
       </div>
       <PageBottom>
-        <Typography variant="h4">
+        <Typography variant="h4" style={{ textAlign: "center" }}>
           Contact us to discuss your project and how we can collaborate.
         </Typography>
         <Button

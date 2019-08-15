@@ -5,7 +5,7 @@ import {
   Divider
 } from "@material-ui/core";
 import React from "react";
-import LineSvg from "../../assets/svg/line.svg";
+import KnitBackground from "../../assets/svg/KnitLightBackground1.svg";
 import { pageContainer } from "../SharedStyles";
 
 const divider = (theme: { palette: { secondary: { main: any } } }) => {
@@ -24,16 +24,19 @@ const styles = (theme: {
     pageContainer: pageContainer(theme),
     svgContainer: {
       position: "absolute",
-      height: "100%",
-      width: "100%",
-      [theme.breakpoints.down("xs")]: {
-        width: "150%",
-        height: "150%",
-        overflow: "hidden"
-      },
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      display: "block",
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      // [theme.breakpoints.down("xs")]: {
+      //   width: "150%",
+      //   height: "150%",
+      //   overflow: "hidden"
+      // },
+      // display: "flex",
+      // justifyContent: "center",
+      // alignItems: "center",
       zIndex: -1
     },
     bodyContainer: {
@@ -55,14 +58,7 @@ const styles = (theme: {
         paddingLeft: theme.spacing(2)
       }
     },
-    line: {
-      "& path": {
-        stroke: "#F6F6F6"
-        // stroke: "black"
-      },
-      height: "80%",
-      width: "80%"
-    },
+
     divider: {
       height: "4px",
       width: "10%",
@@ -93,7 +89,12 @@ const SplashPage = ({ children, classes }: Props) => {
   return (
     <div className={classes.pageContainer}>
       <div className={classes.svgContainer}>
-        <LineSvg className={classes.line} />
+        <KnitBackground
+          style={{ backgroundColor: "#f9f9f9" }}
+          preserveAspectRatio="none"
+          height="100%"
+          width="100%"
+        />
       </div>
       <div className={classes.bodyContainer}>
         <Divider className={classes.dividerTop} />
