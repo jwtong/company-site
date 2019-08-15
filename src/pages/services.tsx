@@ -104,7 +104,7 @@ const ServicesPage = ({ classes, width, data }: Props) => {
         })}
       </div>
       <PageBottom>
-        <Typography variant="h4" className={classes.header} gutterBottom>
+        <Typography variant="h4">
           Learn more about our professional experience
         </Typography>
         <div className={classes.buttonsContainer}>

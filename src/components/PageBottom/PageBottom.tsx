@@ -1,5 +1,11 @@
-import { withStyles, createStyles, WithStyles } from "@material-ui/core";
+import {
+  withStyles,
+  createStyles,
+  WithStyles,
+  Divider
+} from "@material-ui/core";
 import React from "react";
+import { dividerWithMargin } from "../SharedStyles";
 
 const styles = (theme: any) =>
   createStyles({
@@ -11,19 +17,14 @@ const styles = (theme: any) =>
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "black",
+      backgroundColor: "#f9f9f9",
       "-webkit-box-sizing": "border-box",
       "-moz-box-sizing": "border-box",
       "box-sizing": "border-box",
-      [theme.breakpoints.up("lg")]: {
-        height: "50vh"
-      },
-      [theme.breakpoints.down("md")]: {
-        paddingTop: theme.spacing(10),
-        paddingBottom: theme.spacing(10),
-        paddingRight: theme.spacing(4),
-        paddingLeft: theme.spacing(4)
-      },
+      paddingTop: theme.spacing(10),
+      paddingBottom: theme.spacing(10),
+      paddingRight: theme.spacing(4),
+      paddingLeft: theme.spacing(4),
       [theme.breakpoints.down("xs")]: {
         paddingTop: theme.spacing(4),
         paddingBottom: theme.spacing(4),
@@ -38,7 +39,7 @@ interface Props extends WithStyles<typeof styles> {
   colorTop?: string;
 }
 
-const PageBottom = ({ children, colorTop, classes }: Props) => {
+const PageBottom = ({ children, classes }: Props) => {
   return <div className={classes.container}>{children}</div>;
 };
 

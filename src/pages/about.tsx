@@ -32,8 +32,8 @@ const styles = (theme: any) =>
     buttonWithMargin: buttonWithMargin(theme),
     dividerWithMargin: dividerWithMargin(theme),
     aboutContainer: {
-      paddingTop: theme.spacing(4),
-      paddingBottom: theme.spacing(4),
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
       paddingLeft: theme.spacing(25),
       paddingRight: theme.spacing(25),
       [theme.breakpoints.down("md")]: {
@@ -95,9 +95,7 @@ const AboutPage = ({ data, classes }: Props) => {
         "Most recently, Jeremy worked as a Venture for America fellow for Juggle, a startup that is best described as the Uber-for-Babysitting. There, he assumed the role of interim CTO, handling all aspects of the business related to Juggle's technology and mobile app. In his time there, he rebuilt much of the software platform from scratch that then served over 5000 monthly users and generated $200k in revenue in 2018, an 8x increase over 2017, with a projected increase of 2x in 2019.",
         "Jeremy has had 4+ years of full-stack experience developing web and mobile applications, and is most passionate about intelligent data-driven design. Outside of work, Jeremy loves rock climbing, playing jazz piano, and hip-hop dance."
       ],
-      technologies,
-      cv: JeremyTongResume,
-      backgroundColor: "white"
+      backgroundColor: "#f9f9f9"
     },
     {
       name: "Thomas Clark",
@@ -107,9 +105,7 @@ const AboutPage = ({ data, classes }: Props) => {
         "Most recently, Jeremy worked as a Venture for America fellow for Juggle, a startup that is best described as the Uber-for-Babysitting. There, he assumed the role of interim CTO, handling all aspects of the business related to Juggle's technology and mobile app. In his time there, he rebuilt much of the software platform from scratch that then served over 5000 monthly users and generated $200k in revenue in 2018, an 8x increase over 2017, with a projected increase of 2x in 2019.",
         "Jeremy has had 4+ years of full-stack experience developing web and mobile applications, and is most passionate about intelligent data-driven design. Outside of work, Jeremy loves rock-climbing, playing jazz piano, and hip-hop dance."
       ],
-      technologies,
-      cv: ThomasClarkResume,
-      backgroundColor: "#fcfcfc"
+      backgroundColor: "white"
     }
   ];
 
@@ -178,38 +174,12 @@ const AboutPage = ({ data, classes }: Props) => {
                   </Typography>
                 );
               })}
-              <SubtitleDivider
-                text={"Top Skills"}
-                otherProps={{ className: classes.dividerWithMargin }}
-              />
-              <Grid
-                className={classes.skillsGrid}
-                justify="center"
-                container
-                spacing={1}
-              >
-                {p.technologies.map(t => {
-                  return (
-                    <Grid item key={t}>
-                      <Chip
-                        variant="outlined"
-                        style={{
-                          color: technologyColorMap[t],
-                          borderColor: technologyColorMap[t],
-                          fontFamily: "Open Sans"
-                        }}
-                        label={t}
-                      />
-                    </Grid>
-                  );
-                })}
-              </Grid>
             </div>
           </div>
         );
       })}
       <PageBottom colorTop={people[1].backgroundColor}>
-        <Typography variant="h4" className={classes.header} gutterBottom>
+        <Typography variant="h4" style={{ textAlign: "center" }}>
           Some examples of previous work
         </Typography>
         <Button

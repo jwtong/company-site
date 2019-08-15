@@ -3,7 +3,6 @@ import {
   Typography,
   createStyles,
   withStyles,
-  Card,
   Tabs,
   Tab,
   Slide,
@@ -12,7 +11,6 @@ import {
   SnackbarContent
 } from "@material-ui/core";
 import Hero from "../components/Hero";
-import moment from "moment";
 import ContactForm from "../components/ContactForm";
 import ProjectForm from "../components/ProjectForm";
 import clsx from "clsx";
@@ -25,28 +23,6 @@ const styles = (theme: any) =>
       color: "white !important",
       textAlign: "center"
     },
-    card: {
-      paddingTop: theme.spacing(5),
-      paddingBottom: theme.spacing(5),
-      paddingRight: theme.spacing(10),
-      paddingLeft: theme.spacing(10),
-      [theme.breakpoints.down("md")]: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-        paddingRight: theme.spacing(6),
-        paddingLeft: theme.spacing(6)
-      },
-      [theme.breakpoints.down("xs")]: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-        paddingRight: theme.spacing(2),
-        paddingLeft: theme.spacing(2)
-      },
-      borderTop: `6px solid ${theme.palette.secondary.light}`,
-      textAlign: "center",
-      marginTop: theme.spacing(5),
-      marginBottom: theme.spacing(5)
-    },
     mainContainer: {
       display: "flex",
       flexDirection: "column",
@@ -57,6 +33,7 @@ const styles = (theme: any) =>
       width: "300px"
     },
     topContainer: {
+      marginTop: theme.spacing(10),
       paddingLeft: theme.spacing(25),
       paddingRight: theme.spacing(25),
       [theme.breakpoints.down("md")]: {
@@ -214,18 +191,6 @@ class ContactPage extends React.Component<Props, State> {
         </Hero>
         <div className={classes.mainContainer}>
           <div className={classes.topContainer}>
-            <Card className={classes.card}>
-              <Typography variant="h4" gutterBottom>
-                Status
-              </Typography>
-              <Typography color="secondary" variant="h3" gutterBottom>
-                Available
-              </Typography>
-              <Typography variant="h5">
-                {data.site.siteMetadata.companyName} is currently seeking new
-                projects in {moment().format("MMMM, YYYY")}
-              </Typography>
-            </Card>
             <div>
               <Tabs
                 action={actions => {

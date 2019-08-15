@@ -23,7 +23,7 @@ const styles = (theme: any) => ({
     width: "100%",
     paddingLeft: theme.spacing(10),
     paddingRight: theme.spacing(10),
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(10),
     [theme.breakpoints.down("md")]: {
       marginTop: theme.spacing(0),
       marginBottom: theme.spacing(4)
@@ -190,7 +190,7 @@ const ProcessPage = ({ classes, data }: Props) => {
         })}
       </div>
       <PageBottom>
-        <Typography variant="h4" className={classes.header} gutterBottom>
+        <Typography variant="h4">
           Learn more about what types of work we can do for you
         </Typography>
         <Button

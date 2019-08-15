@@ -87,18 +87,21 @@ const TechnologiesCard = ({
         <Grid item>
           <div
             style={{
-              padding: "1rem",
+              padding: "1rem"
               // margin: "1%",
               // backgroundColor: ColorLuminance(i.color, 0.99),
-              display: "flex",
-              border: `10px solid ${i.color}`
+              // display: "flex",
+              // border: `10px solid ${i.color}`
             }}
           >
             {React.createElement(i.component, {
               key: index,
-              fontSize: "inherit",
-              className: classes.icon,
-              style: { color: i.color },
+              style: {
+                height: "30px",
+                width: "30px"
+              },
+              // fontSize: "inherit",
+              // className: classes.icon,
               ...i.additionalProps
             })}
           </div>
