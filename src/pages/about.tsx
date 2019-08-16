@@ -10,18 +10,20 @@ import {
   Chip,
   createStyles,
   withStyles,
-  WithStyles
+  WithStyles,
+  IconButton
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import Hero from "../components/Hero";
 import SubtitleDivider from "../components/SubtitleDivider";
 import PageBottom from "../components/PageBottom";
-import technologyColorMap from "../utils/technologies";
 import {
   buttonWithMargin,
   dividerWithMargin
 } from "../components/SharedStyles";
 import SiteHelmet from "../components/SiteHelmet";
+import { technologyIcons } from "../utils/technologies";
+import StandardPopover from "../components/StandardPopover";
 
 const styles = (theme: any) =>
   createStyles({
@@ -50,12 +52,17 @@ const styles = (theme: any) =>
       borderRadius: "100px",
       marginTop: theme.spacing(4)
     },
-    skillsGrid: {
-      paddingLeft: theme.spacing(15),
-      paddingRight: theme.spacing(15),
-      [theme.breakpoints.down("sm")]: {
-        paddingLeft: theme.spacing(0),
-        paddingRight: theme.spacing(0)
+    technologyList: {
+      paddingLeft: theme.spacing(25),
+      paddingRight: theme.spacing(25),
+      paddingBottom: theme.spacing(6),
+      [theme.breakpoints.down("md")]: {
+        paddingLeft: theme.spacing(10),
+        paddingRight: theme.spacing(10)
+      },
+      [theme.breakpoints.down("xs")]: {
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3)
       }
     },
     name: {
@@ -95,15 +102,13 @@ const AboutPage = ({ data, classes }: Props) => {
         "Most recently, Jeremy worked as a Venture for America fellow for Juggle, a startup best described as 'Uber for Babysitting'. He assumed the role of interim CTO, handling all aspects of business related to Juggle's technology and mobile app. During his tenure with Juggle, Jeremy rebuilt the software platform from scratch. The platform serves over 5000 monthly users and generated $200k in revenue in 2018, an 8x increase over 2017, with a projected increase of 2x in 2019.",
         "Through his 4+ years of full-stack experience with web and mobile applications, Jeremy developed a passion for intelligent, data-driven design. Outside of work, Jeremy loves rock climbing, playing jazz piano, and hip-hop dance."
       ],
-      backgroundColor: "#f9f9f9"
+      backgroundColor: "white"
     },
     {
       name: "Tommy Clark",
       avatar: data.jeremyAvatar,
-      about: [
-        ""
-      ],
-      backgroundColor: "white"
+      about: [""],
+      backgroundColor: "#f9f9f9"
     }
   ];
 
@@ -176,6 +181,30 @@ const AboutPage = ({ data, classes }: Props) => {
           </div>
         );
       })}
+      <div className={classes.technologyList}>
+        <SubtitleDivider
+          text={"Knit's Technology List"}
+          otherProps={{ className: classes.dividerWithMargin }}
+        />
+        <Grid container spacing={3} direction="row" justify="center">
+          {Object.entries(technologyIcons).map((entry: any) => {
+            const name = entry[0];
+            const value = entry[1];
+            return (
+              <Grid item xs={1}>
+                <StandardPopover popoverText={name}>
+                  <IconButton aria-label="Go home icon" href={value.link}>
+                    {React.createElement(value.icon, {
+                      height: "3rem",
+                      width: "3rem"
+                    })}
+                  </IconButton>
+                </StandardPopover>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </div>
       <PageBottom colorTop={people[1].backgroundColor}>
         <Typography variant="h4" style={{ textAlign: "center" }}>
           Some examples of previous work

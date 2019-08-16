@@ -29,7 +29,7 @@ const Layout = ({ children, location }: Props) => (
           location={location}
           pages={[
             { text: "Process", link: "/process/" },
-            { text: "Services", link: "/services/" },
+            // { text: "Services", link: "/services/" },
             { text: "About Us", link: "/about/" },
             { text: "Sample Work", link: "/sample-work/" },
             { text: "Contact", link: "/contact/" }

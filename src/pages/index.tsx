@@ -2,19 +2,6 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-
-import {
-  Vuejs,
-  AppleIos,
-  Android,
-  Nodejs,
-  LanguageRubyOnRails,
-  DotNet,
-  Firebase,
-  Aws,
-  Azure,
-  LanguagePython
-} from "mdi-material-ui";
 import Code from "@material-ui/icons/Code";
 import {
   Typography,
@@ -35,12 +22,7 @@ import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 import { buttonWithMargin } from "../components/SharedStyles";
 import { graphql, Link } from "gatsby";
 import SiteHelmet from "../components/SiteHelmet";
-import technologyColorMap from "../utils/technologies";
-import ReactIcon from "../assets/devicon-master/icons/react/react-original.svg";
-import NodeIcon from "../assets/devicon-master/icons/nodejs/nodejs-original.svg";
-import SketchIcon from "../assets/devicon-master/icons/sketch/sketch-original.svg";
-import AwsIcon from "../assets/devicon-master/icons/amazonwebservices/amazonwebservices-original.svg";
-import MySQLIcon from "../assets/devicon-master/icons/mysql/mysql-original.svg";
+import technologyColorMap, { technologyIcons } from "../utils/technologies";
 import Facebook from "../assets/svg/Facebook.svg";
 import Netflix from "../assets/svg/Netflix.svg";
 import PayPal from "../assets/svg/PayPal.svg";
@@ -51,6 +33,7 @@ import Twitch from "../assets/svg/Twitch.svg";
 import LinkedIn from "../assets/svg/LinkedIn.svg";
 import Wikipedia from "../assets/svg/Wikipedia.svg";
 import YouTube from "../assets/svg/YouTube.svg";
+import roles from "../utils/roles";
 
 const styles = (theme: any) => ({
   buttonWithMargin: buttonWithMargin(theme),
@@ -131,10 +114,10 @@ interface Props extends WithStyles<typeof styles> {
   width: any;
 }
 
-const IndexPage = ({ classes, width, data }: Props) => {
+const IndexPage = ({ classes, width, data, theme }: Props) => {
   const technologies = [
     {
-      icon: { component: ReactIcon, color: "#61DAFB" },
+      icon: { component: technologyIcons.React.icon, color: "#61DAFB" },
       title: "ReactJS",
       type: "Front-End Framework",
       description:
@@ -146,7 +129,7 @@ const IndexPage = ({ classes, width, data }: Props) => {
       ]
     },
     {
-      icon: { component: SketchIcon, color: "#fdb300" },
+      icon: { component: technologyIcons.Sketch.icon, color: "#fdb300" },
       title: "Sketch",
       type: "Wireframing",
       description:
@@ -162,7 +145,7 @@ const IndexPage = ({ classes, width, data }: Props) => {
       ]
     },
     {
-      icon: { component: NodeIcon, color: "#83CD29" },
+      icon: { component: technologyIcons.Node.icon, color: "#83CD29" },
       title: "NodeJS",
       type: "Back-End Framework",
       description:
@@ -178,7 +161,7 @@ const IndexPage = ({ classes, width, data }: Props) => {
       ]
     },
     {
-      icon: { component: MySQLIcon, color: "#00618A" },
+      icon: { component: technologyIcons.MySQL.icon, color: "#00618A" },
       title: "MySQL",
       type: "Database Language",
       description:
@@ -194,7 +177,7 @@ const IndexPage = ({ classes, width, data }: Props) => {
       ]
     },
     {
-      icon: { component: AwsIcon, color: "#F7A80D" },
+      icon: { component: technologyIcons.AWS.icon, color: "#F7A80D" },
       title: "Amazon Web Services",
       type: "Hosting Platform",
       description:
@@ -210,6 +193,8 @@ const IndexPage = ({ classes, width, data }: Props) => {
       ]
     }
   ];
+
+  const serviceColors = ["#f9c9d9", "#f281a7", "#ee5d8e", "#f281a7", "#ee5d8e"];
 
   return (
     <>
@@ -234,18 +219,134 @@ const IndexPage = ({ classes, width, data }: Props) => {
             consultancy aimed to provide small businesses and startups with high
             quality code through friendly, approachable means.
           </Typography>
-          <Button
-            className={classes.buttonWithMargin}
-            component={Link}
-            to="/services"
-            variant="contained"
-            color="secondary"
-            aria-label="Services"
-          >
-            Services
-          </Button>
         </div>
       </SplashPage>
+      <div className={classes.technologiesContainer}>
+        <SubtitleDivider
+          text="Our Services"
+          containerStyle={{
+            width: "100%"
+          }}
+        />
+        <div className={classes.gridWrapper}>
+          <Grid
+            container
+            spacing={3}
+            direction="row"
+            justify="center"
+            alignItems="stretch"
+          >
+            {roles.map((r: any, index: number) => {
+              const color = serviceColors[index];
+              return (
+                <Grid key={index} item xs={12} sm={6} md={4}>
+                  <TransitionOnShow
+                    visibilitySensorProps={{ partialVisibility: true }}
+                    transitionType="Zoom"
+                    delay={isWidthDown("sm", width) ? 0 : (index % 3) * 200}
+                    transitionProps={{
+                      timeout: { enter: 1000 },
+                      className: classes.transition
+                    }}
+                    containerStyle={{
+                      height: "100%"
+                    }}
+                  >
+                    <div>
+                      <Card style={{ height: "100%" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "space-between",
+                            height: "100%"
+                          }}
+                        >
+                          <div>
+                            <div
+                              style={{
+                                padding: "1rem",
+                                // height: "4rem",
+                                backgroundColor: color,
+                                display: "flex",
+                                justifyContent: "center"
+                                // border: `10px solid ${i.color}`
+                              }}
+                            >
+                              <div
+                                style={{
+                                  borderRadius: "100rem",
+                                  height: "4rem",
+                                  width: "4rem",
+                                  padding: "1rem",
+                                  // margin: "1%",
+                                  backgroundColor: "white",
+                                  display: "flex",
+                                  flexDirection: "row",
+                                  justifyContent: "center",
+                                  alignItems: "center"
+                                }}
+                              >
+                                {React.createElement(r.icon, {
+                                  color: "inherit",
+                                  style: {
+                                    width: "4rem",
+                                    height: "4rem",
+                                    color
+                                  }
+                                })}
+                              </div>
+                            </div>
+                            <CardContent>
+                              <Typography
+                                style={{
+                                  textAlign: "center",
+                                  fontSize: "2rem"
+                                }}
+                                // gutterBottom
+                              >
+                                {r.title}
+                              </Typography>
+                              <div
+                                style={{
+                                  marginRight: ".5rem",
+                                  marginLeft: ".5rem"
+                                }}
+                              >
+                                <div
+                                  style={{
+                                    marginTop: "1rem",
+                                    marginBottom: "1rem"
+                                  }}
+                                >
+                                  <Typography
+                                    variant="subtitle1"
+                                    style={{
+                                      fontSize: "1rem"
+                                    }}
+                                  >
+                                    {r.text}
+                                  </Typography>
+                                </div>
+                              </div>
+                            </CardContent>
+                          </div>
+                          <div
+                            style={{
+                              height: "1rem",
+                              backgroundColor: color
+                            }}
+                          />
+                        </div>
+                      </Card>
+                    </div>
+                  </TransitionOnShow>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </div>
+      </div>
       <div className={classes.technologiesContainer}>
         <SubtitleDivider
           text="Our Recommended Tech Stack"
@@ -500,4 +601,4 @@ export const query = graphql`
   }
 `;
 
-export default withWidth()(withStyles(styles)(IndexPage));
+export default withWidth()(withStyles(styles, { withTheme: true })(IndexPage));

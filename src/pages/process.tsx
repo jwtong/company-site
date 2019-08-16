@@ -19,6 +19,26 @@ import SiteHelmet from "../components/SiteHelmet";
 import { graphql, Link } from "gatsby";
 
 const styles = (theme: any) => ({
+  button: {
+    width: "12rem"
+  },
+  buttonsContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "3%",
+    width: "35%",
+    [theme.breakpoints.down("md")]: {
+      justify: "space-around",
+      flexDirection: "column",
+      alignItems: "center",
+      height: "120px",
+      width: "100%"
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "100px",
+      width: "100%"
+    }
+  },
   processContainer: {
     width: "100%",
     paddingLeft: theme.spacing(10),
@@ -189,19 +209,31 @@ const ProcessPage = ({ classes, data }: Props) => {
       </div>
       <PageBottom>
         <Typography variant="h4">
-          Learn more about what types of work we can do for you
+          Learn more about our professional experience
         </Typography>
-        <Button
-          className={classes.buttonWithMargin}
-          component={Link}
-          to="/services"
-          variant="contained"
-          color="secondary"
-          aria-label="Services"
-        >
-          Services
-        </Button>
-      </PageBottom>
+        <div className={classes.buttonsContainer}>
+          <Button
+            className={classes.button}
+            component={Link}
+            to="/about"
+            variant="contained"
+            color="secondary"
+            aria-label="About Us"
+          >
+            About Us
+          </Button>
+          <Button
+            className={classes.button}
+            component={Link}
+            to="/sample-work"
+            variant="contained"
+            color="secondary"
+            aria-label="Sample Work"
+          >
+            Sample Work
+          </Button>
+        </div>
+      </PageBottom>{" "}
     </>
   );
 };
