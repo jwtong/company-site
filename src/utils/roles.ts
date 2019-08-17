@@ -1,7 +1,7 @@
 import Code from "@material-ui/icons/Code";
 import InsertChartOutlined from "@material-ui/icons/InsertChartOutlined";
 import PaletteOutlined from "@material-ui/icons/PaletteOutlined";
-import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
+// import BusinessCenterOutlined from "@material-ui/icons/BusinessCenterOutlined";
 import AssignmentOutlined from "@material-ui/icons/AssignmentOutlined";
 
 const roles = [
@@ -23,12 +23,12 @@ const roles = [
       "If you have limited knowledge about software, we can take a greater function in making architectural and design choices as related to the code. This primarily means spec'ing features, i.e. translating broader business logic into implementable, scoped tasks. Additionally, we are happy to provide much more feedback and advice in more of a consultant role.",
     icon: AssignmentOutlined
   },
-  {
-    title: "Business Logic Analysis",
-    text:
-      "If you just have an idea, we can help you all the way from the bottom-up, suggesting business decisions that may pair well with a software implementation. The focus of this role is to think critically of the economic and social impacts of the core idea.",
-    icon: BusinessCenterOutlined
-  },
+  // {
+  //   title: "Business Logic Analysis",
+  //   text:
+  //     "If you just have an idea, we can help you all the way from the bottom-up, suggesting business decisions that may pair well with a software implementation. The focus of this role is to think critically of the economic and social impacts of the core idea.",
+  //   icon: BusinessCenterOutlined
+  // },
   {
     title: "Data Analysis",
     text:

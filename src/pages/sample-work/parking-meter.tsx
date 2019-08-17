@@ -74,8 +74,12 @@ interface Props extends WithStyles<typeof styles> {
 class ParkingMeterPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props;
-    const parkingMeterRoles = [roles[0], roles[1], roles[4]];
-    const parkingMeterTechnologies = ["React", "Python (SciKit-Learn)"];
+    const parkingMeterRoles = roles.filter(r =>
+      ["Software Development", "UI/UX Design", "Product Management"].includes(
+        r.title
+      )
+    );
+    const parkingMeterTechnologies = ["React", "Python", "SciKit"];
 
     const images = data.images.edges.map((e: { node: any }) => e.node);
 

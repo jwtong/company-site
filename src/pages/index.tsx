@@ -194,7 +194,12 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
     }
   ];
 
-  const serviceColors = ["#f9c9d9", "#f281a7", "#ee5d8e", "#f281a7", "#ee5d8e"];
+  const serviceColors = [
+    theme.palette.secondary.light,
+    "#ee5d8e",
+    "#f281a7",
+    "#f4a0bc"
+  ];
 
   return (
     <>
@@ -239,7 +244,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
             {roles.map((r: any, index: number) => {
               const color = serviceColors[index];
               return (
-                <Grid key={index} item xs={12} sm={6} md={4}>
+                <Grid key={index} item xs={12} sm={6} md={3}>
                   <TransitionOnShow
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"
@@ -301,7 +306,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
                               <Typography
                                 style={{
                                   textAlign: "center",
-                                  fontSize: "2rem"
+                                  fontSize: "1.5rem"
                                 }}
                                 // gutterBottom
                               >
@@ -315,8 +320,8 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
                               >
                                 <div
                                   style={{
-                                    marginTop: "1rem",
-                                    marginBottom: "1rem"
+                                    marginTop: ".5rem"
+                                    // marginBottom: ".5rem"
                                   }}
                                 >
                                   <Typography
@@ -524,7 +529,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
                                     marginBottom: "1.5rem"
                                   }}
                                 />
-                                <div style={{ marginBottom: "1.5rem" }}>
+                                <div>
                                   <Typography
                                     variant="subtitle1"
                                     style={{
@@ -564,10 +569,11 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
         <Button
           className={classes.buttonWithMargin}
           component={Link}
-          to="/contact"
+          to="/about#technology-list"
           variant="contained"
           color="secondary"
           aria-label="Other Technologies"
+          state={{ scrollToTechnologies: true }}
         >
           View Knit's Technology List
         </Button>

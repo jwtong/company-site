@@ -33,6 +33,8 @@ import MaterialUIIcon from "../assets/icons/materialui-original.svg";
 import JavascriptIcon from "../assets/devicon-master/icons/javascript/javascript-original.svg";
 import ReactNativeIcon from "../assets/icons/reactnative-original.svg";
 import DotNetIcon from "../assets/icons/dotnet-original.svg";
+import MatlabIcon from "../assets/icons/matlab-original.svg";
+import ExcelIcon from "../assets/icons/excel-original.svg";
 
 const technologyColorMap: any = {
   React: "#05a5d1",
@@ -58,12 +60,12 @@ const technologyColorMap: any = {
   Vue: "#41b883"
 };
 
-export const technologyIcons = {
+export const technologyIcons: any = {
   Javascript: { icon: JavascriptIcon, link: "https://www.javascript.com/" },
   ES6: { icon: Es6Icon, link: "https://en.wikipedia.org/wiki/ECMAScript" },
   Typescript: { icon: TypescriptIcon, link: "https://www.typescriptlang.org" },
   React: { icon: ReactIcon, link: "https://reactjs.org/" },
-  ReactNative: {
+  "React Native": {
     icon: ReactNativeIcon,
     link: "https://facebook.github.io/react-native/"
   },
@@ -112,6 +114,17 @@ export const technologyIcons = {
   Firebase: { icon: FirebaseIcon, link: "https://firebase.google.com/" },
   Docker: { icon: DockerIcon, link: "https://www.docker.com/" },
   Kubernetes: { icon: KubernetesIcon, link: "https://kubernetes.io/" }
+};
+
+export const otherTechnologyIcons: any = {
+  MATLAB: {
+    icon: MatlabIcon,
+    link: "https://www.mathworks.com/products/matlab.html"
+  },
+  "Excel VBA": {
+    icon: ExcelIcon,
+    link: "https://en.wikipedia.org/wiki/Visual_Basic_for_Applications"
+  }
 };
 
 export function ColorLuminance(hex: any, lum: number = 0) {

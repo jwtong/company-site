@@ -56,6 +56,8 @@ const styles = (theme: any) =>
       paddingLeft: theme.spacing(25),
       paddingRight: theme.spacing(25),
       paddingBottom: theme.spacing(6),
+      paddingTop: "70px",
+      marginTop: "-70px",
       [theme.breakpoints.down("md")]: {
         paddingLeft: theme.spacing(10),
         paddingRight: theme.spacing(10)
@@ -79,20 +81,6 @@ interface Props extends WithStyles<typeof styles> {
 }
 
 const AboutPage = ({ data, classes }: Props) => {
-  const technologies: Array<any> = [
-    "React / React Native",
-    "C / C++",
-    "Python (SciKit-Learn)",
-    "Google Firebase",
-    "AWS",
-    "Sketch",
-    "Objective-C / Swift",
-    "Java",
-    "Ruby on Rails",
-    "SQL",
-    "NoSQL"
-  ];
-
   const people = [
     {
       name: "Jeremy Tong",
@@ -181,7 +169,7 @@ const AboutPage = ({ data, classes }: Props) => {
           </div>
         );
       })}
-      <div className={classes.technologyList}>
+      <div id="technology-list" className={classes.technologyList}>
         <SubtitleDivider
           text={"Knit's Technology List"}
           otherProps={{ className: classes.dividerWithMargin }}
@@ -193,7 +181,10 @@ const AboutPage = ({ data, classes }: Props) => {
             return (
               <Grid item xs={1}>
                 <StandardPopover popoverText={name}>
-                  <IconButton aria-label="Go home icon" href={value.link}>
+                  <IconButton
+                    aria-label={`Go to ${name}'s website`}
+                    href={value.link}
+                  >
                     {React.createElement(value.icon, {
                       height: "3rem",
                       width: "3rem"

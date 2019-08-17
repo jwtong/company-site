@@ -90,16 +90,20 @@ class JugglePage extends React.Component<Props> {
     const themeWidth = this.props.width;
 
     const appImages = data.appImages.edges.map((e: { node: any }) => e.node);
-
-    const juggleRoles = [roles[0], roles[1], roles[2], roles[3]];
+    const juggleRoles = roles.filter(r =>
+      ["Software Development", "UI/UX Design", "Data Analysis"].includes(
+        r.title
+      )
+    );
     const juggleTechnologies = [
       "React Native",
       "Sketch",
       "Balsamiq",
-      "Ruby on Rails",
+      "Ruby",
+      "Rails",
       "MySQL",
       "AWS",
-      "Google Firebase"
+      "Firebase"
     ];
 
     return (

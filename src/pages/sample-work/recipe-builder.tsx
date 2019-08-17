@@ -75,7 +75,9 @@ interface Props extends WithStyles<typeof styles> {
 class RecipeBuilderPage extends React.Component<Props> {
   public render() {
     const { classes, data, width } = this.props;
-    const recipeBuilderRoles = [roles[0], roles[4]];
+    const recipeBuilderRoles = roles.filter(r =>
+      ["Software Development", "Data Analysis"].includes(r.title)
+    );
     const recipeBuilderTechnologies = ["Java", "MATLAB"];
 
     const images = data.images.edges.map((e: { node: any }) => e.node);

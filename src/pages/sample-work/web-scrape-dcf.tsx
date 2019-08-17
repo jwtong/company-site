@@ -47,12 +47,12 @@ interface Props extends WithStyles<typeof styles> {
 class WebScrapeDcfPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props;
-    const webScrapeDcfRoles = [roles[0], roles[4]];
+    const webScrapeDcfRoles = roles.filter(r =>
+      ["Software Development", "Data Analysis"].includes(r.title)
+    );
     const webScrapeDcfTechnologies = ["C#", "Excel VBA"];
 
     const images = data.images.edges.map((e: { node: any }) => e.node);
-
-    console.log(images);
 
     return (
       <SampleWorkTemplate

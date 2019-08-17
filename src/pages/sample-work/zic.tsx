@@ -65,12 +65,12 @@ interface Props extends WithStyles<typeof styles> {
 class ZicPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props;
-    const zicRoles = [roles[0], roles[1], roles[2], roles[3]];
-    const zicTechnologies = [
-      "HTML / CSS",
-      "Javascript / JQuery",
-      "Java (Spark)"
-    ];
+    const zicRoles = roles.filter(r =>
+      ["Software Development", "UI/UX Design", "Product Management"].includes(
+        r.title
+      )
+    );
+    const zicTechnologies = ["HTML5", "CSS3", "Javascript", "JQuery", "Java"];
 
     const images = data.images.edges.map((e: { node: any }) => e.node);
 

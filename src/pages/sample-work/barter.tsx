@@ -38,7 +38,9 @@ class BarterPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props;
 
-    const barterRoles = [roles[1], roles[3]];
+    const barterRoles = roles.filter(r =>
+      ["Software Development", "UI/UX Design"].includes(r.title)
+    );
     const barterTechnologies = ["Sketch"];
     const images = data.images.edges.map((e: { node: any }) => e.node);
 
