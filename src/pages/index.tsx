@@ -22,7 +22,7 @@ import withWidth, { isWidthDown } from "@material-ui/core/withWidth";
 import { buttonWithMargin } from "../components/SharedStyles";
 import { graphql, Link } from "gatsby";
 import SiteHelmet from "../components/SiteHelmet";
-import technologyColorMap, { technologyIcons } from "../utils/technologies";
+import technologyIcons from "../utils/technologies";
 import Facebook from "../assets/svg/Facebook.svg";
 import Netflix from "../assets/svg/Netflix.svg";
 import PayPal from "../assets/svg/PayPal.svg";
@@ -34,6 +34,8 @@ import LinkedIn from "../assets/svg/LinkedIn.svg";
 import Wikipedia from "../assets/svg/Wikipedia.svg";
 import YouTube from "../assets/svg/YouTube.svg";
 import roles from "../utils/roles";
+import ServiceCard from "../components/ServiceCard";
+import TechnologyCard from "../components/TechnologyCard";
 
 const styles = (theme: any) => ({
   buttonWithMargin: buttonWithMargin(theme),
@@ -129,22 +131,6 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
       ]
     },
     {
-      icon: { component: technologyIcons.Sketch.icon, color: "#fdb300" },
-      title: "Sketch",
-      type: "Wireframing",
-      description:
-        "Sketch is a powerful visual editing tool used to create mockups for mobile and web applications. Unlike the more traditional Photoshop, Sketch is well known for is simplicity and compatability with software engineering paradigms.",
-      alternatives: "Balsamiq, InVision",
-      companiesUsing: [
-        <Google
-          width="100%"
-          height="40px"
-          style={{ marginTop: ".75rem", marginBottom: ".75rem" }}
-        />,
-        <Etsy width="100%" height="40px" />
-      ]
-    },
-    {
       icon: { component: technologyIcons.Node.icon, color: "#83CD29" },
       title: "NodeJS",
       type: "Back-End Framework",
@@ -158,6 +144,22 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
           style={{ marginTop: "1.25rem", marginBottom: "1.25rem" }}
         />,
         <PayPal width="100%" height="30px" />
+      ]
+    },
+    {
+      icon: { component: technologyIcons.Sketch.icon, color: "#fdb300" },
+      title: "Sketch",
+      type: "Wireframing",
+      description:
+        "Sketch is a powerful visual editing tool used to create mockups for mobile and web applications. Unlike the more traditional Photoshop, Sketch is well known for is simplicity and compatability with software engineering paradigms.",
+      alternatives: "Balsamiq, InVision",
+      companiesUsing: [
+        <Google
+          width="100%"
+          height="40px"
+          style={{ marginTop: ".75rem", marginBottom: ".75rem" }}
+        />,
+        <Etsy width="100%" height="40px" />
       ]
     },
     {
@@ -258,92 +260,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
                     }}
                   >
                     <div>
-                      <Card style={{ height: "100%" }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "space-between",
-                            height: "100%"
-                          }}
-                        >
-                          <div>
-                            <div
-                              style={{
-                                padding: "1rem",
-                                // height: "4rem",
-                                backgroundColor: color,
-                                display: "flex",
-                                justifyContent: "center"
-                                // border: `10px solid ${i.color}`
-                              }}
-                            >
-                              <div
-                                style={{
-                                  borderRadius: "100rem",
-                                  height: "4rem",
-                                  width: "4rem",
-                                  padding: "1rem",
-                                  // margin: "1%",
-                                  backgroundColor: "white",
-                                  display: "flex",
-                                  flexDirection: "row",
-                                  justifyContent: "center",
-                                  alignItems: "center"
-                                }}
-                              >
-                                {React.createElement(r.icon, {
-                                  color: "inherit",
-                                  style: {
-                                    width: "4rem",
-                                    height: "4rem",
-                                    color
-                                  }
-                                })}
-                              </div>
-                            </div>
-                            <CardContent>
-                              <Typography
-                                style={{
-                                  textAlign: "center",
-                                  fontSize: "1.5rem"
-                                }}
-                                // gutterBottom
-                              >
-                                {r.title}
-                              </Typography>
-                              <div
-                                style={{
-                                  marginRight: ".5rem",
-                                  marginLeft: ".5rem"
-                                }}
-                              >
-                                <div
-                                  style={{
-                                    marginTop: ".5rem"
-                                    // marginBottom: ".5rem"
-                                  }}
-                                >
-                                  <Typography
-                                    variant="subtitle1"
-                                    style={{
-                                      fontSize: "1rem"
-                                    }}
-                                  >
-                                    {r.text}
-                                  </Typography>
-                                </div>
-                              </div>
-                            </CardContent>
-                          </div>
-                          <div
-                            style={{
-                              height: "1rem",
-                              backgroundColor: color
-                            }}
-                          />
-                        </div>
-                      </Card>
+                      <ServiceCard role={r} color={color} />
                     </div>
                   </TransitionOnShow>
                 </Grid>
@@ -383,182 +300,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
                     }}
                   >
                     <div>
-                      <Card style={{ height: "100%" }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "space-between",
-                            height: "100%"
-                          }}
-                        >
-                          <div>
-                            <div
-                              style={{
-                                padding: "1rem",
-                                // height: "4rem",
-                                backgroundColor: t.icon.color,
-                                display: "flex",
-                                justifyContent: "center"
-                                // border: `10px solid ${i.color}`
-                              }}
-                            >
-                              <div
-                                style={{
-                                  borderRadius: "100rem",
-                                  height: "4rem",
-                                  width: "4rem",
-                                  padding: "1rem",
-                                  // margin: "1%",
-                                  backgroundColor: "white"
-
-                                  // border: `10px solid ${i.color}`
-                                }}
-                              >
-                                {React.createElement(t.icon.component)}
-                              </div>
-                            </div>
-                            <CardContent>
-                              <Typography
-                                style={{
-                                  textAlign: "center",
-                                  fontSize: "2rem"
-                                }}
-                                // gutterBottom
-                              >
-                                {t.title}
-                              </Typography>
-                              <Typography
-                                color="secondary"
-                                style={{
-                                  fontSize: "1rem",
-                                  textAlign: "center",
-                                  textTransform: "uppercase"
-                                }}
-                                gutterBottom
-                              >
-                                {t.type}
-                              </Typography>
-                              <div
-                                style={{
-                                  marginRight: ".5rem",
-                                  marginLeft: ".5rem"
-                                }}
-                              >
-                                <div
-                                  style={{
-                                    marginTop: "1rem",
-                                    marginBottom: "1rem"
-                                  }}
-                                >
-                                  <Typography
-                                    variant="subtitle1"
-                                    style={{
-                                      fontSize: "1rem",
-                                      fontWeight: "bold"
-                                    }}
-                                  >
-                                    Why we like it:
-                                  </Typography>
-                                  <Typography
-                                    variant="subtitle1"
-                                    style={{
-                                      fontSize: "1rem"
-                                    }}
-                                  >
-                                    {t.description}
-                                  </Typography>
-                                </div>
-                                <div
-                                  style={{
-                                    marginTop: "2rem",
-                                    backgroundColor: "#f9f9f9",
-                                    padding: ".75rem",
-                                    paddingTop: "1.5rem",
-                                    position: "relative"
-                                  }}
-                                >
-                                  <Typography
-                                    variant="subtitle1"
-                                    style={{
-                                      fontSize: "1rem",
-                                      fontWeight: "bold",
-                                      textAlign: "center",
-                                      textTransform: "uppercase"
-                                    }}
-                                  >
-                                    Suggested Alternatives
-                                  </Typography>
-                                  <div
-                                    style={{
-                                      position: "absolute",
-                                      display: "flex",
-                                      top: -15,
-                                      left: 0,
-                                      right: 0,
-                                      justifyContent: "center",
-                                      alignItems: "center"
-                                    }}
-                                  >
-                                    <div
-                                      style={{
-                                        backgroundColor: "#e4e4e4",
-                                        borderRadius: "100px",
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        padding: "5px"
-                                      }}
-                                    >
-                                      <Code />
-                                    </div>
-                                  </div>
-                                  <Typography
-                                    variant="subtitle1"
-                                    style={{
-                                      fontSize: "1rem",
-                                      textAlign: "center"
-                                    }}
-                                  >
-                                    {t.alternatives}
-                                  </Typography>
-                                </div>
-                                <Divider
-                                  style={{
-                                    marginTop: "1.5rem",
-                                    marginBottom: "1.5rem"
-                                  }}
-                                />
-                                <div>
-                                  <Typography
-                                    variant="subtitle1"
-                                    style={{
-                                      fontSize: "1rem",
-                                      fontWeight: "bold",
-                                      textAlign: "center",
-                                      textTransform: "uppercase"
-                                    }}
-                                  >
-                                    Companies Using {t.title}
-                                  </Typography>
-                                  {t.companiesUsing.map((cu: any) => {
-                                    return React.cloneElement(cu, {
-                                      className: classes.companySvg
-                                    });
-                                  })}
-                                </div>
-                              </div>
-                            </CardContent>
-                          </div>
-                          <div
-                            style={{
-                              height: "1rem",
-
-                              backgroundColor: t.icon.color
-                            }}
-                          />
-                        </div>
-                      </Card>
+                      <TechnologyCard technology={t} />
                     </div>
                   </TransitionOnShow>
                 </Grid>

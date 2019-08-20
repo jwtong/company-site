@@ -22,8 +22,9 @@ import {
   dividerWithMargin
 } from "../components/SharedStyles";
 import SiteHelmet from "../components/SiteHelmet";
-import { technologyIcons } from "../utils/technologies";
+import technologyIcons from "../utils/technologies";
 import StandardPopover from "../components/StandardPopover";
+import HoverIconButton from "../components/HoverIconButton";
 
 const styles = (theme: any) =>
   createStyles({
@@ -175,25 +176,21 @@ const AboutPage = ({ data, classes }: Props) => {
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <Grid container spacing={3} direction="row" justify="center">
-          {Object.entries(technologyIcons).map((entry: any) => {
-            const name = entry[0];
-            const value = entry[1];
-            return (
-              <Grid item xs={1}>
-                <StandardPopover popoverText={name}>
-                  <IconButton
-                    aria-label={`Go to ${name}'s website`}
-                    href={value.link}
-                  >
-                    {React.createElement(value.icon, {
-                      height: "3rem",
-                      width: "3rem"
-                    })}
-                  </IconButton>
-                </StandardPopover>
-              </Grid>
-            );
-          })}
+          {Object.entries(technologyIcons)
+            .filter((entry: any) => !entry[1].excludeInList)
+            .map((entry: any) => {
+              const name = entry[0];
+              const value = entry[1];
+              return (
+                <Grid item xs={1}>
+                  <HoverIconButton
+                    popoverText={name}
+                    link={value.link}
+                    icon={value.icon}
+                  />
+                </Grid>
+              );
+            })}
         </Grid>
       </div>
       <PageBottom colorTop={people[1].backgroundColor}>

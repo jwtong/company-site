@@ -4,88 +4,87 @@ import {
   Typography,
   withStyles,
   createStyles,
-  WithStyles
+  WithStyles,
+  CardContent
 } from "@material-ui/core";
 import React from "react";
 
 const styles = (theme: { palette: { secondary: { light: any } } }) =>
   createStyles({
-    card: {
-      paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(8),
-      paddingRight: theme.spacing(15),
-      [theme.breakpoints.down("sm")]: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-        paddingRight: theme.spacing(3),
-        paddingLeft: theme.spacing(0)
-      },
-      [theme.breakpoints.down("xs")]: {
-        paddingTop: theme.spacing(4),
-        paddingBottom: theme.spacing(4),
-        paddingRight: theme.spacing(2),
-        paddingLeft: theme.spacing(2),
-        textAlign: "center"
-      },
-      borderTop: `6px solid ${theme.palette.secondary.light}`
-    },
-    grid: {
+    card: { height: "100%" },
+    contentContainer: {
       display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      height: "100%"
+    },
+    bannerWrapper: {
+      padding: "1rem",
+      backgroundColor: props => props.color,
+      display: "flex",
+      justifyContent: "center"
+    },
+    iconWrapper: {
+      borderRadius: "100rem",
+      padding: "1rem",
+      backgroundColor: "white",
+      display: "flex",
+      flexDirection: "row",
       justifyContent: "center",
-      color: theme.palette.secondary.light,
-      fontSize: "10rem",
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "7rem"
-      }
+      alignItems: "center"
     },
-    serviceTitle: {
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "1.5rem"
-      }
+    icon: {
+      width: "3rem",
+      height: "3rem",
+      color: props => props.color
     },
-    serviceDescription: {
-      [theme.breakpoints.down("xs")]: {
-        textAlign: "center"
-      }
+    title: {
+      textAlign: "center",
+      fontSize: "1.5rem"
+    },
+    text: {
+      marginRight: ".5rem",
+      marginLeft: ".5rem",
+      marginTop: ".5rem"
+    },
+    bottomBar: {
+      height: "1rem",
+      backgroundColor: props => props.color
     }
   });
 
 interface Props extends WithStyles<typeof styles> {
   role: { title: string; icon: any; text: string };
+  color: string;
 }
 
 const ServiceCard = ({ role: { title, icon, text }, classes }: Props) => (
-  <Card key={title} className={classes.card}>
-    <Grid container direction="row" spacing={1}>
-      <Grid item xs={12} sm={4} md={4} className={classes.grid}>
-        {React.createElement(icon, {
-          fontSize: "inherit",
-          color: "inherit"
-        })}
-      </Grid>
-      <Grid item xs={12} sm={8} md={8}>
-        <Grid container spacing={1} direction="column">
-          <Grid item xs={12}>
-            <Typography
-              className={classes.serviceTitle}
-              variant="h3"
-              gutterBottom
-            >
-              {title}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
+  <Card className={classes.card}>
+    <div className={classes.contentContainer}>
+      <div>
+        <div className={classes.bannerWrapper}>
+          <div className={classes.iconWrapper}>
+            {React.createElement(icon, {
+              className: classes.icon
+            })}
+          </div>
+        </div>
+        <CardContent>
+          <Typography className={classes.title}>{title}</Typography>
+          <div className={classes.text}>
             <Typography
               variant="subtitle1"
-              className={classes.serviceDescription}
-              gutterBottom
+              style={{
+                fontSize: "1rem"
+              }}
             >
               {text}
             </Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
+          </div>
+        </CardContent>
+      </div>
+      <div className={classes.bottomBar} />
+    </div>
   </Card>
 );
 

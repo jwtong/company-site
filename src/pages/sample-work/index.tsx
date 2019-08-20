@@ -128,21 +128,21 @@ class SampleWorkPage extends React.Component<Props> {
         fluidImage: data.zicLogo.childImageSharp.fluid,
         cols: 1,
         rows: 1
-      },
-      {
-        title: "Barter App UI/UX",
-        url: "/sample-work/barter",
-        fluidImage: data.barterLogo.childImageSharp.fluid,
-        cols: 1,
-        rows: 1
-      },
-      {
-        title: "Web Scrape Stock Analyzer",
-        url: "/sample-work/web-scrape-dcf",
-        fluidImage: data.webScrapeDcfLogo.childImageSharp.fluid,
-        cols: 1,
-        rows: 1
       }
+      // {
+      //   title: "Barter App UI/UX",
+      //   url: "/sample-work/barter",
+      //   fluidImage: data.barterLogo.childImageSharp.fluid,
+      //   cols: 1,
+      //   rows: 1
+      // },
+      // {
+      //   title: "Web Scrape Stock Analyzer",
+      //   url: "/sample-work/web-scrape-dcf",
+      //   fluidImage: data.webScrapeDcfLogo.childImageSharp.fluid,
+      //   cols: 1,
+      //   rows: 1
+      // }
     ];
 
     let columns;

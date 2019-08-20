@@ -10,14 +10,12 @@ import clsx from "clsx";
 import React from "react";
 import Hero from "../Hero";
 import ServicePopovers from "../ServicePopovers";
-import {
-  technologyIcons,
-  otherTechnologyIcons
-} from "../../utils/technologies";
+import technologyIcons from "../../utils/technologies";
 import SubtitleDivider from "../SubtitleDivider";
 import { dividerWithMargin } from "../SharedStyles";
 import SiteHelmet from "../SiteHelmet";
 import StandardPopover from "../StandardPopover";
+import HoverIconButton from "../HoverIconButton";
 
 const styles = (theme: any) =>
   createStyles({
@@ -106,25 +104,15 @@ const SampleWorkTemplate = ({
           spacing={1}
         >
           {technologies.map((t: string) => {
-            let tech: any = technologyIcons[t];
-            if (!tech) {
-              tech = otherTechnologyIcons[t];
-            }
-
+            const tech: any = technologyIcons[t];
             return (
               <Grid key={t} item>
                 {tech && (
-                  <StandardPopover popoverText={t}>
-                    <IconButton
-                      aria-label={`Go to ${t}'s website`}
-                      href={tech.link}
-                    >
-                      {React.createElement(tech.icon, {
-                        height: "3rem",
-                        width: "3rem"
-                      })}
-                    </IconButton>
-                  </StandardPopover>
+                  <HoverIconButton
+                    popoverText={t}
+                    link={tech.link}
+                    icon={tech.icon}
+                  />
                 )}
               </Grid>
             );
