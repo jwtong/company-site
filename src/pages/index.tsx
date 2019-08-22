@@ -124,7 +124,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
       type: "Front-End Framework",
       description:
         "ReactJS is one of the most popular front-end frameworks today for building web applications, noted for being fast, scalable, and simple. React Native, it's mobile counterpart, is similarly a robust platform for building cross-platform (iOS/Android) mobile apps.",
-      alternatives: "VueJS, iOS Swift, Android Java",
+      alternatives: "VueJS, Swift (iOS), Java (Android)",
       companiesUsing: [
         <Facebook width="100%" height="60px" />,
         <Netflix width="100%" height="30px" />
@@ -136,7 +136,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
       type: "Back-End Framework",
       description:
         "NodeJS is a widely adopted back-end framework that offers some of the best performance and scalability as compared to similar technologies (e.g. Ruby on Rails), and was designed for comprehensive platform integration and device compatability. ",
-      alternatives: "Ruby on Rails, Java, C#",
+      alternatives: "Ruby on Rails, Java, .NET Core",
       companiesUsing: [
         <Uber
           width="100%"
@@ -317,7 +317,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
           aria-label="Other Technologies"
           state={{ scrollToTechnologies: true }}
         >
-          View Knit's Technology List
+          Full Technology List
         </Button>
       </div>
       <PageBottom>

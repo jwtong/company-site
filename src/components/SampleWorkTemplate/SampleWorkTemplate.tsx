@@ -52,7 +52,12 @@ const styles = (theme: any) =>
         marginBottom: theme.spacing(3)
       }
     },
-    dividerWithMargin: dividerWithMargin(theme)
+    dividerWithMargin: dividerWithMargin(theme),
+    hoverIconButtonWrapper: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center"
+    }
   });
 
 interface Props extends WithStyles<typeof styles> {
@@ -106,7 +111,7 @@ const SampleWorkTemplate = ({
           {technologies.map((t: string) => {
             const tech: any = technologyIcons[t];
             return (
-              <Grid key={t} item>
+              <Grid key={t} item className={classes.hoverIconButtonWrapper}>
                 {tech && (
                   <HoverIconButton
                     popoverText={t}

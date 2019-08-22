@@ -74,6 +74,11 @@ const styles = (theme: any) =>
       [theme.breakpoints.down("xs")]: {
         fontSize: "1.75rem"
       }
+    },
+    hoverIconButtonWrapper: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center"
     }
   });
 
@@ -172,7 +177,7 @@ const AboutPage = ({ data, classes }: Props) => {
       })}
       <div id="technology-list" className={classes.technologyList}>
         <SubtitleDivider
-          text={"Knit's Technology List"}
+          text={"Knit's Technologies"}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <Grid container spacing={3} direction="row" justify="center">
@@ -182,7 +187,7 @@ const AboutPage = ({ data, classes }: Props) => {
               const name = entry[0];
               const value = entry[1];
               return (
-                <Grid item xs={1}>
+                <Grid item xs={1} className={classes.hoverIconButtonWrapper}>
                   <HoverIconButton
                     popoverText={name}
                     link={value.link}
