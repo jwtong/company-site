@@ -163,20 +163,12 @@ class SampleWorkPage extends React.Component<Props> {
           title={"Sample Work"}
         />
         <Hero colorBottom={"white"}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignSelf: "center"
-            }}
-          >
-            <Typography variant="h1" className={classes.header} gutterBottom>
-              Sample Work
-            </Typography>
-            <Typography component="h2" variant="h4" className={classes.header}>
-              Some examples of our previous work
-            </Typography>
-          </div>
+          <Typography variant="h1" className={classes.header} gutterBottom>
+            Sample Work
+          </Typography>
+          <Typography component="h2" variant="h4" className={classes.header}>
+            Some examples of our previous work
+          </Typography>
         </Hero>
         <div className={classes.container}>
           <TransitionGridList

@@ -39,9 +39,9 @@ const styles = (theme: any) =>
     },
     appBar: { background: "transparent", boxShadow: "none" },
     icon: {
-      fontSize: "50px",
+      fontSize: "3.5rem",
       [theme.breakpoints.down("xs")]: {
-        fontSize: "40px"
+        fontSize: "2.5rem"
       },
       color: "white"
     },
@@ -67,6 +67,14 @@ const styles = (theme: any) =>
     },
     menuList: {
       backgroundColor: theme.palette.primary.light
+    },
+    logo: {
+      width: "3.5rem",
+      height: "3.5rem",
+      [theme.breakpoints.down("xs")]: {
+        width: "2.5rem",
+        height: "2.5rem"
+      }
     }
   });
 
@@ -147,13 +155,8 @@ class Header extends React.Component<Props, State> {
             backgroundColor: this.state.backgroundColor
           }}
         >
-          <IconButton
-            component={Link}
-            aria-label="Go home icon"
-            to={"/"}
-            className={classes.icon}
-          >
-            <KnitLogo height="50px" width="50px" fontSize="inherit" />
+          <IconButton component={Link} aria-label="Go home icon" to={"/"}>
+            <KnitLogo className={classes.logo} />
           </IconButton>
           {isWidthDown("sm", width) ? (
             <>
@@ -204,13 +207,7 @@ class Header extends React.Component<Props, State> {
             <div className={classes.containerRight}>
               {pages.map((p: any) => {
                 return (
-                  <div
-                    key={p.text}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column"
-                    }}
-                  >
+                  <div key={p.text}>
                     <Button
                       component={Link}
                       classes={{

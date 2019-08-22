@@ -96,6 +96,9 @@ const styles = (theme: any) => ({
       justifyContent: "center",
       alignItems: "center"
     }
+  },
+  textAlignCenter: {
+    textAlign: "center"
   }
 });
 
@@ -188,7 +191,6 @@ const ProcessPage = ({ classes, data }: Props) => {
                     return (
                       <Typography
                         variant="subtitle1"
-                        style={{ textAlign: "left" }}
                         key={`${s.title}${index}`}
                       >
                         {t}
@@ -208,7 +210,7 @@ const ProcessPage = ({ classes, data }: Props) => {
         })}
       </div>
       <PageBottom>
-        <Typography variant="h4">
+        <Typography variant="h4" className={classes.textAlignCenter}>
           Learn more about our professional experience
         </Typography>
         <div className={classes.buttonsContainer}>

@@ -19,7 +19,8 @@ import SubtitleDivider from "../components/SubtitleDivider";
 import PageBottom from "../components/PageBottom";
 import {
   buttonWithMargin,
-  dividerWithMargin
+  dividerWithMargin,
+  offWhiteBackground
 } from "../components/SharedStyles";
 import SiteHelmet from "../components/SiteHelmet";
 import technologyIcons from "../utils/technologies";
@@ -79,6 +80,9 @@ const styles = (theme: any) =>
       display: "flex",
       flexDirection: "row",
       justifyContent: "center"
+    },
+    textAlignCenter: {
+      textAlign: "center"
     }
   });
 
@@ -102,7 +106,7 @@ const AboutPage = ({ data, classes }: Props) => {
       name: "Tommy Clark",
       avatar: data.jeremyAvatar,
       about: [""],
-      backgroundColor: "#f9f9f9"
+      ...offWhiteBackground
     }
   ];
 
@@ -160,11 +164,7 @@ const AboutPage = ({ data, classes }: Props) => {
               />
               {p.about.map((paragraph, index) => {
                 return (
-                  <Typography
-                    key={index}
-                    variant="subtitle1"
-                    style={{ textAlign: "left" }}
-                  >
+                  <Typography key={index} variant="subtitle1">
                     {paragraph}
                     {index !== p.about.length - 1 && <br />}
                     {index !== p.about.length - 1 && <br />}
@@ -187,7 +187,14 @@ const AboutPage = ({ data, classes }: Props) => {
               const name = entry[0];
               const value = entry[1];
               return (
-                <Grid item xs={1} className={classes.hoverIconButtonWrapper}>
+                <Grid
+                  key={name}
+                  item
+                  xs={3}
+                  sm={2}
+                  md={1}
+                  className={classes.hoverIconButtonWrapper}
+                >
                   <HoverIconButton
                     popoverText={name}
                     link={value.link}
@@ -199,7 +206,7 @@ const AboutPage = ({ data, classes }: Props) => {
         </Grid>
       </div>
       <PageBottom colorTop={people[1].backgroundColor}>
-        <Typography variant="h4" style={{ textAlign: "center" }}>
+        <Typography variant="h4" className={classes.textAlignCenter}>
           Some examples of previous work
         </Typography>
         <Button

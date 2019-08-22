@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import Code from "@material-ui/icons/Code";
+import { offWhiteBackground } from "../SharedStyles";
 
 const styles = (theme: any) =>
   createStyles({
@@ -64,10 +65,10 @@ const styles = (theme: any) =>
     },
     alternativesContainer: {
       marginTop: "2rem",
-      backgroundColor: "#f9f9f9",
       padding: ".75rem",
       paddingTop: "1.5rem",
-      position: "relative"
+      position: "relative",
+      ...offWhiteBackground
     },
     alternativesTitle: {
       fontSize: "1rem",
@@ -186,8 +187,9 @@ const TechnologyCard = ({
               >
                 Companies Using {title}
               </Typography>
-              {companiesUsing.map((cu: any) => {
+              {companiesUsing.map((cu: any, i: number) => {
                 return React.cloneElement(cu, {
+                  key: i,
                   className: classes.companySvg
                 });
               })}

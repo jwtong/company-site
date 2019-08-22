@@ -44,9 +44,9 @@ const styles = (theme: any) =>
       marginBottom: "3%"
     },
     skillsGrid: {
-      paddingLeft: theme.spacing(15),
-      paddingRight: theme.spacing(15),
-      [theme.breakpoints.down("xs")]: {
+      paddingLeft: theme.spacing(10),
+      paddingRight: theme.spacing(10),
+      [theme.breakpoints.down("md")]: {
         paddingLeft: theme.spacing(0),
         paddingRight: theme.spacing(0),
         marginBottom: theme.spacing(3)
@@ -111,7 +111,14 @@ const SampleWorkTemplate = ({
           {technologies.map((t: string) => {
             const tech: any = technologyIcons[t];
             return (
-              <Grid key={t} item className={classes.hoverIconButtonWrapper}>
+              <Grid
+                key={t}
+                item
+                className={classes.hoverIconButtonWrapper}
+                xs={3}
+                sm={2}
+                md={1}
+              >
                 {tech && (
                   <HoverIconButton
                     popoverText={t}

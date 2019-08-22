@@ -68,3 +68,5 @@ export const pageContainer = (theme: any) => ({
   position: "relative",
   overflow: "hidden"
 });
+
+export const offWhiteBackground = { backgroundColor: "#f9f9f9" };

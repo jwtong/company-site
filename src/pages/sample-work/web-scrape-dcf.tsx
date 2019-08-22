@@ -78,11 +78,7 @@ class WebScrapeDcfPage extends React.Component<Props> {
             }
           />
         </div>
-        <Typography
-          variant="subtitle1"
-          style={{ textAlign: "left" }}
-          gutterBottom
-        >
+        <Typography variant="subtitle1" gutterBottom>
           Discounted cash-flow (DCF) is a valuation method used to estimate the
           value of an investment based on future cash flows. In layman's terms,
           it is a powerful tool that can help predict the fair value price of a
@@ -103,7 +99,7 @@ class WebScrapeDcfPage extends React.Component<Props> {
             }
           />
         </div>
-        <Typography variant="subtitle1" style={{ textAlign: "left" }}>
+        <Typography variant="subtitle1">
           Built primarily with the limited Microsoft VBA, the program interfaces
           with a self-built external C# library that provides web-scraping
           capability extending beyond this one implementation.

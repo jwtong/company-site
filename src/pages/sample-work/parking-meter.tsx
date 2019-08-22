@@ -27,6 +27,12 @@ const styles = (theme: any) =>
     topBottomImageWrapper: topBottomImageWrapper(theme),
     imagesContainer: imagesContainer(theme),
     imageShiftWrapper: imageShiftWrapper(theme),
+    buttonWrapper: {
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column",
+      marginBottom: "2%"
+    },
     mainImage: {
       width: "90%",
       [theme.breakpoints.down("sm")]: {
@@ -207,14 +213,7 @@ class ParkingMeterPage extends React.Component<Props> {
           efficiency of the meters.
         </Typography>
         <Divider variant="middle" className={classes.dividerWithMargin} />
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-            marginBottom: "2%"
-          }}
-        >
+        <div className={classes.buttonWrapper}>
           <Button
             aria-label="View Paper"
             href={ParkingMeterPaper}

@@ -14,6 +14,9 @@ const styles = (theme: any): any =>
     },
     popoverText: {
       fontFamily: "Open Sans"
+    },
+    childrenContainer: {
+      display: "flex"
     }
   });
 
@@ -47,7 +50,7 @@ class StandardPopover extends React.Component<Props> {
           aria-haspopup="true"
           onMouseEnter={this.handleStandardPopoverOpen}
           onMouseLeave={this.handleStandardPopoverClose}
-          style={{ display: "flex" }}
+          className={classes.childrenContainer}
         >
           {children}
         </div>

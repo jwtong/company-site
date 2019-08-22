@@ -5,33 +5,12 @@ import {
   Divider
 } from "@material-ui/core";
 import React from "react";
-import { dividerWithMargin } from "../SharedStyles";
+import { dividerWithMargin, offWhiteBackground } from "../SharedStyles";
 import KnitBackground from "../../assets/svg/KnitLightBackground2.svg";
 
 const styles = (theme: any) =>
   createStyles({
     container: {
-      // width: "100vw",
-      // height: "100vh",
-      // [theme.breakpoints.down("md")]: {
-      //   fontSize: "15px",
-      //   height: "600px"
-      // },
-      // [theme.breakpoints.down("sm")]: {
-      //   fontSize: "15px",
-      //   height: "500px"
-      // },
-      // [theme.breakpoints.down("xs")]: {
-      //   fontSize: "10px",
-      //   height: "330px"
-      // },
-      // display: "flex",
-      // flexDirection: "column",
-      // justifyContent: "center",
-      // alignItems: "center",
-      // position: "relative",
-      // overflow: "hidden"
-
       position: "relative",
       width: "100vw",
       paddingRight: theme.spacing(10),
@@ -40,7 +19,6 @@ const styles = (theme: any) =>
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      // backgroundColor: "#f9f9f9"
       "-webkit-box-sizing": "border-box",
       "-moz-box-sizing": "border-box",
       "box-sizing": "border-box",
@@ -64,7 +42,8 @@ const styles = (theme: any) =>
       bottom: 0,
       overflow: "hidden",
       zIndex: -1
-    }
+    },
+    knitBackground: offWhiteBackground
   });
 
 interface Props extends WithStyles<typeof styles> {
@@ -76,7 +55,7 @@ const PageBottom = ({ children, classes }: Props) => {
   return (
     <div className={classes.container}>
       <div className={classes.svgContainer}>
-        <KnitBackground style={{ backgroundColor: "#f9f9f9" }} />
+        <KnitBackground className={classes.knitBackground} />
       </div>
       {children}
     </div>

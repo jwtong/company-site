@@ -108,6 +108,9 @@ const styles = (theme: any) => ({
     "& path": {
       fill: "gray"
     }
+  },
+  textAlignCenter: {
+    textAlign: "center"
   }
 });
 
@@ -221,7 +224,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
       </Hero>
       <SplashPage>
         <div className={classes.bottomContainer}>
-          <Typography variant="h4" style={{ textAlign: "center" }}>
+          <Typography variant="h4" className={classes.textAlignCenter}>
             {data.site.siteMetadata.companyName} is a software development
             consultancy aimed to provide small businesses and startups with high
             quality code through friendly, approachable means.
@@ -321,7 +324,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
         </Button>
       </div>
       <PageBottom>
-        <Typography variant="h4" style={{ textAlign: "center" }}>
+        <Typography variant="h4" className={classes.textAlignCenter}>
           Contact us to discuss your project and how we can collaborate.
         </Typography>
         <Button

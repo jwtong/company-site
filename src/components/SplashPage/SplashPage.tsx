@@ -6,7 +6,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import KnitBackground from "../../assets/svg/KnitLightBackground1.svg";
-import { pageContainer } from "../SharedStyles";
+import { pageContainer, offWhiteBackground } from "../SharedStyles";
 
 const divider = (theme: { palette: { secondary: { main: any } } }) => {
   return {
@@ -78,7 +78,8 @@ const styles = (theme: {
       [theme.breakpoints.down("xs")]: {
         marginTop: theme.spacing(3)
       }
-    }
+    },
+    knitBackground: offWhiteBackground
   });
 
 interface Props extends WithStyles<typeof styles> {
@@ -90,7 +91,7 @@ const SplashPage = ({ children, classes }: Props) => {
     <div className={classes.pageContainer}>
       <div className={classes.svgContainer}>
         <KnitBackground
-          style={{ backgroundColor: "#f9f9f9" }}
+          className={classes.knitBackground}
           preserveAspectRatio="none"
           height="100%"
           width="100%"
