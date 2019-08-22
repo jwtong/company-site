@@ -20,7 +20,7 @@ import { graphql, Link } from "gatsby";
 
 const styles = (theme: any) => ({
   button: {
-    width: "12rem"
+    width: "13rem"
   },
   buttonsContainer: {
     display: "flex",
@@ -109,7 +109,7 @@ const ProcessPage = ({ classes, data }: Props) => {
       title: "Step 1 - Contact us",
       icon: FormatAlignLeft,
       texts: [
-        "Fill out the project form on our Contact page with as much detail as you'd like. If you have an unusual request, feel free to use the general inquiries form or email us directly. We'll follow up within 2 business days."
+        "Fill out the form on our contact page with as much detail as you'd like. If you have an unusual request, feel free to email us directly. We'll follow up within 2 business days."
       ]
     },
     {

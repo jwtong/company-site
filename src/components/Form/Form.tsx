@@ -15,22 +15,22 @@ import clsx from "clsx";
 
 export const formStyles = (theme: any) => ({
   form: {
-    position: "absolute",
-    left: "0",
-    right: "0",
+    // position: "absolute",
+    // left: "0",
+    // right: "0",
     // width: "100%",
-    // height: "100%"
-    paddingRight: theme.spacing(25),
-    paddingLeft: theme.spacing(25),
-    //prevent screen widening
-    [theme.breakpoints.down("md")]: {
-      paddingRight: theme.spacing(10),
-      paddingLeft: theme.spacing(10)
-    },
-    [theme.breakpoints.down("xs")]: {
-      paddingRight: theme.spacing(2),
-      paddingLeft: theme.spacing(2)
-    }
+    // height: "100%",
+    // paddingRight: theme.spacing(25),
+    // paddingLeft: theme.spacing(25),
+    // //prevent screen widening
+    // [theme.breakpoints.down("md")]: {
+    //   paddingRight: theme.spacing(10),
+    //   paddingLeft: theme.spacing(10)
+    // },
+    // [theme.breakpoints.down("xs")]: {
+    //   paddingRight: theme.spacing(2),
+    //   paddingLeft: theme.spacing(2)
+    // }
   },
   fullWidthField: {
     width: "100%"
@@ -169,7 +169,8 @@ class Form extends React.Component<Props, State> {
     if (formOk) {
       axios
         .post(this.props.formEndpoint, data, {
-          headers: { Accept: "application/json" }
+          headers: { Accept: "application/json" },
+          timeout: 5000
         })
         .then(response => {
           if (document.getElementById(this.props.formId)) {
