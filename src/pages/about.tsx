@@ -1,17 +1,12 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import JeremyTongResume from "../assets/documents/JeremyTongResume.pdf";
-import ThomasClarkResume from "../assets/documents/ThomasClarkResume.pdf";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import {
   Typography,
-  Divider,
-  Chip,
   createStyles,
   withStyles,
-  WithStyles,
-  IconButton
+  WithStyles
 } from "@material-ui/core";
 import Img from "gatsby-image/withIEPolyfill";
 import Hero from "../components/Hero";
@@ -24,7 +19,6 @@ import {
 } from "../components/SharedStyles";
 import SiteHelmet from "../components/SiteHelmet";
 import technologyIcons from "../utils/technologies";
-import StandardPopover from "../components/StandardPopover";
 import HoverIconButton from "../components/HoverIconButton";
 
 const styles = (theme: any) =>
@@ -133,7 +127,7 @@ const AboutPage = ({ data, classes }: Props) => {
           </Typography>
         </div>
       </Hero>
-      {people.map((p, index) => {
+      {people.map(p => {
         return (
           <div key={p.name}>
             <div

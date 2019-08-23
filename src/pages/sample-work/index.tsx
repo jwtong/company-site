@@ -1,6 +1,5 @@
 import React from "react";
 import { graphql, navigate } from "gatsby";
-
 import {
   Typography,
   GridListTileBar,

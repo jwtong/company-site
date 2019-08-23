@@ -1,11 +1,6 @@
-import {
-  withStyles,
-  createStyles,
-  WithStyles,
-  Divider
-} from "@material-ui/core";
+import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
-import { dividerWithMargin, offWhiteBackground } from "../SharedStyles";
+import { offWhiteBackground } from "../SharedStyles";
 import KnitBackground from "../../assets/svg/KnitLightBackground2.svg";
 
 const styles = (theme: any) =>

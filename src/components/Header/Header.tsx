@@ -18,7 +18,6 @@ const styles = (theme: any) =>
   createStyles({
     buttonLabel: {
       fontSize: "20px"
-      // lineHeight: "3rem"
     },
     toolbar: {
       display: "flex",
@@ -38,13 +37,6 @@ const styles = (theme: any) =>
       }
     },
     appBar: { background: "transparent", boxShadow: "none" },
-    icon: {
-      fontSize: "3.5rem",
-      [theme.breakpoints.down("xs")]: {
-        fontSize: "2.5rem"
-      },
-      color: "white"
-    },
     containerRight: {
       display: "flex",
       flexDirection: "row",
@@ -62,15 +54,21 @@ const styles = (theme: any) =>
     },
     menuItem: {
       color: "white",
-      // fontFamily: "Open Sans",
       fontWeight: "bold"
     },
     menuList: {
       backgroundColor: theme.palette.primary.light
     },
+    icon: {
+      fontSize: "3rem",
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "2.5rem"
+      },
+      color: "white"
+    },
     logo: {
-      width: "3.5rem",
-      height: "3.5rem",
+      width: "3rem",
+      height: "3rem",
       [theme.breakpoints.down("xs")]: {
         width: "2.5rem",
         height: "2.5rem"

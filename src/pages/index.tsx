@@ -2,17 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import Code from "@material-ui/icons/Code";
-import {
-  Typography,
-  WithStyles,
-  Card,
-  CardContent,
-  Divider
-} from "@material-ui/core";
-import { faSketch } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import TechnologiesCard from "../components/TechnologiesCard";
+import { Typography, WithStyles } from "@material-ui/core";
 import Hero from "../components/Hero";
 import SubtitleDivider from "../components/SubtitleDivider";
 import TransitionOnShow from "../components/TransitionOnShow";
@@ -38,6 +28,12 @@ import ServiceCard from "../components/ServiceCard";
 import TechnologyCard from "../components/TechnologyCard";
 
 const styles = (theme: any) => ({
+  subtitleDivider: {
+    marginTop: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      marginTop: theme.spacing(1)
+    }
+  },
   buttonWithMargin: buttonWithMargin(theme),
   technologiesContainer: {
     width: "100%",
@@ -237,6 +233,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
           containerStyle={{
             width: "100%"
           }}
+          otherProps={{ className: classes.subtitleDivider }}
         />
         <div className={classes.gridWrapper}>
           <Grid
@@ -249,7 +246,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
             {roles.map((r: any, index: number) => {
               const color = serviceColors[index];
               return (
-                <Grid key={index} item xs={12} sm={6} md={3}>
+                <Grid key={index} item xs={12} sm={6} lg={3}>
                   <TransitionOnShow
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"
@@ -278,6 +275,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
           containerStyle={{
             width: "100%"
           }}
+          otherProps={{ className: classes.subtitleDivider }}
         />
         <div className={classes.gridWrapper}>
           <Grid
@@ -289,7 +287,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
           >
             {technologies.map((t: any, index: number) => {
               return (
-                <Grid key={index} item xs={12} sm={6} md={4}>
+                <Grid key={index} item xs={12} sm={6} lg={4}>
                   <TransitionOnShow
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"

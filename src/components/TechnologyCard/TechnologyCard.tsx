@@ -40,6 +40,8 @@ const styles = (theme: any) =>
       height: "4rem"
     },
     title: {
+      height: "50px",
+      lineHeight: "50px",
       textAlign: "center",
       fontSize: "2rem"
     },
@@ -48,13 +50,22 @@ const styles = (theme: any) =>
       textAlign: "center",
       textTransform: "uppercase"
     },
-    descriptionContainer: {
+    bodyContainer: {
       marginRight: ".5rem",
       marginLeft: ".5rem"
     },
-    descriptionTitleWrapper: {
+    descriptionContainer: {
       marginTop: "1rem",
-      marginBottom: "1rem"
+      marginBottom: "1rem",
+      [theme.breakpoints.only("lg")]: {
+        height: "200px"
+      },
+      [theme.breakpoints.only("md")]: {
+        height: "180px"
+      },
+      [theme.breakpoints.only("sm")]: {
+        height: "245px"
+      }
     },
     descriptionTitle: {
       fontSize: "1rem",
@@ -144,12 +155,14 @@ const TechnologyCard = ({
           </div>
         </div>
         <CardContent>
-          <Typography className={classes.title}>{title}</Typography>
+          <Typography noWrap className={classes.title}>
+            {title}
+          </Typography>
           <Typography color="secondary" className={classes.type} gutterBottom>
             {type}
           </Typography>
-          <div className={classes.descriptionContainer}>
-            <div className={classes.descriptionTitleWrapper}>
+          <div className={classes.bodyContainer}>
+            <div className={classes.descriptionContainer}>
               <Typography
                 variant="subtitle1"
                 className={classes.descriptionTitle}

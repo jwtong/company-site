@@ -3,8 +3,7 @@ import {
   createStyles,
   WithStyles,
   Typography,
-  Grid,
-  IconButton
+  Grid
 } from "@material-ui/core";
 import clsx from "clsx";
 import React from "react";
@@ -14,7 +13,6 @@ import technologyIcons from "../../utils/technologies";
 import SubtitleDivider from "../SubtitleDivider";
 import { dividerWithMargin } from "../SharedStyles";
 import SiteHelmet from "../SiteHelmet";
-import StandardPopover from "../StandardPopover";
 import HoverIconButton from "../HoverIconButton";
 
 const styles = (theme: any) =>

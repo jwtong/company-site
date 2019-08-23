@@ -19,6 +19,7 @@ const Layout = ({ children, location }: Props) => (
             companyName
             email
             linkedIn
+            githubSource
           }
         }
       }
@@ -40,6 +41,7 @@ const Layout = ({ children, location }: Props) => (
           mainText={`Released under the MIT License © ${new Date().getFullYear()} Knit, LLC`}
           email={data.site.siteMetadata.email}
           linkedIn={data.site.siteMetadata.linkedIn}
+          githubSource={data.site.siteMetadata.githubSource}
         />
       </>
     )}

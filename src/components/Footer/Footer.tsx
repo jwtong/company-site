@@ -1,8 +1,10 @@
 import React from "react";
-import { Typography, IconButton, Button } from "@material-ui/core";
+import { Typography, IconButton, Button, withWidth } from "@material-ui/core";
 import { withStyles, createStyles, WithStyles } from "@material-ui/core/styles";
 import MailIcon from "@material-ui/icons/Mail";
 import { Linkedin, GithubCircle } from "mdi-material-ui";
+import { Breakpoint } from "@material-ui/core/styles/createBreakpoints";
+import { isWidthUp } from "@material-ui/core/withWidth";
 
 const styles = (theme: any) =>
   createStyles({
@@ -14,31 +16,35 @@ const styles = (theme: any) =>
         fontSize: ".65rem"
       }
     },
-    button: {
-      fontSize: ".75rem",
-      [theme.breakpoints.down("xs")]: {
-        fontSize: ".4rem"
-      },
-      marginLeft: theme.spacing(2)
-    },
+
     leftContainer: {
       display: "flex",
       flexDirection: "row",
       alignItems: "center"
     },
-    right: { display: "flex", justifyContent: "flex-end" },
+    right: {
+      display: "flex",
+      justifyContent: "flex-end",
+      marginLeft: theme.spacing(7)
+    },
     container: {
-      height: "8vh",
       display: "flex",
       justifyContent: "space-between",
-      padding: "0% 5% 0% 5%",
       alignItems: "center",
       backgroundColor: theme.palette.primary.main,
-      [theme.breakpoints.down("md")]: {
-        height: "75px"
-      },
+      paddingLeft: theme.spacing(10),
+      paddingRight: theme.spacing(10),
       [theme.breakpoints.down("xs")]: {
-        height: "50.5px"
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(1)
+      }
+    },
+    button: {
+      fontSize: ".75rem",
+      marginLeft: theme.spacing(2),
+      [theme.breakpoints.down("xs")]: {
+        fontSize: ".4rem",
+        marginLeft: theme.spacing(0)
       }
     },
     icon: {
@@ -52,7 +58,7 @@ const styles = (theme: any) =>
       marginRight: theme.spacing(0.5),
       fontSize: "1.25rem",
       [theme.breakpoints.down("xs")]: {
-        fontSize: "1rem"
+        marginRight: 0
       }
     }
   });
@@ -62,6 +68,7 @@ interface Props extends WithStyles<typeof styles> {
   email?: string;
   linkedIn?: string;
   githubSource?: string;
+  width: Breakpoint;
 }
 
 const Footer = ({
@@ -69,7 +76,8 @@ const Footer = ({
   mainText,
   email,
   linkedIn,
-  githubSource
+  githubSource,
+  width
 }: Props) => {
   return (
     <footer>
@@ -78,18 +86,29 @@ const Footer = ({
           <Typography variant="h6" className={classes.mainText}>
             {mainText}
           </Typography>
-          <Button
-            // color="secondary"
-            variant="contained"
-            aria-label="Website Source"
-            className={classes.button}
-            href={githubSource}
-          >
-            <GithubCircle className={classes.githubIcon} />
-            View Source
-          </Button>
+          {isWidthUp("md", width) && githubSource && (
+            <Button
+              // color="secondary"
+              variant="contained"
+              aria-label="Website Source"
+              className={classes.button}
+              href={githubSource}
+            >
+              <GithubCircle className={classes.githubIcon} />
+              view source
+            </Button>
+          )}
         </div>
         <div className={classes.right}>
+          {!isWidthUp("md", width) && githubSource && (
+            <IconButton
+              aria-label="Website Source"
+              className={classes.icon}
+              href={githubSource}
+            >
+              <GithubCircle fontSize="inherit" />
+            </IconButton>
+          )}
           {email && (
             <IconButton
               aria-label="Link to email"
@@ -114,4 +133,4 @@ const Footer = ({
   );
 };
 
-export default withStyles(styles)(Footer);
+export default withWidth()(withStyles(styles)(Footer));

@@ -59,7 +59,7 @@ export const pageContainer = (theme: any) => ({
   },
   [theme.breakpoints.down("xs")]: {
     fontSize: "10px",
-    height: "330px"
+    height: "300px"
   },
   display: "flex",
   flexDirection: "column",

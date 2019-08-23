@@ -1,6 +1,5 @@
 import {
   Card,
-  Grid,
   Typography,
   withStyles,
   createStyles,
@@ -9,7 +8,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 
-const styles = (theme: { palette: { secondary: { light: any } } }) =>
+const styles = () =>
   createStyles({
     card: { height: "100%" },
     contentContainer: {
@@ -70,7 +69,9 @@ const ServiceCard = ({ role: { title, icon, text }, classes }: Props) => (
           </div>
         </div>
         <CardContent>
-          <Typography className={classes.title}>{title}</Typography>
+          <Typography noWrap className={classes.title}>
+            {title}
+          </Typography>
           <div className={classes.text}>
             <Typography
               variant="subtitle1"

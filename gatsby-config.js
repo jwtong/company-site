@@ -4,7 +4,8 @@ module.exports = {
     contactFormEndpoint: "https://formcarry.com/s/11PY44aSiKo",
     projectFormEndpoint: "https://formcarry.com/s/11PY44aSiKo",
     email: "team@knit.dev",
-    linkedIn: "blah"
+    linkedIn: "https://www.linkedin.com/company/knit-llc",
+    githubSource: "https://github.com/jwtong/company-site"
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -12,13 +13,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: [
-            "Roboto",
-            "Lato",
-            "Roboto Condensed",
-            "Open Sans",
-            "Ubuntu"
-          ]
+          families: ["Open Sans", "Ubuntu"]
         }
       }
     },

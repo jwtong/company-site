@@ -14,11 +14,9 @@ import clsx from "clsx";
 import { graphql } from "gatsby";
 import SiteHelmet from "../components/SiteHelmet";
 import SubtitleDivider from "../components/SubtitleDivider";
-import { dividerWithMargin } from "../components/SharedStyles";
 
 const styles = (theme: any) =>
   createStyles({
-    dividerWithMargin: dividerWithMargin(theme),
     header: {
       color: "white !important",
       textAlign: "center"
@@ -146,10 +144,7 @@ class ContactPage extends React.Component<Props, State> {
           </Typography>
         </Hero>
         <div className={classes.mainContainer}>
-          <SubtitleDivider
-            text={"Contact Form"}
-            otherProps={{ className: classes.dividerWithMargin }}
-          />
+          <SubtitleDivider text={"Contact Form"} />
           <ContactForm
             successCallback={() => {
               this.setState({ openSuccess: true });

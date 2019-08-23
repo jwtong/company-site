@@ -5,10 +5,7 @@ import {
   TextField,
   WithStyles,
   createStyles,
-  withStyles,
-  Snackbar,
-  SnackbarContent,
-  Slide
+  withStyles
 } from "@material-ui/core";
 import validations from "../../utils/validations";
 import clsx from "clsx";

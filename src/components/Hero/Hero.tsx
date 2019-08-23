@@ -1,10 +1,8 @@
 import { withStyles, createStyles, WithStyles } from "@material-ui/core";
 import React from "react";
 import clsx from "clsx";
-import SVG from "../SvgShapes";
 import KnitBackground from "../../assets/svg/KnitDarkBackground.svg";
 import { pageContainer } from "../SharedStyles";
-import { Spring, config } from "react-spring/renderprops";
 
 const generateSvgStyle = (strokeDashoffsets: Array<number>, speed: number) => {
   const generatedStyle: any = { svgAnimate: {} };
