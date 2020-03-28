@@ -1,30 +1,35 @@
-import StandardPopover from "../StandardPopover";
-import { IconButton, withStyles, WithStyles } from "@material-ui/core";
-import React from "react";
-
-const styles = {
-  icon: {
-    height: "3rem",
-    width: "3rem"
-  }
-};
+import StandardPopover from '../StandardPopover'
+import { IconButton, withStyles, WithStyles } from '@material-ui/core'
+import React from 'react'
 
 interface Props extends WithStyles<typeof styles> {
-  popoverText: string;
-  icon: any;
-  link: string;
+  popoverText: string
+  icon: any
+  link: string
 }
 
-const HoverIconButton = ({ popoverText, icon, link, classes }: Props) => {
+const HoverIconButton: React.FC<Props> = ({
+  popoverText,
+  icon,
+  link,
+  classes,
+}) => {
   return (
     <StandardPopover popoverText={popoverText}>
       <IconButton aria-label={`Go to ${popoverText}'s website`} href={link}>
         {React.createElement(icon, {
-          className: classes.icon
+          className: classes.icon,
         })}
       </IconButton>
     </StandardPopover>
-  );
-};
+  )
+}
 
-export default withStyles(styles)(HoverIconButton);
+const styles = {
+  icon: {
+    height: '3rem',
+    width: '3rem',
+  },
+}
+
+export default withStyles(styles)(HoverIconButton)

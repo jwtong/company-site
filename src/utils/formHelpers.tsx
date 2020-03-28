@@ -1,13 +1,13 @@
 //TODO: refactor to superclass
-import validations from "./validations";
-import { TextField } from "@material-ui/core";
-import React from "react";
-import _ from "lodash";
+import validations from './validations'
+import { TextField } from '@material-ui/core'
+import React from 'react'
+import _ from 'lodash'
 
 interface State {
   errors: {
-    [key: string]: string | null;
-  };
+    [key: string]: string | null
+  }
 }
 
 export const handleValidations = (
@@ -17,44 +17,44 @@ export const handleValidations = (
   value: any
 ) => {
   if (props.fieldValidations[fieldName]) {
-    const validationNames = props.fieldValidations[fieldName];
-    for (var validation of validationNames) {
-      const validationObject = validations[validation];
+    const validationNames = props.fieldValidations[fieldName]
+    for (const validation of validationNames) {
+      const validationObject = validations[validation]
       if (!validationObject.validate(value)) {
         setState((prevState: State) => ({
           errors: {
             ...prevState.errors,
-            [fieldName]: validationObject.errorMessage
-          }
-        }));
+            [fieldName]: validationObject.errorMessage,
+          },
+        }))
       } else {
         setState((prevState: State) => ({
-          errors: { ...prevState.errors, [fieldName]: null }
-        }));
+          errors: { ...prevState.errors, [fieldName]: null },
+        }))
       }
     }
   }
-};
+}
 
 export const handleSubmit = (
   props: any,
   state: State,
   setState: (prevState: State) => State
 ) => (event: any) => {
-  event.preventDefault();
-  const data: any = new FormData(event.target);
-  for (var key of data.keys()) {
-    const value = data.get(key);
-    handleValidations(props, setState, key, value);
+  event.preventDefault()
+  const data: any = new FormData(event.target)
+  for (const key of data.keys()) {
+    const value = data.get(key)
+    handleValidations(props, setState, key, value)
   }
 
   const formOk = !_.find(
     Object.values(state.errors),
     (val: any) => val !== null
-  );
+  )
 
-  return formOk;
-};
+  return formOk
+}
 
 export const getTextField = (
   props: any,
@@ -68,10 +68,10 @@ export const getTextField = (
   return (
     <TextField
       InputProps={{
-        className: classes.inputText
+        className: classes.inputText,
       }}
       InputLabelProps={{
-        className: classes.inputText
+        className: classes.inputText,
       }}
       label={_.capitalize(fieldName)}
       className={classes.textField}
@@ -80,11 +80,11 @@ export const getTextField = (
       variant="outlined"
       error={!!state.errors[fieldName]}
       helperText={state.errors[fieldName] || helperText}
-      onBlur={event => {
-        event.preventDefault();
-        handleValidations(props, setState, fieldName, event.target.value);
+      onBlur={(event) => {
+        event.preventDefault()
+        handleValidations(props, setState, fieldName, event.target.value)
       }}
       {...customProps}
     />
-  );
-};
+  )
+}

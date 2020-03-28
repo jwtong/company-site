@@ -1,3 +1,3 @@
-import TechnologyCard from "./TechnologyCard";
+import TechnologyCard from './TechnologyCard'
 
-export default TechnologyCard;
+export default TechnologyCard

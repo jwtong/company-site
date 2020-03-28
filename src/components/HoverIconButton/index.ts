@@ -1,3 +1,3 @@
-import HoverIconButton from "./HoverIconButton";
+import HoverIconButton from './HoverIconButton'
 
-export default HoverIconButton;
+export default HoverIconButton

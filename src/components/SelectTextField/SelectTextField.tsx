@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   FormControl,
   InputLabel,
@@ -6,27 +6,26 @@ import {
   FilledInput,
   Input,
   Select,
-  FormHelperText
-} from "@material-ui/core";
+  FormHelperText,
+} from '@material-ui/core'
 
 interface Props {
-  name: string;
-  label: string;
-  className?: string;
-  SelectProps?: any;
-  InputProps: { [key: string]: any };
-  InputLabelProps?: any;
-  variant?: "standard" | "outlined" | "filled";
-  children?: any;
-  helperText?: string;
-  options?: Array<{ value: string | null; label: string }>;
-  [key: string]: any;
+  name: string
+  label: string
+  className?: string
+  SelectProps?: any
+  InputProps: { [key: string]: any }
+  InputLabelProps?: any
+  variant?: 'standard' | 'outlined' | 'filled'
+  helperText?: string
+  options?: Array<{ value: string | null; label: string }>
+  [key: string]: any
 }
 
 class SelectTextField extends React.Component<Props> {
   static defaultProps = {
-    variant: "standard"
-  };
+    variant: 'standard',
+  }
 
   render() {
     const {
@@ -43,13 +42,13 @@ class SelectTextField extends React.Component<Props> {
       children,
       helperText,
       ...other
-    } = this.props;
+    } = this.props
 
     const variantToInputMap: any = {
       standard: Input,
       outlined: OutlinedInput,
-      filled: FilledInput
-    };
+      filled: FilledInput,
+    }
 
     return (
       <FormControl variant={variant} className={className} {...other}>
@@ -60,7 +59,7 @@ class SelectTextField extends React.Component<Props> {
           aria-label={label}
           input={React.createElement(variantToInputMap[variant], {
             name: name,
-            ...InputProps
+            ...InputProps,
           })}
           {...SelectProps}
         >
@@ -70,14 +69,14 @@ class SelectTextField extends React.Component<Props> {
                   <option key={o.value} value={o.value}>
                     {o.label}
                   </option>
-                );
+                )
               })
             : children}
         </Select>
         {helperText && <FormHelperText>{helperText}</FormHelperText>}
       </FormControl>
-    );
+    )
   }
 }
 
-export default SelectTextField;
+export default SelectTextField

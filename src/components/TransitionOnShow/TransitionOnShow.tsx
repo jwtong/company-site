@@ -1,18 +1,18 @@
-import React from "react";
-import VisibilitySensor from "react-visibility-sensor";
-import { Slide, Collapse, Fade, Grow, Zoom } from "@material-ui/core";
+import React from 'react'
+import VisibilitySensor from 'react-visibility-sensor'
+import { Slide, Collapse, Fade, Grow, Zoom } from '@material-ui/core'
 
 interface Props {
-  visibilitySensorProps: any;
-  transitionType: "Slide" | "Collapse" | "Fade" | "Grow" | "Zoom";
-  transitionProps: any;
-  transitionsMap: any;
-  delay?: number;
-  containerStyle?: any;
+  visibilitySensorProps: any
+  transitionType: 'Slide' | 'Collapse' | 'Fade' | 'Grow' | 'Zoom'
+  transitionProps: any
+  transitionsMap: any
+  delay?: number
+  containerStyle?: any
 }
 
 interface State {
-  isVisible: boolean;
+  isVisible: boolean
 }
 
 export default class TransitionOnShow extends React.Component<Props, State> {
@@ -22,34 +22,34 @@ export default class TransitionOnShow extends React.Component<Props, State> {
       Slide: Slide,
       Fade: Fade,
       Grow: Grow,
-      Zoom: Zoom
-    }
-  };
+      Zoom: Zoom,
+    },
+  }
 
   public constructor(props: Props) {
-    super(props);
+    super(props)
     this.state = {
-      isVisible: false
-    };
+      isVisible: false,
+    }
   }
 
   private onChange = (isVisible: boolean) => {
     if (isVisible) {
       setTimeout(() => {
         this.setState({
-          isVisible: true
-        });
-      }, this.props.delay || 0);
+          isVisible: true,
+        })
+      }, this.props.delay || 0)
     }
-  };
+  }
 
   render() {
     const {
       visibilitySensorProps,
       transitionType,
       transitionProps,
-      containerStyle
-    } = this.props;
+      containerStyle,
+    } = this.props
 
     return (
       <VisibilitySensor {...visibilitySensorProps} onChange={this.onChange}>
@@ -61,6 +61,6 @@ export default class TransitionOnShow extends React.Component<Props, State> {
           )}
         </div>
       </VisibilitySensor>
-    );
+    )
   }
 }

@@ -1,54 +1,40 @@
-import React from "react";
-import _ from "lodash";
-import { graphql } from "gatsby";
+import React from 'react'
+import _ from 'lodash'
+import { graphql } from 'gatsby'
 import {
   Divider,
   withStyles,
   createStyles,
-  WithStyles
-} from "@material-ui/core";
-import Img from "gatsby-image/withIEPolyfill";
-import SampleWorkTemplate from "../../components/SampleWorkTemplate";
-import roles from "../../utils/roles";
+  WithStyles,
+  Theme,
+} from '@material-ui/core'
+import Img from 'gatsby-image/withIEPolyfill'
+import SampleWorkTemplate from '../../components/SampleWorkTemplate'
+import roles from '../../utils/roles'
 import {
   dividerWithMargin,
-  imagesContainer
-} from "../../components/SharedStyles";
-
-const styles = (theme: any) =>
-  createStyles({
-    image: {
-      width: "40%",
-      [theme.breakpoints.down("md")]: {
-        width: "50%"
-      },
-      [theme.breakpoints.down("sm")]: {
-        width: "90%"
-      }
-    },
-    imagesContainer: imagesContainer(theme),
-    dividerWithMargin: dividerWithMargin(theme)
-  });
+  imagesContainer,
+} from '../../components/SharedStyles'
 
 interface Props extends WithStyles<typeof styles> {
-  data: any;
+  data: any
 }
 
 class BarterPage extends React.Component<Props> {
   public render() {
-    const { classes, data } = this.props;
+    const { classes, data } = this.props
 
-    const barterRoles = roles.filter(r =>
-      ["Software Development", "UI/UX Design"].includes(r.title)
-    );
-    const barterTechnologies = ["Sketch"];
-    const images = data.images.edges.map((e: { node: any }) => e.node);
+    const barterRoles = roles.filter((r) =>
+      ['Software Development', 'UI/UX Design'].includes(r.title)
+    )
+    const barterTechnologies = ['Sketch']
+    const images = data.images.edges.map((e: { node: any }) => e.node)
 
     return (
       <SampleWorkTemplate
-        title={"Barter"}
+        title={'Barter'}
         subtitle={
-          "An app concept inspired by Tinder, Snapchat, and Instagram that utilizes social discovery to match individuals who want to exchange goods."
+          'An app concept inspired by Tinder, Snapchat, and Instagram that utilizes social discovery to match individuals who want to exchange goods.'
         }
         roles={barterRoles}
         technologies={barterTechnologies}
@@ -59,30 +45,14 @@ class BarterPage extends React.Component<Props> {
           <Img
             className={classes.image}
             fluid={
-              _.find(images, (d: { name: string }) => d.name === "barter1")
+              _.find(images, (d: { name: string }) => d.name === 'barter1')
                 .childImageSharp.fluid
             }
           />
           <Img
             className={classes.image}
             fluid={
-              _.find(images, (d: { name: string }) => d.name === "barter2")
-                .childImageSharp.fluid
-            }
-          />
-        </div>
-        <div className={classes.imagesContainer}>
-          <Img
-            className={classes.image}
-            fluid={
-              _.find(images, (d: { name: string }) => d.name === "barter3")
-                .childImageSharp.fluid
-            }
-          />
-          <Img
-            className={classes.image}
-            fluid={
-              _.find(images, (d: { name: string }) => d.name === "barter4")
+              _.find(images, (d: { name: string }) => d.name === 'barter2')
                 .childImageSharp.fluid
             }
           />
@@ -91,23 +61,54 @@ class BarterPage extends React.Component<Props> {
           <Img
             className={classes.image}
             fluid={
-              _.find(images, (d: { name: string }) => d.name === "barter5")
+              _.find(images, (d: { name: string }) => d.name === 'barter3')
                 .childImageSharp.fluid
             }
           />
           <Img
             className={classes.image}
             fluid={
-              _.find(images, (d: { name: string }) => d.name === "barter6")
+              _.find(images, (d: { name: string }) => d.name === 'barter4')
+                .childImageSharp.fluid
+            }
+          />
+        </div>
+        <div className={classes.imagesContainer}>
+          <Img
+            className={classes.image}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === 'barter5')
+                .childImageSharp.fluid
+            }
+          />
+          <Img
+            className={classes.image}
+            fluid={
+              _.find(images, (d: { name: string }) => d.name === 'barter6')
                 .childImageSharp.fluid
             }
           />
         </div>
         <Divider variant="middle" className={classes.dividerWithMargin} />
       </SampleWorkTemplate>
-    );
+    )
   }
 }
+
+const styles = (theme: Theme) =>
+  createStyles({
+    image: {
+      width: '40%',
+      [theme.breakpoints.down('md')]: {
+        width: '50%',
+      },
+      [theme.breakpoints.down('sm')]: {
+        width: '90%',
+      },
+    },
+    imagesContainer: imagesContainer(theme),
+    dividerWithMargin: dividerWithMargin(theme),
+  })
 
 export const query = graphql`
   query {
@@ -126,6 +127,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default withStyles(styles, { withTheme: true })(BarterPage);
+export default withStyles(styles, { withTheme: true })(BarterPage)

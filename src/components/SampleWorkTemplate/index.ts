@@ -1,3 +1,3 @@
-import SampleWorkTemplate from "./SampleWorkTemplate";
+import SampleWorkTemplate from './SampleWorkTemplate'
 
-export default SampleWorkTemplate;
+export default SampleWorkTemplate

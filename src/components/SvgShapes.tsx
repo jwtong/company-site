@@ -1,19 +1,19 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Spring, config } from "react-spring/renderprops";
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Spring, config } from 'react-spring/renderprops'
 
 const useStyles = makeStyles({
   root: {
-    position: "absolute",
+    position: 'absolute',
     color: (props: any) => props.stroke,
     stroke: (props: any) => props.stroke,
     width: (props: any) => props.width,
     fill: (props: any) => props.fill,
     left: (props: any) => props.left,
     top: (props: any) => props.top,
-    overflow: "visible"
-  }
-});
+    overflow: 'visible',
+  },
+})
 
 const icons: any = {
   triangle: {
@@ -26,7 +26,7 @@ const icons: any = {
         points="14.921,2.27 28.667,25.5 1.175,25.5 "
       />
     ),
-    viewBox: "0 0 30 30"
+    viewBox: '0 0 30 30',
   },
   circle: {
     shape: (
@@ -36,7 +36,7 @@ const icons: any = {
         d="M15,30A15,15,0,1,1,30,15,15,15,0,0,1,15,30ZM15,6.23A8.77,8.77,0,1,0,23.77,15,8.77,8.77,0,0,0,15,6.23Z"
       />
     ),
-    viewBox: "0 0 30 30"
+    viewBox: '0 0 30 30',
   },
   arrowUp: {
     shape: (
@@ -44,14 +44,14 @@ const icons: any = {
         <path
           strokeDasharray="141"
           d="M28.74,20.81H1.26a1.26,1.26,0,0,1-1-2L14.16.5a1.25,1.25,0,0,1,1-.5h0a1.24,1.24,0,0,1,1,.51L29.75,18.8a1.25,1.25,0,0,1-1,2ZM3.81,18.29H26.22L15.16,3.37Z"
-        />{" "}
+        />{' '}
         <path
           strokeDasharray="141"
           d="M28.74,42H1.26a1.28,1.28,0,0,1-1.13-.71A1.26,1.26,0,0,1,.26,40l13.9-18.29a1.28,1.28,0,0,1,1-.5h0a1.24,1.24,0,0,1,1,.51L29.75,40a1.26,1.26,0,0,1,.12,1.32A1.28,1.28,0,0,1,28.74,42ZM3.81,39.47H26.22L15.16,24.55Z"
         />
       </>
     ),
-    viewBox: "0 0 30 42"
+    viewBox: '0 0 30 42',
   },
   upDown: {
     shape: (
@@ -66,7 +66,7 @@ const icons: any = {
         />
       </>
     ),
-    viewBox: "0 0 30 44.58"
+    viewBox: '0 0 30 44.58',
   },
   box: {
     shape: (
@@ -75,7 +75,7 @@ const icons: any = {
         d="M28,2V28H2V2H28m.13-2H1.88A1.88,1.88,0,0,0,0,1.88V28.13A1.88,1.88,0,0,0,1.88,30H28.13A1.87,1.87,0,0,0,30,28.13V1.88A1.88,1.88,0,0,0,28.13,0Z"
       />
     ),
-    viewBox: "0 0 30 30"
+    viewBox: '0 0 30 30',
   },
   hexa: {
     shape: (
@@ -86,7 +86,7 @@ const icons: any = {
         points="27.5,21.904 15,28.809  2.5,21.904 2.5,8.095 15,1.19 27.5,8.095 "
       />
     ),
-    viewBox: "0 0 30 30"
+    viewBox: '0 0 30 30',
   },
   cross: {
     shape: (
@@ -96,7 +96,7 @@ const icons: any = {
         d="M60.5,50l34.8-34.8c2.9-2.9,2.9-7.6,0-10.5c-2.9-2.9-7.6-2.9-10.5,0L50,39.5L15.2,4.7c-2.9-2.9-7.6-2.9-10.5,0    c-2.9,2.9-2.9,7.6,0,10.5L39.5,50L4.7,84.8c-2.9,2.9-2.9,7.6,0,10.5c1.4,1.4,3.3,2.2,5.2,2.2s3.8-0.7,5.2-2.2L50,60.5l34.8,34.8    c1.4,1.4,3.3,2.2,5.2,2.2c1.9,0,3.8-0.7,5.2-2.2c2.9-2.9,2.9-7.6,0-10.5L60.5,50z"
       />
     ),
-    viewBox: "0 0 100 100"
+    viewBox: '0 0 100 100',
   },
   star: {
     shape: (
@@ -106,19 +106,19 @@ const icons: any = {
         points="22.5 35.25 8.68704657 42.5118994 11.3250859 27.1309497 0.150171867 16.2381006 15.5935233 13.9940503 22.5 0 29.4064767 13.9940503 44.8498281 16.2381006 33.6749141 27.1309497 36.3129534 42.5118994 "
       />
     ),
-    viewBox: "0 0 45 44"
-  }
-};
+    viewBox: '0 0 45 44',
+  },
+}
 
 interface Props {
-  stroke: string;
-  fill: string;
-  width: string;
-  icon: any;
-  left: string;
-  top: string;
-  animated?: boolean;
-  animatedProps?: any;
+  stroke: string
+  fill: string
+  width: string
+  icon: any
+  left: string
+  top: string
+  animated?: boolean
+  animatedProps?: any
 }
 
 const SVG = ({
@@ -129,7 +129,7 @@ const SVG = ({
   left,
   top,
   animated,
-  animatedProps
+  animatedProps,
 }: Props) => {
   const classes = useStyles({
     stroke,
@@ -137,14 +137,14 @@ const SVG = ({
     width,
     icon,
     left,
-    top
-  });
+    top,
+  })
 
-  if (animated && stroke !== "transparent") {
-    let strokeDasharray = parseInt(icons[icon].shape.props.strokeDasharray);
+  if (animated && stroke !== 'transparent') {
+    let strokeDasharray = parseInt(icons[icon].shape.props.strokeDasharray)
     if (!strokeDasharray && icons[icon].shape.props.children) {
       strokeDasharray =
-        icons[icon].shape.props.children[0].props.strokeDasharray;
+        icons[icon].shape.props.children[0].props.strokeDasharray
     }
     return (
       <Spring
@@ -163,8 +163,8 @@ const SVG = ({
           </svg>
         )}
       </Spring>
-    );
-  } else if (animated && fill !== "none") {
+    )
+  } else if (animated && fill !== 'none') {
     return (
       <Spring
         config={config.molasses}
@@ -181,25 +181,25 @@ const SVG = ({
             >
               {icons[icon].shape}
             </svg>
-          );
+          )
         }}
       </Spring>
-    );
+    )
   }
 
   return (
     <svg viewBox={icons[icon].viewBox} className={classes.root}>
       {icons[icon].shape}
     </svg>
-  );
-};
+  )
+}
 
 SVG.defaultProps = {
-  stroke: "transparent",
+  stroke: 'transparent',
   width: 8,
-  fill: "none",
-  left: "0%",
-  top: "0%"
-};
+  fill: 'none',
+  left: '0%',
+  top: '0%',
+}
 
-export default SVG;
+export default SVG

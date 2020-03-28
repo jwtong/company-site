@@ -1,98 +1,71 @@
-import React from "react";
-import _ from "lodash";
+import React from 'react'
+import _ from 'lodash'
 import {
   WithStyles,
   createStyles,
   Button,
   withStyles,
   Typography,
-  Divider
-} from "@material-ui/core";
-import { formStyles } from "../Form/Form.tsx";
-import Form from "../Form";
-import MaskedTextField from "../MaskedTextField";
-import SelectTextField from "../SelectTextField";
-import clsx from "clsx";
-
-const styles = (theme: any) =>
-  createStyles({
-    customField: {
-      marginTop: "16px",
-      marginBottom: "8px"
-    },
-    underline: {
-      height: "2px",
-      backgroundColor: "black"
-    },
-    formContainer: {
-      marginTop: theme.spacing(3),
-      display: "flex",
-      flexDirection: "column",
-      alignSelf: "stretch",
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(2)
-      }
-    },
-    sectionTitle: {
-      marginTop: theme.spacing(3),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(1)
-      }
-    },
-    ...formStyles(theme)
-  });
+  Divider,
+  Theme,
+} from '@material-ui/core'
+import { formStyles } from '../Form/Form'
+import Form from '../Form'
+import MaskedTextField from '../MaskedTextField'
+import SelectTextField from '../SelectTextField'
+import clsx from 'clsx'
 
 interface Props extends WithStyles<typeof styles> {
-  fieldNames: Array<string>;
+  fieldNames: Array<string>
   fieldValidations: {
     [key: string]: Array<{
-      validate: (value: any) => boolean;
-      errorMessage: string;
-    }>;
-  };
-  formId: string;
-  containerStyle: any;
-  formEndpoint: string;
-  successCallback?: () => any;
-  failureCallback?: () => any;
+      validate: (value: any) => boolean
+      errorMessage: string
+    }>
+  }
+  formId: string
+  containerStyle: any
+  formEndpoint: string
+  successCallback?: () => any
+  failureCallback?: () => any
 }
 
 interface State {
-  showApplicationTypeOther: boolean;
+  showApplicationTypeOther: boolean
 }
 
 class ProjectForm extends React.Component<Props, State> {
   public static defaultProps = {
     fieldNames: [
-      "name",
-      "location",
-      "email",
-      "phone",
-      "projectDescription",
-      "applicationType",
-      "applicationTypeOther",
-      "timeframe",
-      "misc"
+      'name',
+      'location',
+      'email',
+      'phone',
+      'projectDescription',
+      'applicationType',
+      'applicationTypeOther',
+      'timeframe',
+      'misc',
     ],
     fieldValidations: {
-      name: ["required"],
-      location: ["required"],
-      email: ["required", "email"],
-      phone: ["required", "phone"],
-      projectDescription: ["required"],
-      applicationType: ["required"],
-      applicationTypeOther: ["required"],
-      timeframe: ["required"],
-      misc: null
+      name: ['required'],
+      location: ['required'],
+      email: ['required', 'email'],
+      phone: ['required', 'phone'],
+      projectDescription: ['required'],
+      applicationType: ['required'],
+      applicationTypeOther: ['required'],
+      timeframe: ['required'],
+      misc: null,
     },
-    formId: "project-form"
-  };
+    formId: 'project-form',
+  }
 
   public constructor(props: Props) {
-    super(props);
+    super(props)
     this.state = {
-      showApplicationTypeOther: false
-    };
+      showApplicationTypeOther: false,
+    }
   }
 
   public renderForm = (
@@ -101,7 +74,7 @@ class ProjectForm extends React.Component<Props, State> {
     getTextField: any,
     getValidationProps: any
   ) => {
-    const { classes, containerStyle, formId } = this.props;
+    const { classes, containerStyle, formId } = this.props
     return (
       <form
         style={containerStyle}
@@ -114,21 +87,21 @@ class ProjectForm extends React.Component<Props, State> {
             <Typography variant="h6">General Info</Typography>
             <Divider className={classes.underline} />
             <div className={classes.formRow}>
-              {getTextField("name", {
+              {getTextField('name', {
                 className: classes.fieldWithMarginRight,
-                label: "Name *",
-                autoComplete: "name"
+                label: 'Name *',
+                autoComplete: 'name',
               })}
-              {getTextField("location", {
-                label: "Location *",
-                helperText: "city, state"
+              {getTextField('location', {
+                label: 'Location *',
+                helperText: 'city, state',
               })}
             </div>
             <div className={classes.formRow}>
-              {getTextField("email", {
+              {getTextField('email', {
                 className: classes.fieldWithMarginRight,
-                label: "Email *",
-                autoComplete: "email"
+                label: 'Email *',
+                autoComplete: 'email',
               })}
               <MaskedTextField
                 variant="outlined"
@@ -136,15 +109,15 @@ class ProjectForm extends React.Component<Props, State> {
                   /[1-9]/,
                   /\d/,
                   /\d/,
-                  "-",
+                  '-',
                   /\d/,
                   /\d/,
                   /\d/,
-                  "-",
+                  '-',
                   /\d/,
                   /\d/,
                   /\d/,
-                  /\d/
+                  /\d/,
                 ]}
                 className={clsx(classes.textField, classes.customField)}
                 autoComplete="tel"
@@ -152,23 +125,23 @@ class ProjectForm extends React.Component<Props, State> {
                 label="Phone *"
                 InputProps={{
                   className: classes.inputText,
-                  labelWidth: 70
+                  labelWidth: 70,
                 }}
                 InputLabelProps={{
-                  className: classes.inputText
+                  className: classes.inputText,
                 }}
-                {...getValidationProps("phone")}
+                {...getValidationProps('phone')}
               />
             </div>
             <Typography className={classes.sectionTitle} variant="h6">
               Project Info
             </Typography>
             <Divider className={classes.underline} />
-            {getTextField("projectDescription", {
-              label: "Project / Idea Description",
+            {getTextField('projectDescription', {
+              label: 'Project / Idea Description',
               className: classes.fullWidthField,
               rows: 10,
-              multiline: true
+              multiline: true,
             })}
             <div className={classes.formRow}>
               <SelectTextField
@@ -181,41 +154,41 @@ class ProjectForm extends React.Component<Props, State> {
                 SelectProps={{ native: true, className: classes.inputText }}
                 InputLabelProps={{ className: classes.inputText }}
                 InputProps={{ className: classes.inputText, labelWidth: 150 }}
-                label={"Application Type"}
-                name={"applicationType"}
+                label={'Application Type'}
+                name={'applicationType'}
                 onChange={(event: { target: { value: string } }) => {
                   this.setState({
-                    showApplicationTypeOther: event.target.value === "other"
-                  });
+                    showApplicationTypeOther: event.target.value === 'other',
+                  })
                 }}
                 options={[
-                  { label: "", value: "" },
-                  { label: "Web", value: "web" },
-                  { label: "Mobile", value: "mobile" },
-                  { label: "Other", value: "other" },
-                  { label: "Unsure", value: "unsure" }
+                  { label: '', value: '' },
+                  { label: 'Web', value: 'web' },
+                  { label: 'Mobile', value: 'mobile' },
+                  { label: 'Other', value: 'other' },
+                  { label: 'Unsure', value: 'unsure' },
                 ]}
-                {...getValidationProps("applicationType")}
+                {...getValidationProps('applicationType')}
               />
               {this.state.showApplicationTypeOther &&
-                getTextField("applicationTypeOther", {
-                  label: "Application Type *",
-                  className: classes.fieldWithMarginRight
+                getTextField('applicationTypeOther', {
+                  label: 'Application Type *',
+                  className: classes.fieldWithMarginRight,
                 })}
-              {getTextField("timeframe", {
-                label: "Timeframe *",
-                helperText: "approximate target"
+              {getTextField('timeframe', {
+                label: 'Timeframe *',
+                helperText: 'approximate target',
               })}
             </div>
             <Typography className={classes.sectionTitle} variant="h6">
               Other
             </Typography>
             <Divider className={classes.underline} />
-            {getTextField("misc", {
-              label: "Anything Else We Should Know",
+            {getTextField('misc', {
+              label: 'Anything Else We Should Know',
               className: classes.fullWidthField,
               rows: 5,
-              multiline: true
+              multiline: true,
             })}
             <Button
               color="secondary"
@@ -229,8 +202,8 @@ class ProjectForm extends React.Component<Props, State> {
           </div>
         </div>
       </form>
-    );
-  };
+    )
+  }
 
   public render() {
     return (
@@ -243,8 +216,36 @@ class ProjectForm extends React.Component<Props, State> {
         failureCallback={this.props.failureCallback}
         formEndpoint={this.props.formEndpoint}
       />
-    );
+    )
   }
 }
 
-export default withStyles(styles)(ProjectForm);
+const styles = (theme: Theme) =>
+  createStyles({
+    customField: {
+      marginTop: '16px',
+      marginBottom: '8px',
+    },
+    underline: {
+      height: '2px',
+      backgroundColor: 'black',
+    },
+    formContainer: {
+      marginTop: theme.spacing(3),
+      display: 'flex',
+      flexDirection: 'column',
+      alignSelf: 'stretch',
+      [theme.breakpoints.down('xs')]: {
+        marginTop: theme.spacing(2),
+      },
+    },
+    sectionTitle: {
+      marginTop: theme.spacing(3),
+      [theme.breakpoints.down('xs')]: {
+        marginTop: theme.spacing(1),
+      },
+    },
+    ...formStyles(theme),
+  })
+
+export default withStyles(styles)(ProjectForm)

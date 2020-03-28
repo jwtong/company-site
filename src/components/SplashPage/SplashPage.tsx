@@ -2,29 +2,29 @@ import {
   withStyles,
   createStyles,
   WithStyles,
-  Divider
-} from "@material-ui/core";
-import React from "react";
-import KnitBackground from "../../assets/svg/KnitLightBackground1.svg";
-import { pageContainer } from "../SharedStyles";
+  Divider,
+} from '@material-ui/core'
+import React from 'react'
+import KnitBackground from '../../assets/svg/KnitLightBackground1.svg'
+import { pageContainer } from '../SharedStyles'
 
 const divider = (theme: { palette: { secondary: { main: any } } }) => {
   return {
-    height: "4px",
-    width: "10%",
+    height: '4px',
+    width: '10%',
     backgroundColor: theme.palette.secondary.main,
-    borderRadius: "2px"
-  };
-};
+    borderRadius: '2px',
+  }
+}
 
 const styles = (theme: {
-  palette: { secondary: { main: string | undefined } };
+  palette: { secondary: { main: string | undefined } }
 }) =>
   createStyles({
     pageContainer: pageContainer(theme),
     svgContainer: {
-      position: "absolute",
-      display: "block",
+      position: 'absolute',
+      display: 'block',
       left: 0,
       right: 0,
       top: 0,
@@ -37,60 +37,58 @@ const styles = (theme: {
       // display: "flex",
       // justifyContent: "center",
       // alignItems: "center",
-      zIndex: -1
+      zIndex: -1,
     },
     bodyContainer: {
-      display: "flex",
-      flexDirection: "column",
+      display: 'flex',
+      flexDirection: 'column',
       paddingRight: theme.spacing(20),
       paddingLeft: theme.spacing(20),
-      alignItems: "center",
-      [theme.breakpoints.down("md")]: {
+      alignItems: 'center',
+      [theme.breakpoints.down('md')]: {
         paddingRight: theme.spacing(10),
-        paddingLeft: theme.spacing(10)
+        paddingLeft: theme.spacing(10),
       },
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down('sm')]: {
         paddingRight: theme.spacing(4),
-        paddingLeft: theme.spacing(4)
+        paddingLeft: theme.spacing(4),
       },
-      [theme.breakpoints.down("xs")]: {
+      [theme.breakpoints.down('xs')]: {
         paddingRight: theme.spacing(2),
-        paddingLeft: theme.spacing(2)
-      }
+        paddingLeft: theme.spacing(2),
+      },
     },
 
     divider: {
-      height: "4px",
-      width: "10%",
+      height: '4px',
+      width: '10%',
       backgroundColor: theme.palette.secondary.main,
-      borderRadius: "2px"
+      borderRadius: '2px',
     },
     dividerTop: {
       ...divider(theme),
       marginBottom: theme.spacing(10),
-      [theme.breakpoints.down("xs")]: {
-        marginBottom: theme.spacing(3)
-      }
+      [theme.breakpoints.down('xs')]: {
+        marginBottom: theme.spacing(3),
+      },
     },
     dividerBottom: {
       ...divider(theme),
       marginTop: theme.spacing(10),
-      [theme.breakpoints.down("xs")]: {
-        marginTop: theme.spacing(3)
-      }
-    }
-  });
+      [theme.breakpoints.down('xs')]: {
+        marginTop: theme.spacing(3),
+      },
+    },
+  })
 
-interface Props extends WithStyles<typeof styles> {
-  children: any;
-}
+type Props = WithStyles<typeof styles>
 
-const SplashPage = ({ children, classes }: Props) => {
+const SplashPage: React.FC<Props> = ({ children, classes }) => {
   return (
     <div className={classes.pageContainer}>
       <div className={classes.svgContainer}>
         <KnitBackground
-          style={{ backgroundColor: "#f9f9f9" }}
+          style={{ backgroundColor: '#f9f9f9' }}
           preserveAspectRatio="none"
           height="100%"
           width="100%"
@@ -102,7 +100,7 @@ const SplashPage = ({ children, classes }: Props) => {
         <Divider className={classes.dividerBottom} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default withStyles(styles)(SplashPage);
+export default withStyles(styles)(SplashPage)

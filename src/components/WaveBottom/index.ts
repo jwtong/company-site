@@ -1,3 +1,3 @@
-import WaveBottom from "./WaveBottom";
+import WaveBottom from './WaveBottom'
 
-export default WaveBottom;
+export default WaveBottom

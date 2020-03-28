@@ -1,16 +1,15 @@
 // site wrapper contains header, footer, and things that belong on all pages
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
-import "./Layout.css";
-import Header from "../Header";
-import Footer from "../Footer";
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import './Layout.css'
+import Header from '../Header'
+import Footer from '../Footer'
 
 interface Props {
-  children: any;
-  location: any;
+  location: any
 }
 
-const Layout = ({ children, location }: Props) => (
+const Layout: React.FC<Props> = ({ children, location }) => (
   <StaticQuery
     query={graphql`
       query LayoutQuery {
@@ -23,16 +22,16 @@ const Layout = ({ children, location }: Props) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <>
         <Header
           location={location}
           pages={[
-            { text: "Process", link: "/process/" },
+            { text: 'Process', link: '/process/' },
             // { text: "Services", link: "/services/" },
-            { text: "About Us", link: "/about/" },
-            { text: "Sample Work", link: "/sample-work/" },
-            { text: "Contact", link: "/contact/" }
+            { text: 'About Us', link: '/about/' },
+            { text: 'Sample Work', link: '/sample-work/' },
+            { text: 'Contact', link: '/contact/' },
           ]}
         />
         <main>{children}</main>
@@ -44,6 +43,6 @@ const Layout = ({ children, location }: Props) => (
       </>
     )}
   />
-);
+)
 
-export default Layout;
+export default Layout
