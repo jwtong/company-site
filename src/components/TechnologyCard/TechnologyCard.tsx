@@ -11,16 +11,10 @@ import {
 import React from 'react'
 import Code from '@material-ui/icons/Code'
 import { offWhiteBackground } from '../SharedStyles'
+import { Technology } from '../../utils/interfaces'
 
 interface Props extends WithStyles<typeof styles> {
-  technology: {
-    title: string
-    icon: { component: any; color: string }
-    type: string
-    description: string
-    alternatives: string
-    companiesUsing: Array<any>
-  }
+  technology: Technology
 }
 
 const TechnologyCard: React.FC<Props> = ({

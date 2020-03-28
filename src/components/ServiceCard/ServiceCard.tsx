@@ -7,9 +7,10 @@ import {
   CardContent,
 } from '@material-ui/core'
 import React from 'react'
+import { Role } from '../../utils/interfaces'
 
 interface Props extends WithStyles<typeof styles> {
-  role: { title: string; icon: any; text: string }
+  role: Role
   color: string
 }
 
