@@ -16,7 +16,7 @@ const NotFoundPage = ({ classes }: Props) => (
         Page Not Found
       </Typography>
       <Typography variant="h4" className={classes.header}>
-        404
+        Click a link above to return to knit's site
       </Typography>
     </Hero>
   </>

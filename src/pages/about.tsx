@@ -1,27 +1,25 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-// import JeremyTongResume from '../assets/documents/JeremyTongResume.pdf'
-// import ThomasClarkResume from '../assets/documents/ThomasClarkResume.pdf'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import {
   Typography,
-  Divider,
-  Chip,
   createStyles,
   withStyles,
   WithStyles,
-  IconButton,
   Theme,
 } from '@material-ui/core'
 import Img from 'gatsby-image/withIEPolyfill'
 import Hero from '../components/Hero'
 import SubtitleDivider from '../components/SubtitleDivider'
 import PageBottom from '../components/PageBottom'
-import { buttonWithMargin, dividerWithMargin } from '../components/SharedStyles'
+import {
+  buttonWithMargin,
+  dividerWithMargin,
+  offWhiteBackground,
+} from '../components/SharedStyles'
 import SiteHelmet from '../components/SiteHelmet'
 import technologyIcons from '../utils/technologies'
-import StandardPopover from '../components/StandardPopover'
 import HoverIconButton from '../components/HoverIconButton'
 
 interface Props extends WithStyles<typeof styles> {
@@ -44,7 +42,7 @@ const AboutPage = ({ data, classes }: Props) => {
       name: 'Tommy Clark',
       avatar: data.jeremyAvatar,
       about: [''],
-      backgroundColor: '#f9f9f9',
+      ...offWhiteBackground,
     },
   ]
 
@@ -71,7 +69,7 @@ const AboutPage = ({ data, classes }: Props) => {
           </Typography>
         </div>
       </Hero>
-      {people.map((p, index) => {
+      {people.map((p) => {
         return (
           <div key={p.name}>
             <div
@@ -102,11 +100,7 @@ const AboutPage = ({ data, classes }: Props) => {
               />
               {p.about.map((paragraph, index) => {
                 return (
-                  <Typography
-                    key={index}
-                    variant="subtitle1"
-                    style={{ textAlign: 'left' }}
-                  >
+                  <Typography key={index} variant="subtitle1">
                     {paragraph}
                     {index !== p.about.length - 1 && <br />}
                     {index !== p.about.length - 1 && <br />}
@@ -119,7 +113,7 @@ const AboutPage = ({ data, classes }: Props) => {
       })}
       <div id="technology-list" className={classes.technologyList}>
         <SubtitleDivider
-          text={"Knit's Technology List"}
+          text={"Knit's Technologies"}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <Grid container spacing={3} direction="row" justify="center">
@@ -129,7 +123,14 @@ const AboutPage = ({ data, classes }: Props) => {
               const name = entry[0]
               const value = entry[1]
               return (
-                <Grid item key={name} xs={1}>
+                <Grid
+                  key={name}
+                  item
+                  xs={3}
+                  sm={2}
+                  md={1}
+                  className={classes.hoverIconButtonWrapper}
+                >
                   <HoverIconButton
                     popoverText={name}
                     link={value.link}
@@ -141,7 +142,7 @@ const AboutPage = ({ data, classes }: Props) => {
         </Grid>
       </div>
       <PageBottom colorTop={people[1].backgroundColor}>
-        <Typography variant="h4" style={{ textAlign: 'center' }}>
+        <Typography variant="h4" className={classes.textAlignCenter}>
           Some examples of previous work
         </Typography>
         <Button
@@ -158,7 +159,6 @@ const AboutPage = ({ data, classes }: Props) => {
     </>
   )
 }
-
 const styles = (theme: Theme) =>
   createStyles({
     header: {
@@ -207,6 +207,14 @@ const styles = (theme: Theme) =>
       [theme.breakpoints.down('xs')]: {
         fontSize: '1.75rem',
       },
+    },
+    hoverIconButtonWrapper: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
+    textAlignCenter: {
+      textAlign: 'center',
     },
   })
 

@@ -1,6 +1,5 @@
 import {
   Card,
-  Grid,
   Typography,
   withStyles,
   createStyles,
@@ -29,7 +28,9 @@ const ServiceCard: React.FC<Props> = ({
           </div>
         </div>
         <CardContent>
-          <Typography className={classes.title}>{title}</Typography>
+          <Typography noWrap className={classes.title}>
+            {title}
+          </Typography>
           <div className={classes.text}>
             <Typography
               variant="subtitle1"
@@ -47,7 +48,7 @@ const ServiceCard: React.FC<Props> = ({
   </Card>
 )
 
-const styles = (theme: { palette: { secondary: { light: any } } }) =>
+const styles = () =>
   createStyles({
     card: { height: '100%' },
     contentContainer: {

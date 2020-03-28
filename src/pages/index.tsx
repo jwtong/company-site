@@ -2,18 +2,7 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
-import Code from '@material-ui/icons/Code'
-import {
-  Typography,
-  WithStyles,
-  Card,
-  CardContent,
-  Divider,
-  createStyles,
-  Theme,
-} from '@material-ui/core'
-import { faSketch } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Typography, WithStyles, Theme, createStyles } from '@material-ui/core'
 import Hero from '../components/Hero'
 import SubtitleDivider from '../components/SubtitleDivider'
 import TransitionOnShow from '../components/TransitionOnShow'
@@ -24,26 +13,28 @@ import { buttonWithMargin } from '../components/SharedStyles'
 import { graphql, Link } from 'gatsby'
 import SiteHelmet from '../components/SiteHelmet'
 import technologyIcons from '../utils/technologies'
-import Facebook from '../assets/svg/Facebook.svg'
-import Netflix from '../assets/svg/Netflix.svg'
-import PayPal from '../assets/svg/PayPal.svg'
-import Uber from '../assets/svg/Uber.svg'
-import Google from '../assets/svg/Google.svg'
-import Etsy from '../assets/svg/Etsy.svg'
-import Twitch from '../assets/svg/Twitch.svg'
-import LinkedIn from '../assets/svg/LinkedIn.svg'
-import Wikipedia from '../assets/svg/Wikipedia.svg'
-import YouTube from '../assets/svg/YouTube.svg'
+import Facebook from '../assets/svg/companies/Facebook.svg'
+import Netflix from '../assets/svg/companies/Netflix.svg'
+import PayPal from '../assets/svg/companies/PayPal.svg'
+import Uber from '../assets/svg/companies/Uber.svg'
+import Google from '../assets/svg/companies/Google.svg'
+import Etsy from '../assets/svg/companies/Etsy.svg'
+import Twitch from '../assets/svg/companies/Twitch.svg'
+import LinkedIn from '../assets/svg/companies/LinkedIn.svg'
+import Wikipedia from '../assets/svg/companies/Wikipedia.svg'
+import YouTube from '../assets/svg/companies/YouTube.svg'
 import roles from '../utils/roles'
 import ServiceCard from '../components/ServiceCard'
 import TechnologyCard from '../components/TechnologyCard'
+import { Technology } from '../utils/interfaces'
+import { Role } from '../utils/interfaces'
 
 interface Props extends WithStyles<typeof styles> {
   data: any
   width: any
 }
 
-const IndexPage = ({ classes, width, data, theme }: Props) => {
+const IndexPage: React.FC<Props> = ({ classes, width, data, theme }) => {
   const technologies = [
     {
       icon: { component: technologyIcons.React.icon, color: '#61DAFB' },
@@ -51,7 +42,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
       type: 'Front-End Framework',
       description:
         "ReactJS is one of the most popular front-end frameworks today for building web applications, noted for being fast, scalable, and simple. React Native, it's mobile counterpart, is similarly a robust platform for building cross-platform (iOS/Android) mobile apps.",
-      alternatives: 'VueJS, iOS Swift, Android Java',
+      alternatives: 'VueJS, Swift (iOS), Java (Android)',
       companiesUsing: [
         <Facebook width="100%" height="60px" />,
         <Netflix width="100%" height="30px" />,
@@ -63,7 +54,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
       type: 'Back-End Framework',
       description:
         'NodeJS is a widely adopted back-end framework that offers some of the best performance and scalability as compared to similar technologies (e.g. Ruby on Rails), and was designed for comprehensive platform integration and device compatability. ',
-      alternatives: 'Ruby on Rails, Java, C#',
+      alternatives: 'Ruby on Rails, Java, .NET Core',
       companiesUsing: [
         <Uber
           width="100%"
@@ -123,7 +114,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
     },
   ]
 
-  const serviceColors = [
+  const serviceColors: Array<string> = [
     theme.palette.secondary.light,
     '#ee5d8e',
     '#f281a7',
@@ -148,7 +139,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
       </Hero>
       <SplashPage>
         <div className={classes.bottomContainer}>
-          <Typography variant="h4" style={{ textAlign: 'center' }}>
+          <Typography variant="h4" className={classes.textAlignCenter}>
             {data.site.siteMetadata.companyName} is a software development
             consultancy aimed to provide small businesses and startups with high
             quality code through friendly, approachable means.
@@ -161,6 +152,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
           containerStyle={{
             width: '100%',
           }}
+          otherProps={{ className: classes.subtitleDivider }}
         />
         <div className={classes.gridWrapper}>
           <Grid
@@ -170,10 +162,10 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
             justify="center"
             alignItems="stretch"
           >
-            {roles.map((r: any, index: number) => {
+            {roles.map((r: Role, index: number) => {
               const color = serviceColors[index]
               return (
-                <Grid key={index} item xs={12} sm={6} md={3}>
+                <Grid key={index} item xs={12} sm={6} lg={3}>
                   <TransitionOnShow
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"
@@ -202,6 +194,7 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
           containerStyle={{
             width: '100%',
           }}
+          otherProps={{ className: classes.subtitleDivider }}
         />
         <div className={classes.gridWrapper}>
           <Grid
@@ -211,9 +204,9 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
             justify="center"
             alignItems="stretch"
           >
-            {technologies.map((t: any, index: number) => {
+            {technologies.map((t: Technology, index: number) => {
               return (
-                <Grid key={index} item xs={12} sm={6} md={4}>
+                <Grid key={index} item xs={12} sm={6} lg={4}>
                   <TransitionOnShow
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"
@@ -244,11 +237,11 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
           aria-label="Other Technologies"
           state={{ scrollToTechnologies: true }}
         >
-          View Knit&apos;s Technology List
+          Full Technology List
         </Button>
       </div>
       <PageBottom>
-        <Typography variant="h4" style={{ textAlign: 'center' }}>
+        <Typography variant="h4" className={classes.textAlignCenter}>
           Contact us to discuss your project and how we can collaborate.
         </Typography>
         <Button
@@ -268,6 +261,12 @@ const IndexPage = ({ classes, width, data, theme }: Props) => {
 
 const styles = (theme: Theme) =>
   createStyles({
+    subtitleDivider: {
+      marginTop: theme.spacing(2),
+      [theme.breakpoints.down('sm')]: {
+        marginTop: theme.spacing(1),
+      },
+    },
     buttonWithMargin: buttonWithMargin(theme),
     technologiesContainer: {
       width: '100%',
@@ -338,6 +337,9 @@ const styles = (theme: Theme) =>
       '& path': {
         fill: 'gray',
       },
+    },
+    textAlignCenter: {
+      textAlign: 'center',
     },
   })
 

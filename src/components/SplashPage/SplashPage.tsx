@@ -3,10 +3,11 @@ import {
   createStyles,
   WithStyles,
   Divider,
+  Theme,
 } from '@material-ui/core'
 import React from 'react'
 import KnitBackground from '../../assets/svg/KnitLightBackground1.svg'
-import { pageContainer } from '../SharedStyles'
+import { pageContainer, offWhiteBackground } from '../SharedStyles'
 
 const divider = (theme: { palette: { secondary: { main: any } } }) => {
   return {
@@ -17,9 +18,29 @@ const divider = (theme: { palette: { secondary: { main: any } } }) => {
   }
 }
 
-const styles = (theme: {
-  palette: { secondary: { main: string | undefined } }
-}) =>
+type Props = WithStyles<typeof styles>
+
+const SplashPage: React.FC<Props> = ({ children, classes }) => {
+  return (
+    <div className={classes.pageContainer}>
+      <div className={classes.svgContainer}>
+        <KnitBackground
+          className={classes.knitBackground}
+          preserveAspectRatio="none"
+          height="100%"
+          width="100%"
+        />
+      </div>
+      <div className={classes.bodyContainer}>
+        <Divider className={classes.dividerTop} />
+        {children}
+        <Divider className={classes.dividerBottom} />
+      </div>
+    </div>
+  )
+}
+
+const styles = (theme: Theme) =>
   createStyles({
     pageContainer: pageContainer(theme),
     svgContainer: {
@@ -79,28 +100,7 @@ const styles = (theme: {
         marginTop: theme.spacing(3),
       },
     },
+    knitBackground: offWhiteBackground,
   })
-
-type Props = WithStyles<typeof styles>
-
-const SplashPage: React.FC<Props> = ({ children, classes }) => {
-  return (
-    <div className={classes.pageContainer}>
-      <div className={classes.svgContainer}>
-        <KnitBackground
-          style={{ backgroundColor: '#f9f9f9' }}
-          preserveAspectRatio="none"
-          height="100%"
-          width="100%"
-        />
-      </div>
-      <div className={classes.bodyContainer}>
-        <Divider className={classes.dividerTop} />
-        {children}
-        <Divider className={classes.dividerBottom} />
-      </div>
-    </div>
-  )
-}
 
 export default withStyles(styles)(SplashPage)

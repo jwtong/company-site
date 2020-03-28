@@ -7,12 +7,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import KnitLogo from '../../assets/svg/KnitLogoWhiteBall.svg'
-import {
-  withStyles,
-  createStyles,
-  WithStyles,
-  Theme,
-} from '@material-ui/core/styles'
+import { withStyles, createStyles, WithStyles } from '@material-ui/core/styles'
 import { hexToRgba, rgbToHex } from '../../utils/hexRgba'
 import { Divider, withWidth, Menu, MenuItem } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -96,13 +91,8 @@ class Header extends React.Component<Props, State> {
             backgroundColor: this.state.backgroundColor,
           }}
         >
-          <IconButton
-            component={Link}
-            aria-label="Go home icon"
-            to={'/'}
-            className={classes.icon}
-          >
-            <KnitLogo height="50px" width="50px" fontSize="inherit" />
+          <IconButton component={Link} aria-label="Go home icon" to={'/'}>
+            <KnitLogo className={classes.logo} />
           </IconButton>
           {isWidthDown('sm', width) ? (
             <>
@@ -153,13 +143,7 @@ class Header extends React.Component<Props, State> {
             <div className={classes.containerRight}>
               {pages.map((p: any) => {
                 return (
-                  <div
-                    key={p.text}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                    }}
-                  >
+                  <div key={p.text}>
                     <Button
                       component={Link}
                       classes={{
@@ -193,12 +177,10 @@ class Header extends React.Component<Props, State> {
     )
   }
 }
-
-const styles = (theme: Theme) =>
+const styles = (theme: any) =>
   createStyles({
     buttonLabel: {
       fontSize: '20px',
-      // lineHeight: "3rem"
     },
     toolbar: {
       display: 'flex',
@@ -218,13 +200,6 @@ const styles = (theme: Theme) =>
       },
     },
     appBar: { background: 'transparent', boxShadow: 'none' },
-    icon: {
-      fontSize: '50px',
-      [theme.breakpoints.down('xs')]: {
-        fontSize: '40px',
-      },
-      color: 'white',
-    },
     containerRight: {
       display: 'flex',
       flexDirection: 'row',
@@ -242,11 +217,25 @@ const styles = (theme: Theme) =>
     },
     menuItem: {
       color: 'white',
-      // fontFamily: "Open Sans",
       fontWeight: 'bold',
     },
     menuList: {
       backgroundColor: theme.palette.primary.light,
+    },
+    icon: {
+      fontSize: '3rem',
+      [theme.breakpoints.down('xs')]: {
+        fontSize: '2.5rem',
+      },
+      color: 'white',
+    },
+    logo: {
+      width: '3rem',
+      height: '3rem',
+      [theme.breakpoints.down('xs')]: {
+        width: '2.5rem',
+        height: '2.5rem',
+      },
     },
   })
 

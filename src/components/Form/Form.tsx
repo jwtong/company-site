@@ -5,37 +5,53 @@ import {
   TextField,
   WithStyles,
   createStyles,
-  withStyles,
-  Snackbar,
-  SnackbarContent,
-  Slide,
-  Theme,
-} from '@material-ui/core'
-import validations from '../../utils/validations'
-import clsx from 'clsx'
+  withStyles
+} from "@material-ui/core";
+import validations from "../../utils/validations";
+import clsx from "clsx";
 
-export const formStyles = (theme: Theme) =>
-  createStyles({
-    form: {
-      position: 'absolute',
-      left: '0',
-      right: '0',
-      // width: "100%",
-      // height: "100%"
-      paddingRight: theme.spacing(25),
-      paddingLeft: theme.spacing(25),
-      //prevent screen widening
-      [theme.breakpoints.down('md')]: {
-        paddingRight: theme.spacing(10),
-        paddingLeft: theme.spacing(10),
-      },
-      [theme.breakpoints.down('xs')]: {
-        paddingRight: theme.spacing(2),
-        paddingLeft: theme.spacing(2),
-      },
-    },
-    fullWidthField: {
-      width: '100%',
+export const formStyles = (theme: any) => ({
+  form: {
+    // position: "absolute",
+    // left: "0",
+    // right: "0",
+    // width: "100%",
+    // height: "100%",
+    // paddingRight: theme.spacing(25),
+    // paddingLeft: theme.spacing(25),
+    // //prevent screen widening
+    // [theme.breakpoints.down("md")]: {
+    //   paddingRight: theme.spacing(10),
+    //   paddingLeft: theme.spacing(10)
+    // },
+    // [theme.breakpoints.down("xs")]: {
+    //   paddingRight: theme.spacing(2),
+    //   paddingLeft: theme.spacing(2)
+    // }
+  },
+  fullWidthField: {
+    width: "100%"
+  },
+  fieldWithMarginRight: {
+    marginRight: "5%",
+    [theme.breakpoints.down("xs")]: {
+      marginRight: "0%"
+    }
+  },
+  fieldsContainer: {
+    display: "flex",
+    flexDirection: "column"
+  },
+  formRow: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    flexWrap: "wrap"
+  },
+  textField: {
+    width: "300px",
+    [theme.breakpoints.down("sm")]: {
+      width: "275px"
     },
     fieldWithMarginRight: {
       marginRight: '5%',
@@ -172,7 +188,8 @@ class Form extends React.Component<Props, State> {
     if (formOk) {
       axios
         .post(this.props.formEndpoint, data, {
-          headers: { Accept: 'application/json' },
+          headers: { Accept: "application/json" },
+          timeout: 5000
         })
         .then((response) => {
           if (document.getElementById(this.props.formId)) {

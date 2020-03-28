@@ -9,6 +9,7 @@ import {
   withStyles,
   createStyles,
   WithStyles,
+  Theme,
 } from '@material-ui/core'
 import roles from '../../utils/roles'
 import SampleWorkTemplate from '../../components/SampleWorkTemplate'
@@ -161,14 +162,7 @@ class ParkingMeterPage extends React.Component<Props> {
           efficiency of the meters.
         </Typography>
         <Divider variant="middle" className={classes.dividerWithMargin} />
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column',
-            marginBottom: '2%',
-          }}
-        >
+        <div className={classes.buttonWrapper}>
           <Button
             aria-label="View Paper"
             href={ParkingMeterPaper}
@@ -183,12 +177,18 @@ class ParkingMeterPage extends React.Component<Props> {
   }
 }
 
-const styles = (theme: any) =>
+const styles = (theme: Theme) =>
   createStyles({
     dividerWithMargin: dividerWithMargin(theme),
     topBottomImageWrapper: topBottomImageWrapper(theme),
     imagesContainer: imagesContainer(theme),
     imageShiftWrapper: imageShiftWrapper(theme),
+    buttonWrapper: {
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      marginBottom: '2%',
+    },
     mainImage: {
       width: '90%',
       [theme.breakpoints.down('sm')]: {

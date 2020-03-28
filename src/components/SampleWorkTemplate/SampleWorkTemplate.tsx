@@ -4,7 +4,6 @@ import {
   WithStyles,
   Typography,
   Grid,
-  IconButton,
   Theme,
 } from '@material-ui/core'
 import clsx from 'clsx'
@@ -15,7 +14,6 @@ import technologyIcons from '../../utils/technologies'
 import SubtitleDivider from '../SubtitleDivider'
 import { dividerWithMargin } from '../SharedStyles'
 import SiteHelmet from '../SiteHelmet'
-import StandardPopover from '../StandardPopover'
 import HoverIconButton from '../HoverIconButton'
 
 interface Props extends WithStyles<typeof styles> {
@@ -68,7 +66,14 @@ const SampleWorkTemplate: React.FC<Props> = ({
           {technologies.map((t: string) => {
             const tech: any = technologyIcons[t]
             return (
-              <Grid key={t} item>
+              <Grid
+                key={t}
+                item
+                className={classes.hoverIconButtonWrapper}
+                xs={3}
+                sm={2}
+                md={1}
+              >
                 {tech && (
                   <HoverIconButton
                     popoverText={t}
@@ -113,15 +118,20 @@ const styles = (theme: Theme) =>
       marginBottom: '3%',
     },
     skillsGrid: {
-      paddingLeft: theme.spacing(15),
-      paddingRight: theme.spacing(15),
-      [theme.breakpoints.down('xs')]: {
+      paddingLeft: theme.spacing(10),
+      paddingRight: theme.spacing(10),
+      [theme.breakpoints.down('md')]: {
         paddingLeft: theme.spacing(0),
         paddingRight: theme.spacing(0),
         marginBottom: theme.spacing(3),
       },
     },
     dividerWithMargin: dividerWithMargin(theme),
+    hoverIconButtonWrapper: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
   })
 
 export default withStyles(styles)(SampleWorkTemplate)

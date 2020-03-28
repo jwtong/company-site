@@ -18,6 +18,7 @@ const Layout: React.FC<Props> = ({ children, location }) => (
             companyName
             email
             linkedIn
+            githubSource
           }
         }
       }
@@ -39,6 +40,7 @@ const Layout: React.FC<Props> = ({ children, location }) => (
           mainText={`Released under the MIT License © ${new Date().getFullYear()} Knit, LLC`}
           email={data.site.siteMetadata.email}
           linkedIn={data.site.siteMetadata.linkedIn}
+          githubSource={data.site.siteMetadata.githubSource}
         />
       </>
     )}

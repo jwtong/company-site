@@ -1,12 +1,6 @@
-import {
-  withStyles,
-  createStyles,
-  WithStyles,
-  Divider,
-  Theme,
-} from '@material-ui/core'
+import { withStyles, createStyles, WithStyles, Theme } from '@material-ui/core'
 import React from 'react'
-import { dividerWithMargin } from '../SharedStyles'
+import { offWhiteBackground } from '../SharedStyles'
 import KnitBackground from '../../assets/svg/KnitLightBackground2.svg'
 
 interface Props extends WithStyles<typeof styles> {
@@ -27,27 +21,6 @@ const PageBottom: React.FC<Props> = ({ children, classes }) => {
 const styles = (theme: Theme) =>
   createStyles({
     container: {
-      // width: "100vw",
-      // height: "100vh",
-      // [theme.breakpoints.down("md")]: {
-      //   fontSize: "15px",
-      //   height: "600px"
-      // },
-      // [theme.breakpoints.down("sm")]: {
-      //   fontSize: "15px",
-      //   height: "500px"
-      // },
-      // [theme.breakpoints.down("xs")]: {
-      //   fontSize: "10px",
-      //   height: "330px"
-      // },
-      // display: "flex",
-      // flexDirection: "column",
-      // justifyContent: "center",
-      // alignItems: "center",
-      // position: "relative",
-      // overflow: "hidden"
-
       position: 'relative',
       width: '100vw',
       paddingRight: theme.spacing(10),
@@ -56,7 +29,6 @@ const styles = (theme: Theme) =>
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      // backgroundColor: "#f9f9f9"
       '-webkit-box-sizing': 'border-box',
       '-moz-box-sizing': 'border-box',
       'box-sizing': 'border-box',
@@ -81,6 +53,7 @@ const styles = (theme: Theme) =>
       overflow: 'hidden',
       zIndex: -1,
     },
+    knitBackground: offWhiteBackground,
   })
 
 PageBottom.defaultProps = {

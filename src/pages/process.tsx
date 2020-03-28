@@ -1,5 +1,5 @@
 import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles, Theme } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import Button from '@material-ui/core/Button'
 import FormatAlignLeft from '@material-ui/icons/FormatAlignLeft'
@@ -7,7 +7,7 @@ import Chat from '@material-ui/icons/Chat'
 import { ViewDashboardOutline, Rocket } from 'mdi-material-ui'
 import Code from '@material-ui/icons/Code'
 import Grid from '@material-ui/core/Grid'
-import { Typography, WithStyles, Theme, createStyles } from '@material-ui/core'
+import { Typography, WithStyles } from '@material-ui/core'
 import Hero from '../components/Hero'
 import SubtitleDivider from '../components/SubtitleDivider'
 import PageBottom from '../components/PageBottom'
@@ -25,7 +25,7 @@ const ProcessPage = ({ classes, data }: Props) => {
       title: 'Step 1 - Contact us',
       icon: FormatAlignLeft,
       texts: [
-        "Fill out the project form on our Contact page with as much detail as you'd like. If you have an unusual request, feel free to use the general inquiries form or email us directly. We'll follow up within 2 business days.",
+        "Fill out the form on our contact page with as much detail as you'd like. If you have an unusual request, feel free to email us directly. We'll follow up within 2 business days.",
       ],
     },
     {
@@ -104,7 +104,6 @@ const ProcessPage = ({ classes, data }: Props) => {
                     return (
                       <Typography
                         variant="subtitle1"
-                        style={{ textAlign: 'left' }}
                         key={`${s.title}${index}`}
                       >
                         {t}
@@ -124,7 +123,7 @@ const ProcessPage = ({ classes, data }: Props) => {
         })}
       </div>
       <PageBottom>
-        <Typography variant="h4">
+        <Typography variant="h4" className={classes.textAlignCenter}>
           Learn more about our professional experience
         </Typography>
         <div className={classes.buttonsContainer}>
@@ -154,87 +153,89 @@ const ProcessPage = ({ classes, data }: Props) => {
   )
 }
 
-const styles = (theme: Theme) =>
-  createStyles({
-    button: {
-      width: '12rem',
-    },
-    buttonsContainer: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      marginTop: '3%',
-      width: '35%',
-      [theme.breakpoints.down('md')]: {
-        justify: 'space-around',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: '120px',
-        width: '100%',
-      },
-      [theme.breakpoints.down('sm')]: {
-        height: '100px',
-        width: '100%',
-      },
-    },
-    processContainer: {
+const styles = (theme: Theme) => ({
+  button: {
+    width: '13rem',
+  },
+  buttonsContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: '3%',
+    width: '35%',
+    [theme.breakpoints.down('md')]: {
+      justify: 'space-around',
+      flexDirection: 'column',
+      alignItems: 'center',
+      height: '120px',
       width: '100%',
-      paddingLeft: theme.spacing(10),
-      paddingRight: theme.spacing(10),
-      marginBottom: theme.spacing(10),
-      [theme.breakpoints.down('md')]: {
-        marginTop: theme.spacing(0),
-        marginBottom: theme.spacing(4),
-      },
-      [theme.breakpoints.down('sm')]: {
-        paddingLeft: theme.spacing(5),
-        paddingRight: theme.spacing(5),
-        marginTop: theme.spacing(0),
-        marginBottom: theme.spacing(4),
-      },
-      [theme.breakpoints.down('xs')]: {
-        paddingLeft: theme.spacing(3),
-        paddingRight: theme.spacing(3),
-        marginTop: theme.spacing(0),
-        marginBottom: theme.spacing(4),
-      },
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'stretch',
-      justifyContent: 'center',
-      alignSelf: 'center',
-      '-webkit-box-sizing': 'border-box',
-      '-moz-box-sizing': 'border-box',
-      'box-sizing': 'border-box',
     },
-    header: {
-      color: 'white !important',
-      textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      height: '100px',
+      width: '100%',
     },
-    buttonWithMargin: buttonWithMargin(theme),
-    dividerWithMargin: dividerWithMargin(theme),
-    card: {
+  },
+  processContainer: {
+    width: '100%',
+    paddingLeft: theme.spacing(10),
+    paddingRight: theme.spacing(10),
+    marginBottom: theme.spacing(10),
+    [theme.breakpoints.down('md')]: {
+      marginTop: theme.spacing(0),
+      marginBottom: theme.spacing(4),
+    },
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: theme.spacing(5),
+      paddingRight: theme.spacing(5),
+      marginTop: theme.spacing(0),
+      marginBottom: theme.spacing(4),
+    },
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3),
+      marginTop: theme.spacing(0),
+      marginBottom: theme.spacing(4),
+    },
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    '-webkit-box-sizing': 'border-box',
+    '-moz-box-sizing': 'border-box',
+    'box-sizing': 'border-box',
+  },
+  header: {
+    color: 'white !important',
+    textAlign: 'center',
+  },
+  buttonWithMargin: buttonWithMargin(theme),
+  dividerWithMargin: dividerWithMargin(theme),
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    fontSize: '5em',
+    height: '200px',
+    width: '200px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '3em',
+      height: '150px',
+      width: '150px',
+    },
+  },
+  cardWrapper: {
+    [theme.breakpoints.down('sm')]: {
       display: 'flex',
-      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-
-      fontSize: '5em',
-      height: '200px',
-      width: '200px',
-      [theme.breakpoints.down('sm')]: {
-        fontSize: '3em',
-        height: '150px',
-        width: '150px',
-      },
     },
-    cardWrapper: {
-      [theme.breakpoints.down('sm')]: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-    },
-  })
+  },
+  textAlignCenter: {
+    textAlign: 'center',
+  },
+})
 
 export const query = graphql`
   query {

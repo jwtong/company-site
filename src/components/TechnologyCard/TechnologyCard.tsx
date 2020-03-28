@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core'
 import React from 'react'
 import Code from '@material-ui/icons/Code'
+import { offWhiteBackground } from '../SharedStyles'
 
 interface Props extends WithStyles<typeof styles> {
   technology: {
@@ -37,12 +38,14 @@ const TechnologyCard: React.FC<Props> = ({
           </div>
         </div>
         <CardContent>
-          <Typography className={classes.title}>{title}</Typography>
+          <Typography noWrap className={classes.title}>
+            {title}
+          </Typography>
           <Typography color="secondary" className={classes.type} gutterBottom>
             {type}
           </Typography>
-          <div className={classes.descriptionContainer}>
-            <div className={classes.descriptionTitleWrapper}>
+          <div className={classes.bodyContainer}>
+            <div className={classes.descriptionContainer}>
               <Typography
                 variant="subtitle1"
                 className={classes.descriptionTitle}
@@ -80,8 +83,9 @@ const TechnologyCard: React.FC<Props> = ({
               >
                 Companies Using {title}
               </Typography>
-              {companiesUsing.map((cu: any) => {
+              {companiesUsing.map((cu: any, i: number) => {
                 return React.cloneElement(cu, {
+                  key: i,
                   className: classes.companySvg,
                 })
               })}
@@ -93,7 +97,6 @@ const TechnologyCard: React.FC<Props> = ({
     </div>
   </Card>
 )
-
 const styles = (theme: Theme) =>
   createStyles({
     card: {
@@ -107,7 +110,7 @@ const styles = (theme: Theme) =>
     },
     bannerWrapper: {
       padding: '1rem',
-      backgroundColor: (props) => props.technology.icon.color,
+      backgroundColor: (props: Props) => props.technology.icon.color,
       display: 'flex',
       justifyContent: 'center',
     },
@@ -123,6 +126,8 @@ const styles = (theme: Theme) =>
       height: '4rem',
     },
     title: {
+      height: '50px',
+      lineHeight: '50px',
       textAlign: 'center',
       fontSize: '2rem',
     },
@@ -131,13 +136,22 @@ const styles = (theme: Theme) =>
       textAlign: 'center',
       textTransform: 'uppercase',
     },
-    descriptionContainer: {
+    bodyContainer: {
       marginRight: '.5rem',
       marginLeft: '.5rem',
     },
-    descriptionTitleWrapper: {
+    descriptionContainer: {
       marginTop: '1rem',
       marginBottom: '1rem',
+      [theme.breakpoints.only('lg')]: {
+        height: '200px',
+      },
+      [theme.breakpoints.only('md')]: {
+        height: '180px',
+      },
+      [theme.breakpoints.only('sm')]: {
+        height: '245px',
+      },
     },
     descriptionTitle: {
       fontSize: '1rem',
@@ -148,10 +162,10 @@ const styles = (theme: Theme) =>
     },
     alternativesContainer: {
       marginTop: '2rem',
-      backgroundColor: '#f9f9f9',
       padding: '.75rem',
       paddingTop: '1.5rem',
       position: 'relative',
+      ...offWhiteBackground,
     },
     alternativesTitle: {
       fontSize: '1rem',
