@@ -13,7 +13,6 @@ import SwiftIcon from '../assets/svg/devicon-master/icons/swift/swift-original.s
 import AppleIcon from '../assets/svg/devicon-master/icons/apple/apple-original.svg'
 import VueIcon from '../assets/svg/devicon-master/icons/vuejs/vuejs-original.svg'
 import TypescriptIcon from '../assets/svg/devicon-master/icons/typescript/typescript-original.svg'
-import Es6Icon from '../assets/svg/devicon-custom/es6-original.svg'
 import FirebaseIcon from '../assets/svg/devicon-custom/firebase-original.svg'
 import JavaIcon from '../assets/svg/devicon-master/icons/java/java-original.svg'
 import HTML5Icon from '../assets/svg/devicon-master/icons/html5/html5-original.svg'
@@ -23,7 +22,6 @@ import BootstrapIcon from '../assets/svg/devicon-master/icons/bootstrap/bootstra
 import GatsbyIcon from '../assets/svg/devicon-custom/gatsby-original.svg'
 import GraphQLIcon from '../assets/svg/devicon-custom/graphql-original.svg'
 import AzureIcon from '../assets/svg/devicon-custom/azure-original.svg'
-import JQueryIcon from '../assets/svg/devicon-master/icons/jquery/jquery-original.svg'
 import KubernetesIcon from '../assets/svg/devicon-custom/kubernetes-original.svg'
 import DockerIcon from '../assets/svg/devicon-master/icons/docker/docker-original.svg'
 import CSharpIcon from '../assets/svg/devicon-master/icons/csharp/csharp-original.svg'
@@ -35,71 +33,150 @@ import ReactNativeIcon from '../assets/svg/devicon-custom/reactnative-original.s
 import DotNetIcon from '../assets/svg/devicon-custom/dotnet-original.svg'
 import MatlabIcon from '../assets/svg/devicon-custom/matlab-original.svg'
 import ExcelIcon from '../assets/svg/devicon-custom/excel-original.svg'
+// import VuetifyIcon from '..assets/svg/devicon-custom/vuetify.svg'
+//netlify
+//github
+//markdown
+//npm
+//ios
+//t-sql / sql server
+//redis
 
-export const technologyIcons: any = {
-  Javascript: { icon: JavascriptIcon, link: 'https://www.javascript.com/' },
-  ES6: { icon: Es6Icon, link: 'https://en.wikipedia.org/wiki/ECMAScript' },
-  Typescript: { icon: TypescriptIcon, link: 'https://www.typescriptlang.org' },
-  React: { icon: ReactIcon, link: 'https://reactjs.org/' },
-  'React Native': {
+interface Technology {
+  name: string
+  icon: string
+  link: string
+  excludeFromList?: boolean
+}
+
+const technologies: Array<Technology> = [
+  {
+    name: 'JavaScript',
+    icon: JavascriptIcon,
+    link: 'https://www.javascript.com/',
+  },
+  {
+    name: 'Typescript',
+    icon: TypescriptIcon,
+    link: 'https://www.typescriptlang.org',
+  },
+  { name: 'Vue', icon: VueIcon, link: 'https://vuejs.org/' },
+  { name: 'React', icon: ReactIcon, link: 'https://reactjs.org/' },
+  { name: 'Gatsby', icon: GatsbyIcon, link: 'https://www.gatsbyjs.org/' },
+  {
+    name: 'React Native',
     icon: ReactNativeIcon,
     link: 'https://facebook.github.io/react-native/',
   },
-  Vue: { icon: VueIcon, link: 'https://vuejs.org/' },
-  Gatsby: { icon: GatsbyIcon, link: 'https://www.gatsbyjs.org/' },
-  Node: { icon: NodeIcon, link: 'https://nodejs.org/en/' },
-  'Objective-C': {
-    icon: AppleIcon,
-    link: 'https://en.wikipedia.org/wiki/Objective-C',
+  { name: 'Node', icon: NodeIcon, link: 'https://nodejs.org/en/' },
+
+  {
+    name: 'Swift',
+    icon: SwiftIcon,
+    link: 'https://developer.apple.com/swift/',
   },
-  Swift: { icon: SwiftIcon, link: 'https://developer.apple.com/swift/' },
-  Java: {
+  {
+    name: 'Java',
     icon: JavaIcon,
     link: 'https://en.wikipedia.org/wiki/Java_(programming_language)',
   },
-  Android: { icon: AndroidIcon, link: 'https://developer.android.com/' },
-  Ruby: { icon: RubyIcon, link: 'https://www.ruby-lang.org/en/' },
-  Rails: { icon: RailsIcon, link: 'https://rubyonrails.org/' },
-  'C#': {
+
+  {
+    name: 'C#',
     icon: CSharpIcon,
     link: 'https://en.wikipedia.org/wiki/C_Sharp_(programming_language)',
   },
-  '.NET': {
+  { name: 'Ruby', icon: RubyIcon, link: 'https://www.ruby-lang.org/en/' },
+  { name: 'Rails', icon: RailsIcon, link: 'https://rubyonrails.org/' },
+
+  {
+    name: '.NET',
     icon: DotNetIcon,
     link: 'https://dotnet.microsoft.com/',
   },
-  Python: { icon: PythonIcon, link: 'https://www.python.org/' },
-  SciKit: { icon: SciKitIcon, link: 'https://scikit-learn.org/stable/' },
-  Sketch: { icon: SketchIcon, link: 'https://www.sketch.com/' },
-  Balsamiq: { icon: BalsamiqIcon, link: 'https://balsamiq.com/' },
-  'Material UI': { icon: MaterialUIIcon, link: 'https://material-ui.com/' },
-  MySQL: { icon: MySQLIcon, link: 'https://www.mysql.com/' },
-  PostgreSQL: { icon: PostgreSQLIcon, link: 'https://www.postgresql.org/' },
-  MongoDB: { icon: MongoDBIcon, link: 'https://www.mongodb.com/' },
-  HTML5: { icon: HTML5Icon, link: 'https://en.wikipedia.org/wiki/HTML5' },
-  CSS3: {
+
+  {
+    name: 'Objective-C',
+    icon: AppleIcon,
+    link: 'https://en.wikipedia.org/wiki/Objective-C',
+  },
+
+  { name: 'Python', icon: PythonIcon, link: 'https://www.python.org/' },
+  {
+    name: 'SciKit',
+    icon: SciKitIcon,
+    link: 'https://scikit-learn.org/stable/',
+  },
+
+  {
+    name: 'Material UI',
+    icon: MaterialUIIcon,
+    link: 'https://material-ui.com/',
+  },
+  // {
+  //   name: 'Vuetify',
+  //   icon: VuetifyIcon,
+  //   link: 'https://vuetifyjs.com/en/',
+  // },
+  { name: 'Bootstrap', icon: BootstrapIcon, link: 'https://getbootstrap.com/' },
+
+  { name: 'MySQL', icon: MySQLIcon, link: 'https://www.mysql.com/' },
+  {
+    name: 'PostgreSQL',
+    icon: PostgreSQLIcon,
+    link: 'https://www.postgresql.org/',
+  },
+  { name: 'MongoDB', icon: MongoDBIcon, link: 'https://www.mongodb.com/' },
+  { name: 'GraphQL', icon: GraphQLIcon, link: 'https://graphql.org/' },
+
+  {
+    name: 'HTML5',
+    icon: HTML5Icon,
+    link: 'https://en.wikipedia.org/wiki/HTML5',
+  },
+  {
+    name: 'CSS3',
     icon: CSS3Icon,
     link: 'https://en.wikipedia.org/wiki/Cascading_Style_Sheets',
   },
-  Sass: { icon: SassIcon, link: 'https://sass-lang.com/' },
-  Bootstrap: { icon: BootstrapIcon, link: 'https://getbootstrap.com/' },
-  JQuery: { icon: JQueryIcon, link: 'https://jquery.com/' },
-  GraphQL: { icon: GraphQLIcon, link: 'https://graphql.org/' },
-  AWS: { icon: AwsIcon, link: 'https://aws.amazon.com/' },
-  Azure: { icon: AzureIcon, link: 'https://azure.microsoft.com/en-us/' },
-  Firebase: { icon: FirebaseIcon, link: 'https://firebase.google.com/' },
-  Docker: { icon: DockerIcon, link: 'https://www.docker.com/' },
-  Kubernetes: { icon: KubernetesIcon, link: 'https://kubernetes.io/' },
-  MATLAB: {
+  { name: 'Sass', icon: SassIcon, link: 'https://sass-lang.com/' },
+
+  { name: 'Sketch', icon: SketchIcon, link: 'https://www.sketch.com/' },
+  { name: 'Balsamiq', icon: BalsamiqIcon, link: 'https://balsamiq.com/' },
+
+  { name: 'AWS', icon: AwsIcon, link: 'https://aws.amazon.com/' },
+  {
+    name: 'Azure',
+    icon: AzureIcon,
+    link: 'https://azure.microsoft.com/en-us/',
+  },
+  {
+    name: 'Firebase',
+    icon: FirebaseIcon,
+    link: 'https://firebase.google.com/',
+  },
+
+  { name: 'Docker', icon: DockerIcon, link: 'https://www.docker.com/' },
+  { name: 'Kubernetes', icon: KubernetesIcon, link: 'https://kubernetes.io/' },
+
+  {
+    name: 'Android',
+    icon: AndroidIcon,
+    link: 'https://developer.android.com/',
+  },
+
+  {
+    name: 'MATLAB',
     icon: MatlabIcon,
     link: 'https://www.mathworks.com/products/matlab.html',
-    excludeInList: true,
+    excludeFromList: true,
   },
-  'Excel VBA': {
+  {
+    name: 'Excel VBA',
     icon: ExcelIcon,
     link: 'https://en.wikipedia.org/wiki/Visual_Basic_for_Applications',
-    excludeInList: true,
+    excludeFromList: true,
   },
-}
+]
 
-export default technologyIcons
+export default technologies

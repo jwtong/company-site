@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core'
 import Img from 'gatsby-image/withIEPolyfill'
 import SampleWorkTemplate from '../../components/SampleWorkTemplate'
-import roles from '../../utils/roles'
+import services from '../../data/services'
 import SubtitleDivider from '../../components/SubtitleDivider'
 import {
   dividerWithMargin,
@@ -24,8 +24,8 @@ interface Props extends WithStyles<typeof styles> {
 class WebScrapeDcfPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props
-    const webScrapeDcfRoles = roles.filter((r) =>
-      ['Software Development', 'Data Analysis'].includes(r.title)
+    const webScrapeDcfRoles = services.filter((role) =>
+      ['Software Development', 'Data Analysis'].includes(role.title)
     )
     const webScrapeDcfTechnologies = ['C#', 'Excel VBA']
 

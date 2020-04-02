@@ -10,20 +10,20 @@ import clsx from 'clsx'
 import React from 'react'
 import Hero from '../Hero'
 import ServicePopovers from '../ServicePopovers'
-import technologyIcons from '../../utils/technologies'
+import technologyListItems from '../../data/technologyListItems'
 import SubtitleDivider from '../SubtitleDivider'
 import { dividerWithMargin } from '../SharedStyles'
 import SiteHelmet from '../SiteHelmet'
 import HoverIconButton from '../HoverIconButton'
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
   title: string
   subtitle: string
   roles: Array<{ title: string; icon: any }>
   technologies: Array<string>
 }
 
-const SampleWorkTemplate: React.FC<Props> = ({
+const SampleWorkTemplate: React.FC<Props & WithStyles<typeof styles>> = ({
   children,
   title,
   subtitle,
@@ -63,25 +63,27 @@ const SampleWorkTemplate: React.FC<Props> = ({
           container
           spacing={1}
         >
-          {technologies.map((t: string) => {
-            const tech: any = technologyIcons[t]
+          {technologies.map((t) => {
+            const tech = technologyListItems.find(({ name }) => name === t)
             return (
-              <Grid
-                key={t}
-                item
-                className={classes.hoverIconButtonWrapper}
-                xs={3}
-                sm={2}
-                md={1}
-              >
-                {tech && (
-                  <HoverIconButton
-                    popoverText={t}
-                    link={tech.link}
-                    icon={tech.icon}
-                  />
-                )}
-              </Grid>
+              tech && (
+                <Grid
+                  key={t}
+                  item
+                  className={classes.hoverIconButtonWrapper}
+                  xs={3}
+                  sm={2}
+                  md={1}
+                >
+                  {tech && (
+                    <HoverIconButton
+                      popoverText={t}
+                      link={tech.link}
+                      icon={tech.icon}
+                    />
+                  )}
+                </Grid>
+              )
             )
           })}
         </Grid>

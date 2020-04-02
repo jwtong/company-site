@@ -11,14 +11,23 @@ import {
 import React from 'react'
 import Code from '@material-ui/icons/Code'
 import { offWhiteBackground } from '../SharedStyles'
-import { Technology } from '../../utils/interfaces'
 
-interface Props extends WithStyles<typeof styles> {
-  technology: Technology
+export interface Props {
+  category: string
+  title: string
+  description: string
+  alternatives: string
+  icon: { component: string; color: string }
+  companiesUsing: Array<{ name: string; component: any }>
 }
 
-const TechnologyCard: React.FC<Props> = ({
-  technology: { title, icon, type, description, alternatives, companiesUsing },
+const TechnologyCard: React.FC<Props & WithStyles<typeof styles>> = ({
+  title,
+  icon,
+  category,
+  description,
+  alternatives,
+  companiesUsing,
   classes,
 }) => (
   <Card className={classes.card}>
@@ -35,8 +44,12 @@ const TechnologyCard: React.FC<Props> = ({
           <Typography noWrap className={classes.title}>
             {title}
           </Typography>
-          <Typography color="secondary" className={classes.type} gutterBottom>
-            {type}
+          <Typography
+            color="secondary"
+            className={classes.category}
+            gutterBottom
+          >
+            {category}
           </Typography>
           <div className={classes.bodyContainer}>
             <div className={classes.descriptionContainer}>
@@ -77,9 +90,9 @@ const TechnologyCard: React.FC<Props> = ({
               >
                 Companies Using {title}
               </Typography>
-              {companiesUsing.map((cu: any, i: number) => {
-                return React.cloneElement(cu, {
-                  key: i,
+              {companiesUsing.map((company) => {
+                return React.cloneElement(company.component, {
+                  key: company.name,
                   className: classes.companySvg,
                 })
               })}
@@ -104,7 +117,7 @@ const styles = (theme: Theme) =>
     },
     bannerWrapper: {
       padding: '1rem',
-      backgroundColor: (props: Props) => props.technology.icon.color,
+      backgroundColor: (props: Props) => props.icon.color,
       display: 'flex',
       justifyContent: 'center',
     },
@@ -125,7 +138,7 @@ const styles = (theme: Theme) =>
       textAlign: 'center',
       fontSize: '2rem',
     },
-    type: {
+    category: {
       fontSize: '1rem',
       textAlign: 'center',
       textTransform: 'uppercase',
@@ -205,7 +218,7 @@ const styles = (theme: Theme) =>
     },
     bottomBar: {
       height: '1rem',
-      backgroundColor: (props: Props) => props.technology.icon.color,
+      backgroundColor: (props: Props) => props.icon.color,
     },
   })
 

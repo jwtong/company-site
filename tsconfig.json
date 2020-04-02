@@ -10,7 +10,10 @@
     "esModuleInterop": true,
     "noUnusedLocals": false,
     "allowJs": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
   },
   "exclude": ["node_modules", "public", ".cache"]
 }

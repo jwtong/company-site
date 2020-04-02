@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core'
 import Img from 'gatsby-image/withIEPolyfill'
 import TransitionOnShow from '../../components/TransitionOnShow'
-import roles from '../../utils/roles'
+import services from '../../data/services'
 import SampleWorkTemplate from '../../components/SampleWorkTemplate'
 import SubtitleDivider from '../../components/SubtitleDivider'
 import { dividerWithMargin } from '../../components/SharedStyles'
@@ -91,9 +91,9 @@ class JugglePage extends React.Component<Props> {
     const themeWidth = this.props.width
 
     const appImages = data.appImages.edges.map((e: { node: any }) => e.node)
-    const juggleRoles = roles.filter((r) =>
+    const juggleRoles = services.filter((role) =>
       ['Software Development', 'UI/UX Design', 'Data Analysis'].includes(
-        r.title
+        role.title
       )
     )
     const juggleTechnologies = [

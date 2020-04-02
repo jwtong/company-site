@@ -12,115 +12,22 @@ import withWidth, { isWidthDown } from '@material-ui/core/withWidth'
 import { buttonWithMargin } from '../components/SharedStyles'
 import { graphql, Link } from 'gatsby'
 import SiteHelmet from '../components/SiteHelmet'
-import technologyIcons from '../utils/technologies'
-import Facebook from '../assets/svg/companies/Facebook.svg'
-import Netflix from '../assets/svg/companies/Netflix.svg'
-import PayPal from '../assets/svg/companies/PayPal.svg'
-import Uber from '../assets/svg/companies/Uber.svg'
-import Google from '../assets/svg/companies/Google.svg'
-import Etsy from '../assets/svg/companies/Etsy.svg'
-import Twitch from '../assets/svg/companies/Twitch.svg'
-import LinkedIn from '../assets/svg/companies/LinkedIn.svg'
-import Wikipedia from '../assets/svg/companies/Wikipedia.svg'
-import YouTube from '../assets/svg/companies/YouTube.svg'
-import roles from '../utils/roles'
+import services from '../data/services'
 import ServiceCard from '../components/ServiceCard'
+import techStack from '../data/techStack'
 import TechnologyCard from '../components/TechnologyCard'
-import { Technology } from '../utils/interfaces'
-import { Role } from '../utils/interfaces'
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
   data: any
   width: any
 }
 
-const IndexPage: React.FC<Props> = ({ classes, width, data, theme }) => {
-  const technologies = [
-    {
-      icon: { component: technologyIcons.React.icon, color: '#61DAFB' },
-      title: 'ReactJS',
-      type: 'Front-End Framework',
-      description:
-        "ReactJS is one of the most popular front-end frameworks today for building web applications, noted for being fast, scalable, and simple. React Native, it's mobile counterpart, is similarly a robust platform for building cross-platform (iOS/Android) mobile apps.",
-      alternatives: 'VueJS, Swift (iOS), Java (Android)',
-      companiesUsing: [
-        <Facebook width="100%" height="60px" />,
-        <Netflix width="100%" height="30px" />,
-      ],
-    },
-    {
-      icon: { component: technologyIcons.Node.icon, color: '#83CD29' },
-      title: 'NodeJS',
-      type: 'Back-End Framework',
-      description:
-        'NodeJS is a widely adopted back-end framework that offers some of the best performance and scalability as compared to similar technologies (e.g. Ruby on Rails), and was designed for comprehensive platform integration and device compatability. ',
-      alternatives: 'Ruby on Rails, Java, .NET Core',
-      companiesUsing: [
-        <Uber
-          width="100%"
-          height="30px"
-          style={{ marginTop: '1.25rem', marginBottom: '1.25rem' }}
-        />,
-        <PayPal width="100%" height="30px" />,
-      ],
-    },
-    {
-      icon: { component: technologyIcons.Sketch.icon, color: '#fdb300' },
-      title: 'Sketch',
-      type: 'Wireframing',
-      description:
-        'Sketch is a powerful visual editing tool used to create mockups for mobile and web applications. Unlike the more traditional Photoshop, Sketch is well known for is simplicity and compatability with software engineering paradigms.',
-      alternatives: 'Balsamiq, InVision',
-      companiesUsing: [
-        <Google
-          width="100%"
-          height="40px"
-          style={{ marginTop: '.75rem', marginBottom: '.75rem' }}
-        />,
-        <Etsy width="100%" height="40px" />,
-      ],
-    },
-    {
-      icon: { component: technologyIcons.MySQL.icon, color: '#00618A' },
-      title: 'MySQL',
-      type: 'Database Language',
-      description:
-        'MySQL based on SQL language holds the largest market share for relational database management systems. It is a stable, reliable, and powerful solution that offers advanced features.',
-      alternatives: 'PostgreSQL, MongoDB',
-      companiesUsing: [
-        <Wikipedia
-          width="100%"
-          height="30px"
-          style={{ marginTop: '1.25rem', marginBottom: '1.25rem' }}
-        />,
-        <YouTube width="100%" height="30px" />,
-      ],
-    },
-    {
-      icon: { component: technologyIcons.AWS.icon, color: '#F7A80D' },
-      title: 'Amazon Web Services',
-      type: 'Hosting Platform',
-      description:
-        'Of the many hosting platforms available today, Amazon Web Services is the most widely used, and is well tuned to manage any size of application from a school-project to a billion dollar company.',
-      alternatives: 'Microsoft Azure, Google Firebase',
-      companiesUsing: [
-        <Twitch
-          width="100%"
-          height="30px"
-          style={{ marginTop: '1.25rem', marginBottom: '1.25rem' }}
-        />,
-        <LinkedIn width="100%" height="30px" />,
-      ],
-    },
-  ]
-
-  const serviceColors: Array<string> = [
-    theme.palette.secondary.light,
-    '#ee5d8e',
-    '#f281a7',
-    '#f4a0bc',
-  ]
-
+const IndexPage: React.FC<Props & WithStyles<typeof styles>> = ({
+  classes,
+  width,
+  data,
+  theme,
+}) => {
   return (
     <>
       <SiteHelmet
@@ -141,8 +48,8 @@ const IndexPage: React.FC<Props> = ({ classes, width, data, theme }) => {
         <div className={classes.bottomContainer}>
           <Typography variant="h4" className={classes.textAlignCenter}>
             {data.site.siteMetadata.companyName} is a software development
-            consultancy aimed to provide small businesses and startups with high
-            quality code through friendly, approachable means.
+            consultancy providing startups and small businesses high quality
+            code through friendly, approachable means.
           </Typography>
         </div>
       </SplashPage>
@@ -162,10 +69,9 @@ const IndexPage: React.FC<Props> = ({ classes, width, data, theme }) => {
             justify="center"
             alignItems="stretch"
           >
-            {roles.map((r: Role, index: number) => {
-              const color = serviceColors[index]
+            {services.map((service, index) => {
               return (
-                <Grid key={index} item xs={12} sm={6} lg={3}>
+                <Grid key={service.title} item xs={12} sm={6} lg={3}>
                   <TransitionOnShow
                     visibilitySensorProps={{ partialVisibility: true }}
                     transitionType="Zoom"
@@ -179,7 +85,14 @@ const IndexPage: React.FC<Props> = ({ classes, width, data, theme }) => {
                     }}
                   >
                     <div>
-                      <ServiceCard role={r} color={color} />
+                      <ServiceCard
+                        {...service}
+                        color={
+                          index === 0
+                            ? theme.palette.secondary.light
+                            : service.color
+                        }
+                      />
                     </div>
                   </TransitionOnShow>
                 </Grid>
@@ -204,25 +117,12 @@ const IndexPage: React.FC<Props> = ({ classes, width, data, theme }) => {
             justify="center"
             alignItems="stretch"
           >
-            {technologies.map((t: Technology, index: number) => {
+            {techStack.map((tech) => {
               return (
-                <Grid key={index} item xs={12} sm={6} lg={4}>
-                  <TransitionOnShow
-                    visibilitySensorProps={{ partialVisibility: true }}
-                    transitionType="Zoom"
-                    delay={isWidthDown('sm', width) ? 0 : (index % 3) * 200}
-                    transitionProps={{
-                      timeout: { enter: 1000 },
-                      className: classes.transition,
-                    }}
-                    containerStyle={{
-                      height: '100%',
-                    }}
-                  >
-                    <div>
-                      <TechnologyCard technology={t} />
-                    </div>
-                  </TransitionOnShow>
+                <Grid key={tech.category} item xs={12} sm={6} lg={4}>
+                  <div>
+                    <TechnologyCard {...tech} />
+                  </div>
                 </Grid>
               )
             })}

@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core'
 import Img from 'gatsby-image/withIEPolyfill'
 import SampleWorkTemplate from '../../components/SampleWorkTemplate'
-import roles from '../../utils/roles'
+import services from '../../data/services'
 import SubtitleDivider from '../../components/SubtitleDivider'
 import { isWidthDown } from '@material-ui/core/withWidth'
 import {
@@ -28,8 +28,8 @@ interface Props extends WithStyles<typeof styles> {
 class RecipeBuilderPage extends React.Component<Props> {
   public render() {
     const { classes, data, width } = this.props
-    const recipeBuilderRoles = roles.filter((r) =>
-      ['Software Development', 'Data Analysis'].includes(r.title)
+    const recipeBuilderRoles = services.filter((role) =>
+      ['Software Development', 'Data Analysis'].includes(role.title)
     )
     const recipeBuilderTechnologies = ['Java', 'MATLAB']
 

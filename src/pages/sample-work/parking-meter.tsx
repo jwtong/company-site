@@ -11,7 +11,7 @@ import {
   WithStyles,
   Theme,
 } from '@material-ui/core'
-import roles from '../../utils/roles'
+import services from '../../data/services'
 import SampleWorkTemplate from '../../components/SampleWorkTemplate'
 import SubtitleDivider from '../../components/SubtitleDivider'
 import ParkingMeterPaper from '../../assets/documents/ParkingMeterPaper.pdf'
@@ -29,9 +29,9 @@ interface Props extends WithStyles<typeof styles> {
 class ParkingMeterPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props
-    const parkingMeterRoles = roles.filter((r) =>
+    const parkingMeterRoles = services.filter((role) =>
       ['Software Development', 'UI/UX Design', 'Product Management'].includes(
-        r.title
+        role.title
       )
     )
     const parkingMeterTechnologies = ['React', 'Python', 'SciKit']

@@ -19,14 +19,14 @@ import {
   offWhiteBackground,
 } from '../components/SharedStyles'
 import SiteHelmet from '../components/SiteHelmet'
-import technologyIcons from '../utils/technologies'
+import technologyListItems from '../data/technologyListItems'
 import HoverIconButton from '../components/HoverIconButton'
 
 interface Props extends WithStyles<typeof styles> {
   data: any
 }
 
-const AboutPage = ({ data, classes }: Props) => {
+const AboutPage: React.FC<Props> = ({ data, classes }) => {
   const people = [
     {
       name: 'Jeremy Tong',
@@ -41,7 +41,11 @@ const AboutPage = ({ data, classes }: Props) => {
     {
       name: 'Tommy Clark',
       avatar: data.jeremyAvatar,
-      about: [''],
+      about: [
+        'Tommy is a self taught programmer. He earned a BA in Japanese before spending time teaching English in Japan.',
+        'For the past 3 years he’s held a position as CTO and lead software developer for a third party logistics company building cloud-native, reactive, B2B web applications across various tech stacks. Through his experience in tech, Tommy has cultivated a dedication to deploying performant, secure, reliable, scalable software. He also has general business experience in logistics and data analysis.',
+        'In his spare time Tommy enjoys rock climbing and board games.',
+      ],
       ...offWhiteBackground,
     },
   ]
@@ -116,15 +120,13 @@ const AboutPage = ({ data, classes }: Props) => {
           text={"Knit's Technologies"}
           otherProps={{ className: classes.dividerWithMargin }}
         />
-        <Grid container spacing={3} direction="row" justify="center">
-          {Object.entries(technologyIcons)
-            .filter((entry: any) => !entry[1].excludeInList)
-            .map((entry: any) => {
-              const name = entry[0]
-              const value = entry[1]
+        <Grid container spacing={3}>
+          {technologyListItems
+            .filter((technology) => !technology.excludeFromList)
+            .map((technology) => {
               return (
                 <Grid
-                  key={name}
+                  key={technology.name}
                   item
                   xs={3}
                   sm={2}
@@ -133,8 +135,8 @@ const AboutPage = ({ data, classes }: Props) => {
                 >
                   <HoverIconButton
                     popoverText={name}
-                    link={value.link}
-                    icon={value.icon}
+                    link={technology.link}
+                    icon={technology.icon}
                   />
                 </Grid>
               )

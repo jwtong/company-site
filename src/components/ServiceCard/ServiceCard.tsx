@@ -7,15 +7,18 @@ import {
   CardContent,
 } from '@material-ui/core'
 import React from 'react'
-import { Role } from '../../utils/interfaces'
 
-interface Props extends WithStyles<typeof styles> {
-  role: Role
+export interface Props {
+  title: string
+  icon: any
+  text: string
   color: string
 }
 
-const ServiceCard: React.FC<Props> = ({
-  role: { title, icon, text },
+const ServiceCard: React.FC<Props & WithStyles<typeof styles>> = ({
+  title,
+  icon,
+  text,
   classes,
 }) => (
   <Card className={classes.card}>

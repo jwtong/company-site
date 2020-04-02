@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core'
 import Img from 'gatsby-image/withIEPolyfill'
 import SampleWorkTemplate from '../../components/SampleWorkTemplate'
-import roles from '../../utils/roles'
+import services from '../../data/services'
 import SubtitleDivider from '../../components/SubtitleDivider'
 import {
   dividerWithMargin,
@@ -25,9 +25,9 @@ interface Props extends WithStyles<typeof styles> {
 class ZicPage extends React.Component<Props> {
   public render() {
     const { classes, data } = this.props
-    const zicRoles = roles.filter((r) =>
+    const zicRoles = services.filter((role) =>
       ['Software Development', 'UI/UX Design', 'Product Management'].includes(
-        r.title
+        role.title
       )
     )
     const zicTechnologies = ['HTML5', 'CSS3', 'Javascript', 'JQuery', 'Java']

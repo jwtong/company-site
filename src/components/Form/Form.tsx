@@ -5,12 +5,13 @@ import {
   TextField,
   WithStyles,
   createStyles,
-  withStyles
-} from "@material-ui/core";
-import validations from "../../utils/validations";
-import clsx from "clsx";
+  withStyles,
+  Theme,
+} from '@material-ui/core'
+import validations from '../../utils/validations'
+import clsx from 'clsx'
 
-export const formStyles = (theme: any) => ({
+export const formStyles = (theme: Theme) => ({
   form: {
     // position: "absolute",
     // left: "0",
@@ -30,81 +31,60 @@ export const formStyles = (theme: any) => ({
     // }
   },
   fullWidthField: {
-    width: "100%"
+    width: '100%',
   },
   fieldWithMarginRight: {
-    marginRight: "5%",
-    [theme.breakpoints.down("xs")]: {
-      marginRight: "0%"
-    }
+    marginRight: '5%',
+    [theme.breakpoints.down('xs')]: {
+      marginRight: '0%',
+    },
   },
   fieldsContainer: {
-    display: "flex",
-    flexDirection: "column"
+    display: 'flex',
+    flexDirection: 'column',
   },
   formRow: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    flexWrap: "wrap"
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    flexWrap: 'wrap',
   },
   textField: {
-    width: "300px",
-    [theme.breakpoints.down("sm")]: {
-      width: "275px"
+    width: '300px',
+    [theme.breakpoints.down('sm')]: {
+      width: '275px',
     },
-    fieldWithMarginRight: {
-      marginRight: '5%',
-      [theme.breakpoints.down('xs')]: {
-        marginRight: '0%',
-      },
-    },
-    fieldsContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    formRow: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      flexWrap: 'wrap',
-    },
-    textField: {
-      width: '300px',
-      [theme.breakpoints.down('sm')]: {
-        width: '275px',
-      },
-      [theme.breakpoints.down('xs')]: {
-        width: '100%',
-      },
-    },
-    inputText: {
-      fontFamily: 'Open Sans',
-      fontSize: '1.25rem',
-      [theme.breakpoints.down('xs')]: {
-        fontSize: '1rem',
-      },
-    },
-    submitButton: {
-      width: '200px',
-      alignSelf: 'center',
-      marginTop: '3%',
-    },
-    snackbarsContainer: {
+    [theme.breakpoints.down('xs')]: {
       width: '100%',
-      position: 'absolute',
     },
-    snackbar: {
+  },
+  inputText: {
+    fontFamily: 'Open Sans',
+    fontSize: '1.25rem',
+    [theme.breakpoints.down('xs')]: {
       fontSize: '1rem',
-      textAlign: 'center',
-      position: 'absolute',
-      width: '70%',
-      padding: '2%',
     },
-    errorSnackbar: {
-      backgroundColor: theme.palette.secondary.main,
-    },
-  })
+  },
+  submitButton: {
+    width: '200px',
+    alignSelf: 'center',
+    marginTop: '3%',
+  },
+  snackbarsContainer: {
+    width: '100%',
+    position: 'absolute',
+  },
+  snackbar: {
+    fontSize: '1rem',
+    textAlign: 'center',
+    position: 'absolute',
+    width: '70%',
+    padding: '2%',
+  },
+  errorSnackbar: {
+    backgroundColor: theme.palette.secondary.main,
+  },
+})
 
 const styles = (theme: Theme) => createStyles(formStyles(theme))
 
@@ -144,7 +124,6 @@ class Form extends React.Component<Props, State> {
     this.state = state
   }
 
-  //TODO: is this working?
   private handleValidations = (fieldName: string, value: any) => {
     if (this.props.fieldValidations[fieldName]) {
       const validationNames = this.props.fieldValidations[fieldName]
@@ -188,8 +167,8 @@ class Form extends React.Component<Props, State> {
     if (formOk) {
       axios
         .post(this.props.formEndpoint, data, {
-          headers: { Accept: "application/json" },
-          timeout: 5000
+          headers: { Accept: 'application/json' },
+          timeout: 5000,
         })
         .then((response) => {
           if (document.getElementById(this.props.formId)) {
@@ -207,7 +186,7 @@ class Form extends React.Component<Props, State> {
     }
   }
 
-  private getValidationProps = (fieldName: string, helperText?: string) => {
+  private getValidationProps = (fieldName: any, helperText: any = null) => {
     return {
       error: !!this.state.errors[fieldName],
       helperText: this.state.errors[fieldName] || helperText,
