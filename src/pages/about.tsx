@@ -40,7 +40,7 @@ const AboutPage: React.FC<Props> = ({ data, classes }) => {
     },
     {
       name: 'Tommy Clark',
-      avatar: data.jeremyAvatar,
+      avatar: data.tommyAvatar,
       about: [
         'Tommy is a self taught programmer. He earned a BA in Japanese before spending time teaching English in Japan.',
         'For the past 3 years he’s held a position as CTO and lead software developer for a third party logistics company building cloud-native, reactive, B2B web applications across various tech stacks. Through his experience in tech, Tommy has cultivated a dedication to deploying performant, secure, reliable, scalable software. He also has general business experience in logistics and data analysis.',
@@ -92,6 +92,7 @@ const AboutPage: React.FC<Props> = ({ data, classes }) => {
                 <Typography className={classes.name} variant="h4">
                   {p.name}
                 </Typography>
+
                 <Img
                   fixed={p.avatar.childImageSharp.fixed}
                   alt={p.name}
@@ -134,7 +135,7 @@ const AboutPage: React.FC<Props> = ({ data, classes }) => {
                   className={classes.hoverIconButtonWrapper}
                 >
                   <HoverIconButton
-                    popoverText={name}
+                    popoverText={technology.name}
                     link={technology.link}
                     icon={technology.icon}
                   />
@@ -223,6 +224,13 @@ const styles = (theme: Theme) =>
 export const query = graphql`
   query {
     jeremyAvatar: file(relativePath: { eq: "images/jeremy_profile.jpeg" }) {
+      childImageSharp {
+        fixed(width: 200) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    tommyAvatar: file(relativePath: { eq: "images/favicon.png" }) {
       childImageSharp {
         fixed(width: 200) {
           ...GatsbyImageSharpFixed
