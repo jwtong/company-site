@@ -1,73 +1,74 @@
-import React from "react";
-import _ from "lodash";
-import { graphql } from "gatsby";
+import React from 'react'
+import _ from 'lodash'
+import { graphql } from 'gatsby'
 import {
   Typography,
   Divider,
   withStyles,
   withWidth,
   createStyles,
-  WithStyles
-} from "@material-ui/core";
-import Img from "gatsby-image/withIEPolyfill";
-import TransitionOnShow from "../../components/TransitionOnShow";
-import roles from "../../utils/roles";
-import SampleWorkTemplate from "../../components/SampleWorkTemplate";
-import SubtitleDivider from "../../components/SubtitleDivider";
-import { dividerWithMargin } from "../../components/SharedStyles";
-import clsx from "clsx";
+  WithStyles,
+  Theme,
+} from '@material-ui/core'
+import Img from 'gatsby-image/withIEPolyfill'
+import TransitionOnShow from '../../components/TransitionOnShow'
+import services from '../../data/services'
+import SampleWorkTemplate from '../../components/SampleWorkTemplate'
+import SubtitleDivider from '../../components/SubtitleDivider'
+import { dividerWithMargin } from '../../components/SharedStyles'
+import clsx from 'clsx'
 
-const styles = (theme: any) =>
+const styles = (theme: Theme) =>
   createStyles({
     dividerWithMargin: dividerWithMargin(theme),
     dividerLine: {
-      maxHeight: "1px",
-      color: "#F6F6F6"
+      maxHeight: '1px',
+      color: '#F6F6F6',
     },
     appImage: {
-      width: "300px",
-      height: "550px",
-      [theme.breakpoints.down("xs")]: {
-        width: "275px",
-        height: "500px"
-      }
+      width: '300px',
+      height: '550px',
+      [theme.breakpoints.down('xs')]: {
+        width: '275px',
+        height: '500px',
+      },
     },
     designImageWrapper: {
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap",
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
       marginBottom: theme.spacing(4),
-      [theme.breakpoints.down("xs")]: {
-        marginBottom: theme.spacing(3)
-      }
+      [theme.breakpoints.down('xs')]: {
+        marginBottom: theme.spacing(3),
+      },
     },
     appImagesContainer: {
-      display: "flex",
-      justifyContent: "center",
-      flexWrap: "wrap",
-      marginBottom: theme.spacing(3)
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      marginBottom: theme.spacing(3),
     },
     designImage: {
-      width: "1500px",
-      height: "600px",
-      [theme.breakpoints.down("sm")]: {
-        width: "1200px",
-        height: "400px"
+      width: '1500px',
+      height: '600px',
+      [theme.breakpoints.down('sm')]: {
+        width: '1200px',
+        height: '400px',
       },
-      [theme.breakpoints.down("xs")]: {
-        width: "750px",
-        height: "300px"
-      }
-    }
-  });
+      [theme.breakpoints.down('xs')]: {
+        width: '750px',
+        height: '300px',
+      },
+    },
+  })
 
 interface Props extends WithStyles<typeof styles> {
-  data: any;
-  width: any;
+  data: any
+  width: any
 }
 class JugglePage extends React.Component<Props> {
   private getAppImage = (appImages: Array<any>, imageName: string) => {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <TransitionOnShow
         visibilitySensorProps={{ partialVisibility: true }}
@@ -82,37 +83,41 @@ class JugglePage extends React.Component<Props> {
           }
         />
       </TransitionOnShow>
-    );
-  };
+    )
+  }
 
   public render() {
-    const { classes, data } = this.props;
-    const themeWidth = this.props.width;
+    const { classes, data } = this.props
+    const themeWidth = this.props.width
 
-    const appImages = data.appImages.edges.map((e: { node: any }) => e.node);
-
-    const juggleRoles = [roles[0], roles[1], roles[2], roles[3]];
+    const appImages = data.appImages.edges.map((e: { node: any }) => e.node)
+    const juggleRoles = services.filter((role) =>
+      ['Software Development', 'UI/UX Design', 'Data Analysis'].includes(
+        role.title
+      )
+    )
     const juggleTechnologies = [
-      "React Native",
-      "Sketch",
-      "Balsamiq",
-      "Ruby on Rails",
-      "MySQL",
-      "AWS",
-      "Google Firebase"
-    ];
+      'React Native',
+      'Sketch',
+      'Balsamiq',
+      'Ruby',
+      'Rails',
+      'MySQL',
+      'AWS',
+      'Firebase',
+    ]
 
     return (
       <SampleWorkTemplate
-        title={"Juggle"}
+        title={'Juggle'}
         subtitle={
-          "A mobile app that allows families to book sitters on demand, designed with a focus on ease-of-use while providing a robust set of user-feedback driven features."
+          'A mobile app that allows families to book sitters on demand, designed with a focus on ease-of-use while providing a robust set of user-feedback driven features.'
         }
         roles={juggleRoles}
         technologies={juggleTechnologies}
       >
         <SubtitleDivider
-          text={"Preliminary Design"}
+          text={'Preliminary Design'}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.designImageWrapper}>
@@ -122,27 +127,27 @@ class JugglePage extends React.Component<Props> {
           />
         </div>
         <Typography variant="subtitle1">
-          Juggle's mobile app was rebuilt to offer cross-platform (Android/iOS)
-          support, a revamped user-interface, and to support a suite of new
-          critical features. First, a research study was conducted on families
-          and sitters to ensure that the new app targeted the right concerns.
-          Next, feature specifications and UI/UX mockups were drafted and
-          presented to users and shared with the Juggle team, then refined to
-          unitized objectives to be translated into code.
+          Juggle&apos;s mobile app was rebuilt to offer cross-platform
+          (Android/iOS) support, a revamped user-interface, and to support a
+          suite of new critical features. First, a research study was conducted
+          on families and sitters to ensure that the new app targeted the right
+          concerns. Next, feature specifications and UI/UX mockups were drafted
+          and presented to users and shared with the Juggle team, then refined
+          to unitized objectives to be translated into code.
         </Typography>
         <SubtitleDivider
-          text={"Notable Features"}
+          text={'Notable Features'}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.appImagesContainer}>
-          {this.getAppImage(appImages, "messaging1")}
-          {this.getAppImage(appImages, "messaging2")}
+          {this.getAppImage(appImages, 'messaging1')}
+          {this.getAppImage(appImages, 'messaging2')}
         </div>
         <Typography variant="h6" gutterBottom>
           Proprietary In-App Messaging Platform
         </Typography>
         <Typography variant="subtitle1">
-          Built in Google Firebase and inspired by Tinder, Juggle's in-app
+          Built in Google Firebase and inspired by Tinder, Juggle&apos;s in-app
           messaging platform allows families to communicate with sitters in
           real-time, making it easier to coordinate bookings and special
           requests.
@@ -151,28 +156,28 @@ class JugglePage extends React.Component<Props> {
           className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
-          {this.getAppImage(appImages, "pricing1")}
-          {this.getAppImage(appImages, "pricing2")}
-          {this.getAppImage(appImages, "pricing3")}
-          {this.getAppImage(appImages, "pricing4")}
+          {this.getAppImage(appImages, 'pricing1')}
+          {this.getAppImage(appImages, 'pricing2')}
+          {this.getAppImage(appImages, 'pricing3')}
+          {this.getAppImage(appImages, 'pricing4')}
         </div>
 
         <Typography variant="h6" gutterBottom>
           Surge / Variable Pricing Model Support and Roll-Out
         </Typography>
         <Typography variant="subtitle1">
-          Juggle's new app supports a completely revamped pricing model. This
-          includes variable pricing for each market location, surge pricing to
-          accomodate high-demand periods, promo-code and gift cards,
+          Juggle&apos;s new app supports a completely revamped pricing model.
+          This includes variable pricing for each market location, surge pricing
+          to accomodate high-demand periods, promo-code and gift cards,
           transportation reimbursement, and pre-booking payment estimation.
         </Typography>
         <Divider
           className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
-          {this.getAppImage(appImages, "search1")}
-          {this.getAppImage(appImages, "search2")}
-          {this.getAppImage(appImages, "search3")}
+          {this.getAppImage(appImages, 'search1')}
+          {this.getAppImage(appImages, 'search2')}
+          {this.getAppImage(appImages, 'search3')}
         </div>
         <Typography variant="h6" gutterBottom>
           Smart Search
@@ -189,26 +194,26 @@ class JugglePage extends React.Component<Props> {
           className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
-          {this.getAppImage(appImages, "backgroundCheck1")}
-          {this.getAppImage(appImages, "backgroundCheck2")}
+          {this.getAppImage(appImages, 'backgroundCheck1')}
+          {this.getAppImage(appImages, 'backgroundCheck2')}
         </div>
         <Typography variant="h6" gutterBottom>
           Evident Background Check Integration
         </Typography>
         <Typography variant="subtitle1">
-          After discussing with Evident, Juggle's third party background check
-          provider, a solution was formulated to automatically distribute checks
-          to sitter's who requested them on their applications, then process the
-          completed checks automatically into the app as represented by the
-          green shield checkmark.
+          After discussing with Evident, Juggle&apos;s third party background
+          check provider, a solution was formulated to automatically distribute
+          checks to sitter&apos;s who requested them on their applications, then
+          process the completed checks automatically into the app as represented
+          by the green shield checkmark.
         </Typography>
         <Divider
           className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
-          {this.getAppImage(appImages, "referral1")}
-          {this.getAppImage(appImages, "referral2")}
-          {this.getAppImage(appImages, "referral3")}
+          {this.getAppImage(appImages, 'referral1')}
+          {this.getAppImage(appImages, 'referral2')}
+          {this.getAppImage(appImages, 'referral3')}
         </div>
         <Typography variant="h6" gutterBottom>
           Referral Code Program
@@ -224,27 +229,28 @@ class JugglePage extends React.Component<Props> {
           className={clsx(classes.dividerWithMargin, classes.dividerLine)}
         />
         <div className={classes.appImagesContainer}>
-          {this.getAppImage(appImages, "emergency1")}
-          {this.getAppImage(appImages, "emergency2")}
-          {this.getAppImage(appImages, "emergency3")}
-          {this.getAppImage(appImages, "emergency4")}
+          {this.getAppImage(appImages, 'emergency1')}
+          {this.getAppImage(appImages, 'emergency2')}
+          {this.getAppImage(appImages, 'emergency3')}
+          {this.getAppImage(appImages, 'emergency4')}
         </div>
         <Typography variant="h6" gutterBottom>
           Emergency / Last Minute Need Support
         </Typography>
         <Typography variant="subtitle1" gutterBottom>
-          To outcompete similar apps, much of Juggle's new functionality centers
-          around addressing last-minute emergency situations. When scheduling a
-          booking, families may optionally specify whether Juggle should
-          automatically post a new job for applicants if the scheduled sitter
-          cancels, and within 48 hours of a booking start, they may additionally
-          add a cash bonus to incentivize sitters to cover the booking. Juggle
-          also features an alert dashboard to announce last-minute opportunities
-          to sitters. Together, this allows Juggle to successfully match sitters
-          with families for over 90% of requests made.
+          To outcompete similar apps, much of Juggle&apos;s new functionality
+          centers around addressing last-minute emergency situations. When
+          scheduling a booking, families may optionally specify whether Juggle
+          should automatically post a new job for applicants if the scheduled
+          sitter cancels, and within 48 hours of a booking start, they may
+          additionally add a cash bonus to incentivize sitters to cover the
+          booking. Juggle also features an alert dashboard to announce
+          last-minute opportunities to sitters. Together, this allows Juggle to
+          successfully match sitters with families for over 90% of requests
+          made.
         </Typography>
       </SampleWorkTemplate>
-    );
+    )
   }
 }
 
@@ -274,6 +280,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default withWidth()(withStyles(styles, { withTheme: true })(JugglePage));
+export default withWidth()(withStyles(styles, { withTheme: true })(JugglePage))

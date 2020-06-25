@@ -1,3 +1,3 @@
-import TransitionGridList from "./TransitionGridList.tsx";
+import TransitionGridList from './TransitionGridList.tsx'
 
-export default TransitionGridList;
+export default TransitionGridList

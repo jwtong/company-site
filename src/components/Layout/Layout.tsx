@@ -1,16 +1,15 @@
 // site wrapper contains header, footer, and things that belong on all pages
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
-import "./Layout.css";
-import Header from "../Header";
-import Footer from "../Footer";
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import './Layout.css'
+import Header from '../Header'
+import Footer from '../Footer'
 
 interface Props {
-  children: any;
-  location: any;
+  location: any
 }
 
-const Layout = ({ children, location }: Props) => (
+const Layout: React.FC<Props> = ({ children, location }) => (
   <StaticQuery
     query={graphql`
       query LayoutQuery {
@@ -19,33 +18,33 @@ const Layout = ({ children, location }: Props) => (
             companyName
             email
             linkedIn
+            githubSource
           }
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <>
         <Header
           location={location}
           pages={[
-            { text: "Process", link: "/process/" },
-            { text: "Services", link: "/services/" },
-            { text: "About Us", link: "/about/" },
-            { text: "Sample Work", link: "/sample-work/" },
-            { text: "Contact", link: "/contact/" }
+            { text: 'Process', link: '/process/' },
+            // { text: "Services", link: "/services/" },
+            { text: 'About Us', link: '/about/' },
+            { text: 'Sample Work', link: '/sample-work/' },
+            { text: 'Contact', link: '/contact/' },
           ]}
         />
         <main>{children}</main>
         <Footer
-          mainText={`Coded with ReactJS and GatsbyJS by ${
-            data.site.siteMetadata.companyName
-          } ©  ${new Date().getFullYear()}`}
+          mainText={`Released under the MIT License © ${new Date().getFullYear()} Knit, LLC`}
           email={data.site.siteMetadata.email}
           linkedIn={data.site.siteMetadata.linkedIn}
+          githubSource={data.site.siteMetadata.githubSource}
         />
       </>
     )}
   />
-);
+)
 
-export default Layout;
+export default Layout

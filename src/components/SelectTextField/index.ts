@@ -1,3 +1,3 @@
-import SelectTextField from "./SelectTextField";
+import SelectTextField from './SelectTextField'
 
-export default SelectTextField;
+export default SelectTextField

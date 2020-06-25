@@ -1,104 +1,59 @@
-import React from "react";
-import _ from "lodash";
-import { graphql } from "gatsby";
+import React from 'react'
+import _ from 'lodash'
+import { graphql } from 'gatsby'
 import {
   Typography,
   withStyles,
   createStyles,
   withWidth,
-  WithStyles
-} from "@material-ui/core";
-import Img from "gatsby-image/withIEPolyfill";
-import SampleWorkTemplate from "../../components/SampleWorkTemplate";
-import roles from "../../utils/roles";
-import SubtitleDivider from "../../components/SubtitleDivider";
-import { isWidthDown } from "@material-ui/core/withWidth";
+  WithStyles,
+} from '@material-ui/core'
+import Img from 'gatsby-image/withIEPolyfill'
+import SampleWorkTemplate from '../../components/SampleWorkTemplate'
+import services from '../../data/services'
+import SubtitleDivider from '../../components/SubtitleDivider'
+import { isWidthDown } from '@material-ui/core/withWidth'
 import {
   dividerWithMargin,
   topBottomImageWrapper,
-  imagesContainer
-} from "../../components/SharedStyles";
-import clsx from "clsx";
-
-const styles = (theme: any) =>
-  createStyles({
-    dividerWithMargin: dividerWithMargin(theme),
-    topBottomImageWrapper: topBottomImageWrapper(theme),
-    imagesContainer: imagesContainer(theme),
-    confusionMatrixImage: {
-      width: "60%",
-      [theme.breakpoints.down("sm")]: {
-        width: "75%"
-      },
-      [theme.breakpoints.down("xs")]: {
-        width: "100%"
-      }
-    },
-    shelfImage: {
-      width: "50%",
-      [theme.breakpoints.down("sm")]: {
-        width: "60%"
-      },
-      [theme.breakpoints.down("xs")]: {
-        width: "80%"
-      }
-    },
-    stepsContainer: {
-      paddingTop: theme.spacing(2)
-    },
-    stepWrapper: {
-      paddingTop: theme.spacing(1),
-      paddingBottom: theme.spacing(1),
-      display: "flex",
-      justifyContent: "flex-start"
-    },
-    stepNumber: {
-      marginRight: theme.spacing(3)
-    },
-    applicationImage: {
-      width: "100%",
-      [theme.breakpoints.down("xs")]: {
-        width: "500px"
-      }
-    },
-    applicationImage2: {
-      marginLeft: "-300px"
-    },
-    applicationImageSmallWrapper: { overflow: "hidden" }
-  });
+  imagesContainer,
+} from '../../components/SharedStyles'
+import clsx from 'clsx'
 
 interface Props extends WithStyles<typeof styles> {
-  data: any;
-  width: any;
+  data: any
+  width: any
 }
 
 class RecipeBuilderPage extends React.Component<Props> {
   public render() {
-    const { classes, data, width } = this.props;
-    const recipeBuilderRoles = [roles[0], roles[4]];
-    const recipeBuilderTechnologies = ["Java", "MATLAB"];
+    const { classes, data, width } = this.props
+    const recipeBuilderRoles = services.filter((role) =>
+      ['Software Development', 'Data Analysis'].includes(role.title)
+    )
+    const recipeBuilderTechnologies = ['Java', 'MATLAB']
 
-    const images = data.images.edges.map((e: { node: any }) => e.node);
+    const images = data.images.edges.map((e: { node: any }) => e.node)
 
     const applicationSteps = [
-      "Select images",
-      "Connect to Matlab through Java",
-      "Classify images in Matlab and return results to GUI",
-      "Call “What’s in the Fridge” API on results",
-      "Display Recipes"
-    ];
+      'Select images',
+      'Connect to Matlab through Java',
+      'Classify images in Matlab and return results to GUI',
+      'Call “What’s in the Fridge” API on results',
+      'Display Recipes',
+    ]
 
     return (
       <SampleWorkTemplate
-        title={"Computer Vision Recipe Builder"}
+        title={'Computer Vision Recipe Builder'}
         subtitle={
-          "A computer vision app that allows you to take pictures of your pantry, recognizes what food you have, and tells you what recipes you can cook right away"
+          'A computer vision app that allows you to take pictures of your pantry, recognizes what food you have, and tells you what recipes you can cook right away'
         }
         roles={recipeBuilderRoles}
         technologies={recipeBuilderTechnologies}
       >
         <SubtitleDivider
-          text={"Overview"}
+          text={'Overview'}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <Typography variant="subtitle1">
@@ -112,7 +67,7 @@ class RecipeBuilderPage extends React.Component<Props> {
           recipe synthesis.
         </Typography>
         <SubtitleDivider
-          text={"Training the Neural Network on Food"}
+          text={'Training the Neural Network on Food'}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.imagesContainer}>
@@ -121,7 +76,7 @@ class RecipeBuilderPage extends React.Component<Props> {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipeBuilder2"
+                (d: { name: string }) => d.name === 'recipeBuilder2'
               ).childImageSharp.fluid
             }
           />
@@ -132,11 +87,11 @@ class RecipeBuilderPage extends React.Component<Props> {
           to select only a set of 23 common foods which this SVM could recognize
           (rather than having it recognize many foods, which could require
           millions of images). As shown above, we were able to achieve
-          relatively good recognition accuracy (> 60%) for most of the selected
-          foods on stock images.
+          relatively good recognition accuracy (&gt; 60%) for most of the
+          selected foods on stock images.
         </Typography>
         <SubtitleDivider
-          text={"Compound Image Algorithm (Shelf-Detector)"}
+          text={'Compound Image Algorithm (Shelf-Detector)'}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.topBottomImageWrapper}>
@@ -145,15 +100,15 @@ class RecipeBuilderPage extends React.Component<Props> {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipeBuilder4"
+                (d: { name: string }) => d.name === 'recipeBuilder4'
               ).childImageSharp.fluid
             }
           />
         </div>
         <Typography variant="subtitle1">
           First, we simplified this problem to the stock image above, and
-          attempted to create an algorithm that could split the image along it's
-          horizontal axis (i.e. the shelves).
+          attempted to create an algorithm that could split the image along
+          it&apos;s horizontal axis (i.e. the shelves).
         </Typography>
         <div className={classes.topBottomImageWrapper}>
           <Img
@@ -161,7 +116,7 @@ class RecipeBuilderPage extends React.Component<Props> {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipeBuilder5"
+                (d: { name: string }) => d.name === 'recipeBuilder5'
               ).childImageSharp.fluid
             }
           />
@@ -176,7 +131,7 @@ class RecipeBuilderPage extends React.Component<Props> {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipeBuilder6"
+                (d: { name: string }) => d.name === 'recipeBuilder6'
               ).childImageSharp.fluid
             }
           />
@@ -191,7 +146,7 @@ class RecipeBuilderPage extends React.Component<Props> {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipeBuilder7"
+                (d: { name: string }) => d.name === 'recipeBuilder7'
               ).childImageSharp.fluid
             }
           />
@@ -200,7 +155,7 @@ class RecipeBuilderPage extends React.Component<Props> {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipeBuilder8"
+                (d: { name: string }) => d.name === 'recipeBuilder8'
               ).childImageSharp.fluid
             }
           />
@@ -209,7 +164,7 @@ class RecipeBuilderPage extends React.Component<Props> {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipeBuilder9"
+                (d: { name: string }) => d.name === 'recipeBuilder9'
               ).childImageSharp.fluid
             }
           />
@@ -218,7 +173,7 @@ class RecipeBuilderPage extends React.Component<Props> {
             fluid={
               _.find(
                 images,
-                (d: { name: string }) => d.name === "recipeBuilder10"
+                (d: { name: string }) => d.name === 'recipeBuilder10'
               ).childImageSharp.fluid
             }
           />
@@ -229,11 +184,11 @@ class RecipeBuilderPage extends React.Component<Props> {
           filtering to split the foods, a similar technique could be applied.
         </Typography>
         <SubtitleDivider
-          text={"Java Application and Integration with Spoonacular API"}
+          text={'Java Application and Integration with Spoonacular API'}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.imagesContainer}>
-          {isWidthDown("xs", width) ? (
+          {isWidthDown('xs', width) ? (
             <>
               <div className={classes.applicationImageSmallWrapper}>
                 <Img
@@ -241,7 +196,7 @@ class RecipeBuilderPage extends React.Component<Props> {
                   fluid={
                     _.find(
                       images,
-                      (d: { name: string }) => d.name === "recipeBuilder3"
+                      (d: { name: string }) => d.name === 'recipeBuilder3'
                     ).childImageSharp.fluid
                   }
                 />
@@ -255,7 +210,7 @@ class RecipeBuilderPage extends React.Component<Props> {
                   fluid={
                     _.find(
                       images,
-                      (d: { name: string }) => d.name === "recipeBuilder3"
+                      (d: { name: string }) => d.name === 'recipeBuilder3'
                     ).childImageSharp.fluid
                   }
                 />
@@ -267,7 +222,7 @@ class RecipeBuilderPage extends React.Component<Props> {
               fluid={
                 _.find(
                   images,
-                  (d: { name: string }) => d.name === "recipeBuilder3"
+                  (d: { name: string }) => d.name === 'recipeBuilder3'
                 ).childImageSharp.fluid
               }
             />
@@ -289,13 +244,60 @@ class RecipeBuilderPage extends React.Component<Props> {
                 </Typography>
                 <Typography variant="subtitle1">{as}</Typography>
               </div>
-            );
+            )
           })}
         </div>
       </SampleWorkTemplate>
-    );
+    )
   }
 }
+
+const styles = (theme: any) =>
+  createStyles({
+    dividerWithMargin: dividerWithMargin(theme),
+    topBottomImageWrapper: topBottomImageWrapper(theme),
+    imagesContainer: imagesContainer(theme),
+    confusionMatrixImage: {
+      width: '60%',
+      [theme.breakpoints.down('sm')]: {
+        width: '75%',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: '100%',
+      },
+    },
+    shelfImage: {
+      width: '50%',
+      [theme.breakpoints.down('sm')]: {
+        width: '60%',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: '80%',
+      },
+    },
+    stepsContainer: {
+      paddingTop: theme.spacing(2),
+    },
+    stepWrapper: {
+      paddingTop: theme.spacing(1),
+      paddingBottom: theme.spacing(1),
+      display: 'flex',
+      justifyContent: 'flex-start',
+    },
+    stepNumber: {
+      marginRight: theme.spacing(3),
+    },
+    applicationImage: {
+      width: '100%',
+      [theme.breakpoints.down('xs')]: {
+        width: '500px',
+      },
+    },
+    applicationImage2: {
+      marginLeft: '-300px',
+    },
+    applicationImageSmallWrapper: { overflow: 'hidden' },
+  })
 
 export const query = graphql`
   query {
@@ -314,8 +316,8 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
 export default withWidth()(
   withStyles(styles, { withTheme: true })(RecipeBuilderPage)
-);
+)

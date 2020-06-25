@@ -1,3 +1,3 @@
-import ServicePopovers from "./ServicePopovers";
+import ServicePopovers from './ServicePopovers'
 
-export default ServicePopovers;
+export default ServicePopovers

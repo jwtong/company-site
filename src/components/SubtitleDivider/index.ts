@@ -1,3 +1,3 @@
-import SubtitleDivider from "./SubtitleDivider";
+import SubtitleDivider from './SubtitleDivider'
 
-export default SubtitleDivider;
+export default SubtitleDivider

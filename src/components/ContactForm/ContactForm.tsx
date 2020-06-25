@@ -1,61 +1,62 @@
-import React from "react";
+import React from 'react'
 import {
   WithStyles,
   createStyles,
   Button,
-  withStyles
-} from "@material-ui/core";
-import { formStyles } from "../Form/Form";
-import Form from "../Form";
+  withStyles,
+  Theme,
+} from '@material-ui/core'
+import { formStyles } from '../Form/Form'
+import Form from '../Form'
 
-const styles = (theme: any) => createStyles(formStyles(theme));
+const styles = (theme: Theme) => createStyles(formStyles(theme))
 
 export interface Props extends WithStyles<typeof styles> {
-  fieldNames: Array<string>;
+  fieldNames: Array<string>
   fieldValidations: {
     [key: string]: Array<{
-      validate: (value: any) => boolean;
-      errorMessage: string;
-    }>;
-  };
-  formId: string;
-  formEndpoint: string;
-  successCallback?: () => any;
-  failureCallback?: () => any;
+      validate: (value: any) => boolean
+      errorMessage: string
+    }>
+  }
+  formId: string
+  formEndpoint: string
+  successCallback?: () => any
+  failureCallback?: () => any
 }
 
 class ContactForm extends React.Component<Props> {
   public static defaultProps = {
-    fieldNames: ["name", "email", "message"],
+    fieldNames: ['name', 'email', 'message'],
     fieldValidations: {
-      name: ["required"],
-      email: ["required", "email"],
-      message: ["required"]
+      name: ['required'],
+      email: ['required', 'email'],
+      message: ['required'],
     },
-    formId: "contact-form"
-  };
+    formId: 'contact-form',
+  }
 
   public renderForm = (_: any, handleSubmit: any, getTextField: any) => {
-    const { classes, formId } = this.props;
+    const { classes, formId } = this.props
     return (
       <form id={formId} className={classes.form} onSubmit={handleSubmit}>
         <div className={classes.fieldsContainer}>
           <div className={classes.row1}>
-            {getTextField("name", {
+            {getTextField('name', {
               className: classes.fieldWithMarginRight,
-              label: "Name *",
-              autoComplete: "name"
+              label: 'Name *',
+              autoComplete: 'name',
             })}
-            {getTextField("email", {
-              label: "Email *",
-              autoComplete: "email"
+            {getTextField('email', {
+              label: 'Email *',
+              autoComplete: 'email',
             })}
           </div>
-          {getTextField("message", {
-            label: "Message *",
+          {getTextField('message', {
+            label: 'Message *',
             className: classes.fullWidthField,
             rows: 10,
-            multiline: true
+            multiline: true,
           })}
 
           <Button
@@ -69,8 +70,8 @@ class ContactForm extends React.Component<Props> {
           </Button>
         </div>
       </form>
-    );
-  };
+    )
+  }
 
   public render() {
     return (
@@ -84,7 +85,7 @@ class ContactForm extends React.Component<Props> {
         failureCallback={this.props.failureCallback}
         formEndpoint={this.props.formEndpoint}
       />
-    );
+    )
   }
 }
-export default withStyles(styles)(ContactForm);
+export default withStyles(styles)(ContactForm)

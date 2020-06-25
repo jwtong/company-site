@@ -1,3 +1,5 @@
-import ServiceCard from "./ServiceCard";
+import ServiceCard from './ServiceCard'
+import { Props } from './ServiceCard'
 
-export default ServiceCard;
+export type { Props }
+export default ServiceCard

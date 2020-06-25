@@ -1,3 +1,3 @@
-import SiteHelmet from "./SiteHelmet";
+import SiteHelmet from './SiteHelmet'
 
-export default SiteHelmet;
+export default SiteHelmet

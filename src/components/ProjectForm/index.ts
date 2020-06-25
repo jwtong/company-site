@@ -1,3 +1,3 @@
-import ProjectForm from "./ProjectForm";
+import ProjectForm from './ProjectForm'
 
-export default ProjectForm;
+export default ProjectForm

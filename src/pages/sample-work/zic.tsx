@@ -1,88 +1,48 @@
-import React from "react";
-import _ from "lodash";
-import { graphql } from "gatsby";
+import React from 'react'
+import _ from 'lodash'
+import { graphql } from 'gatsby'
 import {
   Typography,
   withStyles,
   createStyles,
-  WithStyles
-} from "@material-ui/core";
-import Img from "gatsby-image/withIEPolyfill";
-import SampleWorkTemplate from "../../components/SampleWorkTemplate";
-import roles from "../../utils/roles";
-import SubtitleDivider from "../../components/SubtitleDivider";
+  WithStyles,
+  Theme,
+} from '@material-ui/core'
+import Img from 'gatsby-image/withIEPolyfill'
+import SampleWorkTemplate from '../../components/SampleWorkTemplate'
+import services from '../../data/services'
+import SubtitleDivider from '../../components/SubtitleDivider'
 import {
   dividerWithMargin,
   topBottomImageWrapper,
-  imageShiftWrapper
-} from "../../components/SharedStyles";
-
-const styles = (theme: any) =>
-  createStyles({
-    dividerWithMargin: dividerWithMargin(theme),
-    topBottomImageWrapper: topBottomImageWrapper(theme),
-    imageShiftWrapper: imageShiftWrapper(theme),
-    designImage: {
-      width: "60%",
-      [theme.breakpoints.down("sm")]: {
-        width: "70%"
-      },
-      [theme.breakpoints.down("xs")]: {
-        width: "100%"
-      }
-    },
-    diagramImage: {
-      width: "70%",
-      [theme.breakpoints.down("sm")]: {
-        width: "80%"
-      },
-      [theme.breakpoints.down("xs")]: {
-        width: "100%"
-      }
-    },
-    diagramImage2: {
-      width: "70%",
-      [theme.breakpoints.down("sm")]: {
-        width: "80%"
-      },
-      [theme.breakpoints.down("xs")]: {
-        width: "480px",
-        marginRight: "-150px"
-      }
-    },
-    applicationImage: {
-      width: "80%",
-      [theme.breakpoints.down("md")]: {
-        width: "100%"
-      }
-    }
-  });
+  imageShiftWrapper,
+} from '../../components/SharedStyles'
 
 interface Props extends WithStyles<typeof styles> {
-  data: any;
+  data: any
 }
 
 class ZicPage extends React.Component<Props> {
   public render() {
-    const { classes, data } = this.props;
-    const zicRoles = [roles[0], roles[1], roles[2], roles[3]];
-    const zicTechnologies = [
-      "HTML / CSS",
-      "Javascript / JQuery",
-      "Java (Spark)"
-    ];
+    const { classes, data } = this.props
+    const zicRoles = services.filter((role) =>
+      ['Software Development', 'UI/UX Design', 'Product Management'].includes(
+        role.title
+      )
+    )
+    const zicTechnologies = ['HTML5', 'CSS3', 'Javascript', 'JQuery', 'Java']
 
-    const images = data.images.edges.map((e: { node: any }) => e.node);
+    const images = data.images.edges.map((e: { node: any }) => e.node)
 
     return (
       <SampleWorkTemplate
-        title={"Zic Web Jukebox"}
-        subtitle={"A collaborative playlist maker and music player"}
+        title={'Zic Web Jukebox'}
+        subtitle={'A collaborative playlist maker and music player'}
         roles={zicRoles}
         technologies={zicTechnologies}
       >
         <SubtitleDivider
-          text={"Overview"}
+          text={'Overview'}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <Typography variant="subtitle1" gutterBottom>
@@ -92,14 +52,14 @@ class ZicPage extends React.Component<Props> {
           can simultaneously sort, manage, and playback the playlist.
         </Typography>
         <SubtitleDivider
-          text={"Design"}
+          text={'Design'}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.designImage}
             fluid={
-              _.find(images, (d: { name: string }) => d.name === "zic1")
+              _.find(images, (d: { name: string }) => d.name === 'zic1')
                 .childImageSharp.fluid
             }
           />
@@ -112,7 +72,7 @@ class ZicPage extends React.Component<Props> {
           <Img
             className={classes.diagramImage}
             fluid={
-              _.find(images, (d: { name: string }) => d.name === "zic2")
+              _.find(images, (d: { name: string }) => d.name === 'zic2')
                 .childImageSharp.fluid
             }
           />
@@ -127,7 +87,7 @@ class ZicPage extends React.Component<Props> {
             <Img
               className={classes.diagramImage2}
               fluid={
-                _.find(images, (d: { name: string }) => d.name === "zic3")
+                _.find(images, (d: { name: string }) => d.name === 'zic3')
                   .childImageSharp.fluid
               }
             />
@@ -135,19 +95,19 @@ class ZicPage extends React.Component<Props> {
         </div>
         <Typography variant="subtitle1">
           Next, UI/UX mockups were created to show the layout of the actual
-          music player. Note that the host's interface would include more
+          music player. Note that the host&apos;s interface would include more
           functionality than those of connected clients, including executive
           controls over the music playback.
         </Typography>
         <SubtitleDivider
-          text={"Final Product"}
+          text={'Final Product'}
           otherProps={{ className: classes.dividerWithMargin }}
         />
         <div className={classes.topBottomImageWrapper}>
           <Img
             className={classes.applicationImage}
             fluid={
-              _.find(images, (d: { name: string }) => d.name === "zic4")
+              _.find(images, (d: { name: string }) => d.name === 'zic4')
                 .childImageSharp.fluid
             }
           />
@@ -158,9 +118,50 @@ class ZicPage extends React.Component<Props> {
           (e.g. Raspberry Pi) or be hosted completely online.
         </Typography>
       </SampleWorkTemplate>
-    );
+    )
   }
 }
+
+const styles = (theme: Theme) =>
+  createStyles({
+    dividerWithMargin: dividerWithMargin(theme),
+    topBottomImageWrapper: topBottomImageWrapper(theme),
+    imageShiftWrapper: imageShiftWrapper(theme),
+    designImage: {
+      width: '60%',
+      [theme.breakpoints.down('sm')]: {
+        width: '70%',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: '100%',
+      },
+    },
+    diagramImage: {
+      width: '70%',
+      [theme.breakpoints.down('sm')]: {
+        width: '80%',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: '100%',
+      },
+    },
+    diagramImage2: {
+      width: '70%',
+      [theme.breakpoints.down('sm')]: {
+        width: '80%',
+      },
+      [theme.breakpoints.down('xs')]: {
+        width: '480px',
+        marginRight: '-150px',
+      },
+    },
+    applicationImage: {
+      width: '80%',
+      [theme.breakpoints.down('md')]: {
+        width: '100%',
+      },
+    },
+  })
 
 export const query = graphql`
   query {
@@ -177,6 +178,6 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
-export default withStyles(styles, { withTheme: true })(ZicPage);
+export default withStyles(styles, { withTheme: true })(ZicPage)

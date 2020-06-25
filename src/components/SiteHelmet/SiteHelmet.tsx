@@ -1,15 +1,14 @@
 // site wrapper contains header, footer, and things that belong on all pages
-import React from "react";
-import { Helmet } from "react-helmet";
-import { StaticQuery, graphql } from "gatsby";
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { StaticQuery, graphql } from 'gatsby'
 
 interface Props {
-  children?: any;
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
-const SiteHelmet = ({ children, title, description }: Props) => (
+const SiteHelmet: React.FC<Props> = ({ children, title, description }) => (
   <StaticQuery
     query={graphql`
       query SiteHelmetQuery {
@@ -20,7 +19,7 @@ const SiteHelmet = ({ children, title, description }: Props) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <Helmet>
         <html lang="en" />
         <meta charSet="utf-8" />
@@ -32,6 +31,6 @@ const SiteHelmet = ({ children, title, description }: Props) => (
       </Helmet>
     )}
   />
-);
+)
 
-export default SiteHelmet;
+export default SiteHelmet

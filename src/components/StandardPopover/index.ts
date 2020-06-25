@@ -1,3 +1,3 @@
-import StandardPopover from "./StandardPopover";
+import StandardPopover from './StandardPopover'
 
-export default StandardPopover;
+export default StandardPopover

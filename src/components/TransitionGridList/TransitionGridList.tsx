@@ -1,5 +1,5 @@
-import React from "react";
-import VisibilitySensor from "react-visibility-sensor";
+import React from 'react'
+import VisibilitySensor from 'react-visibility-sensor'
 import {
   Slide,
   Collapse,
@@ -10,27 +10,23 @@ import {
   GridListTile,
   withStyles,
   WithStyles,
-  createStyles
-} from "@material-ui/core";
+  createStyles,
+} from '@material-ui/core'
 
 interface GridListTileData {
-  props: any;
-  children: any;
-  delay: number;
+  props: any
+  children: any
+  delay: number
 }
 
-const styles = createStyles({
-  transitionWrapper: { width: "100%", height: "100%" }
-});
-
 interface Props extends WithStyles<typeof styles> {
-  gridListTileData: Array<GridListTileData>;
-  gridListProps: any;
-  visibilitySensorProps: any;
-  transitionType: "Slide" | "Collapse" | "Fade" | "Grow" | "Zoom";
-  transitionProps: any;
-  transitionsMap: any;
-  individualVisibility?: boolean;
+  gridListTileData: Array<GridListTileData>
+  gridListProps: any
+  visibilitySensorProps: any
+  transitionType: 'Slide' | 'Collapse' | 'Fade' | 'Grow' | 'Zoom'
+  transitionProps: any
+  transitionsMap: any
+  individualVisibility?: boolean
 }
 
 class TransitionGridList extends React.Component<Props, any> {
@@ -40,21 +36,21 @@ class TransitionGridList extends React.Component<Props, any> {
       Slide: Slide,
       Fade: Fade,
       Grow: Grow,
-      Zoom: Zoom
-    }
-  };
+      Zoom: Zoom,
+    },
+  }
 
   public constructor(props: Props) {
-    super(props);
-    const dataLength = this.props.gridListTileData.length;
-    const preState: any = {};
+    super(props)
+    const dataLength = this.props.gridListTileData.length
+    const preState: any = {}
     for (let i = 0; i < dataLength; i++) {
-      preState[i] = false;
+      preState[i] = false
     }
 
     this.state = {
-      ...preState
-    };
+      ...preState,
+    }
   }
 
   private onChange = (isVisible: boolean) => {
@@ -62,26 +58,26 @@ class TransitionGridList extends React.Component<Props, any> {
       for (let i = 0; i < this.props.gridListTileData.length; i++) {
         setTimeout(() => {
           this.setState({
-            [i]: true
-          });
-        }, this.props.gridListTileData[i].delay || 0);
+            [i]: true,
+          })
+        }, this.props.gridListTileData[i].delay || 0)
       }
     }
-  };
+  }
 
   private onChangeIndividual = (index: number) => (isVisible: boolean) => {
     if (isVisible) {
       setTimeout(() => {
         this.setState({
-          [index]: true
-        });
-      }, this.props.gridListTileData[index].delay || 0);
+          [index]: true,
+        })
+      }, this.props.gridListTileData[index].delay || 0)
     }
-  };
+  }
 
   private getGridListTileFromData = (glt: GridListTileData) => {
-    return <GridListTile {...glt.props}>{glt.children}</GridListTile>;
-  };
+    return <GridListTile {...glt.props}>{glt.children}</GridListTile>
+  }
 
   public render() {
     const {
@@ -90,8 +86,8 @@ class TransitionGridList extends React.Component<Props, any> {
       transitionType,
       transitionProps,
       individualVisibility,
-      classes
-    } = this.props;
+      classes,
+    } = this.props
 
     if (individualVisibility) {
       return (
@@ -99,7 +95,7 @@ class TransitionGridList extends React.Component<Props, any> {
           {this.props.gridListTileData.map(
             (glt: GridListTileData, index: number) => {
               return (
-                <GridListTile {...glt.props}>
+                <GridListTile key={index} {...glt.props}>
                   <VisibilitySensor
                     key={index}
                     {...visibilitySensorProps}
@@ -110,18 +106,18 @@ class TransitionGridList extends React.Component<Props, any> {
                         this.props.transitionsMap[transitionType],
                         {
                           ...transitionProps,
-                          in: this.state[index]
+                          in: this.state[index],
                         },
                         glt.children
                       )}
                     </div>
                   </VisibilitySensor>
                 </GridListTile>
-              );
+              )
             }
           )}
         </GridList>
-      );
+      )
     } else {
       return (
         <VisibilitySensor {...visibilitySensorProps} onChange={this.onChange}>
@@ -133,17 +129,21 @@ class TransitionGridList extends React.Component<Props, any> {
                   {
                     ...transitionProps,
                     in: this.state[index],
-                    key: index
+                    key: index,
                   },
                   this.getGridListTileFromData(glt)
-                );
+                )
               }
             )}
           </GridList>
         </VisibilitySensor>
-      );
+      )
     }
   }
 }
 
-export default withStyles(styles)(TransitionGridList);
+const styles = createStyles({
+  transitionWrapper: { width: '100%', height: '100%' },
+})
+
+export default withStyles(styles)(TransitionGridList)

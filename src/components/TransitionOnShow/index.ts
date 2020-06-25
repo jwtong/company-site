@@ -1,3 +1,3 @@
-import TransitionOnShow from "./TransitionOnShow";
+import TransitionOnShow from './TransitionOnShow'
 
-export default TransitionOnShow;
+export default TransitionOnShow
